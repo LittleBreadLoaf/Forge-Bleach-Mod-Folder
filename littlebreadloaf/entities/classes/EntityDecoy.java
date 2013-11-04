@@ -60,13 +60,13 @@ public class EntityDecoy extends EntityMob
         
     }
 
-    protected void func_110147_ax()
+    protected void applyEntityAttributes()
 	{
-		super.func_110147_ax();
+		super.applyEntityAttributes();
 		
-			this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(1.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1.0D);
 			
-			this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(2.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D);
 		
 	
 	}

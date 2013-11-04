@@ -40,7 +40,7 @@ public class RenderHollowSnake extends RenderLiving
 
 	
 
-	protected ResourceLocation func_110775_a(Entity entity) 
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		switch (((EntityHollowSnake) entity).getTexture())
         {

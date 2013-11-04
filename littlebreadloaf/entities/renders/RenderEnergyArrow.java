@@ -17,11 +17,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderEnergyArrow extends Render
 {
-    private static final ResourceLocation field_110780_a = new ResourceLocation("lblbm:textures/items/energyarrows.png");
+    private static final ResourceLocation arrowTextures = new ResourceLocation("lblbm:textures/items/energyarrows.png");
 
     public void renderEnergyArrow(EntityEnergyArrow par1EntityEnergyArrow, double par2, double par4, double par6, float par8, float par9)
     {
-        this.func_110777_b(par1EntityEnergyArrow);
+        this.bindEntityTexture(par1EntityEnergyArrow);
         GL11.glPushMatrix();
         GL11.glTranslatef((float)par2, (float)par4, (float)par6);
         GL11.glRotatef(par1EntityEnergyArrow.prevRotationYaw + (par1EntityEnergyArrow.rotationYaw - par1EntityEnergyArrow.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
@@ -80,14 +80,14 @@ public class RenderEnergyArrow extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation func_110779_a(EntityEnergyArrow par1EntityEnergyArrow)
+    protected ResourceLocation getArrowTextures(EntityEnergyArrow par1EntityEnergyArrow)
     {
-        return field_110780_a;
+        return arrowTextures;
     }
 
-    protected ResourceLocation func_110775_a(Entity par1Entity)
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.func_110779_a((EntityEnergyArrow)par1Entity);
+        return this.getArrowTextures((EntityEnergyArrow)par1Entity);
     }
 
     /**

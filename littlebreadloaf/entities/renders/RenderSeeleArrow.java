@@ -21,7 +21,7 @@ public class RenderSeeleArrow extends Render
 
     public void renderSeeleArrow(EntitySeeleArrow par1EntitySeeleArrow, double par2, double par4, double par6, float par8, float par9)
     {
-        this.func_110777_b(par1EntitySeeleArrow);
+        this.bindEntityTexture(par1EntitySeeleArrow);
         GL11.glPushMatrix();
         GL11.glTranslatef((float)par2, (float)par4, (float)par6);
         GL11.glRotatef(par1EntitySeeleArrow.prevRotationYaw + (par1EntitySeeleArrow.rotationYaw - par1EntitySeeleArrow.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
@@ -80,14 +80,14 @@ public class RenderSeeleArrow extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation func_110779_a(EntitySeeleArrow par1EntitySeeleArrow)
+    protected ResourceLocation getArrowTextures(EntitySeeleArrow par1EntitySeeleArrow)
     {
         return field_110780_a;
     }
 
-    protected ResourceLocation func_110775_a(Entity par1Entity)
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.func_110779_a((EntitySeeleArrow)par1Entity);
+        return this.getArrowTextures((EntitySeeleArrow)par1Entity);
     }
 
     /**

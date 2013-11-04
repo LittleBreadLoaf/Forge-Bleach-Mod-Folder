@@ -314,12 +314,16 @@ public class ItemZanpakuto extends Item
     }
 
 
-    public Multimap func_111205_h()
+
+@Override
+    public Multimap getItemAttributeModifiers()
     {
-        Multimap multimap = super.func_111205_h();
-        multimap.put(SharedMonsterAttributes.field_111264_e.func_111108_a(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.getDamage(), 0));
+    	float damage = this.getDamage();
+        Multimap multimap = super.getItemAttributeModifiers();
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)damage, 0));
         return multimap;
     }
+    
     
     
     

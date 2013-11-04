@@ -41,7 +41,7 @@ public class RenderHollowSpider extends RenderLiving
 
 	
 
-	protected ResourceLocation func_110775_a(Entity entity) 
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		switch (((EntityHollowSpider) entity).getTexture())
         {

@@ -20,7 +20,7 @@ public class RenderGetsuga extends Render
 
     public void renderGetsuga (EntityGetsuga  par1EntityGetsuga , double par2, double par4, double par6, float par8, float par9)
     {
-        this.func_110777_b(par1EntityGetsuga );
+        this.bindEntityTexture(par1EntityGetsuga );
         GL11.glPushMatrix();
         GL11.glTranslatef((float)par2, (float)par4, (float)par6);
         GL11.glRotatef(par1EntityGetsuga .prevRotationYaw + (par1EntityGetsuga .rotationYaw - par1EntityGetsuga .prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
@@ -79,14 +79,14 @@ public class RenderGetsuga extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation func_110779_a(EntityGetsuga  par1EntityGetsuga )
+    protected ResourceLocation getArrowTextures(EntityGetsuga  par1EntityGetsuga )
     {
         return field_110780_a;
     }
 
-    protected ResourceLocation func_110775_a(Entity par1Entity)
+    protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.func_110779_a((EntityGetsuga )par1Entity);
+        return this.getArrowTextures((EntityGetsuga )par1Entity);
     }
 
     /**
@@ -99,4 +99,6 @@ public class RenderGetsuga extends Render
     {
         this.renderGetsuga ((EntityGetsuga )par1Entity, par2, par4, par6, par8, par9);
     }
+
+	
 }

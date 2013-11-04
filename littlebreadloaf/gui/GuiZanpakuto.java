@@ -19,7 +19,7 @@ public class GuiZanpakuto extends GuiScreen
 	public void drawScreen(int x, int y, float f)//draws the gui
 	{
 
-			this.mc.func_110434_K().func_110577_a(texture);
+			this.mc.getTextureManager().bindTexture(texture);
 			ScaledResolution var5 = new ScaledResolution(this.mc.gameSettings, this.mc.displayWidth, this.mc.displayHeight);
 			int var6 = var5.getScaledWidth();
 			int var7 = var5.getScaledHeight();

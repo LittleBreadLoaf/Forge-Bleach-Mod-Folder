@@ -46,8 +46,8 @@ public class RenderDecoy extends RenderLiving
 	}
 
 	
-
-	protected ResourceLocation func_110775_a(Entity entity) 
+@Override
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		switch (((EntityDecoy) entity).getTexture())
         {
@@ -74,6 +74,8 @@ public class RenderDecoy extends RenderLiving
 		
         }
 	}
+
+
 
 
 

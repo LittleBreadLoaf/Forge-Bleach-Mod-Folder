@@ -266,13 +266,15 @@ public class ShikaiFire extends Item
     }
 
 
-    public Multimap func_111205_h()
+@Override
+    public Multimap getItemAttributeModifiers()
     {
     	float damage = this.getDamage();
-        Multimap multimap = super.func_111205_h();
-        multimap.put(SharedMonsterAttributes.field_111264_e.func_111108_a(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)damage, 0));
+        Multimap multimap = super.getItemAttributeModifiers();
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)damage, 0));
         return multimap;
     }
+    
     
     /**
      * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return

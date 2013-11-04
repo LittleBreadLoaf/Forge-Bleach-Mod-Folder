@@ -27,10 +27,6 @@ public class ItemSoulCloth extends Item
 		itemIcon = icon.registerIcon(BleachModInfo.ID.toLowerCase() + ":" + Names.SoulCloth_UnlocalizedName);
 	}
 	
-	@Override
-	public boolean func_111207_a(ItemStack var1, EntityPlayer var2, EntityLivingBase target)
-	{
-		return false;
-	}
+	
 
 }

@@ -102,30 +102,38 @@ public class ServerTickHandler implements ITickHandler
 			{
 				if(chest.getItem() == Armor.ShiniRobe || chest.getItem() == Armor.QuincyRobe)
 				{
-					armorBonus += 2;
+					armorBonus += 4;
 				}
 			}
 			if(player.getCurrentItemOrArmor(2) != null)
 			{
 				if(legs.getItem() == Armor.ShiniPants || legs.getItem() == Armor.QuincyPants)
 				{
-					armorBonus++;
+					armorBonus += 2;
 				}
 			}
 			if(player.getCurrentItemOrArmor(1) != null)
 			{
 				if(shoes.getItem() == Armor.Sandals || chest.getItem() == Armor.QuincyShoes)
 				{
-					armorBonus++;
+					armorBonus += 2;
 				}
 			}
 			props.replenishEnergy(armorBonus);
-			this.armorBonus = 1;
+			this.armorBonus = 2;
 			this.replenishTimer = 400;
 			
 		}
 		
 		//Prop Stuff
+		if(props.getMaskLevel() < 1)
+		{
+			props.setMaskLevel(1);
+		}
+		if(props.getMaskLevel() > 50)
+		{
+			props.setMaskLevel(50);
+		}
 		if(props.getCurrentCap() < 50)
 		{
 			props.setCapMin();
@@ -137,6 +145,10 @@ public class ServerTickHandler implements ITickHandler
 		if(props.getCurrentSXP() >= 1.0)
      	{
      		props.addCap();
+     	}
+		if(props.getMaskXP() >= 1.0)
+     	{
+     		props.addMaskLevel();
      	}
 		props.balanceTotal();
 		if(props.getPoints(1) > 40)

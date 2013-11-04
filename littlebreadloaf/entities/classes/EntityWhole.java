@@ -69,16 +69,17 @@ public class EntityWhole extends EntityMob
         
     }
 
-    protected void func_110147_ax()
- 	{
- 		super.func_110147_ax();
- 		
- 			this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(40.0D);
- 			
- 			this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(2.0D);
- 		
- 	
- 	}
+@Override
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
+			
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D);
+		
+	
+	}
     
    
     

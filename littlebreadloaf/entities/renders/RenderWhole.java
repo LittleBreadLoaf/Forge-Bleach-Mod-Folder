@@ -46,7 +46,7 @@ public class RenderWhole extends RenderLiving
 	}
 
 	
-	protected ResourceLocation func_110775_a(Entity entity) 
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		switch (((EntityWhole) entity).getTexture())
         {

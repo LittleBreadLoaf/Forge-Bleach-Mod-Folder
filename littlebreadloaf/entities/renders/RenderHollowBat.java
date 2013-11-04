@@ -40,7 +40,7 @@ public class RenderHollowBat extends RenderLiving
 
 	
 
-	protected ResourceLocation func_110775_a(Entity entity) 
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		switch (((EntityHollowBat) entity).getTexture())
         {

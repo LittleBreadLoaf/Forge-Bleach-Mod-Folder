@@ -85,22 +85,21 @@ public class EntityShinigami extends EntityMob
 	}
 	
 
-	protected void func_110147_ax()
+@Override
+	protected void applyEntityAttributes()
 	{
-		super.func_110147_ax();
-		ItemStack var2 = this.getHeldItem();
-		
+		super.applyEntityAttributes();
 		if(this.worldObj.difficultySetting >= 1)
 		{
-			this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(150.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(150.0D);
 			
-			this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(6.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
 		}
 		else
 		{
-			this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(120.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(120.0D);
 			
-			this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(4.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
 		}
 	
 	}

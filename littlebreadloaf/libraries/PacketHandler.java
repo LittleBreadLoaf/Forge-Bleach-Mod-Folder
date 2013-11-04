@@ -119,6 +119,10 @@ public class PacketHandler implements IPacketHandler
 			props.setName(inputStream.readUTF());
 			props.setMask(inputStream.readInt());
 			props.setLines(inputStream.readInt());
+			props.setMaskTimeCap(inputStream.readInt());
+			props.setMaskTime(inputStream.readFloat());
+			props.setMaskLevel(inputStream.readInt());
+			props.setMaskColor(inputStream.readInt());
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

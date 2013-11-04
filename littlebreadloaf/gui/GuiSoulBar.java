@@ -51,7 +51,7 @@ public class GuiSoulBar extends Gui
 		
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glDisable(GL11.GL_LIGHTING);
-		this.mc.func_110434_K().func_110577_a(texture);
+		this.mc.getTextureManager().bindTexture(texture);
         FontRenderer var8 = this.mc.fontRenderer;
 		
 		int var111 = var7;
@@ -70,7 +70,16 @@ public class GuiSoulBar extends Gui
         var8.drawString(var34, var182 - 11, var233 + 42, 0);
         var8.drawString(var34, var182 - 11, var233 + 44, 0);
         var8.drawString(var34, var182 - 11, var233 + 43, var12);
-        this.mc.mcProfiler.endSection();
+        
+        this.mc.mcProfiler.endStartSection("MaskBar");
+        String MaskTime = "" + (int)(props.getMaskTime()) * props.getMaskTimeCap();
+        int var180 = (var6 - var8.getStringWidth(MaskTime)) - 10;
+        int Color = props.getMaskColor();
+        var8.drawString(MaskTime, var180 - 10, var233 + 43, 0);
+        var8.drawString(MaskTime, var180 - 12, var233 + 43, 0);
+        var8.drawString(MaskTime, var180 - 11, var233 + 42, 0);
+        var8.drawString(MaskTime, var180 - 11, var233 + 44, 0);
+        var8.drawString(MaskTime, var180 - 11, var233 + 43, Color);
 	}
 
 }

@@ -40,7 +40,7 @@ public class RenderHollowGolem extends RenderLiving
 
 	
 
-	protected ResourceLocation func_110775_a(Entity entity) 
+	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
 		switch (((EntityHollowGolem) entity).getTexture())
         {
