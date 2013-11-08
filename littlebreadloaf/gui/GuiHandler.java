@@ -16,17 +16,18 @@ public class GuiHandler implements IGuiHandler
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
 	{
-		return null;
+		switch(ID) {
+			default: return null;
+		}
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
 	{
-		
-	return new GuiZanpakuto();
-			
-		
-			
-		
+		switch(ID) {
+			default: return null;
+			case 0: return new GuiZanpakuto();
+			case 1: return new GuiHollowBook(player);
+		}
 	}
 }
