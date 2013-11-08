@@ -185,6 +185,7 @@ public class ItemZanpakuto extends Item
         {
         	damageBoost = 0;
         }
+        par2EntityLivingBase.setHealth(par2EntityLivingBase.getHealth() - this.damageBoost);
         return true;
     }
 
