@@ -46,12 +46,14 @@ public class Items
 	public static Item shikailunar;
 	public static Item shikaiwater;
 	public static Item shikainormal;
+	public static Item hollowbook;
 	
 	public static final CreativeTabs tabBleach = new TabBleach(12, "Bleach Mod");
 	
 	public static void init()
 	{
 		reiatsu = new ItemReiatsu(Ids.reiatsuID);
+		hollowbook = new ItemHollowBook(Ids.hollowbookID);
 		quincybow = new ItemQuincyBow(Ids.quincyBowID);
 		zanpakuto = new ItemZanpakuto(Ids.zanpakutoID, Tools.SOUL);
 		maskshard = new ItemMaskShard(Ids.maskShardID);
@@ -77,6 +79,7 @@ public class Items
 	public static void addNames()
 	{
 		LanguageRegistry.addName(reiatsu, Names.Reiatsu_Name);
+		LanguageRegistry.addName(hollowbook, Names.HollowBook_Name);
 		LanguageRegistry.addName(quincybow, Names.QuincyBow_Name);
 		LanguageRegistry.addName(zanpakuto, Names.Zanpakuto_Name);
 		LanguageRegistry.addName(maskshard, Names.MaskShard_Name);
