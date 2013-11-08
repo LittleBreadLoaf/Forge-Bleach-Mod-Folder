@@ -87,7 +87,8 @@ public class Names
 	public static final String HollowHelmet_UnlocalizedName = "hollowmask";
 	public static final String HollowHelmet_Name = "Hollow Mask";
 	
-	
+	public static final String HollowBook_UnlocalizedName = "hollowbook";
+	public static final String HollowBook_Name = "Hollow Information";
 	
 	public static final String QuincyBow_UnlocalizedName = "quincy_bow";
 	public static final String QuincyBow_Name = "Quincy Bow";
