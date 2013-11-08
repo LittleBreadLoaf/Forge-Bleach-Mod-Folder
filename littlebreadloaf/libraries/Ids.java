@@ -195,5 +195,9 @@ public class Ids
 	
 	public static int shikainormalID;
 	public static final int shikainormalID_Default = 20411;
+	
+
+	public static int hollowbookID;
+	public static final int hollowbookID_Default = 20600;
 
 }
