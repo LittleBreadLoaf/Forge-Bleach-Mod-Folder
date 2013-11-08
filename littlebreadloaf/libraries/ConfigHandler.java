@@ -42,6 +42,8 @@ public class ConfigHandler
 		
 		Ids.reiatsuID = config.get(config.CATEGORY_ITEM, "Reiatsu ID", Ids.reiatsuID_Default).getInt();
 		
+		Ids.hollowbookID = config.get(config.CATEGORY_ITEM, "Hollow Book ID", Ids.hollowbookID_Default).getInt();
+		
 		Ids.zanpakutoID = config.get(config.CATEGORY_ITEM, "Zanpakuto ID", Ids.zanpakutoID_Default).getInt();
 
 		Ids.maskShardID = config.get(config.CATEGORY_ITEM, "Mask Shard ID", Ids.maskShardID_Default).getInt();
