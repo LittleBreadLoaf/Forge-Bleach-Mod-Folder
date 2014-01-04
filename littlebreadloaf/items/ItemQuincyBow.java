@@ -167,7 +167,7 @@ public class ItemQuincyBow extends Item
         	this.isSeele = true;
             par2World.playSoundAtEntity(par3EntityPlayer, "lblbm:bowcharge", 0.4F, 1.0F);
         }
-        else if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)10 / (float)props.getCurrentCap()) && !props.getIsShinigami())
+        else if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()) && !props.getIsShinigami())
         {
             par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
             this.isSeele = false;

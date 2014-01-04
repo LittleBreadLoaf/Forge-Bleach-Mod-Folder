@@ -199,6 +199,7 @@ public class EntityHollowGolem extends EntityMob
 	  /**
 	     * Called when the mob's health reaches 0.
 	     */
+	  @Override
 	    public void onDeath(DamageSource par1DamageSource)
 	    {
 	        super.onDeath(par1DamageSource);
@@ -206,13 +207,12 @@ public class EntityHollowGolem extends EntityMob
 	        if (par1DamageSource.getEntity() instanceof EntityPlayer)
 	        {
 	    		ExtendedPlayer props = (ExtendedPlayer) this.attackingPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-	        	if(props.getIsShinigami() && this.attackingPlayer.inventory.getCurrentItem() != null && this.attackingPlayer.inventory.getCurrentItem().itemID == Items.zanpakuto.itemID && props.getZTotal() < 396)
+	        	if(props.getIsShinigami() && this.attackingPlayer.inventory.getCurrentItem() != null && this.attackingPlayer.inventory.getCurrentItem().itemID == Items.zanpakuto.itemID && props.getZTotal() < 400)
 	        	{
 	        		props.addPoints(1, 5);
 	        		props.addPoints(5, 1);
 	        		props.addPoints(2, -1);
 	        	}
-	            
 	        }
 	    }
     public void setTexture(int par1)

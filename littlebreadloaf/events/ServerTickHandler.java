@@ -144,7 +144,7 @@ public class ServerTickHandler implements ITickHandler
 			}
 			if(player.getCurrentItemOrArmor(1) != null)
 			{
-				if(shoes.getItem() == Armor.Sandals || chest.getItem() == Armor.QuincyShoes)
+				if(shoes.getItem() == Armor.Sandals || shoes.getItem() == Armor.QuincyShoes)
 				{
 					armorBonus += 1;
 				}
@@ -154,7 +154,7 @@ public class ServerTickHandler implements ITickHandler
 				armorBonus = (int)(armorBonus * 1.5);
 			}
 			props.replenishEnergy((int)(armorBonus * (1 + (0.001 * props.getCurrentCap()))));
-			this.armorBonus = 1;
+			this.armorBonus = 3;
 			this.replenishTimer = 200;
 			
 		}
@@ -302,6 +302,11 @@ public class ServerTickHandler implements ITickHandler
     		props.setPoints(8, 0);
     	
 		} 
+		
+		
+		
+		
+		
 		
 		
 		

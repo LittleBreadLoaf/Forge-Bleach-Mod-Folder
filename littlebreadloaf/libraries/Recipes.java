@@ -85,7 +85,7 @@ public class Recipes
 		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 1), new Object[]{"*", '*', Armor.GolemHelmet});
 		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 1), new Object[]{"*", '*', Armor.WaspHelmet});
 		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 1), new Object[]{"*", '*', Armor.StalkerHelmet});
-		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 1), new Object[]{"*", '*', Items.oremask});
+		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 2), new Object[]{"*", '*', Items.oremask});
 		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 1), new Object[]{"*", '*', Armor.WolfHelmet});
 		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 1), new Object[]{"*", '*', Items.fishermask});
 		GameRegistry.addRecipe(new ItemStack(Items.maskshard, 3), new Object[]{"*", '*', Items.menosmask});

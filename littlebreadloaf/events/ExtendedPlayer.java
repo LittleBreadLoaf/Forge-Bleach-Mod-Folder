@@ -711,37 +711,37 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		return sufficient;
 	}
 	
-	public void addPoints(int var1, int amount)
+	public void addPoints(int type, int amount)
 	{
-		if(var1 == 1)
+		if(type == 1)
 		{
 			Flame += amount;
 		}
-		if(var1 == 2)
+		if(type == 2)
 		{
 			 Ice += amount;
 		}
-		if(var1 == 3)
+		if(type == 3)
 		{
 			 Heal += amount;
 		}
-		if(var1 == 4)
+		if(type == 4)
 		{
 			 Poison += amount;
 		}
-		if(var1 == 5)
+		if(type == 5)
 		{
 			 Earth += amount;
 		}
-		if(var1 == 6)
+		if(type == 6)
 		{
 			 Wind += amount;
 		}
-		if(var1 == 7)
+		if(type == 7)
 		{
 			 Light += amount;
 		}
-		if(var1 == 8)
+		if(type == 8)
 		{
 			 Dark += amount;
 		}
@@ -810,12 +810,12 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 			ItemStack var9 = player.inventory.armorInventory[0];
 	        ItemStack var10 = player.inventory.armorInventory[1];
 	        ItemStack var11 = player.inventory.armorInventory[2];
-			if(this.isShinigami && var9 != null && var9.itemID == Armor.Sandals.itemID && var10 != null && var10.itemID == Armor.ShiniPants.itemID && var11 != null && var11.itemID == Armor.ShiniRobe.itemID && this.getCurrentEnergy() > 0)
+			if(this.isShinigami && var9 != null && var9.itemID == Armor.Sandals.itemID && var10 != null && var10.itemID == Armor.ShiniPants.itemID && var11 != null && var11.itemID == Armor.ShiniRobe.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
 			{ 
 	
 				this.movePlayer();
 			}
-			else if(!this.isShinigami && var9 != null && var9.itemID == Armor.QuincyShoes.itemID && var10 != null && var10.itemID == Armor.QuincyPants.itemID && var11 != null && var11.itemID == Armor.QuincyRobe.itemID && this.getCurrentEnergy() > 0)
+			else if(!this.isShinigami && var9 != null && var9.itemID == Armor.QuincyShoes.itemID && var10 != null && var10.itemID == Armor.QuincyPants.itemID && var11 != null && var11.itemID == Armor.QuincyRobe.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
 			{ 
 				this.movePlayer();
 			}
@@ -851,7 +851,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 
 	public void movePlayer() 
 	{
-		if(this.getValidFlash())
+		if(this.getValidFlash() && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
 		{
             player.worldObj.playSoundAtEntity(player, "lblbm:shunpo", 0.4F, 1.0F); 
             ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);

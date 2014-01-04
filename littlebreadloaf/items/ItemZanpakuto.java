@@ -294,6 +294,7 @@ public class ItemZanpakuto extends Item
 	        
 	   
       }
+	  System.out.println(props.getZTotal());
     	
         
     }

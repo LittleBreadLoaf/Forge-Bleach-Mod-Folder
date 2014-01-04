@@ -30,7 +30,7 @@ public class CommandSetFaction extends CommandBase
 		if (par2ArrayOfStr.length > 0)
         {
             int var3 = this.getTypeToSet(par1ICommandSender, par2ArrayOfStr[0]);
-            props.setType(var3);
+            
             	 if(var3 == 0)
          		{
          			var4.addChatMessage("Changing Faction to Shinigami");

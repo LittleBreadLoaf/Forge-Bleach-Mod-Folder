@@ -205,31 +205,31 @@ public class ItemQuincyWebBow extends Item
     
    
     
-    @SideOnly(Side.CLIENT)
+    @Override
     public void onUsingItemTick(ItemStack stack, EntityPlayer player, int count)
     {
+    	
 	ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 	  if (props.getCurrentEnergy() > 0 && !props.getIsShinigami())
       {
-		  ++bowCoolDown;
+		  
   		
-  		if(bowCoolDown >= 20)
+  		if(count%20 == 0)
   		{
 
   			EntityEnergyArrow entityEnergyArrow = new EntityEnergyArrow(player.worldObj, player, 2.0F);
 
       
   			entityEnergyArrow.setIsCritical(true);
-  			if(!player.worldObj.isRemote)
-  			{
+  			//if(!player.worldObj.isRemote)
+  			//{
   				player.worldObj.spawnEntityInWorld(entityEnergyArrow);
-  				player.worldObj.playSoundAtEntity(player, "lblbm:bowfire", 0.4F, 0.4F);
-  			}
-      
-  			bowCoolDown = 0;
+  				player.worldObj.playSoundAtEntity(player, "lblbm:bowfire", 0.4F, 1.0F);
+
+  			//}
+  			
   		}
 	        
-	   
       }
     	
         

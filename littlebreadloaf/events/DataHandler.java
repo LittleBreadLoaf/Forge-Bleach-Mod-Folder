@@ -1,5 +1,7 @@
 package littlebreadloaf.events;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import littlebreadloaf.armor.Armor;
 import littlebreadloaf.blocks.Blocks;
 import littlebreadloaf.entities.classes.EntityEnergyArrow;
@@ -88,7 +90,7 @@ public class DataHandler
 			proxy.storeEntityData(((EntityPlayer)event.entity).username, playerData);
 		}
 	}
-	
+	@SideOnly(Side.CLIENT)
 	@ForgeSubscribe
 	public void onLivingUpdateEvent(LivingUpdateEvent event)
 	{
@@ -310,7 +312,7 @@ public class DataHandler
 	@ForgeSubscribe
 	public void onEntityInteractEvent(EntityInteractEvent event)
 	{
-		if(event.entityPlayer.getHeldItem().itemID == Items.shikaiheal.itemID)
+		if(event.entityPlayer.getHeldItem() != null && event.entityPlayer.getHeldItem().itemID == Items.shikaiheal.itemID)
 		{
 			if(event.target instanceof EntityZombie)
 			{

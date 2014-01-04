@@ -225,7 +225,7 @@ public class EntityFisher extends EntityMob
         if (par1DamageSource.getEntity() instanceof EntityPlayer)
         {
     		ExtendedPlayer props = (ExtendedPlayer) this.attackingPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-        	if(props.getIsShinigami() && this.attackingPlayer.inventory.getCurrentItem() != null && this.attackingPlayer.inventory.getCurrentItem().itemID == Items.zanpakuto.itemID && props.getZTotal() < 396)
+        	if(props.getIsShinigami() && this.attackingPlayer.inventory.getCurrentItem() != null && this.attackingPlayer.inventory.getCurrentItem().itemID == Items.zanpakuto.itemID && props.getZTotal() < 400)
         	{
         		props.addPoints(4, 5);
         		props.addPoints(7, 2);
