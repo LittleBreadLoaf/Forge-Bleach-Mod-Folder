@@ -1,5 +1,6 @@
 package littlebreadloaf.items;
 
+import littlebreadloaf.armor.Armor;
 import littlebreadloaf.events.ExtendedPlayer;
 import littlebreadloaf.items.shikai.ShikaiDark;
 import littlebreadloaf.items.shikai.ShikaiEarth;
@@ -21,6 +22,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Items 
 {
@@ -52,7 +55,19 @@ public class Items
 	public static Item shikaiwater;
 	public static Item shikainormal;
 	
-	public static final CreativeTabs tabBleach = new TabBleach(12, "Bleach Mod");
+	public static final CreativeTabs tabBleach = new CreativeTabs("Bleach Mod")
+	{
+		@SideOnly(Side.CLIENT)
+		public int getTabIconItemIndex()
+		{
+			return Armor.HollowHelmet.itemID;
+		}
+		
+		public String getTranslatedTabLabel()
+		{
+			return "Bleach Mod";
+		}
+	};
 	
 	public static void init()
 	{

@@ -44,77 +44,63 @@ public class Entities
 	public static void init()
 	{
 		//Whole
-		EntityRegistry.registerGlobalEntityID(EntityWhole.class, "Whole", 1);
+		EntityRegistry.registerGlobalEntityID(EntityWhole.class, "Whole", EntityRegistry.findGlobalUniqueEntityId(), 0x3366CC, 0x3300CC);
 		EntityRegistry.addSpawn(EntityWhole.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 				
 		//Hollow Bat
-		EntityRegistry.registerGlobalEntityID(EntityHollowBat.class, "HollowBat", 2);
+		EntityRegistry.registerGlobalEntityID(EntityHollowBat.class, "HollowBat", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xB31215);
 		EntityRegistry.addSpawn(EntityHollowBat.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		
 		//Hollow Blaze
-		EntityRegistry.registerGlobalEntityID(EntityHollowBlaze.class, "HollowBlaze", 3);
+		EntityRegistry.registerGlobalEntityID(EntityHollowBlaze.class, "HollowBlaze", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x3CB371);
 		EntityRegistry.addSpawn(EntityHollowBlaze.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		//Hollow Spider
-		EntityRegistry.registerGlobalEntityID(EntityHollowSpider.class, "HollowSpider", 4);
+		EntityRegistry.registerGlobalEntityID(EntityHollowSpider.class, "HollowSpider", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x191970);
 		EntityRegistry.addSpawn(EntityHollowSpider.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		//Hollow Golem
-		EntityRegistry.registerGlobalEntityID(EntityHollowGolem.class, "HollowGolem", 5);
+		EntityRegistry.registerGlobalEntityID(EntityHollowGolem.class, "HollowGolem", EntityRegistry.findGlobalUniqueEntityId(), 0x8B0000, 0xFFFFF0);
 		EntityRegistry.addSpawn(EntityHollowGolem.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		//Hollow Snake
-		EntityRegistry.registerGlobalEntityID(EntityHollowSnake.class, "HollowSnake", 6);
+		EntityRegistry.registerGlobalEntityID(EntityHollowSnake.class, "HollowSnake", EntityRegistry.findGlobalUniqueEntityId(), 0x009933, 0xF0E68C);
 		EntityRegistry.addSpawn(EntityHollowSnake.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 					
 		//Hollow Wasp
-		EntityRegistry.registerGlobalEntityID(EntityHollowWasp.class, "HollowWasp", 7);
+		EntityRegistry.registerGlobalEntityID(EntityHollowWasp.class, "HollowWasp", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFCC33);
 		EntityRegistry.addSpawn(EntityHollowWasp.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		//Hollow Stalker
-		EntityRegistry.registerGlobalEntityID(EntityHollowStalker.class, "HollowStalker", 8);
+		EntityRegistry.registerGlobalEntityID(EntityHollowStalker.class, "HollowStalker", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x634673);
 		EntityRegistry.addSpawn(EntityHollowStalker.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		//Hollow Ore
-		EntityRegistry.registerGlobalEntityID(EntityHollowOre.class, "HollowOre", 9);
+		EntityRegistry.registerGlobalEntityID(EntityHollowOre.class, "HollowOre", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x57599);
 		EntityRegistry.addSpawn(EntityHollowOre.class, 0, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 				
 		//Hollow Wolf
-		EntityRegistry.registerGlobalEntityID(EntityHollowWolf.class, "HollowWolf", 10);
+		EntityRegistry.registerGlobalEntityID(EntityHollowWolf.class, "HollowWolf", EntityRegistry.findGlobalUniqueEntityId(), 0x191970, 0x634673);
 		EntityRegistry.addSpawn(EntityHollowWolf.class, 1, 2, 3, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 			
 		//Menos Grande
-		EntityRegistry.registerGlobalEntityID(EntityMenosGrande.class, "MenosGrande", 15);
+		EntityRegistry.registerGlobalEntityID(EntityMenosGrande.class, "MenosGrande", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
 		EntityRegistry.addSpawn(EntityMenosGrande.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		//Grand Fisher
-		EntityRegistry.registerGlobalEntityID(EntityFisher.class, "Fisher", 16);
+		EntityRegistry.registerGlobalEntityID(EntityFisher.class, "Fisher", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x663300);
 		EntityRegistry.addSpawn(EntityFisher.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.hell});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		//Decoy
-		EntityRegistry.registerGlobalEntityID(EntityDecoy.class, "Decoy", 17);
+		EntityRegistry.registerGlobalEntityID(EntityDecoy.class, "Decoy", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		EntityRegistry.addSpawn(EntityDecoy.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.desertHills});
-		EntityRegistry.findGlobalUniqueEntityId();
 		
 		
 		
 		//Shinigami
-		EntityRegistry.registerGlobalEntityID(EntityShinigami.class, "Shinigami", 18);
+		EntityRegistry.registerGlobalEntityID(EntityShinigami.class, "Shinigami", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x677279);
 		EntityRegistry.addSpawn(EntityShinigami.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.desertHills});
-		EntityRegistry.findGlobalUniqueEntityId();
 
 				
 		//Arrows

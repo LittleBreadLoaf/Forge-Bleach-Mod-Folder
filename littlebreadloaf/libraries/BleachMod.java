@@ -86,8 +86,8 @@ public class BleachMod
 		MinecraftForge.EVENT_BUS.register(new DataHandler());
 
 		
-		customSpawner = new CustomSpawner(Ids.customSpawnerID).setUnlocalizedName("customSpawner").setTextureName("LBLBM:customSpawner").setCreativeTab(Items.tabBleach);
-		LanguageRegistry.addName(customSpawner, "Spawn");
+//		customSpawner = new CustomSpawner(Ids.customSpawnerID).setUnlocalizedName("customSpawner").setTextureName("LBLBM:customSpawner").setCreativeTab(Items.tabBleach);
+//		LanguageRegistry.addName(customSpawner, "Spawn");
 		
 	}
 	
