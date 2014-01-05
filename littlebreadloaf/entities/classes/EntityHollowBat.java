@@ -63,16 +63,18 @@ public class EntityHollowBat extends EntityMob
 
 		this.experienceValue = 15;
 		this.isImmuneToFire = true;
-		this.setSize(1F, 2F);
+		this.setSize(0.7F, 1.8F);
 
 	}
-
+	
+	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
 
 	}
 
+	@Override
 	public int getTotalArmorValue()
 	{
 		return 4;
@@ -98,6 +100,7 @@ public class EntityHollowBat extends EntityMob
 
 	}
 
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return Tools.SPIRIT;
@@ -106,6 +109,7 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * Returns the sound this mob makes when it is hurt.
 	 */
+	@Override
 	protected String getHurtSound()
 	{
 		if (rand.nextInt(100) >= 50)
@@ -120,6 +124,7 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * Returns the sound this mob makes while it's alive.
 	 */
+	@Override
 	protected String getLivingSound()
 	{
 		if (rand.nextInt(100) >= 25)
@@ -134,11 +139,13 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * Returns the sound this mob makes on death.
 	 */
+	@Override
 	protected String getDeathSound()
 	{
 		return "lblbm:hollowscream";
 	}
 
+	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
 		super.dropFewItems(par1, par2);
@@ -151,11 +158,13 @@ public class EntityHollowBat extends EntityMob
 
 	}
 
+	@Override
 	public void onLivingUpdate()
 	{
 		super.onLivingUpdate();
 	}
 
+	@Override
 	public int getMaxSpawnedInChunk()
 	{
 		return 1;
@@ -165,6 +174,7 @@ public class EntityHollowBat extends EntityMob
 	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
 	 * by each mob to define their attack.
 	 */
+	@Override
 	protected void attackEntity(Entity target, float distace)
 	{
 		if (this.attackTime <= 0 && distace < 2.0F && target.boundingBox.maxY > this.boundingBox.minY && target.boundingBox.minY < this.boundingBox.maxY)
@@ -174,6 +184,7 @@ public class EntityHollowBat extends EntityMob
 		}
 	}
 
+	@Override
 	public boolean attackEntityAsMob(Entity par1Entity)
 	{
 		if (super.attackEntityAsMob(par1Entity))
@@ -219,16 +230,19 @@ public class EntityHollowBat extends EntityMob
 	 * Returns true if this entity should push and be pushed by other entities
 	 * when colliding.
 	 */
+	@Override
 	public boolean canBePushed()
 	{
 		return false;
 	}
 
+	@Override
 	protected void collideWithEntity(Entity par1Entity)
 	{
 		this.attackEntityAsMob(par1Entity);
 	}
 
+	@Override
 	protected void collideWithNearbyEntities()
 	{
 	}
@@ -236,6 +250,7 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * Called to update the entity's position/logic.
 	 */
+	@Override
 	public void onUpdate()
 	{
 		super.onUpdate();
@@ -296,6 +311,7 @@ public class EntityHollowBat extends EntityMob
 	 * returns if this entity triggers Block.onEntityWalking on the blocks they
 	 * walk on. used for spiders and wolves to prevent them from trampling crops
 	 */
+	@Override
 	protected boolean canTriggerWalking()
 	{
 		return false;
@@ -304,6 +320,7 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * Called when the mob is falling. Calculates and applies fall damage.
 	 */
+	@Override
 	protected void fall(float par1)
 	{
 	}
@@ -313,6 +330,7 @@ public class EntityHollowBat extends EntityMob
 	 * the ground to update the fall distance and deal fall damage if landing on
 	 * the ground. Args: distanceFallenThisTick, onGround
 	 */
+	@Override
 	protected void updateFallState(double par1, boolean par3)
 	{
 	}
@@ -321,6 +339,7 @@ public class EntityHollowBat extends EntityMob
 	 * Return whether this entity should NOT trigger a pressure plate or a
 	 * tripwire.
 	 */
+	@Override
 	public boolean doesEntityNotTriggerPressurePlate()
 	{
 		return true;
@@ -329,6 +348,7 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * Called when the mob's health reaches 0.
 	 */
+	@Override
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
@@ -357,6 +377,7 @@ public class EntityHollowBat extends EntityMob
 		return this.dataWatcher.getWatchableObjectInt(19);
 	}
 
+	@Override
 	protected void entityInit()
 	{
 		super.entityInit();
@@ -366,6 +387,7 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * (abstract) Protected helper method to write subclass entity data to NBT.
 	 */
+	@Override
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.writeEntityToNBT(par1NBTTagCompound);
@@ -375,6 +397,7 @@ public class EntityHollowBat extends EntityMob
 	/**
 	 * (abstract) Protected helper method to read subclass entity data from NBT.
 	 */
+	@Override
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readEntityFromNBT(par1NBTTagCompound);

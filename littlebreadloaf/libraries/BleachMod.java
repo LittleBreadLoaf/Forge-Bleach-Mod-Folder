@@ -116,22 +116,22 @@ public class BleachMod
 	
 	
 	
-	public static int getUniqueEntityId()
-	{
-		do
-		{
-			startEntityId++;
-		}
-		while(EntityList.getStringFromID(startEntityId) != null);
-		
-		return startEntityId;
-	}
-	
-	public static void registerEntityEgg(Class <? extends Entity> entity, int primaryColor, int secondaryColor )
-	{
-		int id = getUniqueEntityId();
-		EntityList.IDtoClassMapping.put(id, entity);
-		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
-	}
+//	public static int getUniqueEntityId()
+//	{
+//		do
+//		{
+//			startEntityId++;
+//		}
+//		while(EntityList.getStringFromID(startEntityId) != null);
+//		
+//		return startEntityId;
+//	}
+//	
+//	public static void registerEntityEgg(Class <? extends Entity> entity, int primaryColor, int secondaryColor )
+//	{
+//		int id = getUniqueEntityId();
+//		EntityList.IDtoClassMapping.put(id, entity);
+//		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
+//	}
 
 }
