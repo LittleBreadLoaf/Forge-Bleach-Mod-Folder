@@ -34,6 +34,11 @@ public class EntityMenosGrande extends EntityMob
 {
 	public int deathTicks = 0;
 
+	private int ceroCooldown = 60*20;// a minute
+	private int ceroCharging = 10*20;// 10 secs
+
+	private EntityPlayer target = null;
+	
 	public EntityMenosGrande(World par1World)
 	{
 		super(par1World);
@@ -100,7 +105,7 @@ public class EntityMenosGrande extends EntityMob
 	protected String getHurtSound()
 	{
 
-		if (rand.nextInt(100) >= 50)
+		if (rand.nextInt(2) == 0)
 		{
 			return "lblbm.hollowscream";
 		} else
@@ -178,6 +183,30 @@ public class EntityMenosGrande extends EntityMob
 	protected void updateAITasks()
 	{
 		super.updateAITasks();
+		
+//		if(this.ceroCooldown > 0)
+//			this.ceroCooldown--;
+//		else
+//		{
+//			if(this.target != null)
+//			{
+				if(this.ceroCharging > 0)
+					this.ceroCharging--;
+				else
+				{
+					//fire
+					
+					
+					
+					
+//					this.ceroCooldown = 60 * 20;
+					this.ceroCharging = 10 * 20;
+				}
+//			}
+//		}
+		
+		
+		
 		int var1 = MathHelper.floor_double(this.posY);
 		int var2 = MathHelper.floor_double(this.posX);
 		int var3 = MathHelper.floor_double(this.posZ);
@@ -335,6 +364,11 @@ public class EntityMenosGrande extends EntityMob
 			}
 
 		}
+	}
+
+	public int getChargingProgress()
+	{
+		return this.ceroCharging;
 	}
 
 }

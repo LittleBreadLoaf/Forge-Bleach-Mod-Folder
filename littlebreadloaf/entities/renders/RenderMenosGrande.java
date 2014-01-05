@@ -1,12 +1,17 @@
 package littlebreadloaf.entities.renders;
 
+import org.lwjgl.util.glu.Sphere;
+
 import littlebreadloaf.entities.classes.EntityMenosGrande;
 import littlebreadloaf.entities.models.ModelMenosGrande;
+import littlebreadloaf.render.RenderingHelper;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class RenderMenosGrande extends RenderLiving
 {
@@ -19,9 +24,19 @@ public class RenderMenosGrande extends RenderLiving
 		model = ((ModelMenosGrande)mainModel);
 	}
 	
-	public void renderMenosGrande(EntityMenosGrande par1, double par2, double par3, double par4, float par5, float par6)
+	public void renderMenosGrande(EntityMenosGrande entity, double x, double y, double z, float par5, float par6)
 	{
-		super.doRenderLiving(par1, par2, par3, par4, par5, par6);
+		super.doRenderLiving(entity, x, y, z, par5, par6);
+		
+		//cero
+		int charging = 200 - entity.getChargingProgress();
+		
+		glColor3f(1, 0, 0);
+		glDisable(GL_LIGHTING);
+//		glDisable(GL_CULL_FACE);
+		RenderingHelper.drawSphere(0, 0, 0, 5, 5, 5);
+		glColor3f(1, 1, 1);
+
 	}
 	
 	public void doRenderLiving(EntityLiving par1, double par2, double par3, double par4, float par5, float par6)
