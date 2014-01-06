@@ -1,5 +1,6 @@
 package littlebreadloaf.world.biomes;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
@@ -19,6 +20,9 @@ public class HuecoMundoBiome extends BiomeGenBase
         this.theBiomeDecorator.treesPerChunk = -999;
         this.theBiomeDecorator.flowersPerChunk = -999;
         this.theBiomeDecorator.grassPerChunk = -999;
+        
+        this.topBlock = (byte) Block.grass.blockID;
+        this.fillerBlock = (byte) Block.dirt.blockID;
 	}
 
 }

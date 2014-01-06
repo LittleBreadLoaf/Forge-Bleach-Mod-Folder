@@ -66,19 +66,6 @@ public class HuecoMundoChunkProvider implements IChunkProvider
 	private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
 	
-	/** Holds Stronghold Generator */
-	private MapGenStronghold strongholdGenerator = new MapGenStronghold();
-	
-	/** Holds Village Generator */
-	private MapGenVillage villageGenerator = new MapGenVillage();
-	
-	/** Holds Mineshaft Generator */
-	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
-	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
-	
-	/** Holds ravine generator */
-	private MapGenBase ravineGenerator = new MapGenRavine();
-	
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
 	
@@ -245,7 +232,7 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 							{
 								if((d16 += d15) < -25.0D && y * 8 + subY <= 30)
 								{
-									chunk[j2 += short1] = (byte)Block.cobblestone.blockID;
+									chunk[j2 += short1] = (byte)Block.stone.blockID;
 								}
 							}
 							
@@ -273,7 +260,7 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 		if(event.getResult() == Result.DENY)
 			return;
 		
-		byte oceanLevel = 60;
+		byte oceanLevel = 61;
 		double d0 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 		
@@ -292,7 +279,7 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 				{
 					int index = (z * 16 + x) * 128 + y;
 					
-					if(y <= 0 + this.rand.nextInt(5))
+					if(y <= 0)
 					{
 						blocks[index] = (byte)Block.bedrock.blockID;
 					}
@@ -305,14 +292,14 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 							j1 = -1;
 						}
 						else
-							if(b3 == (byte)Elysium.blockPalestone.blockID)
+							if(b3 == (byte)Block.stone.blockID)
 							{
 								if(j1 == -1)
 								{
 									if(i1 <= 0)
 									{
 										b1 = 0;
-										b2 = (byte)Elysium.blockPalestone.blockID;
+										b2 = (byte)Block.stone.blockID;
 									}
 									else
 										if(y >= oceanLevel - 4 && y <= oceanLevel + 1)
@@ -321,40 +308,16 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 											b2 = biomegenbase.fillerBlock;
 										}
 									
-									if(y < oceanLevel && b1 == 0)
-									{
-										if(f < 0.15F)
-										{
-											b1 = (byte)Block.ice.blockID;
-										}
-										else
-										{
-											b1 = (byte)Block.waterStill.blockID;
-										}
-									}
 									
 									j1 = i1;
 									
-									if(y >= oceanLevel - 1)
-									{
-										blocks[index] = b1;
-									}
-									else
-									{
-										blocks[index] = b2;
-									}
+									blocks[index] = b2;
 								}
 								else
 									if(j1 > 0)
 									{
 										--j1;
 										blocks[index] = b2;
-										
-										if(j1 == 0 && b2 == Block.sand.blockID)
-										{
-											j1 = this.rand.nextInt(4);
-											b2 = (byte)Block.sandStone.blockID;
-										}
 									}
 							}
 					}
@@ -382,9 +345,7 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 		byte[] abyte = new byte[32768];
 		this.generateTerrain(par1, par2, abyte);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
-//		this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
-		this.ravineGenerator.generate(this, this.worldObj, par1, par2, abyte);
-		
+		this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
 		
 		Chunk chunk = new Chunk(this.worldObj, abyte, par1, par2);
 		byte[] abyte1 = chunk.getBiomeArray();
