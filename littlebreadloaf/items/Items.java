@@ -54,7 +54,9 @@ public class Items
 	public static Item shikailunar;
 	public static Item shikaiwater;
 	public static Item shikainormal;
-	
+
+	public static Item debugItem;
+
 	public static final CreativeTabs tabBleach = new CreativeTabs("Bleach Mod")
 	{
 		@SideOnly(Side.CLIENT)
@@ -99,6 +101,9 @@ public class Items
 		shikaiwater = new ShikaiWater(Ids.shikaiwaterID, Tools.SHIKAI);
 		shikainormal = new ShikaiNormal(Ids.shikainormalID, Tools.SHIKAI);
 		
+		debugItem = new DebugItem(Ids.debugItemID).setUnlocalizedName("debug").setCreativeTab(tabBleach);
+		LanguageRegistry.addName(debugItem, "Debug Item");
+
 	}
 	
 	public static void addNames()

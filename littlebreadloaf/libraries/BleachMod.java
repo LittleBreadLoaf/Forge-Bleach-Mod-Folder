@@ -12,6 +12,8 @@ import littlebreadloaf.extras.OreGenerator;
 import littlebreadloaf.gui.GuiHandler;
 import littlebreadloaf.items.Items;
 import littlebreadloaf.proxies.CommonProxy;
+import littlebreadloaf.world.HuecoMundoWorldProvider;
+import littlebreadloaf.world.biomes.BleachBiomes;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.entity.Entity;
@@ -19,6 +21,7 @@ import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -33,64 +36,64 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = BleachModInfo.ID, name = BleachModInfo.NAME, version = BleachModInfo.VERSION)
-@NetworkMod(channels = {BleachModInfo.CHANNEL, "Deactivate", "Mask", "Flash"}, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
-
-
-public class BleachMod 
+@NetworkMod(channels = { BleachModInfo.CHANNEL, "Deactivate", "Mask", "Flash" }, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
+public class BleachMod
 {
-	
-	
 	@SidedProxy(clientSide = BleachModInfo.PROXY_LOCATION + ".ClientProxy", serverSide = BleachModInfo.PROXY_LOCATION + ".CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	@Instance(BleachModInfo.ID)
 	public static BleachMod instance;
-	
-	static int startEntityId = 300;
-	
-	public static Item customSpawner;
-	
+
+	// public static Item customSpawner;
+
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event)
 	{
 		proxy.initRenderers();
 		proxy.registerServerTickHandler();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
+		
+        new BleachBiomes();
+		
+        DimensionManager.registerProviderType(Ids.worldHuecoMundoID, HuecoMundoWorldProvider.class, false);
+        DimensionManager.registerDimension(Ids.worldHuecoMundoID, Ids.worldHuecoMundoID);
+       
 	}
-	
+
 	@EventHandler
 	public static void init(FMLInitializationEvent event)
 	{
-		
+
 		proxy.loadParts();
-		//Items.init();
-		//Items.addNames();
-		
-		//Blocks.init();
-		//Blocks.addNames();
-		
-		//Armor.init();
-		//Armor.addNames();
-		
+		// Items.init();
+		// Items.addNames();
+
+		// Blocks.init();
+		// Blocks.addNames();
+
+		// Armor.init();
+		// Armor.addNames();
+
 		new GuiHandler();
-		
+
 		Recipes.init();
-		
-		//Entities.init();
-		//Entities.addNames();
-		
+
+		// Entities.init();
+		// Entities.addNames();
+
 		proxy.loadKeys();
-		
+
 		GameRegistry.registerWorldGenerator(new OreGenerator());
-		
+
 		MinecraftForge.EVENT_BUS.register(new DataHandler());
 
-		
-//		customSpawner = new CustomSpawner(Ids.customSpawnerID).setUnlocalizedName("customSpawner").setTextureName("LBLBM:customSpawner").setCreativeTab(Items.tabBleach);
-//		LanguageRegistry.addName(customSpawner, "Spawn");
-		
+		// customSpawner = new
+		// CustomSpawner(Ids.customSpawnerID).setUnlocalizedName("customSpawner").setTextureName("LBLBM:customSpawner").setCreativeTab(Items.tabBleach);
+		// LanguageRegistry.addName(customSpawner, "Spawn");
+
 	}
-	
+
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event)
 	{
@@ -103,8 +106,8 @@ public class BleachMod
 	{
 		MinecraftServer server = MinecraftServer.getServer();
 		ICommandManager command = server.getCommandManager();
-		ServerCommandManager serverCommand = ((ServerCommandManager)command);
-		
+		ServerCommandManager serverCommand = ((ServerCommandManager) command);
+
 		serverCommand.registerCommand(new CommandResetSpirit());
 		serverCommand.registerCommand(new CommandResetType());
 		serverCommand.registerCommand(new CommandSetSpirit());
@@ -113,25 +116,24 @@ public class BleachMod
 		serverCommand.registerCommand(new CommandSetFaction());
 	}
 
-	
-	
-	
-//	public static int getUniqueEntityId()
-//	{
-//		do
-//		{
-//			startEntityId++;
-//		}
-//		while(EntityList.getStringFromID(startEntityId) != null);
-//		
-//		return startEntityId;
-//	}
-//	
-//	public static void registerEntityEgg(Class <? extends Entity> entity, int primaryColor, int secondaryColor )
-//	{
-//		int id = getUniqueEntityId();
-//		EntityList.IDtoClassMapping.put(id, entity);
-//		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
-//	}
+	// public static int getUniqueEntityId()
+	// {
+	// do
+	// {
+	// startEntityId++;
+	// }
+	// while(EntityList.getStringFromID(startEntityId) != null);
+	//
+	// return startEntityId;
+	// }
+	//
+	// public static void registerEntityEgg(Class <? extends Entity> entity, int
+	// primaryColor, int secondaryColor )
+	// {
+	// int id = getUniqueEntityId();
+	// EntityList.IDtoClassMapping.put(id, entity);
+	// EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor,
+	// secondaryColor));
+	// }
 
 }

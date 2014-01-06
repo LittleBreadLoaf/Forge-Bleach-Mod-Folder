@@ -37,7 +37,7 @@ public class Ids
 	public static final int soulQuartzLampID_Default = 2189;
 	
 	public static int whitesandID;
-	public static final int whitesandID_Default = 2190;
+	public static final int whitesandID_Default = 250;
 	
 	public static int paperwallID;
 	public static final int paperwallID_Default = 2191;
@@ -226,5 +226,17 @@ public class Ids
 	
 	public static int shikainormalID;
 	public static final int shikainormalID_Default = 20411;
+	
+	//Dimensions
 
+	public static int worldHuecoMundoID;
+	public static final int worldHuecoMundoID_Default = 6;
+	
+	public static int biomeHuecoMundoID;
+	public static final int biomeHuecoMundoID_Default = 220;
+	
+	public static int debugItemID;
+	public static final int debugItemID_Default = 15000;
+	
+	
 }

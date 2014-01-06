@@ -31,14 +31,11 @@ public class RenderMenosGrande extends RenderLiving
 		//cero
 		int charging = 200 - entity.getChargingProgress();
 		
-		glColor3f(1, 0, 0);
-		glDisable(GL_LIGHTING);
-//		glDisable(GL_CULL_FACE);
-		RenderingHelper.drawSphere(0, 0, 0, 5, 5, 5);
-		glColor3f(1, 1, 1);
+		RenderingHelper.drawCeroSphere(x, y+entity.getEyeHeight(), z, 10, 20, 20);
 
 	}
 	
+	@Override
 	public void doRenderLiving(EntityLiving par1, double par2, double par3, double par4, float par5, float par6)
 	{
 		this.renderMenosGrande((EntityMenosGrande)par1, par2, par3, par4, par5, par6);

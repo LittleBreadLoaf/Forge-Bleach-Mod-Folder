@@ -30,7 +30,7 @@ public class ConfigHandler
 		
 		Ids.soulQuartzLampID = config.get(config.CATEGORY_BLOCK, "Soul Quartz Lamp ID", Ids.soulQuartzLampID_Default).getInt();
 		
-		Ids.whitesandID = config.get(config.CATEGORY_BLOCK, "White Sand ID", Ids.whitesandID_Default).getInt();
+		Ids.whitesandID = config.getTerrainBlock("World Gen Blocks", "White Sand ID", Ids.whitesandID_Default, "").getInt();
 		
 		Ids.paperwallID = config.get(config.CATEGORY_BLOCK, "Paper Wall ID", Ids.paperwallID_Default).getInt();
 		
@@ -163,9 +163,13 @@ public class ConfigHandler
 		
 		Ids.customSpawnerID = config.get(config.CATEGORY_GENERAL, "Hollow Spawner ID", Ids.customSpawnerID_Default).getInt();
 				
+		//World
+		Ids.worldHuecoMundoID = config.get("Dimensions", "HuecoMundo world ID", Ids.worldHuecoMundoID_Default).getInt();
 		
-		
-		
+		Ids.biomeHuecoMundoID = config.get("Biomes", "HuecoMundo biome ID", Ids.biomeHuecoMundoID_Default).getInt();
+
+		Ids.debugItemID = config.get(config.CATEGORY_ITEM, "Debug item", Ids.debugItemID_Default).getInt();
+
 		
 		config.save();
 		
