@@ -122,7 +122,7 @@ public class HuecoMundoChunkProvider implements IChunkProvider
 	{
 		byte miniChunk = 4;
 		byte chunkSize = 16;
-		byte seeLevel = 61;
+		byte seeLevel = 59;
 		int k = miniChunk + 1;
 		byte b3 = 17;
 		int l = miniChunk + 1;
@@ -230,7 +230,7 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 							
 							for(int subZ = 0; subZ < 4; ++subZ)
 							{
-								if((d16 += d15) < -25.0D && y * 8 + subY <= 30)
+								if((d16 += d15) < -25.0D && y * 8 + subY <= 33)
 								{
 									chunk[j2 += short1] = (byte)Block.stone.blockID;
 								}
@@ -260,7 +260,7 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 		if(event.getResult() == Result.DENY)
 			return;
 		
-		byte oceanLevel = 61;
+		byte oceanLevel = 30;
 		double d0 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 		
