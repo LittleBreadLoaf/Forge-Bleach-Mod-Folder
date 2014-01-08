@@ -14,6 +14,7 @@ import littlebreadloaf.items.shikai.ShikaiNormal;
 import littlebreadloaf.items.shikai.ShikaiPoison;
 import littlebreadloaf.items.shikai.ShikaiWater;
 import littlebreadloaf.items.shikai.ShikaiWind;
+import littlebreadloaf.libraries.BleachModInfo;
 import littlebreadloaf.libraries.Ids;
 import littlebreadloaf.libraries.Names;
 import littlebreadloaf.libraries.Tools;
@@ -41,6 +42,10 @@ public class Items
 	public static Item quincyweb;
 	public static Item soulsteel;
 	public static Item hollowbook;
+	
+	public static Item recordAsterisk;
+	public static Item recordNumberOne;
+	public static Item recordEscalon;
 	
 	public static Item shikaifire;
 	public static Item shikaiice;
@@ -88,6 +93,10 @@ public class Items
 		soulsteel = new ItemSoulSteel(Ids.soulsteelID);
 		hollowbook = new ItemHollowBook(Ids.hollowBookID);
 		
+		recordAsterisk = new ItemBleachRecord(Ids.recordAsteriskID, BleachModInfo.ID.toLowerCase() + ":asterisk").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_asterisk");
+		recordNumberOne = new ItemBleachRecord(Ids.recordNumberOneID, BleachModInfo.ID.toLowerCase() + ":NumberOne").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_NumberOne");
+		recordEscalon = new ItemBleachRecord(Ids.recordEscalonID, BleachModInfo.ID.toLowerCase() + ":Escalon").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_Escalon");
+		
 		shikaifire = new ShikaiFire(Ids.shikaifireID, Tools.SHIKAI);
 		shikaiice = new ShikaiIce(Ids.shikaiiceID, Tools.SHIKAI);
 		shikaiheal = new ShikaiHeal(Ids.shikaihealID, Tools.SHIKAI);
@@ -102,7 +111,7 @@ public class Items
 		shikainormal = new ShikaiNormal(Ids.shikainormalID, Tools.SHIKAI);
 		
 		debugItem = new DebugItem(Ids.debugItemID).setUnlocalizedName("debug").setCreativeTab(tabBleach);
-		LanguageRegistry.addName(debugItem, "Debug Item");
+		
 
 	}
 	
@@ -120,6 +129,7 @@ public class Items
 		LanguageRegistry.addName(quincyweb, Names.QuincyWeb_Name);
 		LanguageRegistry.addName(soulsteel, Names.SoulSteel_Name);
 		LanguageRegistry.addName(hollowbook, Names.HollowBook_Name);
+		LanguageRegistry.addName(debugItem, "Debug Item");
 		for(int i = 0; i < Names.Seeleschneider_Name.length; i++)
 		{
 			LanguageRegistry.addName(new ItemStack(seele, 1, i), Names.Seeleschneider_Name[i]);

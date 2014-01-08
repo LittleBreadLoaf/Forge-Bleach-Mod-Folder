@@ -180,7 +180,16 @@ public class Ids
 	public static int quincywebID;
 	public static final int quincywebID_Default = 20224;
 	
-	//OPEN 20224-20299
+	public static int recordAsteriskID;
+	public static final int recordAsteriskID_Default = 20225;
+	
+	public static int recordNumberOneID;
+	public static final int recordNumberOneID_Default = 20226;
+	
+	public static int recordEscalonID;
+	public static final int recordEscalonID_Default = 20227;
+	
+	//OPEN 20228-20299
 	
 	//SPAWNER
 	public static int customSpawnerID;

@@ -5,27 +5,63 @@ import net.minecraftforge.event.ForgeSubscribe;
 
 public class BleachSounds 
 {
-	  @ForgeSubscribe
+	
+	private static final String LBLBM = BleachModInfo.ID.toLowerCase() + ":";
+	
+	public static String[] soundFiles = {"bowcharge.ogg", "bowfire.ogg", "fisherlaugh1.ogg", "fisherlaugh2.ogg", "fisherlaugh3.ogg", "hollowscream.ogg", "ore_hollow.ogg", "shunpo.ogg"};
+	public static String[] streamingFiles = {"asterisk.ogg", "NumberOne.ogg", "Escalon.ogg"};
+	public static String[] musicFiles = {"calm4.ogg", "calm5.ogg", "calm6.ogg", "calm7.ogg"};
+	 
+	
+	@ForgeSubscribe
 	    public void onSound(SoundLoadEvent event)
 	    {
-	        
-	            event.manager.addSound("lblbm:bowcharge.ogg");    
-	            event.manager.addSound("lblbm:bowfire.ogg");    
-	            event.manager.addSound("lblbm:fisherlaugh1.ogg");    
-	            event.manager.addSound("lblbm:fisherlaugh2.ogg");    
-	            event.manager.addSound("lblbm:fisherlaugh3.ogg"); 
-	            event.manager.addSound("lblbm:hollowscream.ogg");      
-	            event.manager.addSound("lblbm:ore_hollow.ogg");
-	            event.manager.addSound("lblbm:shunpo.ogg");
+		  for (String soundFile : soundFiles) 
+		  {
+              try 
+              {
+                event.manager.soundPoolSounds.addSound(LBLBM + soundFile);
+                System.out.println("Sound file loaded: " + soundFile);
+
 	            
-	            //event.manager.addMusic("lblbm;calm4.ogg");
-	            //event.manager.addMusic("lblbm;calm5.ogg");
-	            //event.manager.addMusic("lblbm;calm6.ogg");
-	            //event.manager.addMusic("lblbm;calm7.ogg");
+              }
+              	catch (Exception e) 
+              	{
+                      System.out.println("Failed loading sound file: " + soundFile);
+              	}
+		  	}
+		  
+		  
+		  for (String musicFile : musicFiles) 
+		  {
+              try 
+              {
+                event.manager.soundPoolMusic.addSound(LBLBM + musicFile);
+                System.out.println("Sound file loaded: " + musicFile);
+
 	            
-	            event.manager.addStreaming("lblbm:asterisk.ogg");
-	            event.manager.addStreaming("lblbm:Escalon.ogg");
-	            event.manager.addStreaming("lblbm:NumberOne.ogg");
+              }
+              	catch (Exception e) 
+              	{
+                      System.out.println("Failed loading sound file: " + musicFile);
+              	}
+		  	}
+		  
+		  
+		  for (String streamingFile : streamingFiles) 
+		  {
+              try 
+              {
+                event.manager.soundPoolMusic.addSound(LBLBM + streamingFile);
+                System.out.println("Sound file loaded: " + streamingFile);
+
+	            
+              }
+              	catch (Exception e) 
+              	{
+                      System.out.println("Failed loading sound file: " + streamingFile);
+              	}
+		  	}
 	      
 	    }
 

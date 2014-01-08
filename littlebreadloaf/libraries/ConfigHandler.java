@@ -131,6 +131,9 @@ public class ConfigHandler
 		
 		Ids.quincywebID = config.get(config.CATEGORY_ITEM, "Quincy Web Bow ID", Ids.quincywebID_Default).getInt();
 		
+		Ids.recordAsteriskID = config.get(config.CATEGORY_ITEM, "Asterisk ID", Ids.recordAsteriskID_Default).getInt();
+		Ids.recordNumberOneID = config.get(config.CATEGORY_ITEM, "Number One ID", Ids.recordNumberOneID_Default).getInt();
+		Ids.recordEscalonID = config.get(config.CATEGORY_ITEM, "Escalon ID", Ids.recordEscalonID_Default).getInt();
 		
 		
 		
