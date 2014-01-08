@@ -52,7 +52,7 @@ public class BleachSounds
 		  {
               try 
               {
-                event.manager.soundPoolMusic.addSound(LBLBM + streamingFile);
+                event.manager.soundPoolStreaming.addSound(LBLBM + streamingFile);
                 System.out.println("Sound file loaded: " + streamingFile);
 
 	            
