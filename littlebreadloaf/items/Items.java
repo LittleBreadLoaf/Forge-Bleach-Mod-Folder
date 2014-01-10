@@ -18,6 +18,7 @@ import littlebreadloaf.libraries.BleachModInfo;
 import littlebreadloaf.libraries.Ids;
 import littlebreadloaf.libraries.Names;
 import littlebreadloaf.libraries.Tools;
+import me.dawars.CraftingPillars.CraftingPillars;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -93,10 +94,16 @@ public class Items
 		soulsteel = new ItemSoulSteel(Ids.soulsteelID);
 		hollowbook = new ItemHollowBook(Ids.hollowBookID);
 		
-		recordAsterisk = new ItemBleachRecord(Ids.recordAsteriskID, BleachModInfo.ID.toLowerCase() + ":asterisk").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_asterisk");
+		recordAsterisk = new ItemBleachRecord(Ids.recordAsteriskID, BleachModInfo.ID.toLowerCase() + ":asteriks").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_asterisk");
 		recordNumberOne = new ItemBleachRecord(Ids.recordNumberOneID, BleachModInfo.ID.toLowerCase() + ":NumberOne").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_NumberOne");
 		recordEscalon = new ItemBleachRecord(Ids.recordEscalonID, BleachModInfo.ID.toLowerCase() + ":Escalon").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_Escalon");
 
+<<<<<<< HEAD
+=======
+		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":asteriks", "Bleach - Asterix");
+		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":NumberOne", "Bleach - Number One");
+		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":Escalon", "Bleach - Escalon");
+>>>>>>> aad03cfe38d86e5d8f23e595b6d9766bb997cfd4
 		
 		shikaifire = new ShikaiFire(Ids.shikaifireID, Tools.SHIKAI);
 		shikaiice = new ShikaiIce(Ids.shikaiiceID, Tools.SHIKAI);
