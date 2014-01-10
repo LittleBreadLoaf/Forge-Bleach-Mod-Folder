@@ -27,14 +27,10 @@ public class HuecoMundoTeleporter extends Teleporter
 		int x = (int) Math.floor(px);
 		int z = (int) Math.floor(pz);
 		int y = 128;
-		if (y < 0)
-		{
-			for (y = 32; y < 128 && !this.canPlacePortalAt(x, y, z); y++)
-				;
-		}
+
 		double d = this.worldServer.rand.nextDouble() * Math.PI * 2;
 		entity.posX = x + 0.5D + Math.cos(d) * 1.5;
 		entity.posZ = z + 0.5D + Math.sin(d) * 1.5;
-		entity.posY = y + 8;
+		entity.posY = this.worldServer.getTopSolidOrLiquidBlock((int) entity.posX, (int) entity.posZ) + 1;
 	}
 }

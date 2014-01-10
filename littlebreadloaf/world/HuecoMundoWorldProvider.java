@@ -1,8 +1,15 @@
 package littlebreadloaf.world;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import littlebreadloaf.libraries.BleachMod;
 import littlebreadloaf.libraries.Ids;
+import littlebreadloaf.render.SkyRendererHuecoMundo;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 
 public class HuecoMundoWorldProvider extends WorldProvider
@@ -12,6 +19,18 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	{
 		this.dimensionId = Ids.worldHuecoMundoID;
 		this.worldChunkMgr = new HuecoMundoChunkManager(this.worldObj);
+		this.hasNoSky = true;
+		if (FMLClientHandler.instance().getSide() == Side.CLIENT)
+		{
+			this.setSkyRenderer(new SkyRendererHuecoMundo());
+		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)
+	{
+		return Vec3.createVectorHelper(0.1D, 0.1D, 0.1D);
 	}
 
 	@Override
@@ -21,8 +40,43 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	}
 
 	@Override
+	public boolean isDaytime()
+	{
+		return false;
+	}
+
+	@Override
+	public int getActualHeight()
+	{
+		return 256;
+	}
+
+	@Override
+	public boolean canDoLightning(Chunk chunk)
+	{
+		return false;
+	}
+
+	@Override
+	public void generateLightBrightnessTable()
+	{
+		float f = 12.0F;
+		for (int i = 0; i <= 15; i++)
+		{
+			float f1 = 12.0F - i / 15.0F;
+			this.lightBrightnessTable[i] = ((1.0F - f1) / (f1 * 3.0F + 1.0F) * (1.0F - f) + f);
+		}
+	}
+
+	@Override
+	public boolean canDoRainSnowIce(Chunk chunk)
+	{
+		return false;
+	}
+
+	@Override
 	public String getDimensionName()
 	{
-		return "Hueco Mundo";//TODO: add localization
+		return "Hueco Mundo";// TODO: add localization
 	}
 }
