@@ -6,6 +6,7 @@ import java.util.Random;
 import cpw.mods.fml.common.FMLLog;
 
 import littlebreadloaf.blocks.Blocks;
+import littlebreadloaf.world.gen.BleachGenHole;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
@@ -684,19 +685,19 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 	/**
 	 * Populates chunk with ores etc etc
 	 */
-	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
+	public void populate(IChunkProvider par1IChunkProvider, int chunkX, int chunkZ)
 	{
-//		BlockSand.fallInstantly = true;
-//		int k = par2 * 16;
-//		int l = par3 * 16;
-//		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
-//		this.rand.setSeed(this.worldObj.getSeed());
-//		long i1 = this.rand.nextLong() / 2L * 2L + 1L;
-//		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
-//		this.rand.setSeed((long)par2 * i1 + (long)par3 * j1 ^ this.worldObj.getSeed());
-//		boolean flag = false;
-//		
-//		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, flag));
+		BlockSand.fallInstantly = true;
+		int k = chunkX * 16;
+		int l = chunkZ * 16;
+		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
+		this.rand.setSeed(this.worldObj.getSeed());
+		long i1 = this.rand.nextLong() / 2L * 2L + 1L;
+		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
+		this.rand.setSeed((long)chunkX * i1 + (long)chunkZ * j1 ^ this.worldObj.getSeed());
+		boolean flag = false;
+		
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, chunkX, chunkZ, flag));
 //		
 //		if(this.mapFeaturesEnabled)
 //		{
@@ -718,17 +719,6 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 //			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
 //		}*/
 //		
-//		/*if(TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, flag, LAVA) && !flag && this.rand.nextInt(8) == 0)
-//		{
-//			k1 = k + this.rand.nextInt(16) + 8;
-//			l1 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-//			i2 = l + this.rand.nextInt(16) + 8;
-//			
-//			if(l1 < 63 || this.rand.nextInt(10) == 0)
-//			{
-//				(new WorldGenLakes(Block.lavaStill.blockID)).generate(this.worldObj, this.rand, k1, l1, i2);
-//			}
-//		}*/
 //		
 //		boolean doGen = TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, flag, DUNGEON);
 //		for(k1 = 0; doGen && k1 < 8; ++k1)
@@ -739,33 +729,13 @@ this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * miniChunk, 0
 //			//(new WorldGenDungeons()).generate(this.worldObj, this.rand, l1, i2, j2);
 //		}
 //		
-//		biomegenbase.decorate(this.worldObj, this.rand, k, l);
-//		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
-//		k += 8;
-//		l += 8;
-//		
-//		/*doGen = TerrainGen.populate(par1IChunkProvider, worldObj, rand, par2, par3, flag, ICE);
-//		for(k1 = 0; doGen && k1 < 16; ++k1)
-//		{
-//			for(l1 = 0; l1 < 16; ++l1)
-//			{
-//				i2 = this.worldObj.getPrecipitationHeight(k + k1, l + l1);
-//				
-//				if(this.worldObj.isBlockFreezable(k1 + k, i2 - 1, l1 + l))
-//				{
-//					this.worldObj.setBlock(k1 + k, i2 - 1, l1 + l, Block.ice.blockID, 0, 2);
-//				}
-//				
-//				if(this.worldObj.canSnowAt(k1 + k, i2, l1 + l))
-//				{
-//					this.worldObj.setBlock(k1 + k, i2, l1 + l, Block.snow.blockID, 0, 2);
-//				}
-//			}
-//		}*/
-//		
-//		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, flag));
-//		
-//		BlockSand.fallInstantly = false;
+		biomegenbase.decorate(this.worldObj, this.rand, k, l);
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
+
+		
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, chunkX, chunkZ, flag));
+		
+		BlockSand.fallInstantly = false;
 	}
 	
 	/**

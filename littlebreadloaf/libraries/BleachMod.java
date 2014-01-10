@@ -12,6 +12,7 @@ import littlebreadloaf.extras.OreGenerator;
 import littlebreadloaf.gui.GuiHandler;
 import littlebreadloaf.items.Items;
 import littlebreadloaf.proxies.CommonProxy;
+import littlebreadloaf.world.BleachWorldGen;
 import littlebreadloaf.world.HuecoMundoWorldProvider;
 import littlebreadloaf.world.biomes.BleachBiomes;
 import net.minecraft.command.ICommandManager;
@@ -54,6 +55,7 @@ public class BleachMod
 		proxy.registerServerTickHandler();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		
+		GameRegistry.registerWorldGenerator(new BleachWorldGen());
         new BleachBiomes();
 		
         DimensionManager.registerProviderType(Ids.worldHuecoMundoID, HuecoMundoWorldProvider.class, false);
