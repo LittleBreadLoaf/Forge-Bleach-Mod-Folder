@@ -1,6 +1,7 @@
 package littlebreadloaf.gui;
 
 import littlebreadloaf.events.ExtendedPlayer;
+import littlebreadloaf.libraries.BleachModInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -20,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class GuiSoulBar extends Gui
 {
 	private Minecraft mc;
-	private static final ResourceLocation texture = new ResourceLocation("lblbm", "textures/guis/spirit_bar.png");
+	private static final ResourceLocation texture = new ResourceLocation(BleachModInfo.ID.toLowerCase(), "textures/guis/spirit_bar.png");
 	
 	public GuiSoulBar(Minecraft mc)
 	{

@@ -96,6 +96,7 @@ public class Items
 		recordAsterisk = new ItemBleachRecord(Ids.recordAsteriskID, BleachModInfo.ID.toLowerCase() + ":asterisk").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_asterisk");
 		recordNumberOne = new ItemBleachRecord(Ids.recordNumberOneID, BleachModInfo.ID.toLowerCase() + ":NumberOne").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_NumberOne");
 		recordEscalon = new ItemBleachRecord(Ids.recordEscalonID, BleachModInfo.ID.toLowerCase() + ":Escalon").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_Escalon");
+
 		
 		shikaifire = new ShikaiFire(Ids.shikaifireID, Tools.SHIKAI);
 		shikaiice = new ShikaiIce(Ids.shikaiiceID, Tools.SHIKAI);
@@ -130,6 +131,10 @@ public class Items
 		LanguageRegistry.addName(soulsteel, Names.SoulSteel_Name);
 		LanguageRegistry.addName(hollowbook, Names.HollowBook_Name);
 		LanguageRegistry.addName(debugItem, "Debug Item");
+		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":asterisk", "Bleach - Asterisk");
+		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":NumberOne", "Bleach - Number One");
+		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":Escalon", "Bleach - Escalon");
+		
 		for(int i = 0; i < Names.Seeleschneider_Name.length; i++)
 		{
 			LanguageRegistry.addName(new ItemStack(seele, 1, i), Names.Seeleschneider_Name[i]);

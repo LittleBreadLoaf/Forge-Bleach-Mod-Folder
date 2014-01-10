@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import littlebreadloaf.items.Items;
+import littlebreadloaf.libraries.BleachModInfo;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;
@@ -39,9 +40,9 @@ public class BlockPaperWall extends BlockPane
     protected BlockPaperWall(int par1, String par2Str, String par3Str, Material par4Material, boolean par5)
     {
         super(par1, par3Str, par3Str, par4Material, par5);
-        this.sideTextureIndex = "lblbm:" + par3Str;
+        this.sideTextureIndex = BleachModInfo.ID.toLowerCase() + par3Str;
         this.canDropItself = par5;
-        this.field_94402_c = "lblbm:" + par2Str;
+        this.field_94402_c = BleachModInfo.ID.toLowerCase() + par2Str;
         this.setCreativeTab(Items.tabBleach);
     }
 
