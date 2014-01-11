@@ -1,5 +1,7 @@
 package littlebreadloaf.world.biomes;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -16,7 +18,11 @@ public class HuecoMundoBiome extends BiomeGenBase
 		this.setTemperatureRainfall(0.5F, 0.0F);
 		this.setMinMaxHeight(0.5F, 0.6F);
 		
-		this.spawnableCreatureList.clear();
+		this.spawnableMonsterList.clear();
+        this.spawnableCreatureList.clear();
+        this.spawnableWaterCreatureList.clear();
+        this.spawnableCaveCreatureList.clear();
+        
         this.theBiomeDecorator.treesPerChunk = -999;
         this.theBiomeDecorator.flowersPerChunk = -999;
         this.theBiomeDecorator.grassPerChunk = -999;
@@ -25,4 +31,13 @@ public class HuecoMundoBiome extends BiomeGenBase
         this.fillerBlock = (byte) Block.dirt.blockID;
 	}
 
+    /**
+     * takes temperature, returns color
+     */
+	@SideOnly(Side.CLIENT)
+	@Override
+    public int getSkyColorByTemp(float par1)
+    {
+        return 0;
+    }
 }

@@ -32,37 +32,36 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class Renders
 {
-	
+
 	public static void renderEntities()
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityWhole.class, new RenderWhole(new ModelWhole(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowBat.class, new RenderHollowBat(new ModelHollowBat(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowBlaze.class, new RenderHollowBlaze(new ModelHollowBlaze(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowSpider.class, new RenderHollowSpider(new ModelHollowSpider(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowGolem.class, new RenderHollowGolem(new ModelHollowGolem(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowSnake.class, new RenderHollowSnake(new ModelHollowSnake(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowWasp.class, new RenderHollowWasp(new ModelHollowWasp(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowStalker.class, new RenderHollowStalker(new ModelHollowStalker(), 0.3F));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowWolf.class, new RenderHollowWolf(new ModelHollowWolf(), 0.3F));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowOre.class, new RenderHollowOre(new ModelHollowOre(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityMenosGrande.class, new RenderMenosGrande(new ModelMenosGrande(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityFisher.class, new RenderFisher(new ModelFisher(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityDecoy.class, new RenderDecoy(new ModelDecoy(), 0.3F));
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityShinigami.class, new RenderShinigami(new ModelBiped(), 0.3F));
 	}
-	
 
 }
