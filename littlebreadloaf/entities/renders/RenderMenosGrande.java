@@ -1,5 +1,6 @@
 package littlebreadloaf.entities.renders;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import littlebreadloaf.entities.classes.EntityMenosGrande;
 import littlebreadloaf.entities.models.ModelMenosGrande;
 import littlebreadloaf.libraries.BleachModInfo;
@@ -28,7 +29,8 @@ public class RenderMenosGrande extends RenderLiving
 		// cero
 		int charging = 200 - entity.getChargingProgress();
 
-		RenderingHelper.drawCeroSphere(x, y + entity.getEyeHeight(), z, 10, 20, 20);
+		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(""));
+		RenderingHelper.drawCeroSphere(x, y + entity.getEyeHeight(), z, 1, 20, 20, entity);
 
 	}
 

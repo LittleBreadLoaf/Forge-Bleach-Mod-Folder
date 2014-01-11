@@ -43,14 +43,19 @@ public class ZanpakutoRenderer implements IItemRenderer
 		switch (type)
 		{
 			case ENTITY:
-//				glTranslated(0, -0.5F, 0);
-//				scale = 0.05F;
-//				glScalef(scale, scale, scale);
+				
+				scale = 0.15F;
+				glScalef(scale, scale, scale);
 			break;
 			case EQUIPPED:
-//				glTranslated(0, 0, 0);
-//				scale = 0.2F;
-//				glScalef(scale, scale, scale);
+				glTranslated(1.2F, 0.5F, 1.2F);
+
+				glRotatef(0, 0, 0, 1);
+				glRotatef(45, 0, 1, 0);
+				glRotatef(-55, 1, 0, 0);
+				scale = 0.3F;
+				glScalef(scale, scale, scale);
+
 			break;
 			case INVENTORY:
 				glRotatef(-45, 0, 1, 0);
@@ -64,9 +69,16 @@ public class ZanpakutoRenderer implements IItemRenderer
 
 			break;
 			case EQUIPPED_FIRST_PERSON:
-//				glTranslated(0, -0.5F, 0);
-//				scale = 0.2F;
-//				glScalef(scale, scale, scale);
+				glTranslated(-0.5F, 0, .3F);
+
+				glRotatef(-45, 0, 1, 0);
+//				glRotatef(20, 1, 0, 0);
+//				glRotatef(45, 1, 0, 0);
+				glTranslated(0.3F, .8F, -0.1F);
+
+				scale = 0.12F;
+				glScalef(scale, scale, scale);
+
 			break;
 			default:
 			break;
