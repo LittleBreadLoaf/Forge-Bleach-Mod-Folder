@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.src.ModLoader;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import littlebreadloaf.armor.Armor;
 import littlebreadloaf.blocks.Blocks;
@@ -23,6 +24,7 @@ import littlebreadloaf.gui.GuiSoulBar;
 import littlebreadloaf.items.Items;
 import littlebreadloaf.libraries.BleachSounds;
 import littlebreadloaf.libraries.Recipes;
+import littlebreadloaf.render.ZanpakutoRenderer;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -38,7 +40,12 @@ public class ClientProxy extends CommonProxy
 		Renders.renderEntities();
 
 		MinecraftForge.EVENT_BUS.register(new BleachSounds());
-		
+	}
+	
+	@Override
+	public void initZanpakutoRenderers()
+	{
+		MinecraftForgeClient.registerItemRenderer(Items.zanpakuto.itemID, new ZanpakutoRenderer());
 	}
 	
 	@Override

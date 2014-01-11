@@ -77,6 +77,8 @@ public class BleachMod
 		// Armor.init();
 		// Armor.addNames();
 
+		proxy.initZanpakutoRenderers();
+		
 		new GuiHandler();
 
 		Recipes.init();
