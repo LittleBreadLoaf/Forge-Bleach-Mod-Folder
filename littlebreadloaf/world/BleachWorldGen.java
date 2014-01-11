@@ -4,6 +4,7 @@ import java.util.Random;
 
 import littlebreadloaf.libraries.Ids;
 import littlebreadloaf.world.gen.BleachGenHole;
+import littlebreadloaf.world.gen.BleachGenMenosTree;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -31,6 +32,9 @@ public class BleachWorldGen implements IWorldGenerator
 		int z = l + rand.nextInt(16) + 8;
 		if(rand.nextInt(10) == 0)
 			new BleachGenHole(59).generate(world, rand, x, 0, z);
+		
+		
+			new BleachGenMenosTree(10).generate(world, rand, x, 0, z);
 	}
 
 }

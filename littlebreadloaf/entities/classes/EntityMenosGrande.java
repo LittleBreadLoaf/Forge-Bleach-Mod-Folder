@@ -161,7 +161,7 @@ public class EntityMenosGrande extends EntityMob
 
 		if (this.rand.nextInt(20 - par2) == 0)
 		{
-			this.dropItem(Armor.BatHelmet.itemID, 1);
+			this.dropItem(Items.menosmask.itemID, 1);
 		}
 
 	}
@@ -228,7 +228,7 @@ public class EntityMenosGrande extends EntityMob
 							&& var11 != Block.cobblestoneMossy.blockID && var11 != Block.netherrack.blockID && var11 != Block.netherBrick.blockID
 							&& var11 != Block.obsidian.blockID && var11 != Block.sand.blockID && var11 != Block.stone.blockID && var11 != Block.stoneBrick.blockID
 							&& var11 != Block.waterMoving.blockID && var11 != Block.waterStill.blockID && var11 != Block.dirt.blockID && var11 != Blocks.reiatsuBlock.blockID
-							&& var11 != Block.lavaMoving.blockID && var11 != Block.lavaStill.blockID)// &&
+							&& var11 != Blocks.soulQuartzBlock.blockID&& var11 != Block.lavaMoving.blockID && var11 != Block.lavaStill.blockID)// &&
 																										// var11
 																										// !=
 																										// mod_Reiatsu.Seeles.blockID)
@@ -243,7 +243,7 @@ public class EntityMenosGrande extends EntityMob
 							&& var11 != Block.cobblestoneMossy.blockID && var11 != Block.netherBrick.blockID && var11 != Block.obsidian.blockID && var11 != Block.sand.blockID
 							&& var11 != Block.stone.blockID && var11 != Block.stoneBrick.blockID && var11 != Block.waterMoving.blockID && var11 != Block.waterStill.blockID
 							&& var11 != Block.dirt.blockID && var11 != Blocks.reiatsuBlock.blockID && var11 != Block.lavaMoving.blockID && var11 != Block.lavaStill.blockID
-							&& this.rand.nextInt(250) == 0)
+							&& var11 != Blocks.soulQuartzBlock.blockID&& this.rand.nextInt(250) == 0)
 					{
 						var12 = this.worldObj.getBlockMetadata(var8, var9, var10);
 						this.worldObj.playAuxSFX(2001, var8, var9, var10, var11 + (var12 << 12));
@@ -252,7 +252,7 @@ public class EntityMenosGrande extends EntityMob
 					}
 
 					if (var11 > 0 && var11 != Block.bedrock.blockID && var11 != Block.obsidian.blockID && var11 != Block.waterMoving.blockID && var11 != Block.waterStill.blockID
-							&& var11 != Blocks.reiatsuBlock.blockID && var11 != Block.lavaMoving.blockID && var11 != Block.lavaStill.blockID)
+							&& var11 != Blocks.reiatsuBlock.blockID && var11 != Block.lavaMoving.blockID && var11 != Block.lavaStill.blockID && var11 != Blocks.soulQuartzBlock.blockID)
 					{
 						if (this.rand.nextInt(2000) == 0)
 						{
