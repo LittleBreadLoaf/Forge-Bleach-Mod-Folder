@@ -20,20 +20,28 @@ public class BleachGenHole extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k)
 	{
-		if(world.getBlockId(i, seeLevel + 1, j) == 0)
+		if (world.getBlockId(i, seeLevel + 1, j) == 0)
 			return false;
-		
-		int radius = random.nextInt(2) + 1;
 
-		for (int x = -radius; x <= radius; x++)
+		int top = world.getTopSolidOrLiquidBlock(i, k);
+		int bottom = this.seeLevel;
+
+		int radiusMax = random.nextInt(2) + 2;
+		float radiusMin = 0.7F;
+		
+		for (int y = 0; y < top-bottom; y++)
 		{
-			for (int z = -radius; z <= radius; z++)
+			for (int x = -radiusMax; x <= radiusMax; x++)
 			{
-				for(int y = this.seeLevel; y < 128; y++)
+				for (int z = -radiusMax; z <= radiusMax; z++)
 				{
-					
-					if(x * x + z * z <= radius * radius)
-						world.setBlockToAir(x + i, y, z + k);
+
+					float lerp = 1-((float) y/(float)(top-bottom));
+					float radius = (int) lerp(radiusMin, radiusMax, lerp);
+					FMLLog.info("y/top-bottom: " + y + "/" + (top-bottom) + " lerp: " + lerp);
+
+					if (x * x + z * z <= radius * radius)
+						world.setBlockToAir(x + i, y + bottom, z + k);
 				}
 			}
 		}
@@ -41,4 +49,8 @@ public class BleachGenHole extends WorldGenerator
 		return true;
 	}
 
+	float lerp(float v0, float v1, float t)
+	{
+		return v0 + (v1 - v0) * t;
+	}
 }

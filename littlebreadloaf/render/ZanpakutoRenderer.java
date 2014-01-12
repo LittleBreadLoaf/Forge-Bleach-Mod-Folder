@@ -76,6 +76,7 @@ public class ZanpakutoRenderer implements IItemRenderer
 //				glRotatef(45, 1, 0, 0);
 				glTranslated(0.3F, .8F, -0.1F);
 
+				glRotatef(186, 0, 1, 0);
 				scale = 0.12F;
 				glScalef(scale, scale, scale);
 

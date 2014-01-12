@@ -79,7 +79,7 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	@Override
 	public void generateLightBrightnessTable()
 	{
-		float f = 0.25F;
+		float f = 0.0F;
 		for (int i = 0; i <= 15; i++)
 		{
 			float f1 = 1.0F - i / 15.0F;

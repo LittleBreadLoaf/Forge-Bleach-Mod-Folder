@@ -32,9 +32,11 @@ public class BleachWorldGen implements IWorldGenerator
 		int z = l + rand.nextInt(16) + 8;
 		if(rand.nextInt(10) == 0)
 			new BleachGenHole(59).generate(world, rand, x, 0, z);
+
+		x = k + rand.nextInt(16) + 8;
+		z = l + rand.nextInt(16) + 8;
 		
-		
-			new BleachGenMenosTree(10).generate(world, rand, x, 0, z);
+		new BleachGenMenosTree(10).generate(world, rand, x, 0, z);
 	}
 
 }
