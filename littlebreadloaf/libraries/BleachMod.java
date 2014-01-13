@@ -6,21 +6,16 @@ import littlebreadloaf.commands.CommandSetFaction;
 import littlebreadloaf.commands.CommandSetSpirit;
 import littlebreadloaf.commands.CommandSetType;
 import littlebreadloaf.commands.CommandSpirit;
-import littlebreadloaf.entities.classes.CustomSpawner;
 import littlebreadloaf.events.DataHandler;
 import littlebreadloaf.extras.OreGenerator;
 import littlebreadloaf.gui.GuiHandler;
-import littlebreadloaf.items.Items;
 import littlebreadloaf.proxies.CommonProxy;
+import littlebreadloaf.tiles.TileSphereLamp;
 import littlebreadloaf.world.BleachWorldGen;
 import littlebreadloaf.world.HuecoMundoWorldProvider;
 import littlebreadloaf.world.biomes.BleachBiomes;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityEggInfo;
-import net.minecraft.entity.EntityList;
-import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,10 +29,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = BleachModInfo.ID, name = BleachModInfo.NAME, version = BleachModInfo.VERSION)
-@NetworkMod(channels = { BleachModInfo.CHANNEL, "Deactivate", "Mask", "Flash" }, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
+@NetworkMod(channels =
+{ BleachModInfo.CHANNEL, "Deactivate", "Mask", "Flash" }, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 public class BleachMod
 {
 	@SidedProxy(clientSide = BleachModInfo.PROXY_LOCATION + ".ClientProxy", serverSide = BleachModInfo.PROXY_LOCATION + ".CommonProxy")
@@ -54,13 +49,13 @@ public class BleachMod
 		proxy.initRenderers();
 		proxy.registerServerTickHandler();
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
-		
+
 		GameRegistry.registerWorldGenerator(new BleachWorldGen());
-        new BleachBiomes();
-		
-        DimensionManager.registerProviderType(Ids.worldHuecoMundoID, HuecoMundoWorldProvider.class, false);
-        DimensionManager.registerDimension(Ids.worldHuecoMundoID, Ids.worldHuecoMundoID);
-       
+		new BleachBiomes();
+
+		DimensionManager.registerProviderType(Ids.worldHuecoMundoID, HuecoMundoWorldProvider.class, false);
+		DimensionManager.registerDimension(Ids.worldHuecoMundoID, Ids.worldHuecoMundoID);
+
 	}
 
 	@EventHandler
@@ -78,7 +73,7 @@ public class BleachMod
 		// Armor.addNames();
 
 		proxy.initZanpakutoRenderers();
-		
+
 		new GuiHandler();
 
 		Recipes.init();
@@ -91,6 +86,8 @@ public class BleachMod
 		GameRegistry.registerWorldGenerator(new OreGenerator());
 
 		MinecraftForge.EVENT_BUS.register(new DataHandler());
+
+		GameRegistry.registerTileEntity(TileSphereLamp.class, "TileSphereLamp");
 
 	}
 

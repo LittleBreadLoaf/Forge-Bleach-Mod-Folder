@@ -174,7 +174,9 @@ public class Names
 	public static final String QuincyBow_UnlocalizedName = "quincy_bow";
 	public static final String QuincyBow_Name = "Quincy Bow";
 
-	
+
+	public static final String SphereLamp_UnlocalizedName = "reiatsu_lamp";
+	public static final String SphereLamp_Name = "Reiatsu Lamp";
 
 	
 	

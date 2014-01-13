@@ -39,8 +39,10 @@ public class ConfigHandler
 		Ids.hollowdiamondID = config.get(config.CATEGORY_BLOCK, "Diamond Hollow Block ID", Ids.hollowdiamondID_Default).getInt();
 		
 		Ids.hollowemeraldID = config.get(config.CATEGORY_BLOCK, "Emerald Hollow Block  ID", Ids.hollowemeraldID_Default).getInt();
-		
+
 		Ids.hollowgoldID = config.get(config.CATEGORY_BLOCK, "Gold Hollow Block ID", Ids.hollowgoldID_Default).getInt();
+		
+		Ids.sphereLampID = config.get(config.CATEGORY_BLOCK, "Reiatsu Sphere Lamp ID", Ids.sphereLampID_Default).getInt();
 		
 		
 		
@@ -163,9 +165,6 @@ public class ConfigHandler
 		
 		
 		
-		
-		Ids.customSpawnerID = config.get(config.CATEGORY_GENERAL, "Hollow Spawner ID", Ids.customSpawnerID_Default).getInt();
-				
 		//World
 		Ids.worldHuecoMundoID = config.get("Dimensions", "HuecoMundo world ID", Ids.worldHuecoMundoID_Default).getInt();
 		

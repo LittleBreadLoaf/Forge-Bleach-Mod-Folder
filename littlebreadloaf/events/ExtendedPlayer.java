@@ -688,6 +688,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	
 	public boolean consumeEnergy(int amount)
 	{
+		//TODO: make and event handler for this and add to API
 		boolean sufficient = amount <= (float)this.SoulEnergy * (float)this.SoulCap;
 		
 		this.SoulEnergy -= (amount < (float)this.SoulEnergy * (float)this.SoulCap ? (float)amount / (float)this.SoulCap : this.SoulEnergy);

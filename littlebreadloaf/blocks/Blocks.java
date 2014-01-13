@@ -25,6 +25,7 @@ public class Blocks
 	public static Block hollowdiamond;
 	public static Block hollowemerald;
 	public static Block hollowgold;
+	public static Block sphereLamp;
 
 	public static void init() 
 	{
@@ -66,12 +67,16 @@ public class Blocks
 		
 		hollowemerald = new BlockHollowEmerald(Ids.hollowemeraldID);
 		GameRegistry.registerBlock(hollowemerald, Names.HollowEmerald_Name);
-		
+
 		hollowgold = new BlockHollowGold(Ids.hollowgoldID);
 		GameRegistry.registerBlock(hollowgold, Names.HollowGold_Name);
 		
 		//paperdoor = new BlockPaperDoor(Ids.paperdoorID);
 		//GameRegistry.registerBlock(paperdoor, Names.PaperDoor_Name);
+		
+
+		sphereLamp = new BlockLampSphere(Ids.sphereLampID, Material.glass);
+		GameRegistry.registerBlock(sphereLamp, Names.SphereLamp_Name);
 		
 	}
 
@@ -91,5 +96,6 @@ public class Blocks
 		LanguageRegistry.addName(hollowdiamond, Names.HollowDiamond_Name);
 		LanguageRegistry.addName(hollowemerald, Names.HollowEmerald_Name);
 		LanguageRegistry.addName(hollowgold, Names.HollowGold_Name);
+		LanguageRegistry.addName(sphereLamp, Names.SphereLamp_Name);
 	}
 }

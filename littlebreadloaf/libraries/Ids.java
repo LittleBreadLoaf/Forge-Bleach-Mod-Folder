@@ -54,8 +54,10 @@ public class Ids
 	public static int hollowgoldID;
 	public static final int hollowgoldID_Default = 2195;
 	
-	
-	
+
+	public static int sphereLampID;
+	public static final int sphereLampID_Default = 2196;
+
 	//START 20171
 	
 	//ITEMS
@@ -191,14 +193,6 @@ public class Ids
 	
 	//OPEN 20228-20299
 	
-	//SPAWNER
-	public static int customSpawnerID;
-	public static final int customSpawnerID_Default = 20300;
-	
-	
-	
-	
-	
 	//SHIKAI
 	public static int shikaifireID;
 	public static final int shikaifireID_Default = 20400;
@@ -247,5 +241,8 @@ public class Ids
 	public static int debugItemID;
 	public static final int debugItemID_Default = 15000;
 	
+	
+	public static int sphereLampRenderID;
+
 	
 }
