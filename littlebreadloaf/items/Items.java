@@ -18,7 +18,6 @@ import littlebreadloaf.libraries.BleachModInfo;
 import littlebreadloaf.libraries.Ids;
 import littlebreadloaf.libraries.Names;
 import littlebreadloaf.libraries.Tools;
-import me.dawars.CraftingPillars.CraftingPillars;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

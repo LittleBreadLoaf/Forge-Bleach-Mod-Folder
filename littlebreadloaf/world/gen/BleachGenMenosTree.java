@@ -72,11 +72,34 @@ public class BleachGenMenosTree extends WorldGenerator
 				{
 					if(Math.sqrt(z*z + x*x) <= radius)
 					{
-					world.setBlock(x+i, y, z+k, Blocks.soulQuartzBlock.blockID);
-					world.setBlock(x+i, y+ random.nextInt(2), z+k, Blocks.soulQuartzBlock.blockID);
-					world.setBlock(x+i, y+ random.nextInt(3), z+k, Blocks.soulQuartzBlock.blockID);
-					world.setBlock(x+i, y+ random.nextInt(3), z+k, Blocks.soulQuartzBlock.blockID);
-					world.setBlock(x+i, y+ random.nextInt(4), z+k, Blocks.soulQuartzBlock.blockID);
+						world.setBlock(x+i, y, z+k, Blocks.soulQuartzBlock.blockID);
+						world.setBlock(x+i, y+ random.nextInt(2), z+k, Blocks.soulQuartzBlock.blockID);
+						world.setBlock(x+i, y+ random.nextInt(3), z+k, Blocks.soulQuartzBlock.blockID);
+						world.setBlock(x+i, y+ random.nextInt(3), z+k, Blocks.soulQuartzBlock.blockID);
+						world.setBlock(x+i, y+ random.nextInt(4), z+k, Blocks.soulQuartzBlock.blockID);
+						
+						// Gen Branches
+						if(random.nextInt(30) == 0)
+						{
+							int directionX = 0;
+							int directionZ = 0;
+							while (directionZ == 0 && directionX == 0)
+							{
+								directionX = random.nextInt(2) - random.nextInt(2);
+								directionZ = random.nextInt(2) - random.nextInt(2);
+							}
+							
+							int length = 4 + random.nextInt(4);
+							int blockX = x + i;
+							int blockZ = z + k;
+							
+							for(int b = 0; b < length; ++b)
+							{
+								blockX += directionX;
+								blockZ += directionZ;
+								world.setBlock(blockX, y + random.nextInt(2), blockZ, Blocks.soulQuartzBlock.blockID);
+							}
+						}
 					}
 				}
 			}

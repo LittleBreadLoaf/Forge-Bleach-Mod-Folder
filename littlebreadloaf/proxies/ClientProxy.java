@@ -20,8 +20,6 @@ import littlebreadloaf.libraries.Ids;
 import littlebreadloaf.render.RenderSphereLamp;
 import littlebreadloaf.render.ZanpakutoRenderer;
 import littlebreadloaf.tiles.TileSphereLamp;
-import me.dawars.CraftingPillars.renderer.RenderExtendPillar;
-import me.dawars.CraftingPillars.tiles.TileEntityExtendPillar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.network.packet.Packet;
