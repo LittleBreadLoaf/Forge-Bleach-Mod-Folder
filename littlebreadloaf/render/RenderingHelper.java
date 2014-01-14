@@ -1,11 +1,16 @@
 package littlebreadloaf.render;
 
+import static org.lwjgl.opengl.GL11.*;
+
+import java.awt.Color;
+
+import littlebreadloaf.events.ExtendedPlayer;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
 
 import org.lwjgl.util.glu.Sphere;
 
 import cpw.mods.fml.common.FMLLog;
-import static org.lwjgl.opengl.GL11.*;
 
 public class RenderingHelper
 {
@@ -26,5 +31,24 @@ public class RenderingHelper
 			glEnable(GL_LIGHTING);
             
 		glPopMatrix();
+	}
+	
+	public static Color getColorFromPlayer(EntityPlayer entity)
+	{		
+		Color color = new Color(0x000000);
+
+		if (entity == null) return color;
+		
+		ExtendedPlayer props = (ExtendedPlayer) entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+		
+		switch(props.getZType())
+		{
+			case 0: color = Color.RED; break;
+			case 1: color = Color.GREEN; break;
+			case 2: color = Color.BLUE; break;
+				
+		}
+		FMLLog.info("type: " + props.getZType());
+		return color;
 	}
 }

@@ -2,10 +2,13 @@ package littlebreadloaf.render;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import java.awt.Color;
+
 import org.lwjgl.util.glu.Sphere;
 
 import littlebreadloaf.libraries.BleachModInfo;
 import littlebreadloaf.libraries.Ids;
+import littlebreadloaf.tiles.TileSphereLamp;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -23,6 +26,7 @@ public class RenderSphereLamp extends TileEntitySpecialRenderer implements ISimp
 	public static void render(TileEntity tile)
 	{
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE_SPHERE_LAMP);
+		glRotatef(90, 1, 0, 1);
 		new Sphere().draw(1F, 20, 18);
 
 	}
@@ -34,6 +38,14 @@ public class RenderSphereLamp extends TileEntitySpecialRenderer implements ISimp
 		glTranslated(x + 0.5F, y + 0.5F, z + 0.5F);
 		float scale = 0.5F;
 		glScalef(scale, scale, scale);
+		
+		if(tile instanceof TileSphereLamp)
+		{
+			TileSphereLamp lampTile = (TileSphereLamp) tile;
+			Color color = RenderingHelper.getColorFromPlayer(lampTile.getOwnerEntity());
+			glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+		}
+		
 		this.render(tile);
 		
 		glPopMatrix();
@@ -50,6 +62,10 @@ public class RenderSphereLamp extends TileEntitySpecialRenderer implements ISimp
 		float scale = 0.7F;
 		glScalef(scale, scale, scale);
 		glRotatef(180F, 1F, 0F, 0F);
+		
+		Color color = RenderingHelper.getColorFromPlayer(FMLClientHandler.instance().getClient().thePlayer);
+		glColor3f(color.getRed(), color.getGreen(), color.getBlue());
+		
 		this.render(null);
 		glPopAttrib();
 		glPopMatrix();
