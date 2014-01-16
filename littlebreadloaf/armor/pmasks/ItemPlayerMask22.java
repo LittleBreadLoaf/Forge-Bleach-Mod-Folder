@@ -1,23 +1,16 @@
 package littlebreadloaf.armor.pmasks;
 
-import java.util.List;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import littlebreadloaf.entities.classes.CustomEntityList;
-import littlebreadloaf.items.Items;
 import littlebreadloaf.libraries.BleachModInfo;
 import littlebreadloaf.libraries.Names;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityEggInfo;
 import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPlayerMask22 extends ItemArmor 
 {
