@@ -370,5 +370,14 @@ public class EntityMenosGrande extends EntityMob
 	{
 		return this.ceroCharging;
 	}
+	
+	
+	 /**
+     * Checks if the entity's current position is a valid location to spawn this entity.
+     */
+    public boolean getCanSpawnHere()
+    {
+        return this.posY < 50 && super.getCanSpawnHere();
+    }
 
 }

@@ -273,11 +273,13 @@ public class CustomEntityList
         addMapping(EntityHollowOre.class, "HollowOre", 309, 0x000000, 0x57599);
         addMapping(EntityHollowWolf.class, "HollowWolf", 310, 0x191970, 0x634673);
         
-        addMapping(EntityMenosGrande.class, "MenosGrande", 315, 0x000000, 0xFFFFFF);
-        addMapping(EntityFisher.class, "Fisher", 3016, 0x000000, 0x663300);
-        addMapping(EntityDecoy.class, "Decoy", 317, 0x000000, 0x000000);
+        addMapping(EntitySmallHollowLizard.class, "SmallHollowLizard", 315, 0x191970, 0x634673);
         
-        addMapping(EntityShinigami.class, "Shinigami", 318, 0x000000, 0x677279);
+        addMapping(EntityMenosGrande.class, "MenosGrande", 320, 0x000000, 0xFFFFFF);
+        addMapping(EntityFisher.class, "Fisher", 321, 0x000000, 0x663300);
+        addMapping(EntityDecoy.class, "Decoy", 322, 0x000000, 0x000000);
+        
+        addMapping(EntityShinigami.class, "Shinigami", 323, 0x000000, 0x677279);
         
         
     }

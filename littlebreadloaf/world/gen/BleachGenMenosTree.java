@@ -20,9 +20,18 @@ public class BleachGenMenosTree extends WorldGenerator
 	@Override
 	public boolean generate(World world, Random random, int i, int j, int k)
 	{
-		
-		
-		int radius = random.nextInt(3) + 2;
+
+		int radius = 2;
+		if(random.nextInt(300) == 0)
+		{
+
+			radius = random.nextInt(3) + 6;
+		}
+		else
+		{
+
+			 radius = random.nextInt(3) + 2;
+		}
 
 		for (int x = -radius; x <= radius; x++)
 		{
@@ -97,7 +106,11 @@ public class BleachGenMenosTree extends WorldGenerator
 							{
 								blockX += directionX;
 								blockZ += directionZ;
-								world.setBlock(blockX, y + random.nextInt(2), blockZ, Blocks.soulQuartzBlock.blockID);
+								world.setBlock(blockX, y, blockZ, Blocks.soulQuartzBlock.blockID);
+								if(random.nextInt(3) == 0)
+								{
+									y += 1;
+								}
 							}
 						}
 					}

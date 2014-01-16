@@ -13,6 +13,7 @@ import littlebreadloaf.entities.classes.EntityHollowWasp;
 import littlebreadloaf.entities.classes.EntityHollowWolf;
 import littlebreadloaf.entities.classes.EntityMenosGrande;
 import littlebreadloaf.entities.classes.EntityShinigami;
+import littlebreadloaf.entities.classes.EntitySmallHollowLizard;
 import littlebreadloaf.entities.classes.EntityWhole;
 import littlebreadloaf.entities.models.ModelDecoy;
 import littlebreadloaf.entities.models.ModelFisher;
@@ -26,6 +27,7 @@ import littlebreadloaf.entities.models.ModelHollowStalker;
 import littlebreadloaf.entities.models.ModelHollowWasp;
 import littlebreadloaf.entities.models.ModelHollowWolf;
 import littlebreadloaf.entities.models.ModelMenosGrande;
+import littlebreadloaf.entities.models.ModelSmallHollowLizard;
 import littlebreadloaf.entities.models.ModelWhole;
 import net.minecraft.client.model.ModelBiped;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -55,6 +57,8 @@ public class Renders
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityHollowOre.class, new RenderHollowOre(new ModelHollowOre(), 0.3F));
 
+		RenderingRegistry.registerEntityRenderingHandler(EntitySmallHollowLizard.class, new RenderSmallHollowLizard(new ModelSmallHollowLizard(), 0.3F));
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityMenosGrande.class, new RenderMenosGrande(new ModelMenosGrande(), 0.3F));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityFisher.class, new RenderFisher(new ModelFisher(), 0.3F));

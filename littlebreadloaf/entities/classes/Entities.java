@@ -33,6 +33,7 @@ import littlebreadloaf.entities.renders.RenderShinigami;
 import littlebreadloaf.entities.renders.RenderWhole;
 import littlebreadloaf.libraries.BleachMod;
 import littlebreadloaf.libraries.BleachModInfo;
+import littlebreadloaf.world.biomes.BleachBiomes;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -83,10 +84,16 @@ public class Entities
 		//Hollow Wolf
 		EntityRegistry.registerGlobalEntityID(EntityHollowWolf.class, "HollowWolf", EntityRegistry.findGlobalUniqueEntityId(), 0x191970, 0x634673);
 		EntityRegistry.addSpawn(EntityHollowWolf.class, 1, 2, 3, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
-			
+		
+		
+		//Small Hollow Lizard
+		EntityRegistry.registerGlobalEntityID(EntitySmallHollowLizard.class, "SmallHollowLizard", EntityRegistry.findGlobalUniqueEntityId(), 0xB22222, 0xFA8072);
+		EntityRegistry.addSpawn(EntitySmallHollowLizard.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BleachBiomes.HuecoMundo});
+		
+		
 		//Menos Grande
 		EntityRegistry.registerGlobalEntityID(EntityMenosGrande.class, "MenosGrande", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
-		EntityRegistry.addSpawn(EntityMenosGrande.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.hell});
+		EntityRegistry.addSpawn(EntityMenosGrande.class, 1, 1, 3, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.hell, BleachBiomes.HuecoMundo});
 		
 		//Grand Fisher
 		EntityRegistry.registerGlobalEntityID(EntityFisher.class, "Fisher", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x663300);
@@ -128,6 +135,7 @@ public class Entities
 		LanguageRegistry.instance().addStringLocalization("entity.HollowStalker.name", "Stalker Hollow");
 		LanguageRegistry.instance().addStringLocalization("entity.HollowOre.name", "Ore Hollow");
 		LanguageRegistry.instance().addStringLocalization("entity.HollowWolf.name", "Wolf Hollow");
+		LanguageRegistry.instance().addStringLocalization("entity.SmallHollowLizard.name", "Small Lizard Hollow");
 		LanguageRegistry.instance().addStringLocalization("entity.MenosGrande.name", "Menos Grande");
 		LanguageRegistry.instance().addStringLocalization("entity.Fisher.name", "Grand Fisher");
 		LanguageRegistry.instance().addStringLocalization("entity.Decoy.name", "Decoy");
