@@ -7,6 +7,7 @@ import littlebreadloaf.libraries.BleachMod;
 import littlebreadloaf.libraries.Ids;
 import littlebreadloaf.render.SkyRendererHuecoMundo;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
@@ -19,7 +20,6 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	{
 		this.dimensionId = Ids.worldHuecoMundoID;
 		this.worldChunkMgr = new HuecoMundoChunkManager(this.worldObj);
-		this.hasNoSky = true;
 		if (FMLClientHandler.instance().getSide() == Side.CLIENT)
 		{
 			this.setSkyRenderer(new SkyRendererHuecoMundo());
@@ -34,24 +34,90 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	}
 
 	/**
-     * Returns array with sunrise/sunset colors
-     */
-	@Override
-    public float[] calcSunriseSunsetColors(float par1, float par2)
-    {
-        return null;
-    }
-	
-    /**
-     * Returns true if the given X,Z coordinate should show environmental fog.
-     */
+	 * Returns array with sunrise/sunset colors
+	 */
 	@SideOnly(Side.CLIENT)
 	@Override
-    public boolean doesXZShowFog(int par1, int par2)
-    {
-        return true;
-    }
-    
+	public float[] calcSunriseSunsetColors(float par1, float par2)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns 'true' if in the "main surface world", but 'false' if in the
+	 * Nether or End dimensions.
+	 */
+	@SideOnly(Side.CLIENT)
+	@Override
+	public boolean isSurfaceWorld()
+	{
+		return false;
+	}
+
+	/**
+	 * Calculates the angle of sun and moon in the sky relative to a specified
+	 * time (usually worldTime)
+	 */
+	@Override
+	public float calculateCelestialAngle(long par1, float par3)
+	{
+		int j = (int) (par1 % 24000L);
+		float f1 = ((float) j + par3) / 24000.0F - 0.25F;
+
+		if (f1 < 0.0F)
+		{
+			++f1;
+		}
+
+		if (f1 > 1.0F)
+		{
+			--f1;
+		}
+
+		float f2 = f1;
+		f1 = 1.0F - (float) ((Math.cos((double) f1 * Math.PI) + 1.0D) / 2.0D);
+		f1 = f2 + (f1 - f2) / 3.0F;
+		return f1;
+	}
+
+	/**
+	 * Return Vec3D with biome specific fog color
+	 */
+	@SideOnly(Side.CLIENT)
+	@Override
+	public Vec3 getFogColor(float par1, float par2)
+	{
+		float f2 = MathHelper.cos(par1 * (float) Math.PI * 2.0F) * 2.0F + 0.5F;
+
+		if (f2 < 0.0F)
+		{
+			f2 = 0.0F;
+		}
+
+		if (f2 > 1.0F)
+		{
+			f2 = 1.0F;
+		}
+
+		float f3 = 0.7529412F;
+		float f4 = 0.84705883F;
+		float f5 = 1.0F;
+		f3 *= f2 * 0.94F + 0.06F;
+		f4 *= f2 * 0.94F + 0.06F;
+		f5 *= f2 * 0.91F + 0.09F;
+		return this.worldObj.getWorldVec3Pool().getVecFromPool((double) f3, (double) f4, (double) f5);
+	}
+
+	/**
+	 * Returns true if the given X,Z coordinate should show environmental fog.
+	 */
+	@SideOnly(Side.CLIENT)
+	@Override
+	public boolean doesXZShowFog(int par1, int par2)
+	{
+		return true;
+	}
+
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{

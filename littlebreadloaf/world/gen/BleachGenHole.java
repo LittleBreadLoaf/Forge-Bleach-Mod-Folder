@@ -27,7 +27,7 @@ public class BleachGenHole extends WorldGenerator
 		int bottom = this.seeLevel;
 
 		int radiusMax = random.nextInt(2) + 2;
-		float radiusMin = 0.7F;
+		float radiusMin = 0.7F + (float) (random.nextInt(7)/10);
 		
 		for (int y = 0; y < top-bottom; y++)
 		{
@@ -38,7 +38,7 @@ public class BleachGenHole extends WorldGenerator
 
 					float lerp = 1-((float) y/(float)(top-bottom));
 					float radius = (int) lerp(radiusMin, radiusMax, lerp);
-					FMLLog.info("y/top-bottom: " + y + "/" + (top-bottom) + " lerp: " + lerp);
+//					FMLLog.info("y / top-bottom: " + y + "/" + (top-bottom) + " lerp: " + lerp);
 
 					if (x * x + z * z <= radius * radius)
 						world.setBlockToAir(x + i, y + bottom, z + k);
