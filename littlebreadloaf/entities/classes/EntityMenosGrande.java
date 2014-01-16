@@ -173,7 +173,7 @@ public class EntityMenosGrande extends EntityMob
 
 	public int getMaxSpawnedInChunk()
 	{
-		return 1;
+		return 16;
 	}
 
 	protected void fall(float var1)
@@ -377,7 +377,8 @@ public class EntityMenosGrande extends EntityMob
      */
     public boolean getCanSpawnHere()
     {
-        return this.posY < 50 && super.getCanSpawnHere();
+        return this.posY < 50 && this.worldObj.difficultySetting > 0 && this.isValidLightLevel() && 
+        		this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox);
     }
 
 }

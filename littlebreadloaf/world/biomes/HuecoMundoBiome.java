@@ -13,6 +13,7 @@ public class HuecoMundoBiome extends BiomeGenBase
 	public HuecoMundoBiome(int id)
 	{
 		super(id, true);
+        this.theBiomeDecorator = new HuecoMundoBiomeDecorator(this);
 		this.setBiomeName("Hueco Mundo");
 		this.setDisableRain();
 		this.setTemperatureRainfall(0.5F, 0.0F);
@@ -23,10 +24,6 @@ public class HuecoMundoBiome extends BiomeGenBase
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
         
-        this.theBiomeDecorator.treesPerChunk = -999;
-        this.theBiomeDecorator.flowersPerChunk = -999;
-        this.theBiomeDecorator.grassPerChunk = -999;
-        this.theBiomeDecorator.mushroomsPerChunk = 0;
         
         this.topBlock = (byte) Block.grass.blockID;
         this.fillerBlock = (byte) Block.blockClay.blockID;
