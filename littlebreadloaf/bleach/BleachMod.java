@@ -14,6 +14,7 @@ import littlebreadloaf.bleach.extras.OreGenerator;
 import littlebreadloaf.bleach.gui.GuiHandler;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.proxies.CommonProxy;
+import littlebreadloaf.bleach.tiles.TileLantern;
 import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import littlebreadloaf.bleach.world.BleachWorldGen;
 import littlebreadloaf.bleach.world.HuecoMundoWorldProvider;
@@ -92,6 +93,7 @@ public class BleachMod
 		MinecraftForge.EVENT_BUS.register(new DataHandler());
 
 		GameRegistry.registerTileEntity(TileSphereLamp.class, "TileSphereLamp");
+		GameRegistry.registerTileEntity(TileLantern.class, "TileLantern");
 
 	}
 

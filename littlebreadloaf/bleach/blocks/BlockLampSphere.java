@@ -13,13 +13,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockLampSphere extends BlockContainer
+public class BlockLampSphere extends BleachBlockContainer
 {
 
 	public BlockLampSphere(int id, Material material)
 	{
 		super(id, material);
-		this.setCreativeTab(BleachItems.tabBleach);
 		this.setUnlocalizedName(Names.SphereLamp_UnlocalizedName);
 		this.setHardness(5F);
 		this.setResistance(15F);

@@ -57,6 +57,9 @@ public class BleachIds
 
 	public static int sphereLampID;
 	public static final int sphereLampID_Default = 2196;
+	
+	public static int lanternID;
+	public static final int lanternID_Default = 2197;
 
 	//START 20171
 	
@@ -243,6 +246,7 @@ public class BleachIds
 	
 	
 	public static int sphereLampRenderID;
+	public static int lanternRenderingID;
 
 	
 }

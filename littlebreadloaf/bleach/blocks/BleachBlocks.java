@@ -26,6 +26,7 @@ public class BleachBlocks
 	public static Block hollowemerald;
 	public static Block hollowgold;
 	public static Block sphereLamp;
+	public static Block paperLamp;
 
 	public static void init() 
 	{
@@ -78,6 +79,9 @@ public class BleachBlocks
 		sphereLamp = new BlockLampSphere(BleachIds.sphereLampID, Material.glass);
 		GameRegistry.registerBlock(sphereLamp, Names.SphereLamp_Name);
 		
+		paperLamp = new BlockLantern(BleachIds.lanternID, Material.glass);
+		GameRegistry.registerBlock(paperLamp, Names.Lantern_Name);
+		
 	}
 
 	public static void addNames() 
@@ -97,5 +101,6 @@ public class BleachBlocks
 		LanguageRegistry.addName(hollowemerald, Names.HollowEmerald_Name);
 		LanguageRegistry.addName(hollowgold, Names.HollowGold_Name);
 		LanguageRegistry.addName(sphereLamp, Names.SphereLamp_Name);
+		LanguageRegistry.addName(paperLamp, Names.Lantern_Name);
 	}
 }

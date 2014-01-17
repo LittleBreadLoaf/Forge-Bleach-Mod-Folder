@@ -1,6 +1,5 @@
 package littlebreadloaf.bleach.proxies;
 
-import littlebreadloaf.bleach.BleachSounds;
 import littlebreadloaf.bleach.BleachIds;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.blocks.BleachBlocks;
@@ -8,17 +7,20 @@ import littlebreadloaf.bleach.entities.Entities;
 import littlebreadloaf.bleach.entities.EntityEnergyArrow;
 import littlebreadloaf.bleach.entities.EntityGetsuga;
 import littlebreadloaf.bleach.entities.EntitySeeleArrow;
+import littlebreadloaf.bleach.events.BleachSounds;
 import littlebreadloaf.bleach.extras.FlashKeyBind;
 import littlebreadloaf.bleach.extras.MaskKeyBind;
 import littlebreadloaf.bleach.extras.ShikaiKeyBind;
 import littlebreadloaf.bleach.gui.GuiSoulBar;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.render.RenderLantern;
 import littlebreadloaf.bleach.render.RenderSphereLamp;
 import littlebreadloaf.bleach.render.ZanpakutoRenderer;
 import littlebreadloaf.bleach.render.entity.RenderEnergyArrow;
 import littlebreadloaf.bleach.render.entity.RenderGetsuga;
 import littlebreadloaf.bleach.render.entity.RenderSeeleArrow;
 import littlebreadloaf.bleach.render.entity.Renders;
+import littlebreadloaf.bleach.tiles.TileLantern;
 import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -39,6 +41,7 @@ public class ClientProxy extends CommonProxy
 	public void initRenderers()
 	{
 		BleachIds.sphereLampRenderID = RenderingRegistry.getNextAvailableRenderId();
+		BleachIds.lanternRenderingID = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnergyArrow.class, new RenderEnergyArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySeeleArrow.class, new RenderSeeleArrow());
@@ -54,7 +57,9 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(BleachItems.zanpakuto.itemID, new ZanpakutoRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileSphereLamp.class, new RenderSphereLamp());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileLantern.class, new RenderLantern());
 		RenderingRegistry.registerBlockHandler(new RenderSphereLamp());
+		RenderingRegistry.registerBlockHandler(new RenderLantern());
 
 	}
 

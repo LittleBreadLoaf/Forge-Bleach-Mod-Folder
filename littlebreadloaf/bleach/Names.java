@@ -47,6 +47,9 @@ public class Names
 	public static final String HollowGold_UnlocalizedName = "hollow_gold";
 	public static final String HollowGold_Name = "Gold Hollow Block";
 	
+	public static final String Lantern_UnlocalizedName = "lantern";
+	public static final String Lantern_Name = "Paper Lantern";
+	
 	
 	
 	

@@ -1,5 +1,6 @@
-package littlebreadloaf.bleach;
+package littlebreadloaf.bleach.events;
 
+import littlebreadloaf.bleach.BleachModInfo;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 
