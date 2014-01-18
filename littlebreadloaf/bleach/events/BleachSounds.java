@@ -68,18 +68,26 @@ public class BleachSounds
 	@ForgeSubscribe
 	public void onBackgroundMusic(PlayBackgroundMusicEvent event)
 	{
-//		if(BleachMod.proxy.getPlayer().worldObj.provider.dimensionId == BleachIds.worldHuecoMundoID)
+		SoundPoolEntry sound = event.source;
+
 		if(FMLClientHandler.instance().getClient().thePlayer.worldObj.provider.dimensionId == BleachIds.worldHuecoMundoID)
 		{
-			FMLLog.info("Sound event");
+//			FMLLog.info("Sound event");
 
-			SoundPoolEntry sound = event.source;
 			while(!isHuecoMundoMusic(sound.getSoundName()))
 			{
-				FMLLog.info("Not HuecoMundo music: " + sound.getSoundName());
+//				FMLLog.info("Not HuecoMundo music: " + sound.getSoundName());
 				sound = event.manager.soundPoolMusic.getRandomSound();
 			}
-			FMLLog.info("HuecoMundo music: " + sound.getSoundName());
+//			FMLLog.info("HuecoMundo music: " + sound.getSoundName());
+			event.result = sound;
+		} else {
+			while(isHuecoMundoMusic(sound.getSoundName()))
+			{
+//				FMLLog.info("HuecoMundo music: " + sound.getSoundName());
+				sound = event.manager.soundPoolMusic.getRandomSound();
+			}
+//			FMLLog.info("Not HuecoMundo music: " + sound.getSoundName());
 			event.result = sound;
 		}
 	}
@@ -88,7 +96,7 @@ public class BleachSounds
 	{
 		for(int i = 0; i < HuecoMundoMusic.length; i++)
 		{
-			if(HuecoMundoMusic[i] == name)
+			if(name.equals("bleach:" + HuecoMundoMusic[i]))
 				return true;
 		}
 		

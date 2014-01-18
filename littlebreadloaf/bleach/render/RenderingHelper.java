@@ -22,7 +22,7 @@ public class RenderingHelper
 			glTranslated(2, 0, 0);
 			
 
-			FMLLog.info("menos yaw"+entity.rotationYaw);
+//			FMLLog.info("menos yaw"+entity.rotationYaw);
 			glDisable(GL_CULL_FACE);
 			glDisable(GL_LIGHTING);
 			glColor3f(1, 0, 0);
@@ -51,7 +51,7 @@ public class RenderingHelper
 			case 2: color = Color.BLUE; break;
 				
 		}
-		FMLLog.info("type: " + props.getZType());
+//		FMLLog.info("type: " + props.getZType());
 		return color;
 	}
 }

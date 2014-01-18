@@ -15,6 +15,7 @@ import littlebreadloaf.bleach.gui.GuiSoulBar;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.render.RenderLantern;
 import littlebreadloaf.bleach.render.RenderSphereLamp;
+import littlebreadloaf.bleach.render.SeeleSchneiderRenderer;
 import littlebreadloaf.bleach.render.ZanpakutoRenderer;
 import littlebreadloaf.bleach.render.entity.RenderEnergyArrow;
 import littlebreadloaf.bleach.render.entity.RenderGetsuga;
@@ -55,6 +56,7 @@ public class ClientProxy extends CommonProxy
 	public void initZanpakutoRenderers()
 	{
 		MinecraftForgeClient.registerItemRenderer(BleachItems.zanpakuto.itemID, new ZanpakutoRenderer());
+		MinecraftForgeClient.registerItemRenderer(BleachItems.seele.itemID, new SeeleSchneiderRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileSphereLamp.class, new RenderSphereLamp());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLantern.class, new RenderLantern());
