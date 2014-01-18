@@ -27,6 +27,7 @@ public class BleachBlocks
 	public static Block hollowgold;
 	public static Block sphereLamp;
 	public static Block paperLamp;
+	public static Block seeleSchneiderBlock;
 
 	public static void init() 
 	{
@@ -78,9 +79,12 @@ public class BleachBlocks
 
 		sphereLamp = new BlockLampSphere(BleachIds.sphereLampID, Material.glass);
 		GameRegistry.registerBlock(sphereLamp, Names.SphereLamp_Name);
-		
+
 		paperLamp = new BlockLantern(BleachIds.lanternID, Material.glass);
 		GameRegistry.registerBlock(paperLamp, Names.Lantern_Name);
+
+		seeleSchneiderBlock = new BlockSeeleSchneider(BleachIds.seeleschneiderBlockID_Default, Material.iron);
+		GameRegistry.registerBlock(seeleSchneiderBlock, Names.SeeleSchneider_Name);
 		
 	}
 
@@ -102,5 +106,6 @@ public class BleachBlocks
 		LanguageRegistry.addName(hollowgold, Names.HollowGold_Name);
 		LanguageRegistry.addName(sphereLamp, Names.SphereLamp_Name);
 		LanguageRegistry.addName(paperLamp, Names.Lantern_Name);
+		LanguageRegistry.addName(seeleSchneiderBlock, Names.SeeleSchneider_Name);
 	}
 }

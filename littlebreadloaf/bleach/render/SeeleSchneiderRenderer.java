@@ -12,6 +12,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 public class SeeleSchneiderRenderer implements IItemRenderer
 {
 	public IModelCustom model;
+	public IModelCustom blade;
 	private ResourceLocation TEXTURE_SEELESCHNEIDER;
 
 	public SeeleSchneiderRenderer()
@@ -19,6 +20,7 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/SeeleSchneider_Bottom.png");
 
 		this.model = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider.obj");
+		this.blade = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider_Blade.obj");
 	}
 
 	@Override
@@ -44,7 +46,7 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 		{
 			case ENTITY:
 				
-				scale = 0.15F;
+				scale = 0.01F;
 				glScalef(scale, scale, scale);
 			break;
 			case EQUIPPED:
@@ -71,7 +73,7 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 
 			break;
 			case EQUIPPED_FIRST_PERSON:
-				glTranslated(-0.5F, 0, 0.6F);
+				glTranslated(-0.5F, -0.4F, 0.6F);
 
 				glRotatef(50, 0, 1, 0);
 //				glRotatef(20, 1, 0, 0);
@@ -89,6 +91,10 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 		
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(getTextureForItem(item));
 
+		if(item.getItemDamage() == 1)
+		{
+			this.blade.renderAll();
+		}
 		getModelForItem(item).renderAll();
 		
 

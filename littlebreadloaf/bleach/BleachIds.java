@@ -61,6 +61,9 @@ public class BleachIds
 	public static int lanternID;
 	public static final int lanternID_Default = 2197;
 
+	public static int seeleschneiderBlockID;
+	public static final int seeleschneiderBlockID_Default = 2198;
+
 	//START 20171
 	
 	//ITEMS
@@ -247,6 +250,7 @@ public class BleachIds
 	
 	public static int sphereLampRenderID;
 	public static int lanternRenderingID;
+	public static int seeleSchneiderRenderingID;
 
 	
 }

@@ -15,6 +15,7 @@ import littlebreadloaf.bleach.gui.GuiHandler;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileLantern;
+import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
 import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import littlebreadloaf.bleach.world.BleachWorldGen;
 import littlebreadloaf.bleach.world.HuecoMundoWorldProvider;
@@ -80,7 +81,6 @@ public class BleachMod
 		Armor.init();
 		Armor.addNames();
 
-		proxy.initZanpakutoRenderers();
 
 		new GuiHandler();
 
@@ -94,7 +94,9 @@ public class BleachMod
 
 		GameRegistry.registerTileEntity(TileSphereLamp.class, "TileSphereLamp");
 		GameRegistry.registerTileEntity(TileLantern.class, "TileLantern");
+		GameRegistry.registerTileEntity(TileSeeleSchneider.class, "TileSeeleschneider");
 
+		proxy.initZanpakutoRenderers();
 	}
 
 	@EventHandler

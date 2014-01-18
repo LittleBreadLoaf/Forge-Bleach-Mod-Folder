@@ -15,6 +15,7 @@ import littlebreadloaf.bleach.gui.GuiSoulBar;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.render.RenderLantern;
 import littlebreadloaf.bleach.render.RenderSphereLamp;
+import littlebreadloaf.bleach.render.SeeleSchneiderBlockRenderer;
 import littlebreadloaf.bleach.render.SeeleSchneiderRenderer;
 import littlebreadloaf.bleach.render.ZanpakutoRenderer;
 import littlebreadloaf.bleach.render.entity.RenderEnergyArrow;
@@ -22,6 +23,7 @@ import littlebreadloaf.bleach.render.entity.RenderGetsuga;
 import littlebreadloaf.bleach.render.entity.RenderSeeleArrow;
 import littlebreadloaf.bleach.render.entity.Renders;
 import littlebreadloaf.bleach.tiles.TileLantern;
+import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
 import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -43,6 +45,7 @@ public class ClientProxy extends CommonProxy
 	{
 		BleachIds.sphereLampRenderID = RenderingRegistry.getNextAvailableRenderId();
 		BleachIds.lanternRenderingID = RenderingRegistry.getNextAvailableRenderId();
+		BleachIds.seeleSchneiderRenderingID = RenderingRegistry.getNextAvailableRenderId();
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnergyArrow.class, new RenderEnergyArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySeeleArrow.class, new RenderSeeleArrow());
@@ -60,6 +63,8 @@ public class ClientProxy extends CommonProxy
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileSphereLamp.class, new RenderSphereLamp());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLantern.class, new RenderLantern());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileSeeleSchneider.class, new SeeleSchneiderBlockRenderer());
+		
 		RenderingRegistry.registerBlockHandler(new RenderSphereLamp());
 		RenderingRegistry.registerBlockHandler(new RenderLantern());
 

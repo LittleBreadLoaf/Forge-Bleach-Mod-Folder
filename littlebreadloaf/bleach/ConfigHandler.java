@@ -45,6 +45,7 @@ public class ConfigHandler
 		BleachIds.sphereLampID = config.get(config.CATEGORY_BLOCK, "Reiatsu Sphere Lamp ID", BleachIds.sphereLampID_Default).getInt();
 		
 		BleachIds.lanternID = config.get(config.CATEGORY_BLOCK, "Paper Lantern ID", BleachIds.lanternID_Default).getInt();
+//		BleachIds.seeleschneiderID = config.get(config.CATEGORY_BLOCK, "Seele Schneider ID", BleachIds.seeleschneiderID_Default).getInt();
 		
 		
 		
