@@ -61,8 +61,11 @@ public class BlockSeeleSchneider extends BleachBlockContainer
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		this.dropBlockAsItem(world, x, y, z, 1, 0);
-		world.setBlockToAir(x, y, z);
+		if(player.getCurrentEquippedItem() == null)
+		{
+			this.dropBlockAsItem(world, x, y, z, 1, 0);
+			world.setBlockToAir(x, y, z);
+		}
 		return false;
 	}
 

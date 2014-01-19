@@ -45,7 +45,6 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 		switch (type)
 		{
 			case ENTITY:
-				
 				scale = 0.01F;
 				glScalef(scale, scale, scale);
 			break;
@@ -66,8 +65,11 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 				glRotatef(45, 1, 0, 1);
 				glRotatef(45, 0, 1, 0);
 				glRotatef(-20, 1, 0, 0);
+				if(item.getItemDamage() == 0)
+					scale = 0.022F;
+				else
+					scale = 0.008F;
 				
-				scale = 0.022F;
 				glScalef(scale, scale, scale);
 
 
