@@ -34,10 +34,10 @@ public class EntitySmallHollowLizard extends EntityMob
 	{
 		super(par1World);
 		this.setTexture(par2);
-		float var3 = 0.48F;
+		float var3 = 0.55F;
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityPlayer.class, 6.0F, 0.45F, 0.45F));
-		this.tasks.addTask(2, new EntityAIPanic(this, 0.5F));
+		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityPlayer.class, 6.0F, 0.55F, 0.55F));
+		this.tasks.addTask(2, new EntityAIPanic(this, 0.6F));
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(7, new EntityAIWander(this, var3));

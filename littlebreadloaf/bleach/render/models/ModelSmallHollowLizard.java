@@ -172,22 +172,22 @@ public class ModelSmallHollowLizard  extends ModelBase
       setRotation(tail3, 0F, 0F, 0F);
       finger1L = new ModelRenderer(this, 0, 55);
       finger1L.addBox(3F, 5F, -3F, 1, 1, 4);
-      finger1L.setRotationPoint(4F, 18F, -9F);
+      finger1L.setRotationPoint(0F, 0F, 0F);
       finger1L.setTextureSize(128, 128);
       finger1L.mirror = true;
-      setRotation(finger1L, 0F, 0.5235988F, 0F);
+      setRotation(finger1L, 0F, 0.5235988F, 0.5235988F);
       finger3L = new ModelRenderer(this, 0, 55);
       finger3L.addBox(2.3F, 5F, -6.5F, 1, 1, 4);
-      finger3L.setRotationPoint(4F, 18F, -9F);
+      finger3L.setRotationPoint(0F, 0F, 0F);
       finger3L.setTextureSize(128, 128);
       finger3L.mirror = true;
-      setRotation(finger3L, 0F, -0.5235988F, 0F);
+      setRotation(finger3L, 0F, -0.5235988F, 0.5235988F);
       finger2L = new ModelRenderer(this, 0, 55);
       finger2L.addBox(3F, 5F, -5F, 1, 1, 4);
-      finger2L.setRotationPoint(4F, 18F, -9F);
+      finger2L.setRotationPoint(0F, 0F, 0F);
       finger2L.setTextureSize(128, 128);
       finger2L.mirror = true;
-      setRotation(finger2L, 0F, 0F, 0F);
+      setRotation(finger2L, 0F, 0F, 0.5235988F);
       shoulderL = new ModelRenderer(this, 0, 42);
       shoulderL.addBox(-1F, -1.5F, -1.5F, 3, 3, 3);
       shoulderL.setRotationPoint(4F, 0F, -9F);
@@ -208,109 +208,109 @@ public class ModelSmallHollowLizard  extends ModelBase
       setRotation(lowerarmL, -0.4537856F, 0F, 0F);
       lowerlegL = new ModelRenderer(this, 0, 74);
       lowerlegL.addBox(0F, 5F, -3.5F, 1, 1, 4);
-      lowerlegL.setRotationPoint(4F, 18F, 5F);
+      lowerlegL.setRotationPoint(0F, 0F, 0F);
       lowerlegL.setTextureSize(128, 128);
       lowerlegL.mirror = true;
-      setRotation(lowerlegL, 0.5934119F, 0F, -0.5235988F);
+      setRotation(lowerlegL, 0.8552113F, 0F, 0F);
       upperlegL = new ModelRenderer(this, 0, 61);
       upperlegL.addBox(-1F, -1.5F, -1.5F, 3, 5, 3);
-      upperlegL.setRotationPoint(4F, 18F, 5F);
+      upperlegL.setRotationPoint(4F, 0F, 5F);
       upperlegL.setTextureSize(128, 128);
       upperlegL.mirror = true;
       setRotation(upperlegL, -0.2617994F, 0F, -0.5235988F);
       midlegL = new ModelRenderer(this, 0, 69);
       midlegL.addBox(-0.5F, 1.5F, 1.5F, 2, 2, 3);
-      midlegL.setRotationPoint(4F, 18F, 5F);
+      midlegL.setRotationPoint(0F, 0F, 0F);
       midlegL.setTextureSize(128, 128);
       midlegL.mirror = true;
-      setRotation(midlegL, -0.2617994F, 0F, -0.5235988F);
+      setRotation(midlegL, 0F, 0F, 0F);
       toe1L = new ModelRenderer(this, 0, 55);
       toe1L.addBox(2F, 5F, -2F, 1, 1, 4);
-      toe1L.setRotationPoint(4F, 18F, 5F);
+      toe1L.setRotationPoint(0F, 0F, 0F);
       toe1L.setTextureSize(128, 128);
       toe1L.mirror = true;
       setRotation(toe1L, 0F, 0.5235988F, 0F);
       toe2L = new ModelRenderer(this, 0, 55);
       toe2L.addBox(3F, 5F, -4F, 1, 1, 4);
-      toe2L.setRotationPoint(4F, 18F, 5F);
+      toe2L.setRotationPoint(0F, 0F, 0F);
       toe2L.setTextureSize(128, 128);
       toe2L.mirror = true;
-      setRotation(toe2L, 0F, 0F, 0F);
+      setRotation(toe2L, -0.5934119F, 0F, 0.5235988F);
       toe3L = new ModelRenderer(this, 0, 55);
       toe3L.addBox(3.3F, 5F, -5.5F, 1, 1, 4);
-      toe3L.setRotationPoint(4F, 18F, 5F);
+      toe3L.setRotationPoint(0F, 0F, 0F);
       toe3L.setTextureSize(128, 128);
       toe3L.mirror = true;
       setRotation(toe3L, 0F, -0.5235988F, 0F);
       finger1R = new ModelRenderer(this, 0, 55);
       finger1R.addBox(-4F, 5F, -3F, 1, 1, 4);
-      finger1R.setRotationPoint(-4F, 18F, -9F);
+      finger1R.setRotationPoint(0F, 0F, 0F);
       finger1R.setTextureSize(128, 128);
       finger1R.mirror = true;
-      setRotation(finger1R, 0F, -0.5235988F, 0F);
+      setRotation(finger1R, 0F, -0.5235988F, -0.5235988F);
       finger3R = new ModelRenderer(this, 0, 55);
       finger3R.addBox(-3.3F, 5F, -6.5F, 1, 1, 4);
-      finger3R.setRotationPoint(-4F, 18F, -9F);
+      finger3R.setRotationPoint(0F, 0F, 0F);
       finger3R.setTextureSize(128, 128);
       finger3R.mirror = true;
-      setRotation(finger3R, 0F, 0.5235988F, 0F);
+      setRotation(finger3R, 0F, 0.5235988F, -0.5235988F);
       finger2R = new ModelRenderer(this, 0, 55);
       finger2R.addBox(-4F, 5F, -5F, 1, 1, 4);
-      finger2R.setRotationPoint(-4F, 18F, -9F);
+      finger2R.setRotationPoint(0F, 0F, 0F);
       finger2R.setTextureSize(128, 128);
       finger2R.mirror = true;
-      setRotation(finger2R, 0F, 0F, 0F);
+      setRotation(finger2R, 0F, 0F, -0.5235988F);
       shoulderR = new ModelRenderer(this, 0, 42);
       shoulderR.addBox(-2F, -1.5F, -1.5F, 3, 3, 3);
-      shoulderR.setRotationPoint(-4F, 18F, -9F);
+      shoulderR.setRotationPoint(-4F, 0F, -9F);
       shoulderR.setTextureSize(128, 128);
       shoulderR.mirror = true;
       setRotation(shoulderR, 0F, 0F, 0.5235988F);
       upperarmR = new ModelRenderer(this, 0, 48);
       upperarmR.addBox(-1.5F, 1.5F, -1F, 2, 2, 2);
-      upperarmR.setRotationPoint(-4F, 18F, -9F);
+      upperarmR.setRotationPoint(0F, 0F, 0F);
       upperarmR.setTextureSize(128, 128);
       upperarmR.mirror = true;
-      setRotation(upperarmR, 0F, 0F, 0.5235988F);
+      setRotation(upperarmR, 0F, 0F, 0F);
       lowerarmR = new ModelRenderer(this, 0, 53);
       lowerarmR.addBox(-1F, 3F, 1F, 1, 4, 1);
-      lowerarmR.setRotationPoint(-4F, 18F, -9F);
+      lowerarmR.setRotationPoint(0F, 0F, 0F);
       lowerarmR.setTextureSize(128, 128);
       lowerarmR.mirror = true;
-      setRotation(lowerarmR, -0.4537856F, 0F, 0.5235988F);
+      setRotation(lowerarmR, -0.4537856F, 0F, 0F);
       lowerlegR = new ModelRenderer(this, 0, 74);
       lowerlegR.addBox(-1F, 5F, -3.5F, 1, 1, 4);
-      lowerlegR.setRotationPoint(-4F, 18F, 5F);
+      lowerlegR.setRotationPoint(0F, 0F, 0F);
       lowerlegR.setTextureSize(128, 128);
       lowerlegR.mirror = true;
-      setRotation(lowerlegR, 0.5934119F, 0F, 0.5235988F);
+      setRotation(lowerlegR, 0.8552113F, 0F, 0F);
       upperlegR = new ModelRenderer(this, 0, 61);
       upperlegR.addBox(-2F, -1.5F, -1.5F, 3, 5, 3);
-      upperlegR.setRotationPoint(-4F, 18F, 5F);
+      upperlegR.setRotationPoint(-4F, 0F, 5F);
       upperlegR.setTextureSize(128, 128);
       upperlegR.mirror = true;
       setRotation(upperlegR, -0.2617994F, 0F, 0.5235988F);
       midlegR = new ModelRenderer(this, 0, 69);
       midlegR.addBox(-1.5F, 1.5F, 1.5F, 2, 2, 3);
-      midlegR.setRotationPoint(-4F, 18F, 5F);
+      midlegR.setRotationPoint(0F, 0F, 0F);
       midlegR.setTextureSize(128, 128);
       midlegR.mirror = true;
-      setRotation(midlegR, -0.2617994F, 0F, 0.5235988F);
+      setRotation(midlegR, 0F, 0F, 0F);
       toe1R = new ModelRenderer(this, 0, 55);
       toe1R.addBox(-3F, 5F, -2F, 1, 1, 4);
-      toe1R.setRotationPoint(-4F, 18F, 5F);
+      toe1R.setRotationPoint(0F, 0F, 0F);
       toe1R.setTextureSize(128, 128);
       toe1R.mirror = true;
       setRotation(toe1R, 0F, -0.5235988F, 0F);
       toe2R = new ModelRenderer(this, 0, 55);
       toe2R.addBox(-4F, 5F, -4F, 1, 1, 4);
-      toe2R.setRotationPoint(-4F, 18F, 5F);
+      toe2R.setRotationPoint(0F, 0F, 0F);
       toe2R.setTextureSize(128, 128);
       toe2R.mirror = true;
-      setRotation(toe2R, 0F, 0F, 0F);
+      setRotation(toe2R, -0.5934119F, 0F, -0.5235988F);
       toe3R = new ModelRenderer(this, 0, 55);
       toe3R.addBox(-4.3F, 5F, -5.5F, 1, 1, 4);
-      toe3R.setRotationPoint(-4F, 18F, 5F);
+      toe3R.setRotationPoint(0F, 0F, 0F);
       toe3R.setTextureSize(128, 128);
       toe3R.mirror = true;
       setRotation(toe3R, 0F, 0.5235988F, 0F);
@@ -318,6 +318,33 @@ public class ModelSmallHollowLizard  extends ModelBase
       body_1.addChild(shoulderL);
       shoulderL.addChild(upperarmL);
       upperarmL.addChild(lowerarmL);
+      body_1.addChild(shoulderR);
+      shoulderR.addChild(upperarmR);
+      upperarmR.addChild(lowerarmR);
+      
+      upperarmL.addChild(finger1L);
+      upperarmL.addChild(finger2L);
+      upperarmL.addChild(finger3L);
+      upperarmR.addChild(finger1R);
+      upperarmR.addChild(finger2R);
+      upperarmR.addChild(finger3R);
+      
+      
+      body2.addChild(upperlegL);
+      upperlegL.addChild(midlegL);
+      midlegL.addChild(lowerlegL);
+      body2.addChild(upperlegR);
+      upperlegR.addChild(midlegR);
+      midlegR.addChild(lowerlegR);
+      
+      lowerlegL.addChild(toe2L);
+      toe2L.addChild(toe1L);
+      toe2L.addChild(toe3L);
+      
+      lowerlegR.addChild(toe2R);
+      toe2R.addChild(toe1R);
+      toe2R.addChild(toe3R);
+      
       
 
       tail1.addChild(tail2);
@@ -347,30 +374,30 @@ public class ModelSmallHollowLizard  extends ModelBase
     tail1.render(f5);
     //tail2.render(f5);
     //tail3.render(f5);
-    finger1L.render(f5);
-    finger3L.render(f5);
-    finger2L.render(f5);
+    //finger1L.render(f5);
+    //finger3L.render(f5);
+    //finger2L.render(f5);
     //shoulderL.render(f5);
     //upperarmL.render(f5);
     //lowerarmL.render(f5);
-    lowerlegL.render(f5);
-    upperlegL.render(f5);
-    midlegL.render(f5);
-    toe1L.render(f5);
-    toe2L.render(f5);
-    toe3L.render(f5);
-    finger1R.render(f5);
-    finger3R.render(f5);
-    finger2R.render(f5);
-    shoulderR.render(f5);
-    upperarmR.render(f5);
-    lowerarmR.render(f5);
-    lowerlegR.render(f5);
-    upperlegR.render(f5);
-    midlegR.render(f5);
-    toe1R.render(f5);
-    toe2R.render(f5);
-    toe3R.render(f5);
+    //lowerlegL.render(f5);
+    //upperlegL.render(f5);
+    //midlegL.render(f5);
+    //toe1L.render(f5);
+    //toe2L.render(f5);
+    //toe3L.render(f5);
+    //finger1R.render(f5);
+    //finger3R.render(f5);
+    //finger2R.render(f5);
+    //shoulderR.render(f5);
+    //upperarmR.render(f5);
+    //lowerarmR.render(f5);
+    //lowerlegR.render(f5);
+    //upperlegR.render(f5);
+    //midlegR.render(f5);
+    //toe1R.render(f5);
+    //toe2R.render(f5);
+    //toe3R.render(f5);
     
     
     
@@ -387,13 +414,62 @@ public class ModelSmallHollowLizard  extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 
-    this.body_1.rotateAngleZ = MathHelper.sin(f * 0.3662F) * 0.2F * f1;
-    this.body2.rotateAngleZ = MathHelper.cos(f * 0.3662F) * 0.2F * f1;
+    
+    //Idle
+   
+    if(f1 < 0.00001)
+    {
+    	this.tail1.rotateAngleY = 0.05F*(MathHelper.cos(f2 * 0.06662F) );
+    	this.tail2.rotateAngleY = 0.05F*(MathHelper.cos(f2 * 0.06662F) ) ;
+    	this.tail3.rotateAngleY = 0.05F*(MathHelper.cos(f2 * 0.06662F) ) ;
+    	this.tail4.rotateAngleY = 0.05F*(MathHelper.cos(f2 * 0.06662F) ) ;
+    	
 
-    this.tail1.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
-    this.tail2.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
-    this.tail3.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
-    this.tail4.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
+    	this.tail1.rotateAngleX = -0.1F;
+    	this.tail2.rotateAngleX = -0.075F;
+    	this.tail3.rotateAngleX = -0.01F;
+    	this.tail4.rotateAngleX = 0F;
+    	
+
+    	this.body_1.rotateAngleZ = 0F;
+    	this.body2.rotateAngleZ = 0F;
+    }
+    
+    //ELSE
+    else
+    {
+    	
+
+    	this.tail1.rotateAngleX = 0F;
+    	this.tail2.rotateAngleX = 0F;
+    	this.tail3.rotateAngleX = 0F;
+    	this.tail4.rotateAngleX = 0F;
+    	
+    	this.body_1.rotateAngleZ = MathHelper.sin(f * 0.3662F) * 0.2F * f1;
+    	this.body2.rotateAngleZ = MathHelper.cos(f * 0.3662F) * 0.2F * f1;
+    
+    	this.tail1.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
+    	this.tail2.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
+    	this.tail3.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
+    	this.tail4.rotateAngleY = MathHelper.sin(f * 0.3662F) * 0.1F * f1;
+    
+
+    	this.shoulderL.rotateAngleX = MathHelper.sin(f * 0.3662F) * 0.3F * f1;
+    	this.upperarmL.rotateAngleX = MathHelper.sin(f * 0.3662F) * 0.2F * f1;
+    	this.lowerarmL.rotateAngleX = MathHelper.sin(f * 0.3662F) * 0.1F * f1 - 0.4537856F;
+    	this.shoulderR.rotateAngleX = -MathHelper.sin(f * 0.3662F) * 0.3F * f1;
+    	this.upperarmR.rotateAngleX = -MathHelper.sin(f * 0.3662F) * 0.2F * f1;
+    	this.lowerarmR.rotateAngleX = -MathHelper.sin(f * 0.3662F) * 0.1F * f1 - 0.4537856F;
+    
+    	
+    	this.upperlegL.rotateAngleX = MathHelper.cos(f * 0.3662F) * 0.3F * f1 - 0.2617994F;
+    	this.midlegL.rotateAngleX = MathHelper.cos(f * 0.3662F) * 0.2F * f1;
+    	this.lowerlegL.rotateAngleX = MathHelper.cos(f * 0.3662F) * 0.1F * f1 + 0.8552113F;
+    	this.upperlegR.rotateAngleX = -MathHelper.cos(f * 0.3662F) * 0.3F * f1 - 0.2617994F;
+    	this.midlegR.rotateAngleX = -MathHelper.cos(f * 0.3662F) * 0.2F * f1;
+    	this.lowerlegR.rotateAngleX = -MathHelper.cos(f * 0.3662F) * 0.1F * f1 + 0.8552113F;
+    }
+    
   }
 
 }

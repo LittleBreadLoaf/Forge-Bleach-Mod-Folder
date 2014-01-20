@@ -17,7 +17,7 @@ public class BleachSounds
 
 	public static String[] soundFiles = { "bowcharge.ogg", "bowfire.ogg", "fisherlaugh1.ogg", "fisherlaugh2.ogg", "fisherlaugh3.ogg", "hollowscream.ogg", "ore_hollow.ogg", "shunpo.ogg" };
 	public static String[] streamingFiles = { "asterisk.ogg", "NumberOne.ogg", "Escalon.ogg" };
-	public static String[] HuecoMundoMusic = { "calm4.ogg", "calm5.ogg", "calm6.ogg", "calm7.ogg" };
+	public static String[] HuecoMundoMusic = { "calm4.ogg", "calm5.ogg", "calm6.ogg", "calm7.ogg", "calm8.ogg" };
 	     
     
 	@ForgeSubscribe
