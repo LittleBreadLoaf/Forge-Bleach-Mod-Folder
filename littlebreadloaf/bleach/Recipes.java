@@ -117,6 +117,16 @@ public class Recipes
 					
 					'*', BleachItems.soulsteel, '#', quincyPendant.getItem()
 				});
+			
+			//Paper Lantern
+			GameRegistry.addRecipe(new ItemStack(BleachBlocks.paperLamp, 4), new Object[]{
+				" & ",
+				"&#&",
+				" & ",
+					
+					'&', BleachItems.soulcloth, '#', Block.torchWood
+				});
+			
 			//Hollow Book
 			GameRegistry.addRecipe(new ItemStack(BleachItems.hollowbook, 1), new Object[]{
 				" * ",

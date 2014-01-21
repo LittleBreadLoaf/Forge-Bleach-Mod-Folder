@@ -87,7 +87,7 @@ public class Entities
 		
 		
 		//Small Hollow Lizard
-		EntityRegistry.registerGlobalEntityID(EntitySmallHollowLizard.class, "SmallHollowLizard", EntityRegistry.findGlobalUniqueEntityId(), 0xB22222, 0xFA8072);
+		EntityRegistry.registerGlobalEntityID(EntitySmallHollowLizard.class, "SmallHollowLizard", EntityRegistry.findGlobalUniqueEntityId(), 0x8B4513, 0xB22222);
 		EntityRegistry.addSpawn(EntitySmallHollowLizard.class, 10, 1, 1, EnumCreatureType.creature, BleachBiomes.HuecoMundo);
 		
 		
@@ -107,7 +107,12 @@ public class Entities
 		
 		//Shinigami
 		EntityRegistry.registerGlobalEntityID(EntityShinigami.class, "Shinigami", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x677279);
-		EntityRegistry.addSpawn(EntityShinigami.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.desertHills});
+		EntityRegistry.addSpawn(EntityShinigami.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
+		
+		
+		//Shinigami
+		EntityRegistry.registerGlobalEntityID(EntityAshido.class, "Ashido", EntityRegistry.findGlobalUniqueEntityId(), 0x8B4513, 0x000000);
+		EntityRegistry.addSpawn(EntityAshido.class, 0, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.desert});
 
 				
 		//Arrows
@@ -140,6 +145,8 @@ public class Entities
 		LanguageRegistry.instance().addStringLocalization("entity.Fisher.name", "Grand Fisher");
 		LanguageRegistry.instance().addStringLocalization("entity.Decoy.name", "Decoy");
 		LanguageRegistry.instance().addStringLocalization("entity.Shinigami.name", "Shinigami");
+		LanguageRegistry.instance().addStringLocalization("entity.Ashido.name", "Ashido");
+		
 		
 		LanguageRegistry.instance().addStringLocalization("entity.EnergyArrow.name", "Energy Arrow");
 		LanguageRegistry.instance().addStringLocalization("entity.SeeleArrow.name", "Seeleschneider");

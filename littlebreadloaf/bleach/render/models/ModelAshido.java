@@ -4,6 +4,7 @@ package littlebreadloaf.bleach.render.models;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 public class ModelAshido extends ModelBase
 {
@@ -75,28 +76,24 @@ public class ModelAshido extends ModelBase
       rightarm.setTextureSize(64, 128);
       rightarm.mirror = true;
       setRotation(rightarm, 0F, 0F, 0F);
-      leftarm.mirror = true;
       leftarm = new ModelRenderer(this, 40, 16);
       leftarm.addBox(-1F, -2F, -2F, 4, 12, 4);
       leftarm.setRotationPoint(5F, 2F, 0F);
       leftarm.setTextureSize(64, 128);
       leftarm.mirror = true;
       setRotation(leftarm, 0F, 0F, 0F);
-      leftarm.mirror = false;
       rightleg = new ModelRenderer(this, 0, 16);
       rightleg.addBox(-2F, 0F, -2F, 4, 12, 4);
       rightleg.setRotationPoint(-2F, 12F, 0F);
       rightleg.setTextureSize(64, 128);
       rightleg.mirror = true;
       setRotation(rightleg, 0F, 0F, 0F);
-      leftleg.mirror = true;
       leftleg = new ModelRenderer(this, 0, 16);
       leftleg.addBox(-2F, 0F, -2F, 4, 12, 4);
       leftleg.setRotationPoint(2F, 12F, 0F);
       leftleg.setTextureSize(64, 128);
       leftleg.mirror = true;
       setRotation(leftleg, 0F, 0F, 0F);
-      leftleg.mirror = false;
       hairback = new ModelRenderer(this, 42, 74);
       hairback.addBox(-4.5F, -0.5F, 0.5F, 9, 16, 2);
       hairback.setRotationPoint(0F, 0F, 0F);
@@ -105,18 +102,16 @@ public class ModelAshido extends ModelBase
       setRotation(hairback, 0F, 0F, 0F);
       furarmR = new ModelRenderer(this, 16, 82);
       furarmR.addBox(-3.5F, -2.5F, -2.5F, 7, 8, 5);
-      furarmR.setRotationPoint(-5F, 2F, 0F);
+      furarmR.setRotationPoint(0F, 0F, 0F);
       furarmR.setTextureSize(64, 128);
       furarmR.mirror = true;
       setRotation(furarmR, 0F, 0F, 0F);
-      furarmL.mirror = true;
       furarmL = new ModelRenderer(this, 16, 82);
       furarmL.addBox(-3.5F, -2.5F, -2.5F, 7, 8, 5);
-      furarmL.setRotationPoint(5F, 2F, 0F);
+      furarmL.setRotationPoint(0F, 0F, 0F);
       furarmL.setTextureSize(64, 128);
       furarmL.mirror = true;
       setRotation(furarmL, 0F, 0F, 0F);
-      furarmL.mirror = false;
       head = new ModelRenderer(this, 0, 0);
       head.addBox(-4F, -8F, -4F, 8, 8, 8);
       head.setRotationPoint(0F, 0F, 0F);
@@ -177,30 +172,24 @@ public class ModelAshido extends ModelBase
       horn2R.setTextureSize(64, 128);
       horn2R.mirror = true;
       setRotation(horn2R, -0.6108652F, 0F, -0.1745329F);
-      horn1L.mirror = true;
       horn1L = new ModelRenderer(this, 56, 16);
       horn1L.addBox(1F, -13F, -4F, 1, 4, 1);
       horn1L.setRotationPoint(0F, 0F, 0F);
       horn1L.setTextureSize(64, 128);
       horn1L.mirror = true;
       setRotation(horn1L, -0.0785398F, 0F, 0.1745329F);
-      horn1L.mirror = false;
-      horn2L.mirror = true;
       horn2L = new ModelRenderer(this, 56, 21);
       horn2L.addBox(1F, -12F, -10F, 1, 3, 1);
       horn2L.setRotationPoint(0F, 0F, 0F);
       horn2L.setTextureSize(64, 128);
       horn2L.mirror = true;
       setRotation(horn2L, -0.6108652F, 0F, 0.1745329F);
-      horn2L.mirror = false;
-      horn3L.mirror = true;
       horn3L = new ModelRenderer(this, 56, 25);
       horn3L.addBox(1F, -18F, -1.5F, 1, 3, 1);
       horn3L.setRotationPoint(0F, 0F, 0F);
       horn3L.setTextureSize(64, 128);
       horn3L.mirror = true;
       setRotation(horn3L, 0F, 0F, 0.1745329F);
-      horn3L.mirror = false;
       hair2 = new ModelRenderer(this, 0, 38);
       hair2.addBox(-4.5F, -11.5F, -2F, 9, 3, 3);
       hair2.setRotationPoint(0F, 0F, 0F);
@@ -219,46 +208,36 @@ public class ModelAshido extends ModelBase
       hair3.setTextureSize(64, 128);
       hair3.mirror = true;
       setRotation(hair3, -0.7853982F, 0F, 0F);
-      hair3L.mirror = true;
       hair3L = new ModelRenderer(this, 30, 67);
       hair3L.addBox(3F, 0F, -3F, 3, 3, 4);
       hair3L.setRotationPoint(0F, 0F, 0F);
       hair3L.setTextureSize(64, 128);
       hair3L.mirror = true;
       setRotation(hair3L, 0F, 0F, -0.5934119F);
-      hair3L.mirror = false;
-      hair1L.mirror = true;
       hair1L = new ModelRenderer(this, 30, 55);
       hair1L.addBox(6F, -3F, 1F, 2, 2, 3);
       hair1L.setRotationPoint(0F, 0F, 0F);
       hair1L.setTextureSize(64, 128);
       hair1L.mirror = true;
       setRotation(hair1L, 0F, 0F, -0.5934119F);
-      hair1L.mirror = false;
-      hair2L.mirror = true;
       hair2L = new ModelRenderer(this, 30, 60);
       hair2L.addBox(4F, -2F, -1F, 3, 3, 4);
       hair2L.setRotationPoint(0F, 0F, 0F);
       hair2L.setTextureSize(64, 128);
       hair2L.mirror = true;
       setRotation(hair2L, 0F, 0F, -0.5934119F);
-      hair2L.mirror = false;
-      hair6L.mirror = true;
       hair6L = new ModelRenderer(this, 30, 79);
       hair6L.addBox(4.5F, -4.5F, -3F, 1, 1, 2);
       hair6L.setRotationPoint(0F, 0F, 0F);
       hair6L.setTextureSize(64, 128);
       hair6L.mirror = true;
       setRotation(hair6L, 1.291544F, 0F, 0F);
-      hair6L.mirror = false;
-      hair5L.mirror = true;
       hair5L = new ModelRenderer(this, 30, 74);
       hair5L.addBox(4F, -4F, -3F, 2, 2, 3);
       hair5L.setRotationPoint(0F, 0F, 0F);
       hair5L.setTextureSize(64, 128);
       hair5L.mirror = true;
       setRotation(hair5L, 0.7853982F, 0F, 0F);
-      hair5L.mirror = false;
       hair4 = new ModelRenderer(this, 0, 55);
       hair4.addBox(-5.5F, -7F, 2F, 11, 10, 4);
       hair4.setRotationPoint(0F, 0F, 0F);
@@ -315,19 +294,19 @@ public class ModelAshido extends ModelBase
       setRotation(hair6R, 1.291544F, 0F, 0F);
       hollowmasksheild1 = new ModelRenderer(this, 0, 86);
       hollowmasksheild1.addBox(2F, -9F, -3F, 2, 7, 6);
-      hollowmasksheild1.setRotationPoint(6F, 9F, 0F);
+      hollowmasksheild1.setRotationPoint(1F, 7F, 0F);
       hollowmasksheild1.setTextureSize(64, 128);
       hollowmasksheild1.mirror = true;
       setRotation(hollowmasksheild1, 0F, 0F, -0.1570796F);
       hollow_mask_sheild3 = new ModelRenderer(this, 0, 112);
       hollow_mask_sheild3.addBox(1.5F, 1F, -3F, 2, 6, 6);
-      hollow_mask_sheild3.setRotationPoint(6F, 9F, 0F);
+      hollow_mask_sheild3.setRotationPoint(1F, 7F, 0F);
       hollow_mask_sheild3.setTextureSize(64, 128);
       hollow_mask_sheild3.mirror = true;
       setRotation(hollow_mask_sheild3, 0F, 0F, 0.2268928F);
       hollow_mask_sheild2 = new ModelRenderer(this, 0, 99);
       hollow_mask_sheild2.addBox(1.5F, -3F, -4F, 2, 5, 8);
-      hollow_mask_sheild2.setRotationPoint(6F, 9F, 0F);
+      hollow_mask_sheild2.setRotationPoint(1F, 7F, 0F);
       hollow_mask_sheild2.setTextureSize(64, 128);
       hollow_mask_sheild2.mirror = true;
       setRotation(hollow_mask_sheild2, 0F, 0F, 0.0523599F);
@@ -379,6 +358,13 @@ public class ModelAshido extends ModelBase
       hornMaskBack3.setTextureSize(64, 128);
       hornMaskBack3.mirror = true;
       setRotation(hornMaskBack3, -0.1396263F, 0.5585054F, 0F);
+      
+      leftarm.addChild(furarmL);
+      rightarm.addChild(furarmR);
+      
+      leftarm.addChild(hollowmasksheild1);
+      leftarm.addChild(hollow_mask_sheild2);
+      leftarm.addChild(hollow_mask_sheild3);
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -391,15 +377,15 @@ public class ModelAshido extends ModelBase
     rightleg.render(f5);
     leftleg.render(f5);
     hairback.render(f5);
-    furarmR.render(f5);
-    furarmL.render(f5);
+    //furarmR.render(f5);
+    //furarmL.render(f5);
     head.render(f5);
     mask3.render(f5);
     mask1.render(f5);
     eyeL.render(f5);
     mask5.render(f5);
     mask2.render(f5);
-    eyeL.render(f5);
+    eyeR.render(f5);
     horn3R.render(f5);
     horn1R.render(f5);
     horn2R.render(f5);
@@ -423,9 +409,9 @@ public class ModelAshido extends ModelBase
     hair3R.render(f5);
     hair5R.render(f5);
     hair6R.render(f5);
-    hollowmasksheild1.render(f5);
-    hollow_mask_sheild3.render(f5);
-    hollow_mask_sheild2.render(f5);
+    //hollowmasksheild1.render(f5);
+    //hollow_mask_sheild3.render(f5);
+    //hollow_mask_sheild2.render(f5);
     skullmask2.render(f5);
     skullmask2.render(f5);
     skullmask1.render(f5);
@@ -446,6 +432,16 @@ public class ModelAshido extends ModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    
+    
+    this.rightarm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
+    this.leftarm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
+    this.rightarm.rotateAngleZ = 0.0F;
+    this.leftarm.rotateAngleZ = 0.0F;
+    this.rightleg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+    this.leftleg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+    this.rightleg.rotateAngleY = 0.0F;
+    this.leftleg.rotateAngleY = 0.0F;
   }
 
 }

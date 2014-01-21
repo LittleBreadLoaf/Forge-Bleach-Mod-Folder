@@ -1,5 +1,6 @@
 package littlebreadloaf.bleach.render.entity;
 
+import littlebreadloaf.bleach.entities.EntityAshido;
 import littlebreadloaf.bleach.entities.EntityDecoy;
 import littlebreadloaf.bleach.entities.EntityFisher;
 import littlebreadloaf.bleach.entities.EntityHollowBat;
@@ -15,6 +16,7 @@ import littlebreadloaf.bleach.entities.EntityMenosGrande;
 import littlebreadloaf.bleach.entities.EntityShinigami;
 import littlebreadloaf.bleach.entities.EntitySmallHollowLizard;
 import littlebreadloaf.bleach.entities.EntityWhole;
+import littlebreadloaf.bleach.render.models.ModelAshido;
 import littlebreadloaf.bleach.render.models.ModelDecoy;
 import littlebreadloaf.bleach.render.models.ModelFisher;
 import littlebreadloaf.bleach.render.models.ModelHollowBat;
@@ -66,6 +68,8 @@ public class Renders
 		RenderingRegistry.registerEntityRenderingHandler(EntityDecoy.class, new RenderDecoy(new ModelDecoy(), 0.3F));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityShinigami.class, new RenderShinigami(new ModelBiped(), 0.3F));
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityAshido.class, new RenderAshido(new ModelAshido(), 0.3F));
 	}
 
 }

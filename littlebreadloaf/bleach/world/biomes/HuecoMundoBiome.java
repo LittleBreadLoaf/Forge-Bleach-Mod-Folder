@@ -12,7 +12,7 @@ public class HuecoMundoBiome extends BiomeGenBase
 
 	public HuecoMundoBiome(int id)
 	{
-		super(id, true);
+		super(id);
         this.theBiomeDecorator = new HuecoMundoBiomeDecorator(this);
 		this.setBiomeName("Hueco Mundo");
 		this.setDisableRain();
