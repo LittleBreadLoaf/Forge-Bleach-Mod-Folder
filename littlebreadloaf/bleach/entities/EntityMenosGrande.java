@@ -362,9 +362,18 @@ public class EntityMenosGrande extends EntityMob
 					props.addPoints(rand.nextInt(8) + 1, 1);
 				}
 			}
+			
+				  	if(rand.nextInt(50) == 0) 
+				  	{ 
+				  		int var2 = BleachItems.recordNumberOne.itemID; 
+				  		this.dropItem(var2, 1); 
+				  }
+		  
+			  
 
 		}
 	}
+	
 
 	public int getChargingProgress()
 	{

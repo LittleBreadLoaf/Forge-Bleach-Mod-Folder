@@ -226,6 +226,11 @@ public class EntityFisher extends EntityMob
 			}
 
 		}
+		if(rand.nextInt(50) == 0) 
+	  	{ 
+	  		int var2 = BleachItems.recordAsterisk.itemID; 
+	  		this.dropItem(var2, 1); 
+	  }
 	}
 
 }

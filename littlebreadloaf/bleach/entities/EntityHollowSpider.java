@@ -58,7 +58,7 @@ public class EntityHollowSpider extends EntityMob
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWhole.class, 0, false));
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityShinigami.class, 0, false));
 		this.experienceValue = 15;
-		this.setSize(1.5F, 0.6F);
+		this.setSize(2.0F, 1.0F);
 
 	}
 

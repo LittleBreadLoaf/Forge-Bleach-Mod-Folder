@@ -120,11 +120,11 @@ public class Recipes
 			
 			//Paper Lantern
 			GameRegistry.addRecipe(new ItemStack(BleachBlocks.paperLamp, 4), new Object[]{
-				" & ",
+				"***",
 				"&#&",
-				" & ",
+				"***",
 					
-					'&', BleachItems.soulcloth, '#', Block.torchWood
+					'&', BleachItems.soulcloth, '#', Block.torchWood, '*', Item.paper
 				});
 			
 			//Hollow Book

@@ -262,21 +262,26 @@ public class EntityShinigami extends EntityMob
 		super.readEntityFromNBT(par1NBTTagCompound);
 		this.setTexture(par1NBTTagCompound.getInteger("Texture"));
 	}
-	/**
-	 * Called when the mob's health reaches 0.
-	 * 
-	 * public void onDeath(DamageSource par1DamageSource) {
-	 * super.onDeath(par1DamageSource);
-	 * 
-	 * if (par1DamageSource.getEntity() instanceof EntityPlayer) { EntityPlayer
-	 * var7 = (EntityPlayer)par1DamageSource.getEntity(); ItemStack var9 =
-	 * var7.inventory.armorInventory[3]; if(var9.itemID ==
-	 * mod_Reiatsu.HollowHelmet.itemID && rand.nextInt(20) == 0) { int var2 =
-	 * mod_Reiatsu.Escalon.itemID; this.dropItem(var2, 1); }
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
+
+	  
+	  
+	  public void onDeath(DamageSource par1DamageSource) 
+	  {
+		  super.onDeath(par1DamageSource);
+	  
+		  if (par1DamageSource.getEntity() instanceof EntityPlayer) 
+		  {
+			  	EntityPlayer var7 = (EntityPlayer)par1DamageSource.getEntity(); 
+			  	ItemStack var9 = var7.inventory.armorInventory[3]; 
+			  	if(var9.itemID == Armor.HollowHelmet.itemID && rand.nextInt(20) == 0) 
+			  	{ 
+			  		int var2 = BleachItems.recordEscalon.itemID; 
+			  		this.dropItem(var2, 1); 
+			  }
+	  
+		  }
+	  
+	  }
+	 
 
 }
