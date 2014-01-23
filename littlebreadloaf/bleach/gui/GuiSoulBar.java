@@ -88,13 +88,17 @@ public class GuiSoulBar extends Gui
             boolean flag1 = false;
             int i2 =  1953999;
             String s;
-            if (props.getIsShinigami())
+            if (props.getFaction() == 1)
             {
             	s = "Shinigami";
             }
-            else
+            else if (props.getFaction() == 2)
             {
             	s = "Quincy";
+            }
+            else
+            {
+            	s = "Human";
             }
             int l2 = (var6 - var8.getStringWidth(s)) / 2;
             int k2 = 5;

@@ -18,7 +18,7 @@ public class CommandSetFaction extends CommandBase
 
 	public int getRequiredPermissionLevel()
 	{
-		return 0;
+		return 1;
 	}
 
 	public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr)
@@ -34,12 +34,12 @@ public class CommandSetFaction extends CommandBase
             	 if(var3 == 0)
          		{
          			var4.addChatMessage("Changing Faction to Shinigami");
-         			props.setIsShinigami(true);
+         			props.setFaction(1);;
          		}
             	 if(var3 == 1)
           		{
          			var4.addChatMessage("Changing Faction to Quincy");
-         			props.setIsShinigami(false);
+         			props.setFaction(2);;
           		}
             	
         }

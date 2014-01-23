@@ -61,14 +61,15 @@ public class ItemReiatsu extends Item
 		{
 			ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 			--itemstack.stackSize;
-			if(props.getIsShinigami())
-			{
-				props.replenishEnergy(10);
-			}
-			else if(!props.getIsShinigami())
+			if(props.getFaction() == 2)
 			{
 				props.replenishEnergy(25);
 			}
+			else 
+			{
+				props.replenishEnergy(10);
+			}
+			
 			world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F); 
 			
 		}

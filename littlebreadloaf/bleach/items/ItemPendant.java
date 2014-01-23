@@ -88,13 +88,13 @@ public class ItemPendant extends Item
     {
 
 		ExtendedPlayer props = (ExtendedPlayer) par3EntityPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-		if( par1ItemStack.getItemDamage() == 0 && !par3EntityPlayer.worldObj.isRemote && props.getCurrentEnergy() >= (float)10 / (float)props.getCurrentCap() && !props.getIsShinigami())
+		if( par1ItemStack.getItemDamage() == 0 && !par3EntityPlayer.worldObj.isRemote && props.getCurrentEnergy() >= (float)10 / (float)props.getCurrentCap() && props.getFaction() == 2)
 		{
 			props.consumeEnergy(10);
 	    	par1ItemStack = new ItemStack(BleachItems.quincybow, 1);
 		}
 		
-		else if( par1ItemStack.getItemDamage() == 1 && !par3EntityPlayer.worldObj.isRemote && props.getCurrentEnergy() >= (float)20 / (float)props.getCurrentCap() && !props.getIsShinigami())
+		else if( par1ItemStack.getItemDamage() == 1 && !par3EntityPlayer.worldObj.isRemote && props.getCurrentEnergy() >= (float)20 / (float)props.getCurrentCap() && props.getFaction() == 2)
 		{
 			props.consumeEnergy(20);
 	    	par1ItemStack = new ItemStack(BleachItems.quincyweb, 1);

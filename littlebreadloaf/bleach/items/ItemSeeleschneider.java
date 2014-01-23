@@ -181,7 +181,7 @@ public class ItemSeeleschneider extends Item
 			}
 
 			float damage = this.damageBoost + this.sandalboost + this.pantboost + this.robeboost;
-			if (damage > 0 && !props.getIsShinigami() && var33.getItemDamage() == 1)
+			if (damage > 0 && props.getFaction() == 2 && var33.getItemDamage() == 1)
 			{
 				par2EntityLivingBase.setHealth(par2EntityLivingBase.getHealth() - damage);
 			}

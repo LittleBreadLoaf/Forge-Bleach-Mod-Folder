@@ -149,7 +149,7 @@ public class ServerTickHandler implements ITickHandler
 					armorBonus += 1;
 				}
 			}
-			if(props.getIsShinigami())
+			if(props.getFaction() == 1)
 			{
 				armorBonus = (int)(armorBonus * 1.5);
 			}

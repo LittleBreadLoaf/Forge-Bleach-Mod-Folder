@@ -161,13 +161,13 @@ public class ItemQuincyBow extends Item
         {
             return event.result;
         }
-        if(par3EntityPlayer.inventory.hasItemStack(new ItemStack(BleachItems.seele, 1, 1)) && !props.getIsShinigami())
+        if(par3EntityPlayer.inventory.hasItemStack(new ItemStack(BleachItems.seele, 1, 1)) && props.getFaction() == 2)
         {
         	par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
         	this.isSeele = true;
             par2World.playSoundAtEntity(par3EntityPlayer, "lblbm:bowcharge", 0.4F, 1.0F);
         }
-        else if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()) && !props.getIsShinigami())
+        else if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()) && props.getFaction() == 2)
         {
             par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
             this.isSeele = false;

@@ -58,7 +58,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	private boolean validFlash = true;
 	private int stickTimer = 60;
 	
-	private boolean isShinigami = true;
+	private int faction = 0;
 	
 	private int Mask = rand.nextInt(4);
 	private int MaskLines = rand.nextInt(3);
@@ -109,7 +109,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
         nbt.setFloat("MaskXP", this.MaskXP);
         nbt.setInteger("MaskLevel", this.MaskLevel);
         
-        nbt.setBoolean("Shinigami", this.isShinigami);
+        nbt.setInteger("Faction", this.faction);
 	}
 	
 	@Override
@@ -141,7 +141,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.MaskXP = nbt.getFloat("MaskXP");
 		this.MaskLevel = nbt.getInteger("MaskLevel");
 		
-		this.isShinigami = nbt.getBoolean("Shinigami");
+		this.faction = nbt.getInteger("Faction");
 	}
 	
 	
@@ -181,7 +181,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 			outputStream.writeFloat(this.MaskTime);
 			outputStream.writeInt(this.MaskLevel);
 			outputStream.writeInt(this.MaskColor);
-			outputStream.writeBoolean(this.isShinigami);
+			outputStream.writeInt(this.faction);
 			outputStream.writeBoolean(this.validFlash);
 			outputStream.writeInt(this.stickTimer);
 		} catch(Exception ex){
@@ -309,9 +309,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.MaskColor = var1;	
 		this.syncExtendedProperties();
 	}
-	public void setIsShinigami(boolean var1)
+	public void setFaction(int var1)
 	{
-		this.isShinigami = var1;
+		this.faction = var1;
 		this.syncExtendedProperties();
 	}
 	public void setValidFlash(boolean var1)
@@ -594,9 +594,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		return this.MaskLevel;
 	}
-	public boolean getIsShinigami()
+	public int getFaction()
 	{
-		return this.isShinigami;
+		return this.faction;
 	}
 	public boolean getValidFlash()
 	{
@@ -811,12 +811,12 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 			ItemStack var9 = player.inventory.armorInventory[0];
 	        ItemStack var10 = player.inventory.armorInventory[1];
 	        ItemStack var11 = player.inventory.armorInventory[2];
-			if(this.isShinigami && var9 != null && var9.itemID == Armor.Sandals.itemID && var10 != null && var10.itemID == Armor.ShiniPants.itemID && var11 != null && var11.itemID == Armor.ShiniRobe.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
+			if(this.faction == 1 && var9 != null && var9.itemID == Armor.Sandals.itemID && var10 != null && var10.itemID == Armor.ShiniPants.itemID && var11 != null && var11.itemID == Armor.ShiniRobe.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
 			{ 
 	
 				this.movePlayer();
 			}
-			else if(!this.isShinigami && var9 != null && var9.itemID == Armor.QuincyShoes.itemID && var10 != null && var10.itemID == Armor.QuincyPants.itemID && var11 != null && var11.itemID == Armor.QuincyRobe.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
+			else if(this.faction == 2 && var9 != null && var9.itemID == Armor.QuincyShoes.itemID && var10 != null && var10.itemID == Armor.QuincyPants.itemID && var11 != null && var11.itemID == Armor.QuincyRobe.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
 			{ 
 				this.movePlayer();
 			}

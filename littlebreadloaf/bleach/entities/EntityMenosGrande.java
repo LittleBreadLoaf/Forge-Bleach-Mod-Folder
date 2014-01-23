@@ -354,7 +354,7 @@ public class EntityMenosGrande extends EntityMob
 		if (par1DamageSource.getEntity() instanceof EntityPlayer)
 		{
 			ExtendedPlayer props = (ExtendedPlayer) this.attackingPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-			if (props.getIsShinigami() && this.attackingPlayer.inventory.getCurrentItem() != null
+			if (props.getFaction() == 1 && this.attackingPlayer.inventory.getCurrentItem() != null
 					&& this.attackingPlayer.inventory.getCurrentItem().itemID == BleachItems.zanpakuto.itemID && props.getZTotal() < 376)
 			{
 				for (int i = 0; i < 25; i++)

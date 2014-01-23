@@ -28,6 +28,7 @@ public class GuiHandler implements IGuiHandler
 			default: return null;
 			case 0: return new GuiZanpakuto();
 			case 1: return new GuiHollowBook(player);
+			case 2: return new GuiFaction(player);
 		}
 	}
 }

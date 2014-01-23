@@ -1,5 +1,6 @@
 package littlebreadloaf.bleach.events;
 
+import cpw.mods.fml.common.network.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import littlebreadloaf.bleach.BleachMod;
@@ -69,6 +70,16 @@ public class DataHandler
 			if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getZTex() == 5)
 			{
 				((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).randomTexture();
+			}
+			
+			
+			
+			
+			if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getFaction() == 0)
+			{
+				EntityPlayer player = (EntityPlayer)event.entity;
+				FMLNetworkHandler.openGui(player, BleachMod.instance, 2, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+	        	
 			}
 		}
 		

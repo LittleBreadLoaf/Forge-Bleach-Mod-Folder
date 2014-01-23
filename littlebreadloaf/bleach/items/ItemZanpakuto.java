@@ -190,7 +190,7 @@ public class ItemZanpakuto extends Item
         	damageBoost = 0;
         }
         float damage = this.damageBoost + this.sandalboost + this.pantboost + this.robeboost;
-        if(damage > 0 && props.getIsShinigami())
+        if(damage > 0 && props.getFaction() == 1)
         {
             par2EntityLivingBase.setHealth(par2EntityLivingBase.getHealth() - damage);
         }
@@ -278,7 +278,7 @@ public class ItemZanpakuto extends Item
     public void onUsingItemTick(ItemStack stack, EntityPlayer player, int count)
     {
 	ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-	  if (props.getCurrentCap() >= 200 &&  props.getPoints(9) >= 400 && stack.hasDisplayName() && stack.getDisplayName().equals(props.getZName()) && props.getIsShinigami())
+	  if (props.getCurrentCap() >= 200 &&  props.getPoints(9) >= 400 && stack.hasDisplayName() && stack.getDisplayName().equals(props.getZName()) && props.getFaction() == 1)
       {
 		  double var2 = player.posX;
 	    	double var3 = player.posY;
@@ -363,7 +363,7 @@ public class ItemZanpakuto extends Item
          }
 
      
-        if (props.getCurrentCap() >= 200 && f == 1.0F && props.getPoints(9) >= 400 && par1ItemStack.hasDisplayName() && par1ItemStack.getDisplayName().equals(props.getZName()) && props.getIsShinigami())
+        if (props.getCurrentCap() >= 200 && f == 1.0F && props.getPoints(9) >= 400 && par1ItemStack.hasDisplayName() && par1ItemStack.getDisplayName().equals(props.getZName()) && props.getFaction() == 1)
         {
            
                 if(!par2World.isRemote)

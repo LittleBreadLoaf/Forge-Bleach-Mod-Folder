@@ -355,7 +355,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 								}
 
 								damageboost = 3;
-								if (!props.getIsShinigami())
+								if (props.getFaction() == 2)
 								{
 									double spirit = (double) (props.getCurrentCap()) * (double) (props.getCurrentEnergy()) / 100;
 									double ddamage = this.damageboost + this.robeboost + this.sandalboost + this.pantboost + spirit;
@@ -374,7 +374,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 								}
 
 								damageboost = 0;
-								if (!props.getIsShinigami())
+								if (props.getFaction() == 2)
 								{
 									double spirit = (double) (props.getCurrentCap()) * (double) (props.getCurrentEnergy()) / 100;
 									double ddamage = this.damageboost + this.robeboost + this.sandalboost + this.pantboost + spirit;

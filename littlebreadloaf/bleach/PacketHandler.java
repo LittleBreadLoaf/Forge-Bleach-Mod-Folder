@@ -123,7 +123,7 @@ public class PacketHandler implements IPacketHandler
 			props.setMaskTime(inputStream.readFloat());
 			props.setMaskLevel(inputStream.readInt());
 			props.setMaskColor(inputStream.readInt());
-			props.setIsShinigami(inputStream.readBoolean());
+			props.setFaction(inputStream.readInt());
 			props.setValidFlash(inputStream.readBoolean());
 			props.setStickTimer(inputStream.readInt());
 		} catch (IOException e) {
