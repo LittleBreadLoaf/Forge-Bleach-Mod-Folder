@@ -12,6 +12,7 @@ import littlebreadloaf.bleach.entities.EntityHollowWolf;
 import littlebreadloaf.bleach.entities.EntityWhole;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.proxies.CommonProxy;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -66,7 +67,9 @@ public class DataHandler
 			{
 				((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).loadNBTData(playerData);
 			}
+			
 			((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).syncExtendedProperties();
+			
 			if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getZTex() == 5)
 			{
 				((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).randomTexture();
@@ -101,6 +104,8 @@ public class DataHandler
 			proxy.storeEntityData(((EntityPlayer)event.entity).username, playerData);
 		}
 	}
+	
+	
 	@SideOnly(Side.CLIENT)
 	@ForgeSubscribe
 	public void onLivingUpdateEvent(LivingUpdateEvent event)
@@ -382,7 +387,10 @@ public class DataHandler
 		            {
 	            		for(int k = -2;k<=2;++k)
 	    	            {
-	        	            event.entityPlayer.worldObj.setBlockToAir(event.x+i, event.y+k, event.z+j);
+	            			if(event.entityPlayer.worldObj.getBlockId(event.x+i, event.y+k, event.z+j) != Block.bedrock.blockID)
+	            			{
+	            				event.entityPlayer.worldObj.setBlockToAir(event.x+i, event.y+k, event.z+j);
+	            			}
 	    	            }
 		            }
 	            }
