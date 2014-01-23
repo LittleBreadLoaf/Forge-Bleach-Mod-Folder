@@ -61,12 +61,51 @@ public class BlockSeeleSchneider extends BleachBlockContainer
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
 	{
-		if(player.getCurrentEquippedItem() == null)
+		if (player.getCurrentEquippedItem() == null)
 		{
 			this.dropBlockAsItem(world, x, y, z, 1, 0);
 			world.setBlockToAir(x, y, z);
 		}
 		return false;
+	}
+
+	/**
+	 * Called on server worlds only when the block is about to be replaced by a
+	 * different block or the same block with a different metadata value. Args:
+	 * world, x, y, z, old metadata
+	 */
+	public void onBlockPreDestroy(World world, int i, int j, int k, int meta)
+	{
+		TileSeeleSchneider tile = (TileSeeleSchneider) world.getBlockTileEntity(i, j, k);
+
+		int x, y, z;
+		if (tile.isMain)
+		{
+			for (int var = 0; var < TileSeeleSchneider.magicSquare.size(); var++)
+			{
+				x = TileSeeleSchneider.magicSquare.get(var).posX;
+				y = TileSeeleSchneider.magicSquare.get(var).posY;
+				z = TileSeeleSchneider.magicSquare.get(var).posZ;
+				if (x == i && y == j && z == k)
+				{
+					TileSeeleSchneider.magicSquare.remove(var);
+				}
+			}
+		} else
+		{
+			tile = tile.getMainBlockTile();
+			
+			for (int var = 0; var < TileSeeleSchneider.magicSquare.size(); var++)
+			{
+				x = TileSeeleSchneider.magicSquare.get(var).posX;
+				y = TileSeeleSchneider.magicSquare.get(var).posY;
+				z = TileSeeleSchneider.magicSquare.get(var).posZ;
+				if (x == tile.xCoord && y == tile.yCoord && z == tile.zCoord)
+				{
+					TileSeeleSchneider.magicSquare.remove(var);
+				}
+			}
+		}
 	}
 
 	/**

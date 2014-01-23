@@ -9,6 +9,7 @@ import littlebreadloaf.bleach.commands.CommandSetSpirit;
 import littlebreadloaf.bleach.commands.CommandSetType;
 import littlebreadloaf.bleach.commands.CommandSpirit;
 import littlebreadloaf.bleach.entities.Entities;
+import littlebreadloaf.bleach.events.BleachEvents;
 import littlebreadloaf.bleach.events.DataHandler;
 import littlebreadloaf.bleach.extras.OreGenerator;
 import littlebreadloaf.bleach.gui.GuiHandler;
@@ -91,6 +92,7 @@ public class BleachMod
 		GameRegistry.registerWorldGenerator(new OreGenerator());
 
 		MinecraftForge.EVENT_BUS.register(new DataHandler());
+		MinecraftForge.EVENT_BUS.register(new BleachEvents());
 
 		GameRegistry.registerTileEntity(TileSphereLamp.class, "TileSphereLamp");
 		GameRegistry.registerTileEntity(TileLantern.class, "TileLantern");
