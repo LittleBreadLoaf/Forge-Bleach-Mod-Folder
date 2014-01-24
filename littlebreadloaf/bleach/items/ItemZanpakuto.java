@@ -24,6 +24,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
@@ -36,7 +37,7 @@ import cpw.mods.fml.common.network.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemZanpakuto extends Item
+public class ItemZanpakuto extends ItemSword
 {
     private float weaponDamage;
     private final EnumToolMaterial toolMaterial;
@@ -49,7 +50,7 @@ public class ItemZanpakuto extends Item
     
     public ItemZanpakuto(int par1, EnumToolMaterial par2EnumToolReiatsu)
     {
-        super(par1);
+        super(par1, par2EnumToolReiatsu);
         this.toolMaterial = par2EnumToolReiatsu;
         this.maxStackSize = 1;
         this.setMaxDamage(par2EnumToolReiatsu.getMaxUses());

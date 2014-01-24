@@ -60,33 +60,36 @@ public class DataHandler
 	@ForgeSubscribe
 	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{
-		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
+		if(event.entity instanceof EntityPlayer)
 		{
-			NBTTagCompound playerData = proxy.getEntityData(((EntityPlayer)event.entity).username);
-			if(playerData != null)
+			if (!event.entity.worldObj.isRemote) 
 			{
-				((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).loadNBTData(playerData);
+				NBTTagCompound playerData = proxy.getEntityData(((EntityPlayer)event.entity).username);
+				if(playerData != null)
+				{
+					((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).loadNBTData(playerData);
+				}
+			
+				((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).syncExtendedProperties();
+			
+				if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getZTex() == 5)
+				{
+					((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).randomTexture();
+				}
+			
+			
+			
+			
+			
 			}
-			
-			((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).syncExtendedProperties();
-			
-			if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getZTex() == 5)
-			{
-				((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).randomTexture();
-			}
-			
-			
-			
-			
+		
 			if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getFaction() == 0)
 			{
 				EntityPlayer player = (EntityPlayer)event.entity;
 				FMLNetworkHandler.openGui(player, BleachMod.instance, 2, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
-	        	
+        	
 			}
 		}
-		
-	
 		
 		
 	}
