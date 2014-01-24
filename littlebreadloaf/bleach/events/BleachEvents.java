@@ -33,10 +33,15 @@ public class BleachEvents
 			z = TileSeeleSchneider.magicSquare.get(i).posZ;
 			
 			tile = (TileSeeleSchneider) entity.worldObj.getBlockTileEntity(x, y, z);
+			if(tile == null)
+			{
+				TileSeeleSchneider.magicSquare.remove(i);
+				return false;
+			}
 			side = tile.side;
 			
-			if(entity.posX > x && entity.posX < x + side &&
-			entity.posZ > z && entity.posZ < z + side &&
+			if(entity.posX > x + 0.5F && entity.posX < x + side - 0.5F &&
+			entity.posZ > z + 0.5F && entity.posZ < z + side - 0.5F &&
 			entity.posY >= y)
 			{
 				FMLLog.info("[Bleach mod] event");

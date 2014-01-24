@@ -94,7 +94,7 @@ public class BlockSeeleSchneider extends BleachBlockContainer
 		} else
 		{
 			tile = tile.getMainBlockTile();
-			
+			if(tile == null) return;
 			for (int var = 0; var < TileSeeleSchneider.magicSquare.size(); var++)
 			{
 				x = TileSeeleSchneider.magicSquare.get(var).posX;

@@ -20,7 +20,7 @@ public class TileSeeleSchneider extends TileBleach
 	public boolean isMain = false;
 	public int side = -1;
 
-	public ChunkCoordinates mainBlock = null;
+	public ChunkCoordinates mainBlock = new ChunkCoordinates(xCoord, yCoord, zCoord);
 
 	private boolean init = false;
 
@@ -57,6 +57,10 @@ public class TileSeeleSchneider extends TileBleach
 					&& worldObj.getBlockId(xCoord, yCoord, zCoord + x) == BleachBlocks.seeleSchneiderBlock.blockID
 					&& worldObj.getBlockId(xCoord + x, yCoord, zCoord + x) == BleachBlocks.seeleSchneiderBlock.blockID)
 			{
+				setBlockMain(xCoord + x, yCoord, zCoord);
+				setBlockMain(xCoord, yCoord, zCoord + x);
+				setBlockMain(xCoord + x, yCoord, zCoord + x);
+				
 				this.setMain(x);
 				return;
 			} else if (worldObj.getBlockId(xCoord - x, yCoord, zCoord) == BleachBlocks.seeleSchneiderBlock.blockID
