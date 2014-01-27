@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry.KeyHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.TickType;
@@ -42,6 +43,8 @@ public class ShikaiKeyBind extends KeyHandler
          public void keyDown(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd, boolean isRepeat)
          {
                 this.keyPressed = true;
+                if(FMLClientHandler.instance().getClient().inGameHasFocus)
+                {
                 EntityPlayer player = mc.thePlayer;
                 ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
            		ItemStack heldItem = player.getCurrentEquippedItem();
@@ -75,7 +78,7 @@ public class ShikaiKeyBind extends KeyHandler
              		   heldItem.setItemDamage(1);
              	   }
                 }
-                
+                }
                 
                 
                 

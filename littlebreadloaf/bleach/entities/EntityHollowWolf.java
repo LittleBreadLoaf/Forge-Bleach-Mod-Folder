@@ -142,7 +142,7 @@ public class EntityHollowWolf extends EntityMob
 
 		if (this.rand.nextInt(20 - par2) == 0)
 		{
-			this.dropItem(Armor.BatHelmet.itemID, 1);
+			this.dropItem(Armor.WolfHelmet.itemID, 1);
 		}
 
 	}

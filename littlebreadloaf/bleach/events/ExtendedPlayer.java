@@ -820,10 +820,30 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 			{ 
 				this.movePlayer();
 			}
+			else if(this.faction == 1 && var9 != null && var9.itemID == Armor.ArrancarShoes.itemID && var10 != null && var10.itemID == Armor.ArrancarPants.itemID && var11 != null && var11.itemID == Armor.ArrancarJacket.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
+			{ 
+				this.movePlayer();
+			}
 		}
 		else if(readByte == 0)
 		{
 			this.Hollowfy();
+		}
+		
+		else if(readByte == 11)
+		{
+			this.setFaction(1);
+			player.inventory.getCurrentItem().stackSize--;
+		}
+		else if(readByte == 12)
+		{
+			this.setFaction(2);
+			player.inventory.getCurrentItem().stackSize--;
+		}
+		else if(readByte == 13)
+		{
+			this.setFaction(3);
+			player.inventory.getCurrentItem().stackSize--;
 		}
 		
 		

@@ -80,6 +80,9 @@ public class Names
 	public static final String HollowBook_UnlocalizedName = "hollow_book";
 	public static final String HollowBook_Name = "Hollow Tome";
 	
+	public static final String FactionSelect_UnlocalizedName = "faction_selector";
+	public static final String FactionSelect_Name = "Faction Selector";
+	
 
 	
 	public static final String BatHelmet_UnlocalizedName = "batmask";
@@ -140,6 +143,15 @@ public class Names
 	
 	public static final String QuincyShoes_UnlocalizedName = "quincyshoes";
 	public static final String QuincyShoes_Name = "Quincy Shoes";
+	
+	public static final String ArrancarShoes_UnlocalizedName = "arrancar_shoes";
+	public static final String ArrancarShoes_Name = "Arrancar Shoes";
+	
+	public static final String ArrancarPants_UnlocalizedName = "arrancar_pants";
+	public static final String ArrancarPants_Name = "Arrancar Pants";
+	
+	public static final String ArrancarTop_UnlocalizedName = "arrancar_top";
+	public static final String ArrancarTop_Name = "Arrancar Jacket";
 	
 	
 	

@@ -130,7 +130,7 @@ public class ShikaiWind extends Item
         ItemStack var7 = player.inventory.armorInventory[3];
         
 
-        if(var9 != null && var9.itemID == Armor.Sandals.itemID)
+        if(var9 != null && (var9.itemID == Armor.Sandals.itemID || var9.itemID == Armor.ArrancarShoes.itemID))
         {
         	sandalboost = 1;
         }
@@ -144,7 +144,7 @@ public class ShikaiWind extends Item
         }
        
         
-        if(var10 != null && var10.itemID == Armor.ShiniPants.itemID)
+        if(var10 != null && (var10.itemID == Armor.ShiniPants.itemID || var10.itemID == Armor.ArrancarPants.itemID))
         {
         	pantboost = 2;
         }
@@ -158,7 +158,7 @@ public class ShikaiWind extends Item
         }
         
         
-        if(var11 != null && var11.itemID == Armor.ShiniRobe.itemID)
+        if(var11 != null && (var11.itemID == Armor.ShiniRobe.itemID || var11.itemID == Armor.ArrancarPants.itemID))
         {
         	robeboost = 3;
         }

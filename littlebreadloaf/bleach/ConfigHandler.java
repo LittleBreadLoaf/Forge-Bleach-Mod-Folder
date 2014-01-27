@@ -70,7 +70,7 @@ public class ConfigHandler
 		
 		BleachIds.hollowBookID = config.get(config.CATEGORY_ITEM, "Hollow Tome ID", BleachIds.hollowBookID_Default).getInt();
 		
-		
+		BleachIds.factionSelectID = config.get(config.CATEGORY_ITEM, "Faction Selector ID", BleachIds.factionSelectID_Default).getInt();
 		
 		
 
@@ -115,6 +115,12 @@ public class ConfigHandler
 		BleachIds.quincypantsID = config.get(config.CATEGORY_ITEM, "Quincy Pants ID", BleachIds.quincypantsID_Default).getInt();
 		
 		BleachIds.quincyshoesID = config.get(config.CATEGORY_ITEM, "Quincy Shoes ID", BleachIds.quincyshoesID_Default).getInt();
+		
+		BleachIds.arrancartopID = config.get(config.CATEGORY_ITEM, "Arrancar Jacket ID", BleachIds.arrancartopID_Default).getInt();
+		
+		BleachIds.arrancarpantsID = config.get(config.CATEGORY_ITEM, "Arrancar Pants ID", BleachIds.arrancarpantsID_Default).getInt();
+		
+		BleachIds.arrancarshoesID = config.get(config.CATEGORY_ITEM, "Arrancar Shoes ID", BleachIds.arrancarshoesID_Default).getInt();
 		
 		
 		BleachIds.playerMask10ID = config.get(config.CATEGORY_ITEM, "Player Mask 1-1 ID", BleachIds.playerMask10ID_Default).getInt();

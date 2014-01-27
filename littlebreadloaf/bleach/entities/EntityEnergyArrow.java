@@ -307,7 +307,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 						ItemStack var110 = ((EntityPlayer) this.shootingEntity).getCurrentArmor(1);
 						ItemStack var111 = ((EntityPlayer) this.shootingEntity).getCurrentArmor(2);
 
-						if (var119 != null && var119.itemID == Armor.Sandals.itemID)
+						if (var119 != null && (var119.itemID == Armor.Sandals.itemID || var119.itemID == Armor.ArrancarShoes.itemID))
 						{
 							this.sandalboost = -0.2;
 						} else if (var119 != null && var119.itemID == Armor.QuincyShoes.itemID)
@@ -318,7 +318,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 							this.sandalboost = 0;
 						}
 
-						if (var110 != null && var110.itemID == Armor.ShiniPants.itemID)
+						if (var110 != null && (var110.itemID == Armor.ShiniPants.itemID || var110.itemID == Armor.ArrancarPants.itemID))
 						{
 							this.pantboost = -0.4;
 						} else if (var110 != null && var110.itemID == Armor.QuincyPants.itemID)
@@ -329,7 +329,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 							this.pantboost = 0;
 						}
 
-						if (var111 != null && var111.itemID == Armor.ShiniRobe.itemID)
+						if (var111 != null && (var111.itemID == Armor.ShiniRobe.itemID || var111.itemID == Armor.ArrancarJacket.itemID))
 						{
 							this.robeboost = -0.8;
 						} else if (var111 != null && var111.itemID == Armor.QuincyRobe.itemID)

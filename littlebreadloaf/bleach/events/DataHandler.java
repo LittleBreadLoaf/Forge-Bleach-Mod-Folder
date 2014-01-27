@@ -83,11 +83,11 @@ public class DataHandler
 			
 			}
 		
-			if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getFaction() == 0)
+			EntityPlayer Player = (EntityPlayer)event.entity;
+			if(((ExtendedPlayer)(event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).getFaction() == 0 && !Player.inventory.hasItem(BleachItems.factionSelect.itemID))
 			{
 				EntityPlayer player = (EntityPlayer)event.entity;
-				FMLNetworkHandler.openGui(player, BleachMod.instance, 2, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
-        	
+				player.inventory.addItemStackToInventory(new ItemStack(BleachItems.factionSelect, 1));
 			}
 		}
 		
@@ -217,7 +217,8 @@ public class DataHandler
 					if(var9 != null && var10 != null && var11 != null)
 					{
 					if((var9.getItem() == Armor.Sandals && var10.getItem() == Armor.ShiniPants && var11.getItem() == Armor.ShiniRobe) || 
-							(var9.getItem() == Armor.QuincyShoes && var10.getItem() == Armor.QuincyPants && var11.getItem() == Armor.QuincyRobe))
+							(var9.getItem() == Armor.QuincyShoes && var10.getItem() == Armor.QuincyPants && var11.getItem() == Armor.QuincyRobe)||
+							(var9.getItem() == Armor.ArrancarShoes && var10.getItem() == Armor.ArrancarPants && var11.getItem() == Armor.ArrancarJacket))
 					{
 					
 					//Blocking other Sword

@@ -56,6 +56,10 @@ public class Armor
 	public static Item QuincyRobe;
 	public static Item QuincyPants;
 	public static Item QuincyShoes;
+	
+	public static Item ArrancarJacket;
+	public static Item ArrancarPants;
+	public static Item ArrancarShoes;
 
 	public static void init()
 	{
@@ -89,6 +93,10 @@ public class Armor
 		QuincyRobe = new ItemQuincyRobe(BleachIds.quincyrobeID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 1);
 		QuincyPants = new ItemQuincyPants(BleachIds.quincypantsID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 2);
 		QuincyShoes = new ItemQuincyShoes(BleachIds.quincyshoesID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 3);
+
+		ArrancarJacket = new ItemArrancarTop(BleachIds.arrancartopID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 1);
+		ArrancarPants = new ItemArrancarPants(BleachIds.arrancarpantsID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 2);
+		ArrancarShoes = new ItemArrancarShoes(BleachIds.arrancarshoesID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 3);
 	}
 	
 	public static void addNames()
@@ -110,6 +118,10 @@ public class Armor
 		LanguageRegistry.addName(QuincyRobe, Names.QuincyChest_Name);
 		LanguageRegistry.addName(QuincyPants, Names.QuincyPants_Name);
 		LanguageRegistry.addName(QuincyShoes, Names.QuincyShoes_Name);
+		
+		LanguageRegistry.addName(ArrancarJacket, Names.ArrancarTop_Name);
+		LanguageRegistry.addName(ArrancarPants, Names.ArrancarPants_Name);
+		LanguageRegistry.addName(ArrancarShoes, Names.ArrancarShoes_Name);
 		
 		
 		LanguageRegistry.addName(PlayerMask10, Names.PlayerMask10_Name);

@@ -42,6 +42,7 @@ public class BleachItems
 	public static Item quincyweb;
 	public static Item soulsteel;
 	public static Item hollowbook;
+	public static Item factionSelect;
 	
 	public static Item recordAsterisk;
 	public static Item recordNumberOne;
@@ -92,12 +93,13 @@ public class BleachItems
 		quincyweb = new ItemQuincyWebBow(BleachIds.quincywebID);
 		soulsteel = new ItemSoulSteel(BleachIds.soulsteelID);
 		hollowbook = new ItemHollowBook(BleachIds.hollowBookID);
+		factionSelect = new ItemFactionSelector(BleachIds.factionSelectID);
 		
-		recordAsterisk = new ItemBleachRecord(BleachIds.recordAsteriskID, BleachModInfo.ID.toLowerCase() + ":asteriks").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_asterisk");
+		recordAsterisk = new ItemBleachRecord(BleachIds.recordAsteriskID, BleachModInfo.ID.toLowerCase() + ":asterisk").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_asterisk");
 		recordNumberOne = new ItemBleachRecord(BleachIds.recordNumberOneID, BleachModInfo.ID.toLowerCase() + ":NumberOne").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_NumberOne");
 		recordEscalon = new ItemBleachRecord(BleachIds.recordEscalonID, BleachModInfo.ID.toLowerCase() + ":Escalon").setUnlocalizedName("record").setTextureName(BleachModInfo.ID.toLowerCase() + ":record_Escalon");
 
-		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":asteriks", "Bleach - Asterix");
+		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":asterisk", "Bleach - Asterisk");
 		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":NumberOne", "Bleach - Number One");
 		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":Escalon", "Bleach - Escalon");
 		
@@ -133,10 +135,12 @@ public class BleachItems
 		LanguageRegistry.addName(quincyweb, Names.QuincyWeb_Name);
 		LanguageRegistry.addName(soulsteel, Names.SoulSteel_Name);
 		LanguageRegistry.addName(hollowbook, Names.HollowBook_Name);
+		LanguageRegistry.addName(factionSelect, Names.FactionSelect_Name);
 		LanguageRegistry.addName(debugItem, "Debug Item");
 		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":asterisk", "Bleach - Asterisk");
 		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":NumberOne", "Bleach - Number One");
 		LanguageRegistry.instance().addStringLocalization(BleachModInfo.ID.toLowerCase() + ":Escalon", "Bleach - Escalon");
+		
 		
 		for(int i = 0; i < Names.Seeleschneider_Name.length; i++)
 		{

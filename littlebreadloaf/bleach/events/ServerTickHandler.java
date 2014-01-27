@@ -25,10 +25,8 @@ public class ServerTickHandler implements ITickHandler
 	private int bowTimer = 40;
 	private int armorBonus = 0;
 	
-	public void resetReplenish()
-	{
-		this.replenishTimer = 1200;
-	}
+	private boolean countPoints = true;
+	
 
 	private void onPlayerTick(EntityPlayer player)
 	{
@@ -130,21 +128,21 @@ public class ServerTickHandler implements ITickHandler
 		{
 			if(player.getCurrentItemOrArmor(3) != null)
 			{
-				if(chest.getItem() == Armor.ShiniRobe || chest.getItem() == Armor.QuincyRobe)
+				if(chest.getItem() == Armor.ShiniRobe || chest.getItem() == Armor.QuincyRobe || chest.getItem() == Armor.ArrancarJacket)
 				{
 					armorBonus += 2;
 				}
 			}
 			if(player.getCurrentItemOrArmor(2) != null)
 			{
-				if(legs.getItem() == Armor.ShiniPants || legs.getItem() == Armor.QuincyPants)
+				if(legs.getItem() == Armor.ShiniPants || legs.getItem() == Armor.QuincyPants || legs.getItem() == Armor.ArrancarPants)
 				{
 					armorBonus += 1;
 				}
 			}
 			if(player.getCurrentItemOrArmor(1) != null)
 			{
-				if(shoes.getItem() == Armor.Sandals || shoes.getItem() == Armor.QuincyShoes)
+				if(shoes.getItem() == Armor.Sandals || shoes.getItem() == Armor.QuincyShoes || shoes.getItem() == Armor.ArrancarShoes)
 				{
 					armorBonus += 1;
 				}
@@ -185,76 +183,55 @@ public class ServerTickHandler implements ITickHandler
      		props.addMaskLevel();
      	}
 		props.balanceTotal();
-		if(props.getPoints(1) > 200)
-		{
-    		props.setZType(1);
-		}  
-
-		else if(props.getPoints(2) > 200)
-		{
-    		props.setZType(2);
-    		
-		} 
-
-		else if(props.getPoints(3) > 200)
-		{
-    		props.setZType(3);
-		}  
-
-		else if(props.getPoints(4) > 200)
-		{
-    		props.setZType(4);
-    	
-		}  
-
-		else if(props.getPoints(5) > 200)
-		{
-    		props.setZType(5);
-    		
-		}  
-
-		else if(props.getPoints(6) > 200)
-		{
-    		props.setZType(6);
-    		
-		}  
-
-		else if(props.getPoints(7) > 200)
-		{
-    		props.setZType(7);
-    	
-		} 
-
-		else if(props.getPoints(8) > 200)
-		{
-    		props.setZType(8);
-    	
-		} 
-        
-		else if(props.getPoints(6) > 150 && props.getPoints(7) > 150)
-		{
-			props.setZType(9);
-
-		}
-        
-		else if(props.getPoints(8) > 150 && props.getPoints(7) > 150)
-		{
-			props.setZType(10);
-
-		}
-        
-		else if(props.getPoints(1) > 150 && props.getPoints(2) > 150)
-		{
-			props.setZType(11);
-
-		}
-
-		else
-		{
-			props.setZType(12);
-
-		}
 		
+		
+		if(props.getPoints(9) >= 400 && countPoints)
+		{
+			int check = 1;
+			for(int i = 1; i < 8; i++)
+			{
+				if(props.getPoints(i) > props.getPoints(check))
+				{
+					check = i;
+				}	
+			}
+			if(props.getPoints(check) >= 100)
+			{
+				props.setZType(check);
+				
+				int secondType = 1;
+				for(int j = 1; j< 8; j++)
+				{
+					if(props.getPoints(j) > props.getPoints(secondType) && j != check)
+					{
+						secondType = j;
+					}
+				}
+				
+				if(props.getPoints(secondType) >= 100)
+				{
+					if((check == 6 && secondType == 7) || (check == 7 && secondType == 6))
+					{
+						props.setZType(9);
+					}
+					else if((check == 7 && secondType == 8) || (check == 8 && secondType == 7))
+					{
+						props.setType(11);
+					}
+					else if((check == 1 && secondType == 2) || (check == 2 && secondType == 1))
+					{
+						props.setType(9);
+					}
+				}
+				
+			}
+			else
+			{
+				props.setZType(12);
+			}
+
+			countPoints = false;
+		}
 		
 		
 		if(props.getPoints(1) < 0)

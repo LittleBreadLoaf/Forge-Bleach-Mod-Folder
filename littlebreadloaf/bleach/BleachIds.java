@@ -90,7 +90,10 @@ public class BleachIds
 	
 	public static int hollowBookID;
 	public static final int hollowBookID_Default = 20178;
-	//OPEN 20179-20184
+	
+	public static int factionSelectID;
+	public static final int factionSelectID_Default = 20179;
+	//OPEN 20180-20184
 	
 	//MASKS
 	public static int batHelmetID;
@@ -152,16 +155,19 @@ public class BleachIds
 	public static int quincyshoesID;
 	public static final int quincyshoesID_Default = 20209;
 	
-	//OPEN 20210
+	public static int arrancartopID;
+	public static final int arrancartopID_Default = 20210;
+	
+	public static int arrancarpantsID;
+	public static final int arrancarpantsID_Default = 20211;
+	
+	public static int arrancarshoesID;
+	public static final int arrancarshoesID_Default = 20212;
+	
+	//OPEN 20213
 	
 	
 	//HIDDEN
-	public static int playerMask10ID;
-	public static final int playerMask10ID_Default = 20211;
-	public static int playerMask11ID;
-	public static final int playerMask11ID_Default = 20212;
-	public static int playerMask12ID;
-	public static final int playerMask12ID_Default = 20213;
 	public static int playerMask20ID;
 	public static final int playerMask20ID_Default = 20214;
 	public static int playerMask21ID;
@@ -180,24 +186,33 @@ public class BleachIds
 	public static final int playerMask41ID_Default = 20221;
 	public static int playerMask42ID;
 	public static final int playerMask42ID_Default = 20222;
-
-	public static int quincyBowID;
-	public static final int quincyBowID_Default = 20223;
+	public static int playerMask10ID;
+	public static final int playerMask10ID_Default = 20223;
+	public static int playerMask11ID;
+	public static final int playerMask11ID_Default = 20224;
+	public static int playerMask12ID;
+	public static final int playerMask12ID_Default = 20225;
 
 	
+	
+	
+	
+	public static int quincyBowID;
+	public static final int quincyBowID_Default = 20323;
+
 	public static int quincywebID;
-	public static final int quincywebID_Default = 20224;
+	public static final int quincywebID_Default = 20324;
 	
 	public static int recordAsteriskID;
-	public static final int recordAsteriskID_Default = 20225;
+	public static final int recordAsteriskID_Default = 20325;
 	
 	public static int recordNumberOneID;
-	public static final int recordNumberOneID_Default = 20226;
+	public static final int recordNumberOneID_Default = 20326;
 	
 	public static int recordEscalonID;
-	public static final int recordEscalonID_Default = 20227;
+	public static final int recordEscalonID_Default = 20327;
 	
-	//OPEN 20228-20299
+	//OPEN 20328-20299
 	
 	//SHIKAI
 	public static int shikaifireID;

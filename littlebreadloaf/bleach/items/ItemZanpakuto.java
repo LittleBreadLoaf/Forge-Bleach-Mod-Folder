@@ -108,7 +108,7 @@ public class ItemZanpakuto extends ItemSword
         ItemStack var7 = player.inventory.armorInventory[3];
         
 
-        if(var9 != null && var9.itemID == Armor.Sandals.itemID)
+        if(var9 != null && (var9.itemID == Armor.Sandals.itemID || var9.itemID == Armor.ArrancarShoes.itemID))
         {
         	sandalboost = 1;
         }
@@ -122,7 +122,7 @@ public class ItemZanpakuto extends ItemSword
         }
        
         
-        if(var10 != null && var10.itemID == Armor.ShiniPants.itemID)
+        if(var10 != null && (var10.itemID == Armor.ShiniPants.itemID || var10.itemID == Armor.ArrancarPants.itemID))
         {
         	pantboost = 2;
         }
@@ -136,7 +136,7 @@ public class ItemZanpakuto extends ItemSword
         }
         
         
-        if(var11 != null && var11.itemID == Armor.ShiniRobe.itemID)
+        if(var11 != null && (var11.itemID == Armor.ShiniRobe.itemID || var11.itemID == Armor.ArrancarPants.itemID))
         {
         	robeboost = 3;
         }
@@ -857,8 +857,7 @@ public class ItemZanpakuto extends ItemSword
         	}
     	}
     	else if(player.username.equalsIgnoreCase("Poofy96") )
-    	{
-    		if( props.getZName().equals("Mizore") && props.getZTex() != 7)
+    		{    		if( props.getZName().equals("Mizore") && props.getZTex() != 7)
     		{
         		props.setType(1);
         		props.setTexture(7);
@@ -925,12 +924,12 @@ public class ItemZanpakuto extends ItemSword
     		}
     		else if(!props.getZName().equals("Hi-Yari") && props.getZTex() == 6)
         	{
-        		props.setTexture(rand.nextInt(5));
-        	}
-    	}
-    	
-    }
-    
+       		props.setTexture(rand.nextInt(5));
+       	}
+   	}
+   	
+   }
    
-    
+  
+   
 }
