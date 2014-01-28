@@ -124,7 +124,7 @@ public class ServerTickHandler implements ITickHandler
 		}
 		
 		//Armor Sets
-		if(replenishTimer == 0)
+		if(replenishTimer <= 0)
 		{
 			if(player.getCurrentItemOrArmor(3) != null)
 			{

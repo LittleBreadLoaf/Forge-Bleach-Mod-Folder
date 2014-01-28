@@ -693,6 +693,10 @@ public class ItemZanpakuto extends ItemSword
     	            		{
     	            			par3EntityPlayer.addChatMessage("Lurk in the shadows, Kage Kishi!");
     	            		}
+    	            		if(props.getZTex() == 7)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Bring Balance, Onmyo!");
+    	            		}
     	        		}
                 	 
                 	 else if(props.getZType() == 9)
@@ -925,11 +929,23 @@ public class ItemZanpakuto extends ItemSword
     		else if(!props.getZName().equals("Hi-Yari") && props.getZTex() == 6)
         	{
        		props.setTexture(rand.nextInt(5));
-       	}
-   	}
-   	
-   }
-   
+        	}
+    	
+    	}
+    	else if(player.username.equalsIgnoreCase("ahern14") )
+        {
+        	if( props.getZName().equals("Onmyo") && props.getZTex() != 6)
+        	{
+            	props.setType(7);
+            	props.setTexture(7);
+        	}
+        	else if(!props.getZName().equals("Onmyo") && props.getZTex() == 7)
+            {
+        		props.setTexture(rand.nextInt(5));
+            }
+        }
+    	
   
    
+}
 }

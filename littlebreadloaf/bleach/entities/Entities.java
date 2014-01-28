@@ -123,7 +123,8 @@ public class Entities
 		EntityRegistry.registerModEntity(EntitySeeleArrow.class, "SeeleArrow", 1, BleachMod.instance, 128, 1, true);
 		
 		EntityRegistry.registerGlobalEntityID(EntityGetsuga.class, "Getsuga", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityGetsuga.class, "Getsuga", 1, BleachMod.instance, 128, 1, true);
+		EntityRegistry.registerModEntity(EntityGetsuga.class, "Getsuga", 2, BleachMod.instance, 128, 1, true);
+		
 		
 	}
 	

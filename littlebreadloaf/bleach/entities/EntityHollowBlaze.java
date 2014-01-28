@@ -134,6 +134,7 @@ public class EntityHollowBlaze extends EntityMob
 		return "lblbm:hollowscream";
 	}
 
+	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
 		super.dropFewItems(par1, par2);
@@ -195,6 +196,7 @@ public class EntityHollowBlaze extends EntityMob
 	/**
 	 * Called when the mob's health reaches 0.
 	 */
+	@Override
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);

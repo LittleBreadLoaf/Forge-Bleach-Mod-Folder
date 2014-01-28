@@ -70,6 +70,9 @@ public class Renders
 		RenderingRegistry.registerEntityRenderingHandler(EntityShinigami.class, new RenderShinigami(new ModelBiped(), 0.3F));
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityAshido.class, new RenderAshido(new ModelAshido(), 0.3F));
+		
+		
+		
 	}
 
 }
