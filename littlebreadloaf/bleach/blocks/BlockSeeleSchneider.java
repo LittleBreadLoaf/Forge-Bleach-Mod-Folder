@@ -2,6 +2,8 @@ package littlebreadloaf.bleach.blocks;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.FMLLog;
+
 import littlebreadloaf.bleach.BleachIds;
 import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.items.BleachItems;
@@ -94,7 +96,11 @@ public class BlockSeeleSchneider extends BleachBlockContainer
 		} else
 		{
 			tile = tile.getMainBlockTile();
-			if(tile == null) return;
+			if (tile == null)
+			{
+				FMLLog.info("[BleachMod] Seeleschneider tile null");
+				return;
+			}
 			for (int var = 0; var < TileSeeleSchneider.magicSquare.size(); var++)
 			{
 				x = TileSeeleSchneider.magicSquare.get(var).posX;
@@ -105,6 +111,7 @@ public class BlockSeeleSchneider extends BleachBlockContainer
 					TileSeeleSchneider.magicSquare.remove(var);
 				}
 			}
+			tile.isMain = false;
 		}
 	}
 

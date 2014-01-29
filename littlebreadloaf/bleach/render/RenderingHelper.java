@@ -54,4 +54,27 @@ public class RenderingHelper
 //		FMLLog.info("type: " + props.getZType());
 		return color;
 	}
+
+	public static void renderBeam(float x, float y, float z, float i, float j, float k)
+	{
+		float height = 0.3F;
+		
+		float dist = (float) Math.sqrt((x-i)*(x-i)+(y-j)*(y-j)+(z-k)*(z-k));
+		float repeat = dist;
+		
+		
+		glTexCoord2f(0, 0);
+		glVertex3f(x, y - height, z);
+		glTexCoord2f(0, 1);
+		glVertex3f(x, y + height, z);
+		glTexCoord2f(1 * repeat, 1);
+		glVertex3d(i, j + 0.3F + height, k);
+		glTexCoord2f(1 * repeat, 0);
+		glVertex3d(i, j + 0.3F - height, k);
+	}
+	
+	public static void renderBeam(float x, float y, float z, double i, double j, double k)
+	{
+		renderBeam(x, y, z, (float) i, (float) j, (float) k);
+	}
 }

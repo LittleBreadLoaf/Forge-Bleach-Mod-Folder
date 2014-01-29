@@ -15,7 +15,10 @@ public class BleachEvents
 		{
 			if (isEntityInCube(event.entity))
 			{
-				return;
+				FMLLog.info("[Bleach mod] event");
+				event.entity.motionX = 0F;
+				event.entity.motionZ = 0F;
+				if(event.entity.motionY > 0F) event.entity.motionY = 0F;
 			}
 		}
 	}
@@ -44,15 +47,7 @@ public class BleachEvents
 			entity.posZ > z + 0.5F && entity.posZ < z + side - 0.5F &&
 			entity.posY >= y)
 			{
-				FMLLog.info("[Bleach mod] event");
-//				entity.motionX = 0F;
-//				entity.motionY = 0F;
-//				entity.motionZ = 0F;
-				
-				entity.motionX *= 0.000025;
-                entity.motionY *= 0.000025;
-                entity.motionZ *= 0.000025;
-				
+				return true;
 				
 			}
 		}

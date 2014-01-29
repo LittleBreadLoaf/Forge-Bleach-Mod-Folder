@@ -57,9 +57,9 @@ public class TileSeeleSchneider extends TileBleach
 					&& worldObj.getBlockId(xCoord, yCoord, zCoord + x) == BleachBlocks.seeleSchneiderBlock.blockID
 					&& worldObj.getBlockId(xCoord + x, yCoord, zCoord + x) == BleachBlocks.seeleSchneiderBlock.blockID)
 			{
-				setBlockMain(xCoord + x, yCoord, zCoord);
-				setBlockMain(xCoord, yCoord, zCoord + x);
-				setBlockMain(xCoord + x, yCoord, zCoord + x);
+				setBlockMain(xCoord + x, yCoord, zCoord, xCoord, yCoord, zCoord);
+				setBlockMain(xCoord, yCoord, zCoord + x, xCoord, yCoord, zCoord);
+				setBlockMain(xCoord + x, yCoord, zCoord + x, xCoord, yCoord, zCoord);
 				
 				this.setMain(x);
 				return;
@@ -67,9 +67,9 @@ public class TileSeeleSchneider extends TileBleach
 					&& worldObj.getBlockId(xCoord, yCoord, zCoord - x) == BleachBlocks.seeleSchneiderBlock.blockID
 					&& worldObj.getBlockId(xCoord - x, yCoord, zCoord - x) == BleachBlocks.seeleSchneiderBlock.blockID)
 			{
-				setBlockMain(xCoord - x, yCoord, zCoord);
-				setBlockMain(xCoord, yCoord, zCoord - x);
-				setBlockMain(xCoord - x, yCoord, zCoord - x);
+				setBlockMain(xCoord - x, yCoord, zCoord, xCoord - x, yCoord, zCoord - x);
+				setBlockMain(xCoord, yCoord, zCoord - x, xCoord - x, yCoord, zCoord - x);
+				setBlockMain(xCoord, yCoord, zCoord - x, xCoord - x, yCoord, zCoord - x);
 
 				TileSeeleSchneider tile = (TileSeeleSchneider) worldObj.getBlockTileEntity(xCoord - x, yCoord, zCoord - x);
 				tile.setMain(x);
@@ -80,11 +80,11 @@ public class TileSeeleSchneider extends TileBleach
 					&& worldObj.getBlockId(xCoord - x, yCoord, zCoord + x) == BleachBlocks.seeleSchneiderBlock.blockID)
 			{
 
-				setBlockMain(xCoord - x, yCoord, zCoord);
-				setBlockMain(xCoord, yCoord, zCoord + x);
-				setBlockMain(xCoord - x, yCoord, zCoord + x);
+				setBlockMain(xCoord - x, yCoord, zCoord, xCoord - x, yCoord, zCoord);
+				setBlockMain(xCoord, yCoord, zCoord, xCoord - x, yCoord, zCoord);
+				setBlockMain(xCoord - x, yCoord, zCoord + x, xCoord - x, yCoord, zCoord);
 
-				TileSeeleSchneider tile = (TileSeeleSchneider) worldObj.getBlockTileEntity(xCoord, yCoord, zCoord + x);
+				TileSeeleSchneider tile = (TileSeeleSchneider) worldObj.getBlockTileEntity(xCoord - x, yCoord, zCoord);
 				tile.setMain(x);
 				return;
 			} else if (worldObj.getBlockId(xCoord + x, yCoord, zCoord) == BleachBlocks.seeleSchneiderBlock.blockID
@@ -92,9 +92,9 @@ public class TileSeeleSchneider extends TileBleach
 					&& worldObj.getBlockId(xCoord + x, yCoord, zCoord - x) == BleachBlocks.seeleSchneiderBlock.blockID)
 			{
 
-				setBlockMain(xCoord + x, yCoord, zCoord);
-				setBlockMain(xCoord, yCoord, zCoord - x);
-				setBlockMain(xCoord + x, yCoord, zCoord - x);
+				setBlockMain(xCoord + x, yCoord, zCoord, xCoord, yCoord, zCoord - x);
+				setBlockMain(xCoord, yCoord, zCoord, xCoord, yCoord, zCoord - x);
+				setBlockMain(xCoord + x, yCoord, zCoord - x, xCoord, yCoord, zCoord - x);
 
 				TileSeeleSchneider tile = (TileSeeleSchneider) worldObj.getBlockTileEntity(xCoord, yCoord, zCoord - x);
 				tile.setMain(x);
@@ -111,10 +111,15 @@ public class TileSeeleSchneider extends TileBleach
 		FMLLog.info("[Bleach mod] Main Seeleschneider, side: " + side);
 	}
 
-	private void setBlockMain(int x, int y, int z)
+	/**
+	 * 
+	 * @param x, y, z - the block we set the main block of
+	 * @param i, j, k - the coords of its mainblock
+	 */
+	private void setBlockMain(int x, int y, int z, int i, int j, int k)
 	{
 		TileSeeleSchneider tile = (TileSeeleSchneider) this.worldObj.getBlockTileEntity(x, y, z);
-		tile.mainBlock = new ChunkCoordinates(this.xCoord, this.yCoord, this.zCoord);
+		tile.mainBlock = new ChunkCoordinates(i, j, k);
 	}
 
 	/**
@@ -125,6 +130,14 @@ public class TileSeeleSchneider extends TileBleach
 		super.readFromNBT(nbt);
 		this.isMain = nbt.getBoolean("isMain");
 		this.side = nbt.getInteger("side");
+		
+		int x, y, z;
+		x = nbt.getInteger("xMain");
+		y = nbt.getInteger("yMain");
+		z = nbt.getInteger("zMain");
+		if(x != 0 && y != 0 && z != 0)
+			this.mainBlock = new ChunkCoordinates(x, y, z);
+		
 	}
 
 	/**
@@ -136,7 +149,12 @@ public class TileSeeleSchneider extends TileBleach
 
 		nbt.setBoolean("isMain", this.isMain);
 		nbt.setInteger("side", this.side);
-	}
+
+	
+		nbt.setInteger("xMain", this.mainBlock.posX);
+		nbt.setInteger("yMain", this.mainBlock.posY);
+		nbt.setInteger("zMain", this.mainBlock.posZ);
+}
 	
 	public TileSeeleSchneider getMainBlockTile()
 	{
