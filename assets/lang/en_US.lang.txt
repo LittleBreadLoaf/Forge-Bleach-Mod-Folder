@@ -1,0 +1,16 @@
+bleach.entities.EntityFisher=Grand Fisher
+bleach.entities.EntityEnergyArrow=Energy Arrow
+bleach.entities.EntityGetsuga=Getsugatenshou
+bleach.entities.EntityHollowBat=Bat Hollow
+bleach.entities.EntityHollowBlaze=Blaze Hollow
+bleach.entities.EntityHollowGolem=Golem Hollow
+bleach.entities.EntityHollowOre=Ore Hollow
+bleach.entities.EntityHollowSnake=Snake Hollow
+bleach.entities.EntityHollowSpider=Spider Hollow
+bleach.entities.EntityHollowStalker=Stalker Hollow
+bleach.entities.EntityHollowWasp=Wasp Hollow
+bleach.entities.EntityHollowWolf=Wolf Hollow
+bleach.entities.EntityMenosGrande=Menos Grande
+bleach.entities.EntityShinigami=Shinigami
+bleach.entities.EntitySeeleArrow=Seeleschneider
+bleach.entities.EntitySmallHollowLizard=Small Lizard Hollow

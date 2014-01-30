@@ -211,7 +211,8 @@ public class EntityMenosGrande extends EntityMob
 		int var2 = MathHelper.floor_double(this.posX);
 		int var3 = MathHelper.floor_double(this.posZ);
 		boolean var18 = false;
-
+		if(this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+		{
 		for (int var5 = -3; var5 <= 3; ++var5)
 		{
 			for (int var6 = -3; var6 <= 3; ++var6)
@@ -273,6 +274,7 @@ public class EntityMenosGrande extends EntityMob
 					}
 				}
 			}
+		}
 		}
 
 	}

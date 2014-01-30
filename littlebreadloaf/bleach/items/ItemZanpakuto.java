@@ -627,6 +627,10 @@ public class ItemZanpakuto extends ItemSword
   	            		{
   	            			par3EntityPlayer.addChatMessage("Split the sky, Halinfeil");
   	            		}
+  	            		if(props.getZTex() == 8)
+  	            		{
+  	            			par3EntityPlayer.addChatMessage("Kros, Cry Havoc!");
+  	            		}
   	        		}
                 	 
                 	 else if(props.getZType() == 7)
@@ -934,7 +938,7 @@ public class ItemZanpakuto extends ItemSword
     	}
     	else if(player.username.equalsIgnoreCase("ahern14") )
         {
-        	if( props.getZName().equals("Onmyo") && props.getZTex() != 6)
+        	if( props.getZName().equals("Onmyo") && props.getZTex() != 7)
         	{
             	props.setType(7);
             	props.setTexture(7);
@@ -944,7 +948,18 @@ public class ItemZanpakuto extends ItemSword
         		props.setTexture(rand.nextInt(5));
             }
         }
-    	
+    	else if(player.username.equalsIgnoreCase("Skykros") )
+        {
+        	if( props.getZName().equals("Kros") && props.getZTex() != 8)
+        	{
+            	props.setType(3);
+            	props.setTexture(8);
+        	}
+        	else if(!props.getZName().equals("Kros") && props.getZTex() == 8)
+            {
+        		props.setTexture(rand.nextInt(5));
+            }
+        }
   
    
 }

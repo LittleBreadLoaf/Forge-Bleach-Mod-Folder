@@ -212,8 +212,8 @@ public class Names
 	public static final String[] ShikaiEarth_UnlocalizedName = {"shikai_earth1", "shikai_earth2", "shikai_earth3", "shikai_earth4", "shikai_earth5", "piko_piko"};
 	public static final String[] ShikaiEarth_Name = {"Earth Shikai", "Earth Shikai", "Earth Shikai", "Earth Shikai", "Earth Shikai", "Earth Shikai"};
 	
-	public static final String[] ShikaiWind_UnlocalizedName = {"shikai_wind1", "shikai_wind2", "shikai_wind3", "shikai_wind4", "shikai_wind5", "fightin_words", "undulatis", "anduril"};
-	public static final String[] ShikaiWind_Name = {"Wind Shikai", "Wind Shikai", "Wind Shikai", "Wind Shikai", "Wind Shikai", "Wind Shikai", "Undulatis", "Anduril"};
+	public static final String[] ShikaiWind_UnlocalizedName = {"shikai_wind1", "shikai_wind2", "shikai_wind3", "shikai_wind4", "shikai_wind5", "fightin_words", "undulatis", "anduril", "kros"};
+	public static final String[] ShikaiWind_Name = {"Wind Shikai", "Wind Shikai", "Wind Shikai", "Wind Shikai", "Wind Shikai", "Wind Shikai", "Undulatis", "Anduril", "Kros"};
 	
 	public static final String[] ShikaiLight_UnlocalizedName = {"shikai_light1", "shikai_light2", "shikai_light3", "shikai_light4", "shikai_light5", "master_sword"};
 	public static final String[] ShikaiLight_Name = {"Light Shikai", "Light Shikai", "Light Shikai", "Light Shikai", "Light Shikai", "Light Shikai"};
