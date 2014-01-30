@@ -19,14 +19,26 @@ public class TileSeeleSchneider extends TileBleach
 
 	public boolean isMain = false;
 	public int side = -1;
+	
+	public int tick = 0;
 
 	public ChunkCoordinates mainBlock = new ChunkCoordinates(xCoord, yCoord, zCoord);
 
 	private boolean init = false;
 
+	public float rotation = 0;
+	public float alpha = 0;
+
 	@Override
 	public void updateEntity()
 	{
+		tick++;
+		rotation += 2.5F;
+		if(rotation >= 360) rotation -= 360;
+		
+		double radius = Math.sin(Math.toRadians(rotation*2))/4 + 1;
+		alpha = 0.8F + (float) Math.sin(Math.toRadians(rotation*3))/8;
+		
 		if (!worldObj.isRemote)
 		{
 			if (!this.init)

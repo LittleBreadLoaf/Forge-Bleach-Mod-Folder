@@ -1,6 +1,9 @@
 package littlebreadloaf.bleach.render;
 
 import static org.lwjgl.opengl.GL11.*;
+
+import java.awt.Color;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLLog;
 import littlebreadloaf.bleach.BleachModInfo;
@@ -20,12 +23,16 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 {
 
 	private ResourceLocation TEXTURE_SEELESCHNEIDER;
+	private ResourceLocation TEXTURE_BEAM;
+	private ResourceLocation TEXTURE_CIRCLE = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/circle_gray.png");
+
 	private IModelCustom model;
 	private IModelCustom blade;
 
 	public SeeleSchneiderBlockRenderer()
 	{
 		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/SeeleSchneider_Bottom.png");
+		this.TEXTURE_BEAM = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/beam_gray.png");
 
 		this.model = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider.obj");
 		this.blade = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider_Blade.obj");
@@ -57,15 +64,20 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 		if (tile.isMain)
 		{
 			glPushMatrix();
+
 			glDisable(GL_LIGHTING);
 			glDisable(GL_CULL_FACE);
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+			glColor4f(1F / (float) (tile.alpha * 50 + 120F), 1, 1, tile.alpha);
 
 			glTranslated(x, y, z);
 			// glRotatef(180, 1, 0, 0);
 			//
 			// glScalef(scale, scale, scale);
 
-			FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE_SEELESCHNEIDER);
+			FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE_BEAM);
 
 			glBegin(GL_QUADS);
 
@@ -77,19 +89,37 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 				{
 					if (isEntityInCube(entity))
 					{
-//						FMLLog.info("Entity in cube");
+						// FMLLog.info("Entity in cube");
 						RenderingHelper.renderBeam(0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
 						RenderingHelper.renderBeam(tile.side + 0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
 						RenderingHelper.renderBeam(0.5F, 1.5F, tile.side + 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
 						RenderingHelper.renderBeam(tile.side + 0.5F, 1.5F, tile.side + 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
+
+						glEnd();
+						FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE_CIRCLE);
+
+						RenderingHelper.renderFacingQuad(0.5F, 1.5F, 0.5F, 1.5F);
+						RenderingHelper.renderFacingQuad(tile.side + 0.5F, 1.5F, 0.5F, 1.5F);
+						RenderingHelper.renderFacingQuad(0.5F, 1.5F, tile.side + 0.5F, 1.5F);
+						RenderingHelper.renderFacingQuad(tile.side + 0.5F, 1.5F, tile.side + 0.5F, 1.5F);
+
+						
+						RenderingHelper.renderFacingQuad(entity.posX - tile.xCoord, entity.posY - tile.yCoord + 0.3F, entity.posZ - tile.zCoord, 8F);
+
+						
+						FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE_BEAM);
+
+						glBegin(GL_QUADS);
 					}
 				}
 			}
 
 			glEnd();
 
+			glDisable(GL_BLEND);
 			glEnable(GL_CULL_FACE);
 			glEnable(GL_LIGHTING);
+
 			glPopMatrix();
 		}
 	}
