@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -24,18 +25,18 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 
 	private ResourceLocation TEXTURE_SEELESCHNEIDER;
 	private ResourceLocation TEXTURE_BEAM;
-	private ResourceLocation TEXTURE_CIRCLE = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/circle_gray.png");
+	private ResourceLocation TEXTURE_CIRCLE = new ResourceLocation(BleachModInfo.ID + ":/models/circle_gray.png");
 
 	private IModelCustom model;
 	private IModelCustom blade;
 
 	public SeeleSchneiderBlockRenderer()
 	{
-		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/SeeleSchneider_Bottom.png");
-		this.TEXTURE_BEAM = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/beam_gray.png");
+		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID + ":/models/SeeleSchneider_Bottom.png");
+		this.TEXTURE_BEAM = new ResourceLocation(BleachModInfo.ID + ":/models/beam_gray.png");
 
-		this.model = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider.obj");
-		this.blade = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider_Blade.obj");
+		this.model = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID + "/models/SeeleSchneider.obj");
+		this.blade = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID + "/models/SeeleSchneider_Blade.obj");
 
 	}
 
@@ -85,15 +86,15 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 			for (int i = 0; i < tile.worldObj.getLoadedEntityList().size(); i++)
 			{
 				entity = (Entity) tile.worldObj.getLoadedEntityList().get(i);
-				if (entity != null && entity instanceof EntityLiving)
+				if (entity != null && entity instanceof EntityLiving || entity instanceof EntityPlayer)
 				{
 					if (isEntityInCube(entity))
 					{
 						// FMLLog.info("Entity in cube");
-						RenderingHelper.renderBeam(0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
-						RenderingHelper.renderBeam(tile.side + 0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
-						RenderingHelper.renderBeam(0.5F, 1.5F, tile.side + 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
-						RenderingHelper.renderBeam(tile.side + 0.5F, 1.5F, tile.side + 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord, entity.posZ - tile.zCoord);
+						RenderingHelper.renderBeam(0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord - entity.yOffset, entity.posZ - tile.zCoord);
+						RenderingHelper.renderBeam(tile.side + 0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord - entity.yOffset, entity.posZ - tile.zCoord);
+						RenderingHelper.renderBeam(0.5F, 1.5F, tile.side + 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord - entity.yOffset, entity.posZ - tile.zCoord);
+						RenderingHelper.renderBeam(tile.side + 0.5F, 1.5F, tile.side + 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord - entity.yOffset, entity.posZ - tile.zCoord);
 
 						glEnd();
 						FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE_CIRCLE);
@@ -104,7 +105,7 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 						RenderingHelper.renderFacingQuad(tile.side + 0.5F, 1.5F, tile.side + 0.5F, 1.5F);
 
 						
-						RenderingHelper.renderFacingQuad(entity.posX - tile.xCoord, entity.posY - tile.yCoord + 0.3F, entity.posZ - tile.zCoord, 8F);
+						RenderingHelper.renderFacingQuad(entity.posX - tile.xCoord, entity.posY - tile.yCoord + 0.3F - entity.yOffset, entity.posZ - tile.zCoord, 8F);
 
 						
 						FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE_BEAM);
