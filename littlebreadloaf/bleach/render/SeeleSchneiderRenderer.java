@@ -17,7 +17,7 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 
 	public SeeleSchneiderRenderer()
 	{
-		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/SeeleSchneider_Bottom.png");
+		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":models/SeeleSchneider_Bottom.png");
 
 		this.model = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider.obj");
 		this.blade = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID.toLowerCase() + "/models/SeeleSchneider_Blade.obj");

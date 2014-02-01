@@ -25,15 +25,15 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 
 	private ResourceLocation TEXTURE_SEELESCHNEIDER;
 	private ResourceLocation TEXTURE_BEAM;
-	private ResourceLocation TEXTURE_CIRCLE = new ResourceLocation(BleachModInfo.ID + ":/models/circle_gray.png");
+	private ResourceLocation TEXTURE_CIRCLE = new ResourceLocation(BleachModInfo.ID + ":models/circle_gray.png");
 
 	private IModelCustom model;
 	private IModelCustom blade;
 
 	public SeeleSchneiderBlockRenderer()
 	{
-		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID + ":/models/SeeleSchneider_Bottom.png");
-		this.TEXTURE_BEAM = new ResourceLocation(BleachModInfo.ID + ":/models/beam_gray.png");
+		this.TEXTURE_SEELESCHNEIDER = new ResourceLocation(BleachModInfo.ID + ":models/SeeleSchneider_Bottom.png");
+		this.TEXTURE_BEAM = new ResourceLocation(BleachModInfo.ID + ":models/beam_gray.png");
 
 		this.model = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID + "/models/SeeleSchneider.obj");
 		this.blade = AdvancedModelLoader.loadModel("/assets/" + BleachModInfo.ID + "/models/SeeleSchneider_Blade.obj");
