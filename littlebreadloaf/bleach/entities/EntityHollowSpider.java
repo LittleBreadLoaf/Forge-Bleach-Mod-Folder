@@ -234,7 +234,7 @@ public class EntityHollowSpider extends EntityMob
 					&& this.attackingPlayer.inventory.getCurrentItem().itemID == BleachItems.zanpakuto.itemID && props.getZTotal() < 400)
 			{
 				props.addPoints(5, 4);
-				props.addPoints(3, 3);
+				props.addPoints(4, 3);
 				props.addPoints(6, -2);
 			}
 

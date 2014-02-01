@@ -191,7 +191,7 @@ public class ItemZanpakuto extends ItemSword
         	damageBoost = 0;
         }
         float damage = this.damageBoost + this.sandalboost + this.pantboost + this.robeboost;
-        if(damage > 0 && props.getFaction() == 1)
+        if(damage > 0 && props.getFaction() == 1 && damage <= par2EntityLivingBase.getHealth())
         {
             par2EntityLivingBase.setHealth(par2EntityLivingBase.getHealth() - damage);
         }

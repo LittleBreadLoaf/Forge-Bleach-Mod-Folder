@@ -157,7 +157,7 @@ public class EntityMenosGrande extends EntityMob
 	protected void dropFewItems(boolean par1, int par2)
 	{
 		super.dropFewItems(par1, par2);
-		this.entityDropItem(new ItemStack(BleachItems.reiatsu, 2 + rand.nextInt(3) + par2), 0.0F);
+		this.entityDropItem(new ItemStack(BleachItems.reiatsu, 5 + rand.nextInt(3) + par2), 0.0F);
 
 		if (this.rand.nextInt(20 - par2) == 0)
 		{

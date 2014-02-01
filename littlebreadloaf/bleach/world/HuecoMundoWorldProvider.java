@@ -1,9 +1,5 @@
 package littlebreadloaf.bleach.world;
 
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.BleachIds;
 import littlebreadloaf.bleach.render.SkyRendererHuecoMundo;
 import net.minecraft.entity.Entity;
@@ -12,6 +8,9 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class HuecoMundoWorldProvider extends WorldProvider
 {
@@ -20,12 +19,14 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	{
 		this.dimensionId = BleachIds.worldHuecoMundoID;
 		this.worldChunkMgr = new HuecoMundoChunkManager(this.worldObj);
-		if (FMLClientHandler.instance().getSide() == Side.CLIENT)
+		if(FMLCommonHandler.instance().getSide() == Side.CLIENT)
 		{
 			this.setSkyRenderer(new SkyRendererHuecoMundo());
 		}
 	}
 
+	
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)

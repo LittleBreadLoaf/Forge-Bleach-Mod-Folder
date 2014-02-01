@@ -1,9 +1,5 @@
 package littlebreadloaf.bleach.items.shikai;
 
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import littlebreadloaf.bleach.BleachModInfo;
 import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.api.Tools;
@@ -20,14 +16,19 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class ShikaiIce extends Item
+import com.google.common.collect.Multimap;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class ShikaiIce extends ItemSword
 {
 	public static Icon[] icons;
 	private static final String[] ICON = Names.ShikaiIce_UnlocalizedName;
@@ -43,7 +44,7 @@ public class ShikaiIce extends Item
 	
 	public ShikaiIce(int id, EnumToolMaterial material) 
 	{
-		super(id);
+		super(id, material);
 		this.toolMaterial = material;
 		this.maxStackSize = 1;
 		this.setMaxDamage(material.getMaxUses());
@@ -197,7 +198,7 @@ public class ShikaiIce extends Item
         	this.coldboost = 0;
         }
         float damage = this.damageBoost + this.sandalboost + this.pantboost + this.robeboost + this.coldboost;
-        if(damage > 0)
+        if(damage > 0 && props.getFaction() == 1 && damage <= par2EntityLivingBase.getHealth())
         {
             par2EntityLivingBase.setHealth(par2EntityLivingBase.getHealth() - damage);
         }

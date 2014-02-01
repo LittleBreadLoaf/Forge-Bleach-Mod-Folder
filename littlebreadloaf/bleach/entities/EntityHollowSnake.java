@@ -206,9 +206,9 @@ public class EntityHollowSnake extends EntityMob
 			if (props.getFaction() == 1 && this.attackingPlayer.inventory.getCurrentItem() != null
 					&& this.attackingPlayer.inventory.getCurrentItem().itemID == BleachItems.zanpakuto.itemID && props.getZTotal() < 400)
 			{
-				props.addPoints(3, 4);
+				props.addPoints(4, 4);
 				props.addPoints(8, 3);
-				props.addPoints(4, -2);
+				props.addPoints(3, -2);
 			}
 
 		}

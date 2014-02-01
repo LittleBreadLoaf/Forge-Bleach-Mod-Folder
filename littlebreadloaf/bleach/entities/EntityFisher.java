@@ -220,9 +220,9 @@ public class EntityFisher extends EntityMob
 			if (props.getFaction() == 1 && this.attackingPlayer.inventory.getCurrentItem() != null
 					&& this.attackingPlayer.inventory.getCurrentItem().itemID == BleachItems.zanpakuto.itemID && props.getZTotal() < 400)
 			{
-				props.addPoints(4, 5);
+				props.addPoints(3, 5);
 				props.addPoints(7, 2);
-				props.addPoints(3, -2);
+				props.addPoints(4, -2);
 			}
 
 		}

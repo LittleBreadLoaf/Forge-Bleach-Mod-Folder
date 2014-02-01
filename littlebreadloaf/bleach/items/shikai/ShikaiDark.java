@@ -1,34 +1,32 @@
 package littlebreadloaf.bleach.items.shikai;
 
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import littlebreadloaf.bleach.BleachModInfo;
 import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.api.Tools;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.extras.ShikaiKeyBind;
-import littlebreadloaf.bleach.items.BleachItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class ShikaiDark extends Item
+import com.google.common.collect.Multimap;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class ShikaiDark extends ItemSword
 {
 	public static Icon[] icons;
 	private static final String[] ICON = Names.ShikaiDark_UnlocalizedName;
@@ -44,7 +42,7 @@ public class ShikaiDark extends Item
 	
 	public ShikaiDark(int id, EnumToolMaterial material) 
 	{
-		super(id);
+		super(id, material);
 		this.toolMaterial = material;
 		this.maxStackSize = 1;
 		this.setMaxDamage(material.getMaxUses());
@@ -200,7 +198,7 @@ public class ShikaiDark extends Item
         	damageBoost = 0;
         }
         float damage = this.damageBoost + this.sandalboost + this.pantboost + this.robeboost + this.darkboost;
-        if(damage > 0)
+        if(damage > 0 && props.getFaction() == 1 && damage <= par2EntityLivingBase.getHealth())
         {
             par2EntityLivingBase.setHealth(par2EntityLivingBase.getHealth() - damage);
         }
