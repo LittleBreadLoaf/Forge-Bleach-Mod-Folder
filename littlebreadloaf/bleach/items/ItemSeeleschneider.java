@@ -92,24 +92,24 @@ public class ItemSeeleschneider extends Item
 	 * pressed. Args: itemStack, world, entityPlayer
 	 */
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	public ItemStack onItemRightClick(ItemStack item, World par2World, EntityPlayer player)
 	{
 
-		ExtendedPlayer props = (ExtendedPlayer) par3EntityPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-		if (par1ItemStack.getItemDamage() == 0 && !par3EntityPlayer.worldObj.isRemote && props.getCurrentEnergy() >= (float) 70 / (float) props.getCurrentCap())
+		ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+		if (item.getItemDamage() == 0 && !player.worldObj.isRemote && props.getCurrentEnergy() >= (float) 70 / (float) props.getCurrentCap())
 		{
 			props.consumeEnergy(70);
-			par1ItemStack.setItemDamage(1);
+			item.setItemDamage(1);
 		}
-		return par1ItemStack;
+		return item;
 	}
 
 	@Override
 	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float f)
 	{
-		if(!world.isRemote)
+		if (!world.isRemote)
 		{
-			if (item.getItemDamage() == 1 && side == 1)
+			if (item.getItemDamage() == 1 && side == 1 && world.doesBlockHaveSolidTopSurface(x, y, z))
 			{
 				world.setBlock(x, y + 1, z, BleachBlocks.seeleSchneiderBlock.blockID);
 				if (!player.capabilities.isCreativeMode)
