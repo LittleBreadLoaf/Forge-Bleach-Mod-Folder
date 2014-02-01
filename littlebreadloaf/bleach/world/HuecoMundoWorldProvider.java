@@ -19,11 +19,7 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	{
 		this.dimensionId = BleachIds.worldHuecoMundoID;
 		this.worldChunkMgr = new HuecoMundoChunkManager(this.worldObj);
-<<<<<<< HEAD
 		if(FMLCommonHandler.instance().getSide() == Side.CLIENT)
-=======
-		if (FMLCommonHandler.instance().getSide() == Side.CLIENT)
->>>>>>> 34f2bcf0ef6004ac647939de46138fc85b856c19
 		{
 			this.setSkyRenderer(new SkyRendererHuecoMundo());
 		}
