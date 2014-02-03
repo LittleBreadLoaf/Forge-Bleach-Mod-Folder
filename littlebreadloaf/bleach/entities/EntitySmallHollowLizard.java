@@ -41,6 +41,7 @@ public class EntitySmallHollowLizard extends EntityMob
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(7, new EntityAIWander(this, var3));
+		this.setSize(0.9F, 0.5F);
 	}
 
 	/**

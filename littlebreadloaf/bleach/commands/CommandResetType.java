@@ -4,6 +4,8 @@ import littlebreadloaf.bleach.events.ExtendedPlayer;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 
 public class CommandResetType extends CommandBase
 {
@@ -25,6 +27,7 @@ public class CommandResetType extends CommandBase
 		ExtendedPlayer props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 		props.resetType();
 		var3.addChatMessage("Resetting zanpakuto type");
+		
 	}
 
 	@Override

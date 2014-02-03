@@ -166,14 +166,14 @@ public class ItemSeeleschneider extends Item
 
 			if (par2EntityLivingBase.getCreatureAttribute() == Tools.SPIRIT)
 			{
-				if (!player.worldObj.isRemote)
+				if (!player.worldObj.isRemote && props.getFaction() == 2)
 				{
 					props.addSXP(3);
 				}
 				damageBoost = 4;
 			} else
 			{
-				if (!player.worldObj.isRemote)
+				if (!player.worldObj.isRemote && props.getFaction() == 2)
 				{
 					props.addSXP(1);
 				}

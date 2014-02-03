@@ -176,7 +176,7 @@ public class ShikaiNormal extends ItemSword
         
         if(par2EntityLivingBase.getCreatureAttribute() == Tools.SPIRIT)
         {
-        	if(!player.worldObj.isRemote)
+        	if(!player.worldObj.isRemote && props.getFaction() == 1)
         	{
         		props.addSXP(5);
         	}
@@ -184,7 +184,7 @@ public class ShikaiNormal extends ItemSword
         }
         else
         {
-        	if(!player.worldObj.isRemote)
+        	if(!player.worldObj.isRemote && props.getFaction() == 1)
         	{
         		props.addSXP(2);
         	}

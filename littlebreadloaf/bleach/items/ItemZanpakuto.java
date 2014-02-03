@@ -176,7 +176,7 @@ public class ItemZanpakuto extends ItemSword
         
         if(par2EntityLivingBase.getCreatureAttribute() == Tools.SPIRIT)
         {
-        	if(!player.worldObj.isRemote)
+        	if(!player.worldObj.isRemote && props.getFaction() == 1)
         	{
         		props.addSXP(3);
         	}
@@ -184,7 +184,7 @@ public class ItemZanpakuto extends ItemSword
         }
         else
         {
-        	if(!player.worldObj.isRemote)
+        	if(!player.worldObj.isRemote && props.getFaction() == 1)
         	{
         		props.addSXP(1);
         	}

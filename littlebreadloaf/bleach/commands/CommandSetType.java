@@ -3,10 +3,11 @@ package littlebreadloaf.bleach.commands;
 import java.util.List;
 
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 
 public class CommandSetType extends CommandBase
 {
@@ -27,10 +28,19 @@ public class CommandSetType extends CommandBase
 		ExtendedPlayer props = (ExtendedPlayer) var4.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 		int var5 = 0;
 		
+		if(par2ArrayOfStr.length >= 2)
+		{
+			EntityPlayerMP entityplayermp = MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(par2ArrayOfStr[2]);
+            var4 = entityplayermp;
+            props = (ExtendedPlayer) var4.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+		}
 		if (par2ArrayOfStr.length > 0)
         {
             int var3 = this.getTypeToSet(par1ICommandSender, par2ArrayOfStr[0]);
-            props.setType(var3);
+            if(var3 != 12)
+            {
+                props.setType(var3);
+            }
             	 if(var3 == 0)
          		{
          			var4.addChatMessage("Zanpakuto type set to fire");
@@ -82,6 +92,14 @@ public class CommandSetType extends CommandBase
           			var4.addChatMessage("Zanpakuto type set to water");
             	 }
             	 
+            	 if(var3 == 12)
+            	 {
+            		 var4.addChatMessage("Resetting Zanpakuto Type");
+            		 props.resetType();
+            	 }
+            	 
+            	 
+            	 
 
             
             	 if (par2ArrayOfStr.length >= 2)
@@ -105,7 +123,7 @@ public class CommandSetType extends CommandBase
      */
     protected int getTypeToSet(ICommandSender par1ICommandSender, String par2Str)
     {
-        return !par2Str.equalsIgnoreCase("fire") ? (!par2Str.equalsIgnoreCase("ice") ? (!par2Str.equalsIgnoreCase("earth") ? (!par2Str.equalsIgnoreCase("wind") ? (!par2Str.equalsIgnoreCase("poison") ? (!par2Str.equalsIgnoreCase("heal") ? (!par2Str.equalsIgnoreCase("light") ? (!par2Str.equalsIgnoreCase("dark") ? (!par2Str.equalsIgnoreCase("lunar") ? (!par2Str.equalsIgnoreCase("lightning") ? (!par2Str.equalsIgnoreCase("normal") ? (!par2Str.equalsIgnoreCase("water") ? parseIntBounded(par1ICommandSender, par2Str, 0, 11) : 11) : 10) : 9) : 8) : 7) : 6) : 5) : 4) : 3) : 2) : 1) : 0;
+        return !par2Str.equalsIgnoreCase("fire") ? (!par2Str.equalsIgnoreCase("ice") ? (!par2Str.equalsIgnoreCase("earth") ? (!par2Str.equalsIgnoreCase("wind") ? (!par2Str.equalsIgnoreCase("poison") ? (!par2Str.equalsIgnoreCase("heal") ? (!par2Str.equalsIgnoreCase("light") ? (!par2Str.equalsIgnoreCase("dark") ? (!par2Str.equalsIgnoreCase("lunar") ? (!par2Str.equalsIgnoreCase("lightning") ? (!par2Str.equalsIgnoreCase("normal") ? (!par2Str.equalsIgnoreCase("water") ? (!par2Str.equalsIgnoreCase("null") ? parseIntBounded(par1ICommandSender, par2Str, 0, 12) : 12) : 11) : 10) : 9) : 8) : 7) : 6) : 5) : 4) : 3) : 2) : 1) : 0;
     }
 	
 	/**
@@ -113,12 +131,12 @@ public class CommandSetType extends CommandBase
      */
     public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr)
     {
-        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] {"fire", "ice", "earth", "wind", "poison", "heal", "light", "dark", "lunar", "lightning", "normal", "water"}): null;
+        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] {"fire", "ice", "earth", "wind", "poison", "heal", "light", "dark", "lunar", "lightning", "normal", "water", "null"}): null;
     }
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender) 
 	{
-		return "/settype <type> [texture 0-4]";
+		return "/settype <type> [texture 0-4] {username}";
 	}
 }

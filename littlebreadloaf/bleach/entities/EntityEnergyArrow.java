@@ -349,7 +349,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 							{
 								ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 
-								if (!player.worldObj.isRemote)
+								if (!player.worldObj.isRemote && props.getFaction() == 2)
 								{
 									props.addSXP(3);
 								}
@@ -368,7 +368,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 							{
 								ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 
-								if (!player.worldObj.isRemote)
+								if (!player.worldObj.isRemote && props.getFaction() == 2)
 								{
 									props.addSXP(1);
 								}
