@@ -27,7 +27,7 @@ public class EntitySmallHollowLizard extends EntityMob
 
 	public EntitySmallHollowLizard(World par1)
 	{
-		this(par1, rand.nextInt(3));
+		this(par1, rand.nextInt(7));
 	}
 
 	public EntitySmallHollowLizard(World par1World, int par2)

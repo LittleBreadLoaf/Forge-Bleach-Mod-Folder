@@ -17,6 +17,10 @@ public class RenderSmallHollowLizard extends RenderLiving
 	private static final ResourceLocation texture1 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/hollow_lizard_small.png");
 	private static final ResourceLocation texture2 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/hollow_lizard_small2.png");
 	private static final ResourceLocation texture3 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/hollow_lizard_small3.png");
+	private static final ResourceLocation texture4 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/hollow_lizard_small4.png");
+	private static final ResourceLocation texture5 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/hollow_lizard_small5.png");
+	private static final ResourceLocation texture6 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/hollow_lizard_small6.png");
+	private static final ResourceLocation texture7 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/hollow_lizard_small7.png");
 	protected ModelSmallHollowLizard model;
 
 	public RenderSmallHollowLizard(ModelBase par1ModelBase, float par2)
@@ -64,10 +68,19 @@ public class RenderSmallHollowLizard extends RenderLiving
 	{
 		switch (((EntitySmallHollowLizard) entity).getTexture())
 		{
-			case 0:
-				return texture2;
+			
+			case 5:
+				return texture7;
+			case 4:
+				return texture6;
+			case 3:
+				return texture5;
+			case 2:
+				return texture4;
 			case 1:
 				return texture3;
+			case 0:
+				return texture2;
 			default:
 				return texture1;
 
