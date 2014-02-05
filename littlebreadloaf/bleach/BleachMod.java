@@ -21,11 +21,13 @@ import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import littlebreadloaf.bleach.world.BleachWorldGen;
 import littlebreadloaf.bleach.world.HuecoMundoWorldProvider;
 import littlebreadloaf.bleach.world.biomes.BleachBiomes;
+import me.dawars.CraftingPillars.api.CraftingPillarAPI;
 import net.minecraft.command.ICommandManager;
 import net.minecraft.command.ServerCommandManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -120,5 +122,16 @@ public class BleachMod
 		serverCommand.registerCommand(new CommandSetType());
 		serverCommand.registerCommand(new CommandSpirit());
 		serverCommand.registerCommand(new CommandSetFaction());
+	}
+	
+	@EventHandler
+	public void modsLoaded(FMLPostInitializationEvent evt)
+	{
+		if(Loader.isModLoaded("craftingpillars"))
+		{
+			CraftingPillarAPI.addDiskTexture(BleachItems.recordAsterisk.itemID, BleachModInfo.ID + ":textures/models/disk_astrisk.png");
+			CraftingPillarAPI.addDiskTexture(BleachItems.recordEscalon.itemID, BleachModInfo.ID + ":textures/models/disk_Escalon.png");
+			CraftingPillarAPI.addDiskTexture(BleachItems.recordNumberOne.itemID, BleachModInfo.ID + ":textures/models/disk_number_one.png");
+		}
 	}
 }
