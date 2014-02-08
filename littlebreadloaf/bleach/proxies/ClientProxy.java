@@ -8,6 +8,7 @@ import littlebreadloaf.bleach.entities.EntityEnergyArrow;
 import littlebreadloaf.bleach.entities.EntityGetsuga;
 import littlebreadloaf.bleach.entities.EntitySeeleArrow;
 import littlebreadloaf.bleach.events.BleachSounds;
+import littlebreadloaf.bleach.events.ExtendedPlayer;
 import littlebreadloaf.bleach.extras.FlashKeyBind;
 import littlebreadloaf.bleach.extras.MaskKeyBind;
 import littlebreadloaf.bleach.extras.ShikaiKeyBind;
@@ -27,7 +28,9 @@ import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
 import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.packet.Packet;
+import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -58,9 +61,10 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void initZanpakutoRenderers()
 	{
+		
 		MinecraftForgeClient.registerItemRenderer(BleachItems.zanpakuto.itemID, new ZanpakutoRenderer());
 		MinecraftForgeClient.registerItemRenderer(BleachItems.seele.itemID, new SeeleSchneiderRenderer());
-
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileSphereLamp.class, new RenderSphereLamp());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLantern.class, new RenderLantern());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileSeeleSchneider.class, new SeeleSchneiderBlockRenderer());

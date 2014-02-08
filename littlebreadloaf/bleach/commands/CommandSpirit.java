@@ -29,6 +29,7 @@ public class CommandSpirit extends CommandBase
             ExtendedPlayer props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
             props.setCurrentEnergy(1);
             var3.addChatMessage("Full Spiritual Energy");
+            getCommandSenderAsPlayer(par1ICommandSender).addChatMessage("Filling " + par2ArrayOfStr[0] + "'s Spiritual Energy");
         }
 		else
 		{

@@ -200,8 +200,8 @@ public class Names
 	public static final String[] ShikaiFire_UnlocalizedName = {"shikai_fire1", "shikai_fire2", "shikai_fire3", "shikai_fire4", "shikai_fire5", "vox_populi"};
 	public static final String[] ShikaiFire_Name = {"Fire Shikai", "Fire Shikai", "Fire Shikai", "Fire Shikai", "Fire Shikai", "Fire Shikai"};
 	
-	public static final String[] ShikaiIce_UnlocalizedName = {"shikai_ice1", "shikai_ice2", "shikai_ice3", "shikai_ice4", "shikai_ice5", "ice_cream", "zenhansha", "mizore"};
-	public static final String[] ShikaiIce_Name = {"Ice Shikai", "Ice Shikai", "Ice Shikai", "Ice Shikai", "Ice Shikai", "Ice Shikai", "Zenhansha", "Mizore"};
+	public static final String[] ShikaiIce_UnlocalizedName = {"shikai_ice1", "shikai_ice2", "shikai_ice3", "shikai_ice4", "shikai_ice5", "ice_cream", "mizore"};
+	public static final String[] ShikaiIce_Name = {"Ice Shikai", "Ice Shikai", "Ice Shikai", "Ice Shikai", "Ice Shikai", "Ice Shikai", "Mizore"};
 	
 	public static final String[] ShikaiHeal_UnlocalizedName = {"shikai_heal1", "shikai_heal2", "shikai_heal3", "shikai_heal4", "shikai_heal5", "love"};
 	public static final String[] ShikaiHeal_Name = {"Heal Shikai", "Heal Shikai", "Heal Shikai", "Heal Shikai", "Heal Shikai", "Heal Shikai"};
@@ -218,8 +218,9 @@ public class Names
 	public static final String[] ShikaiLight_UnlocalizedName = {"shikai_light1", "shikai_light2", "shikai_light3", "shikai_light4", "shikai_light5", "master_sword"};
 	public static final String[] ShikaiLight_Name = {"Light Shikai", "Light Shikai", "Light Shikai", "Light Shikai", "Light Shikai", "Light Shikai"};
 	
-	public static final String[] ShikaiDark_UnlocalizedName = {"shikai_dark1", "shikai_dark2", "shikai_dark3", "shikai_dark4", "shikai_dark5", "souledge", "kage_kishi", "Onmyo"};
-	public static final String[] ShikaiDark_Name = {"Dark Shikai", "Dark Shikai", "Dark Shikai", "Dark Shikai", "Dark Shikai", "Dark Shikai", "Kage Kishi", "Onmyo"};
+	public static final String[] ShikaiDark_UnlocalizedName = {"shikai_dark1", "shikai_dark2", "shikai_dark3", "shikai_dark4", "shikai_dark5", "souledge", "kage_kishi", "Onmyo", "nekosenro", "kumoritoratsume"};
+	public static final String[] ShikaiDark_Name = {"Dark Shikai", "Dark Shikai", "Dark Shikai", "Dark Shikai", "Dark Shikai", "Dark Shikai", "Kage Kishi", "Onmyo", "Neko Senro", "Kumori Tora Tsume"};
+	
 	
 	
 	public static final String[] ShikaiLightning_UnlocalizedName = {"shikai_lightning1", "shikai_lightning2", "shikai_lightning3", "shikai_lightning4", "shikai_lightning5", "mjolnir"};
@@ -231,7 +232,7 @@ public class Names
 	public static final String[] ShikaiWater_UnlocalizedName = {"shikai_water1", "shikai_water2", "shikai_water3", "shikai_water4", "shikai_water5", "sakana", "hi_yari"};
 	public static final String[] ShikaiWater_Name = {"Water Shikai", "Water Shikai", "Water Shikai", "Water Shikai", "Water Shikai", "Water Shikai", "Hi-Yari"};
 	
-	public static final String[] ShikaiNormal_UnlocalizedName = {"shikai_normal1", "shikai_normal2", "shikai_normal3", "shikai_normal4", "shikai_normal5", "ticonderoga", "setsuna"};
-	public static final String[] ShikaiNormal_Name = {"Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Setsuna"};
+	public static final String[] ShikaiNormal_UnlocalizedName = {"shikai_normal1", "shikai_normal2", "shikai_normal3", "shikai_normal4", "shikai_normal5", "ticonderoga", "setsuna", "zenhansha"};
+	public static final String[] ShikaiNormal_Name = {"Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Setsuna", "Zenhansha"};
 
 }

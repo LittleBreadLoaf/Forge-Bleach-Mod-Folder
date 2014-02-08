@@ -295,7 +295,6 @@ public class ItemZanpakuto extends ItemSword
 	        
 	   
       }
-	  System.out.println(props.getZTotal());
     	
         
     }
@@ -701,40 +700,16 @@ public class ItemZanpakuto extends ItemSword
     	            		{
     	            			par3EntityPlayer.addChatMessage("Bring Balance, Onmyo!");
     	            		}
+    	            		if(props.getZTex() == 8)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Scratch, Neko Senro!");
+    	            		}
+    	            		if(props.getZTex() == 9)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Shred our enemies, Kumori Tora Tsume!");
+    	            		}
     	        		}
-                	 
                 	 else if(props.getZType() == 9)
- 	        		{
-                		 ItemStack shikai = new ItemStack(BleachItems.shikailightning, 1);
-                   		par1ItemStack.itemID = shikai.itemID;
- 	            		
- 	            		if(props.getZTex() == 0)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Gather a storm," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 1)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Electrocute," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 2)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Crackle," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 3)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Flash," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 4)
-  	            		{
-  	            			par3EntityPlayer.addChatMessage("Flash across the sky," + " " + par1ItemStack.getDisplayName() + "!");
-  	            		}
- 	            		if(props.getZTex() == 5)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Mjolnir!");
- 	            		}
- 	        		}
-                	 
-                	 else if(props.getZType() == 10)
   	        		{
                  		 ItemStack shikai = new ItemStack(BleachItems.shikailunar, 1);
                     		par1ItemStack.itemID = shikai.itemID;
@@ -764,43 +739,37 @@ public class ItemZanpakuto extends ItemSword
   	            			par3EntityPlayer.addChatMessage(par1ItemStack.getDisplayName());
   	            		}
   	        		}
-                	 
-                	 else if(props.getZType() == 11)
-   	        		{
-                  		 ItemStack shikai = new ItemStack(BleachItems.shikaiwater, 1);
-                     		par1ItemStack.itemID = shikai.itemID;
-   	            		
-   	            		if(props.getZTex() == 0)
-   	            		{
-   	            			par3EntityPlayer.addChatMessage("Impale," + " " + par1ItemStack.getDisplayName() + "!");
-   	            		}
-   	            		if(props.getZTex() == 1)
-   	            		{
-   	            			par3EntityPlayer.addChatMessage("Rage the seas," + " " + par1ItemStack.getDisplayName() + "!");
-   	            		}
-   	            		if(props.getZTex() == 2)
-   	            		{
-   	            			par3EntityPlayer.addChatMessage("Rain," + " " + par1ItemStack.getDisplayName() + "!");
-   	            		}
-   	            		if(props.getZTex() == 3)
-   	            		{
-   	            			par3EntityPlayer.addChatMessage("Anchor's away," + " " + par1ItemStack.getDisplayName() + "!");
-   	            		}
-   	            		if(props.getZTex() == 4)
+                	 else if(props.getZType() == 10)
+  	        		{
+                 		 ItemStack shikai = new ItemStack(BleachItems.shikailightning, 1);
+                    		par1ItemStack.itemID = shikai.itemID;
+  	            		
+  	            		if(props.getZTex() == 0)
   	            		{
-  	            			par3EntityPlayer.addChatMessage("Swash and buckle," + " " + par1ItemStack.getDisplayName() + "!");
+  	            			par3EntityPlayer.addChatMessage("Gather a storm," + " " + par1ItemStack.getDisplayName() + "!");
   	            		}
-   	            		if(props.getZTex() == 5)
+  	            		if(props.getZTex() == 1)
+  	            		{
+  	            			par3EntityPlayer.addChatMessage("Electrocute," + " " + par1ItemStack.getDisplayName() + "!");
+  	            		}
+  	            		if(props.getZTex() == 2)
+  	            		{
+  	            			par3EntityPlayer.addChatMessage("Crackle," + " " + par1ItemStack.getDisplayName() + "!");
+  	            		}
+  	            		if(props.getZTex() == 3)
+  	            		{
+  	            			par3EntityPlayer.addChatMessage("Flash," + " " + par1ItemStack.getDisplayName() + "!");
+  	            		}
+  	            		if(props.getZTex() == 4)
    	            		{
-   	            			par3EntityPlayer.addChatMessage("Swim," + " " + par1ItemStack.getDisplayName() + "!");
+   	            			par3EntityPlayer.addChatMessage("Flash across the sky," + " " + par1ItemStack.getDisplayName() + "!");
    	            		}
-   	            		if(props.getZTex() == 6)
-   	            		{
-   	            			par3EntityPlayer.addChatMessage("Hi-Yari!");
-   	            		}
-   	        		}
-                	 
-                	 else if(props.getZType() == 12)
+  	            		if(props.getZTex() == 5)
+  	            		{
+  	            			par3EntityPlayer.addChatMessage("Mjolnir!");
+  	            		}
+  	        		}
+                	 else if(props.getZType() == 11)
     	        		{
                    		 ItemStack shikai = new ItemStack(BleachItems.shikainormal, 1);
                       		par1ItemStack.itemID = shikai.itemID;
@@ -834,6 +803,41 @@ public class ItemZanpakuto extends ItemSword
        	            			par3EntityPlayer.addChatMessage("Setsuna!");
        	            		}
     	        		}
+                	 else if(props.getZType() == 12)
+    	        		{
+                   		 ItemStack shikai = new ItemStack(BleachItems.shikaiwater, 1);
+                      		par1ItemStack.itemID = shikai.itemID;
+    	            		
+    	            		if(props.getZTex() == 0)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Impale," + " " + par1ItemStack.getDisplayName() + "!");
+    	            		}
+    	            		if(props.getZTex() == 1)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Rage the seas," + " " + par1ItemStack.getDisplayName() + "!");
+    	            		}
+    	            		if(props.getZTex() == 2)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Rain," + " " + par1ItemStack.getDisplayName() + "!");
+    	            		}
+    	            		if(props.getZTex() == 3)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Anchor's away," + " " + par1ItemStack.getDisplayName() + "!");
+    	            		}
+    	            		if(props.getZTex() == 4)
+    	            		{
+   	            			par3EntityPlayer.addChatMessage("Swash and buckle," + " " + par1ItemStack.getDisplayName() + "!");
+    	            		}
+    	            		if(props.getZTex() == 5)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Swim," + " " + par1ItemStack.getDisplayName() + "!");
+    	            		}
+    	            		if(props.getZTex() == 6)
+    	            		{
+    	            			par3EntityPlayer.addChatMessage("Hi-Yari!");
+    	            		}
+    	        		}
+                 	 
                 }
 
                 
@@ -865,24 +869,24 @@ public class ItemZanpakuto extends ItemSword
         	}
     	}
     	else if(player.username.equalsIgnoreCase("Poofy96") )
-    		{    		if( props.getZName().equals("Mizore") && props.getZTex() != 7)
+    		{    		if( props.getZName().equals("Mizore") && props.getZTex() != 6)
     		{
         		props.setType(1);
-        		props.setTexture(7);
+        		props.setTexture(6);
     		}
-    		else if(!props.getZName().equals("Mizore") && props.getZTex() == 7)
+    		else if(!props.getZName().equals("Mizore") && props.getZTex() == 6)
         	{
         		props.setTexture(rand.nextInt(5));
         	}
     	}
     	else if(player.username.equalsIgnoreCase("JoeTheAntiPro"))
     	{
-    		if( props.getZName().equals("Zenhansha") && props.getZTex() != 6)
+    		if( props.getZName().equals("Zenhansha") && props.getZTex() != 7)
     		{
-        		props.setType(1);
-        		props.setTexture(6);	
+        		props.setType(10);
+        		props.setTexture(7);	
     		}
-    		else if(!props.getZName().equals("Zenhansha") && props.getZTex() == 6)
+    		else if(!props.getZName().equals("Zenhansha") && props.getZTex() == 7)
         	{
         		props.setTexture(rand.nextInt(5));
         	}
@@ -960,7 +964,31 @@ public class ItemZanpakuto extends ItemSword
         		props.setTexture(rand.nextInt(5));
             }
         }
-  
+    	else if(player.username.equalsIgnoreCase("ChibiNekoHime") )
+        {
+        	if( props.getZName().equals("Neko Senro") && props.getZTex() != 8)
+        	{
+            	props.setType(7);
+            	props.setTexture(8);
+        	}
+        	else if(!props.getZName().equals("Neko Senro") && props.getZTex() == 8)
+            {
+        		props.setTexture(rand.nextInt(5));
+            }
+        }
+    	else if(player.username.equalsIgnoreCase("ChibiNekoHime") )
+        {
+        	if( props.getZName().equals("Kumori Tora Tsume") && props.getZTex() != 9)
+        	{
+            	props.setType(7);
+            	props.setTexture(9);
+        	}
+        	else if(!props.getZName().equals("Kumori Tora Tsume") && props.getZTex() == 9)
+            {
+        		props.setTexture(rand.nextInt(5));
+            }
+        }
+        
    
 }
 }

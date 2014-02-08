@@ -103,7 +103,7 @@ public class EntityHollowBlaze extends EntityMob
 
 		if (rand.nextInt(100) >= 50)
 		{
-			return "lblbm.hollowscream";
+			return "bleach.hollowscream";
 		} else
 		{
 			return null;
@@ -118,7 +118,7 @@ public class EntityHollowBlaze extends EntityMob
 	{
 		if (rand.nextInt(100) >= 25)
 		{
-			return "lblbm:hollowscream";
+			return "bleach:hollowscream";
 		} else
 		{
 			return null;
@@ -131,7 +131,7 @@ public class EntityHollowBlaze extends EntityMob
 	 */
 	protected String getDeathSound()
 	{
-		return "lblbm:hollowscream";
+		return "bleach:hollowscream";
 	}
 
 	@Override

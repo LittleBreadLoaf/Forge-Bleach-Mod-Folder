@@ -37,6 +37,7 @@ public class CommandSetSpirit extends CommandBase
 	            var3 = entityplayermp;
 	            props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 				var5 = parseIntBounded(par1ICommandSender, par2ArrayOfStr[1], 50, 1000);
+				getCommandSenderAsPlayer(par1ICommandSender).addChatMessage("Setting " + par2ArrayOfStr[0] + "'s Spiritual Energy to " + var5);
 	        }
 		 props.setMaxCap(var5);
 		 var3.addChatMessage("Setting Spiritual Energy to" + " " + var5);

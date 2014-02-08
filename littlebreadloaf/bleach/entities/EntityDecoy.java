@@ -109,7 +109,11 @@ public class EntityDecoy extends EntityMob
 
 		if (var2 != null && var2.itemID == BleachItems.zanpakuto.itemID)
 		{
-			worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 3, true);
+			if(this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
+			{
+			
+				worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 3, true);
+			}
 			EntityFisher par1 = new EntityFisher(worldObj);
 			par1.setLocationAndAngles(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
 			if (!worldObj.isRemote)

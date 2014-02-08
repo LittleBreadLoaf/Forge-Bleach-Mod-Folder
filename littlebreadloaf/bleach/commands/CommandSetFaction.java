@@ -41,6 +41,7 @@ public class CommandSetFaction extends CommandBase
 	            props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 				faction = this.getTypeToSet(par1ICommandSender, par2ArrayOfStr[1]);
 				 var3.addChatMessage("Setting faction to" + " " + par2ArrayOfStr[1]);
+				 getCommandSenderAsPlayer(par1ICommandSender).addChatMessage("Setting " + par2ArrayOfStr[0] + "'s faction to " + par2ArrayOfStr[1]);
 	        }
 		 props.setFaction(faction + 1);
 		

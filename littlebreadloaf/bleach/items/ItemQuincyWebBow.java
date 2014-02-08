@@ -83,7 +83,7 @@ public class ItemQuincyWebBow extends Item
                   if(!par2World.isRemote)
                   {
                       par2World.spawnEntityInWorld(entitySeeleArrow);
-                      par2World.playSoundAtEntity(par3EntityPlayer, "lblbm:bowfire", 0.4F, 1.0F); 
+                      par2World.playSoundAtEntity(par3EntityPlayer, "bleach:bowfire", 0.4F, 1.0F); 
                   }
                   
               }
@@ -112,7 +112,7 @@ public class ItemQuincyWebBow extends Item
             if (!par2World.isRemote)
             {
                 par2World.spawnEntityInWorld(entityEnergyArrow);
-            	par2World.playSoundAtEntity(par3EntityPlayer, "lblbm:bowfire", 0.4F, 1.0F);
+            	par2World.playSoundAtEntity(par3EntityPlayer, "bleach:bowfire", 0.4F, 1.0F);
             }
 
 
@@ -168,7 +168,7 @@ public class ItemQuincyWebBow extends Item
         //{
         //	par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
         //	this.isSeele = true;
-        //  par2World.playSoundAtEntity(par3EntityPlayer, "lblbm:bowcharge", 0.4F, 1.0F);
+        //  par2World.playSoundAtEntity(par3EntityPlayer, "bleach:bowcharge", 0.4F, 1.0F);
         //}
         if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()) && props.getFaction() == 2)
         {
@@ -224,7 +224,7 @@ public class ItemQuincyWebBow extends Item
   			//if(!player.worldObj.isRemote)
   			//{
   				player.worldObj.spawnEntityInWorld(entityEnergyArrow);
-  				player.worldObj.playSoundAtEntity(player, "lblbm:bowfire", 0.4F, 1.0F);
+  				player.worldObj.playSoundAtEntity(player, "bleach:bowfire", 0.4F, 1.0F);
 
   			//}
   			

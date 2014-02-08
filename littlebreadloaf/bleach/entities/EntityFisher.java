@@ -123,7 +123,7 @@ public class EntityFisher extends EntityMob
 
 		if (rand.nextInt(100) >= 25)
 		{
-			return "lblbm:hollowscream";
+			return "bleach:hollowscream";
 		} else
 		{
 			return null;
@@ -137,7 +137,7 @@ public class EntityFisher extends EntityMob
 	protected String getLivingSound()
 	{
 
-		return "lblbm:fisherlaugh";
+		return "bleach:fisherlaugh";
 
 	}
 
@@ -146,7 +146,7 @@ public class EntityFisher extends EntityMob
 	 */
 	protected String getDeathSound()
 	{
-		return "lblbm:hollowscream";
+		return "bleach:hollowscream";
 	}
 
 	protected void dropFewItems(boolean par1, int par2)

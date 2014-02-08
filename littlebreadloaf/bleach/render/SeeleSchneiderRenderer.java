@@ -2,6 +2,9 @@ package littlebreadloaf.bleach.render;
 
 import static org.lwjgl.opengl.GL11.*;
 import littlebreadloaf.bleach.BleachModInfo;
+import littlebreadloaf.bleach.events.ExtendedPlayer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -26,7 +29,9 @@ public class SeeleSchneiderRenderer implements IItemRenderer
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type)
 	{
-		return true;
+		EntityPlayer ClientPlayer = Minecraft.getMinecraft().thePlayer;
+		ExtendedPlayer props = (ExtendedPlayer) ClientPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+		return props.getIs3D() ? true : false;
 	}
 
 	@Override

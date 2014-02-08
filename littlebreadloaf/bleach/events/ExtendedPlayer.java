@@ -55,6 +55,8 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	private int ZTex = 5;
 	private String ZName = "";
 	
+	private boolean does3D = false;
+	
 	private boolean validFlash = true;
 	private int stickTimer = 60;
 	
@@ -110,6 +112,8 @@ public class ExtendedPlayer implements IExtendedEntityProperties
         nbt.setInteger("MaskLevel", this.MaskLevel);
         
         nbt.setInteger("Faction", this.faction);
+        
+        nbt.setBoolean("Does3D", this.does3D);
 	}
 	
 	@Override
@@ -142,6 +146,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.MaskLevel = nbt.getInteger("MaskLevel");
 		
 		this.faction = nbt.getInteger("Faction");
+		this.does3D = nbt.getBoolean("Does3D");
 	}
 	
 	
@@ -183,7 +188,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 			outputStream.writeInt(this.MaskColor);
 			outputStream.writeInt(this.faction);
 			outputStream.writeBoolean(this.validFlash);
-			outputStream.writeInt(this.stickTimer);
+			outputStream.writeBoolean(this.does3D);
 		} catch(Exception ex){
 			ex.printStackTrace();
 		}
@@ -324,6 +329,11 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.stickTimer = var1;
 		this.syncExtendedProperties();
 	}
+	public void set3D(boolean var1)
+	{
+		this.does3D = var1;
+		this.syncExtendedProperties();
+	}
 	
 	public void setType(int var3)
 	{
@@ -448,7 +458,6 @@ public class ExtendedPlayer implements IExtendedEntityProperties
    			this.Wind = 50;
    			this.Light = 50;
    			this.Dark = 50;
-   			this.ZType = 0;
    		}
      	 
      	 if(var3 == 11)
@@ -602,9 +611,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		return this.validFlash;
 	}
-	public int getStickTimer()
+	public boolean getIs3D()
 	{
-		return this.stickTimer;
+		return this.does3D;
 	}
 	
 	public int getPoints(int var1)
@@ -874,14 +883,14 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		if(this.getValidFlash() && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
 		{
-            player.worldObj.playSoundAtEntity(player, "lblbm:shunpo", 0.4F, 1.0F); 
+            player.worldObj.playSoundAtEntity(player, "bleach:shunpo", 0.4F, 1.0F); 
             ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
             int distance = 10 + (int)(props.getCurrentCap() *(0.01* (float)props.getCurrentEnergy()));
 			player.moveEntity(distance*Math.cos(-player.rotationPitch * (Math.PI / 180F))*Math.sin(-player.rotationYaw * (Math.PI / 180F)), distance*Math.sin(-player.rotationPitch * (Math.PI / 180F)), distance*Math.cos(-player.rotationPitch * (Math.PI / 180F))*Math.cos(-player.rotationYaw * (Math.PI / 180F)));
 			props.consumeEnergy(5);
 			props.setValidFlash(false);
 			props.stickTimer = 0;
-            player.worldObj.playSoundAtEntity(player, "lblbm:shunpo", 0.4F, 1.0F); 
+            player.worldObj.playSoundAtEntity(player, "bleach:shunpo", 0.4F, 1.0F); 
 		}
 		
 	}

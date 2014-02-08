@@ -35,13 +35,14 @@ public class EntityHollowGolem extends EntityMob
 
 	public EntityHollowGolem(World par1)
 	{
-		this(par1, rand.nextInt(3));
+		this(par1, rand.nextInt(3), rand.nextInt(50) + 50);
 	}
 
-	public EntityHollowGolem(World par1World, int par2)
+	public EntityHollowGolem(World par1World, int par2, int par3)
 	{
 		super(par1World);
 		this.setTexture(par2);
+		this.setRenderSize(par3);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4D, false));
 		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityWhole.class, 0.4D, false));
@@ -58,9 +59,11 @@ public class EntityHollowGolem extends EntityMob
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityShinigami.class, 0, false));
 		this.isImmuneToFire = true;
 		this.experienceValue = 15;
-		this.setSize(1.0F, 2.3F);
+		this.setSize(1.0F * (1 + scale), 1.8F * (1 + scale));
 
 	}
+
+	float scale = (float)this.getRenderSize()/(float)100;
 
 	protected boolean isAIEnabled()
 	{
@@ -79,14 +82,14 @@ public class EntityHollowGolem extends EntityMob
 		super.applyEntityAttributes();
 		if (this.worldObj.difficultySetting >= 1)
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(70.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(70.0D + ((float)scale * (float)10));
 
-			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D + ((float)scale * (float)2));
 		} else
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D + ((float)scale * (float)10));
 
-			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D + ((float)scale * (float)2));
 		}
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(50);
 
@@ -105,7 +108,7 @@ public class EntityHollowGolem extends EntityMob
 
 		if (rand.nextInt(100) >= 50)
 		{
-			return "lblbm.hollowscream";
+			return "bleach.hollowscream";
 		} else
 		{
 			return null;
@@ -120,7 +123,7 @@ public class EntityHollowGolem extends EntityMob
 	{
 		if (rand.nextInt(100) >= 25)
 		{
-			return "lblbm:hollowscream";
+			return "bleach:hollowscream";
 		} else
 		{
 			return null;
@@ -133,7 +136,7 @@ public class EntityHollowGolem extends EntityMob
 	 */
 	protected String getDeathSound()
 	{
-		return "lblbm:hollowscream";
+		return "bleach:hollowscream";
 	}
 
 	protected void dropFewItems(boolean par1, int par2)
@@ -216,16 +219,28 @@ public class EntityHollowGolem extends EntityMob
 	{
 		this.dataWatcher.updateObject(19, Integer.valueOf(par1));
 	}
+	
+	public void setRenderSize(int par3) 
+	{
+		this.dataWatcher.updateObject(21, Integer.valueOf(par3));
+		
+	}
 
 	public int getTexture()
 	{
 		return this.dataWatcher.getWatchableObjectInt(19);
+	}
+	
+	public int getRenderSize()
+	{
+		return this.dataWatcher.getWatchableObjectInt(21);
 	}
 
 	protected void entityInit()
 	{
 		super.entityInit();
 		this.dataWatcher.addObject(19, Integer.valueOf(0));
+		this.dataWatcher.addObject(21, Integer.valueOf(0));
 	}
 
 	/**
@@ -235,6 +250,7 @@ public class EntityHollowGolem extends EntityMob
 	{
 		super.writeEntityToNBT(par1NBTTagCompound);
 		par1NBTTagCompound.setInteger("Texture", this.getTexture());
+		par1NBTTagCompound.setInteger("RenderSize", this.getRenderSize());
 	}
 
 	/**
@@ -244,5 +260,6 @@ public class EntityHollowGolem extends EntityMob
 	{
 		super.readEntityFromNBT(par1NBTTagCompound);
 		this.setTexture(par1NBTTagCompound.getInteger("Texture"));
+		this.setRenderSize(par1NBTTagCompound.getInteger("RenderSize"));
 	}
 }

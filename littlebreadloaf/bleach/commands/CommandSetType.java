@@ -28,94 +28,85 @@ public class CommandSetType extends CommandBase
 		ExtendedPlayer props = (ExtendedPlayer) var4.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 		int var5 = 0;
 		
-		if(par2ArrayOfStr.length >= 2)
+		
+		if(par2ArrayOfStr.length == 3)
 		{
-			EntityPlayerMP entityplayermp = MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(par2ArrayOfStr[2]);
+			EntityPlayerMP entityplayermp = MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(par2ArrayOfStr[0]);
             var4 = entityplayermp;
             props = (ExtendedPlayer) var4.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+			var5 = parseIntBounded(par1ICommandSender, par2ArrayOfStr[2], 0, 4);
+			getCommandSenderAsPlayer(par1ICommandSender).addChatMessage("Setting " + par2ArrayOfStr[0] + "'s Type to " + par2ArrayOfStr[1]);
+    		var4.addChatMessage("Zanpakuto Type set to " + par2ArrayOfStr[1]);
+    		if(getTypeToSet(par1ICommandSender, par2ArrayOfStr[1]) < 12)
+    		{
+    			props.setType(getTypeToSet(par1ICommandSender, par2ArrayOfStr[1]));
+    			props.setZType(getTypeToSet(par1ICommandSender, par2ArrayOfStr[1]) + 1);
+    		}
+    		else
+    		{
+    			props.resetType();
+    		}
+		
 		}
-		if (par2ArrayOfStr.length > 0)
+		
+		if(par2ArrayOfStr.length == 2)
+		{
+			if(MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(par2ArrayOfStr[0]) != null)
+			{
+				EntityPlayerMP entityplayermp = MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(par2ArrayOfStr[0]);
+	            var4 = entityplayermp;
+	            props = (ExtendedPlayer) var4.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+	            var4.addChatMessage("Zanpakuto Type set to " + par2ArrayOfStr[1]);
+	            getCommandSenderAsPlayer(par1ICommandSender).addChatMessage("Setting " + par2ArrayOfStr[0] + "'s Type to " + par2ArrayOfStr[1]);
+	            if(getTypeToSet(par1ICommandSender, par2ArrayOfStr[1]) < 12)
+	    		{
+	    			props.setType(getTypeToSet(par1ICommandSender, par2ArrayOfStr[1]));
+	    			props.setZType(getTypeToSet(par1ICommandSender, par2ArrayOfStr[1]) + 1);
+	    		}
+	    		else
+	    		{
+	    			props.resetType();
+	    		}
+			}
+			else
+			{
+				var5 = parseIntBounded(par1ICommandSender, par2ArrayOfStr[1], 0, 4);
+				 if(getTypeToSet(par1ICommandSender, par2ArrayOfStr[0]) < 12)
+		    		{
+		    			props.setType(getTypeToSet(par1ICommandSender, par2ArrayOfStr[0]));
+		    			props.setZType(getTypeToSet(par1ICommandSender, par2ArrayOfStr[0]) + 1);
+		    		}
+		    		else
+		    		{
+		    			props.resetType();
+		    		}
+				 var4.addChatMessage("Setting Zanpakuto Type to " + par2ArrayOfStr[0]);
+			}
+			
+		}
+		if (par2ArrayOfStr.length == 1)
         {
             int var3 = this.getTypeToSet(par1ICommandSender, par2ArrayOfStr[0]);
             if(var3 != 12)
             {
                 props.setType(var3);
+                props.setZType(var3 + 1);
             }
-            	 if(var3 == 0)
-         		{
-         			var4.addChatMessage("Zanpakuto type set to fire");
-         		}
-            	 if(var3 == 1)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to ice");
-          		}
-            	 if(var3 == 2)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to earth");
-          		}
-            	 if(var3 == 3)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to wind");
-          		}
-            	 if(var3 == 4)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to poison");
-          		}
-            	 if(var3 == 5)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to heal");
-          		}
-            	 if(var3 == 6)
-         		{
-         			var4.addChatMessage("Zanpakuto type set to light");
-         		}
-            	 if(var3 == 7)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to dark");
-          		}
-            	 if(var3 == 8)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to lunar");
-          		}
-            	 if(var3 == 9)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to lightning");
-          		}
-            	 
-            	 if(var3 == 10)
-          		{
-         			var4.addChatMessage("Zanpakuto type set to normal");
-          		}
-            	 
-            	 if(var3 == 11)
-            	 {
-          			var4.addChatMessage("Zanpakuto type set to water");
-            	 }
-            	 
             	 if(var3 == 12)
             	 {
-            		 var4.addChatMessage("Resetting Zanpakuto Type");
             		 props.resetType();
             	 }
-            	 
-            	 
-            	 
-
-            
-            	 if (par2ArrayOfStr.length >= 2)
-                 {
-                     var5 = parseIntBounded(par1ICommandSender, par2ArrayOfStr[1], 0, 4);
-                 }
-         		
-         		props.setTexture(var5);	
+            	 var4.addChatMessage("Zanpakuto Type set to " + par2ArrayOfStr[0]);
+      	 
         }
 		
-		
+
+		props.setTexture(var5);
 		
 
 		
 		
-	
+	props.syncExtendedProperties();
 	}
 	
 	/**
@@ -137,6 +128,6 @@ public class CommandSetType extends CommandBase
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender) 
 	{
-		return "/settype <type> [texture 0-4] {username}";
+		return "/settype {username} <type> [texture 0-4] ";
 	}
 }

@@ -131,10 +131,7 @@ public class BleachEvents
 			//	player.motionZ = 0;
 			//}
 			
-			if(player.worldObj.getBlockId((int)(player.posX - 1), (int)(player.posY), (int)(player.posZ)) != 0 || player.worldObj.getBlockId((int)(player.posX - 2), (int)(player.posY), (int)(player.posZ)) != 0)
-			{
-				props.setStickTimer(0);
-			}
+			
 		}
 		
 		if (!event.entity.worldObj.isRemote)
@@ -471,7 +468,7 @@ public class BleachEvents
 		            }
 	            }
 				event.entityPlayer.worldObj.spawnEntityInWorld(var18);
-				event.entityPlayer.worldObj.playSoundAtEntity(var18, "lblbm:ore_hollow", 1.4F, 1.0F);
+				event.entityPlayer.worldObj.playSoundAtEntity(var18, "bleach:ore_hollow", 1.4F, 1.0F);
 			}
 		}
 		
@@ -501,7 +498,7 @@ public class BleachEvents
 		            }
 	            }
 				event.entityPlayer.worldObj.spawnEntityInWorld(var18);
-				event.entityPlayer.worldObj.playSoundAtEntity(var18, "lblbm:ore_hollow", 1.4F, 1.0F);
+				event.entityPlayer.worldObj.playSoundAtEntity(var18, "bleach:ore_hollow", 1.4F, 1.0F);
 			}
 		}
 		if(event.entityPlayer.worldObj.getBlockId(event.x, event.y, event.z) == BleachBlocks.hollowgold.blockID)
@@ -530,7 +527,7 @@ public class BleachEvents
 		            }
 	            }
 				event.entityPlayer.worldObj.spawnEntityInWorld(var18);
-				event.entityPlayer.worldObj.playSoundAtEntity(var18, "lblbm:ore_hollow", 1.4F, 1.0F);
+				event.entityPlayer.worldObj.playSoundAtEntity(var18, "bleach:ore_hollow", 1.4F, 1.0F);
 			}
 		}
 	}

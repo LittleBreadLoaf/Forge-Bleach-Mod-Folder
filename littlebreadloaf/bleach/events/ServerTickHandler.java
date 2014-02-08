@@ -52,14 +52,7 @@ public class ServerTickHandler implements ITickHandler
 			}
 		
 		
-		if(props.getStickTimer() > 0)
-		{
-			props.setStickTimer(props.getStickTimer() - 1);
-		}
-		else
-		{
-			props.setStickTimer(0);
-		}
+		
 		
 		
 		//Masks
@@ -212,22 +205,22 @@ public class ServerTickHandler implements ITickHandler
 				{
 					if((check == 6 && secondType == 7) || (check == 7 && secondType == 6))
 					{
-						props.setZType(9);
+						props.setZType(10);
 					}
 					else if((check == 7 && secondType == 8) || (check == 8 && secondType == 7))
 					{
-						props.setType(11);
+						props.setType(9);
 					}
 					else if((check == 1 && secondType == 2) || (check == 2 && secondType == 1))
 					{
-						props.setType(9);
+						props.setType(12);
 					}
 				}
 				
 			}
 			else
 			{
-				props.setZType(12);
+				props.setZType(11);
 			}
 
 			countPoints = false;

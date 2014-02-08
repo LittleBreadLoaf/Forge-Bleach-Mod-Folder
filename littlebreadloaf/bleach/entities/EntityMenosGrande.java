@@ -107,7 +107,7 @@ public class EntityMenosGrande extends EntityMob
 
 		if (rand.nextInt(2) == 0)
 		{
-			return "lblbm.hollowscream";
+			return "bleach.hollowscream";
 		} else
 		{
 			return null;
@@ -122,7 +122,7 @@ public class EntityMenosGrande extends EntityMob
 	{
 		if (rand.nextInt(100) >= 25)
 		{
-			return "lblbm:hollowscream";
+			return "bleach:hollowscream";
 		} else
 		{
 			return null;
@@ -135,7 +135,7 @@ public class EntityMenosGrande extends EntityMob
 	 */
 	protected String getDeathSound()
 	{
-		return "lblbm:hollowscream";
+		return "bleach:hollowscream";
 	}
 
 	/**

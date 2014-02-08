@@ -13,7 +13,7 @@ import cpw.mods.fml.common.FMLLog;
 public class BleachSounds
 {
 
-	private static final String LBLBM = BleachModInfo.ID.toLowerCase() + ":";
+	private static final String BLEACH = BleachModInfo.ID.toLowerCase() + ":";
 
 	public static String[] soundFiles = { "bowcharge.ogg", "bowfire.ogg", "fisherlaugh1.ogg", "fisherlaugh2.ogg", "fisherlaugh3.ogg", "hollowscream.ogg", "ore_hollow.ogg", "shunpo.ogg" };
 	public static String[] streamingFiles = { "asterisk.ogg", "NumberOne.ogg", "Escalon.ogg" };
@@ -27,7 +27,7 @@ public class BleachSounds
 		{
 			try
 			{
-				event.manager.soundPoolSounds.addSound(LBLBM + soundFile);
+				event.manager.soundPoolSounds.addSound(BLEACH + soundFile);
 				System.out.println("Sound file loaded: " + soundFile);
 
 			} catch (Exception e)
@@ -42,7 +42,7 @@ public class BleachSounds
 		{
 			try
 			{
-				event.manager.soundPoolStreaming.addSound(LBLBM + streamingFile);
+				event.manager.soundPoolStreaming.addSound(BLEACH + streamingFile);
 				System.out.println("Sound file loaded: " + streamingFile);
 
 			} catch (Exception e)
@@ -55,7 +55,7 @@ public class BleachSounds
 		{
 			try
 			{
-				event.manager.soundPoolMusic.addSound(LBLBM + musicFile);
+				event.manager.soundPoolMusic.addSound(BLEACH + musicFile);
 				System.out.println("Sound file loaded: " + musicFile);
 
 			} catch (Exception e)
