@@ -125,7 +125,7 @@ public class PacketHandler implements IPacketHandler
 			props.setMaskColor(inputStream.readInt());
 			props.setFaction(inputStream.readInt());
 			props.setValidFlash(inputStream.readBoolean());
-			props.set3D(inputStream.readBoolean());
+			//props.set3D(inputStream.readBoolean());
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;

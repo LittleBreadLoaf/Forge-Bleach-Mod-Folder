@@ -154,26 +154,36 @@ public class ItemQuincyBow extends ItemBow
      */
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
-
-		ExtendedPlayer props = (ExtendedPlayer) par3EntityPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-        ArrowNockEvent event = new ArrowNockEvent(par3EntityPlayer, par1ItemStack);
-        MinecraftForge.EVENT_BUS.post(event);
-        if (event.isCanceled())
-        {
-            return event.result;
-        }
-        if(par3EntityPlayer.inventory.hasItemStack(new ItemStack(BleachItems.seele, 1, 1)) && props.getFaction() == 2)
+    	ExtendedPlayer props = (ExtendedPlayer) par3EntityPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+        
+    	if(props.getFaction() == 2)
+    	{
+		
+        if(par3EntityPlayer.inventory.hasItemStack(new ItemStack(BleachItems.seele, 1, 1)))
         {
         	par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
         	this.isSeele = true;
             par2World.playSoundAtEntity(par3EntityPlayer, "bleach:bowcharge", 0.4F, 1.0F);
+            ArrowNockEvent event = new ArrowNockEvent(par3EntityPlayer, par1ItemStack);
+            MinecraftForge.EVENT_BUS.post(event);
+            if (event.isCanceled())
+            {
+                return event.result;
+            }
         }
-        else if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()) && props.getFaction() == 2)
+        else if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()))
         {
             par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
             this.isSeele = false;
             par2World.playSoundAtEntity(par3EntityPlayer, "bleach:bowcharge", 0.4F, 1.0F);
+            ArrowNockEvent event = new ArrowNockEvent(par3EntityPlayer, par1ItemStack);
+            MinecraftForge.EVENT_BUS.post(event);
+            if (event.isCanceled())
+            {
+                return event.result;
+            }
         }
+    	}
 
         return par1ItemStack;
     }

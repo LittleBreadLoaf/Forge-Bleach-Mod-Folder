@@ -27,9 +27,9 @@ public class ZanpakutoRenderer implements IItemRenderer
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type)
 	{
-		EntityPlayer ClientPlayer = Minecraft.getMinecraft().thePlayer;
-		ExtendedPlayer props = (ExtendedPlayer) ClientPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-		return props.getIs3D() ? true : false;
+		//EntityPlayer ClientPlayer = Minecraft.getMinecraft().thePlayer;
+		//ExtendedPlayer props = (ExtendedPlayer) ClientPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+		return ExtendedPlayer.getIs3D() ? true : false;
 		
 	}
 

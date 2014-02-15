@@ -158,6 +158,8 @@ public class ItemQuincyWebBow extends Item
     {
 
 		ExtendedPlayer props = (ExtendedPlayer) par3EntityPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+		if( props.getFaction() == 2)
+		{
         ArrowNockEvent event = new ArrowNockEvent(par3EntityPlayer, par1ItemStack);
         MinecraftForge.EVENT_BUS.post(event);
         if (event.isCanceled())
@@ -170,11 +172,12 @@ public class ItemQuincyWebBow extends Item
         //	this.isSeele = true;
         //  par2World.playSoundAtEntity(par3EntityPlayer, "bleach:bowcharge", 0.4F, 1.0F);
         //}
-        if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()) && props.getFaction() == 2)
+        if (par3EntityPlayer.capabilities.isCreativeMode || props.getCurrentEnergy() >= ((float)1 / (float)props.getCurrentCap()))
         {
             par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
             this.isSeele = false;
         }
+		}
 
         return par1ItemStack;
     }

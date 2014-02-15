@@ -178,53 +178,7 @@ public class ServerTickHandler implements ITickHandler
 		props.balanceTotal();
 		
 		
-		if(props.getPoints(9) >= 400 && countPoints)
-		{
-			int check = 1;
-			for(int i = 1; i < 8; i++)
-			{
-				if(props.getPoints(i) > props.getPoints(check))
-				{
-					check = i;
-				}	
-			}
-			if(props.getPoints(check) >= 100)
-			{
-				props.setZType(check);
-				
-				int secondType = 1;
-				for(int j = 1; j< 8; j++)
-				{
-					if(props.getPoints(j) > props.getPoints(secondType) && j != check)
-					{
-						secondType = j;
-					}
-				}
-				
-				if(props.getPoints(secondType) >= 100)
-				{
-					if((check == 6 && secondType == 7) || (check == 7 && secondType == 6))
-					{
-						props.setZType(10);
-					}
-					else if((check == 7 && secondType == 8) || (check == 8 && secondType == 7))
-					{
-						props.setType(9);
-					}
-					else if((check == 1 && secondType == 2) || (check == 2 && secondType == 1))
-					{
-						props.setType(12);
-					}
-				}
-				
-			}
-			else
-			{
-				props.setZType(11);
-			}
-
-			countPoints = false;
-		}
+		
 		
 		
 		if(props.getPoints(1) < 0)

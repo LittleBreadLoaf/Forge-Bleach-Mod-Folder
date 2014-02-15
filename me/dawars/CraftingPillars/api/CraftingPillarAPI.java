@@ -5,7 +5,6 @@ import java.util.Map;
 
 import cpw.mods.fml.common.FMLLog;
 
-import me.dawars.CraftingPillars.CraftingPillars;
 
 public class CraftingPillarAPI
 {
@@ -18,6 +17,6 @@ public class CraftingPillarAPI
 
 	public static String getDiskTexture(int id)
 	{
-		return (String) (diskTextures.get(id) != null ? diskTextures.get(id) : CraftingPillars.id + ":textures/models/disk_unknown.png");
+		return (String) (diskTextures.get(id) != null ? diskTextures.get(id) : "craftingpillars" + ":textures/models/disk_unknown.png");
 	}
 }

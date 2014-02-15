@@ -4,6 +4,7 @@ import java.util.Random;
 
 import littlebreadloaf.bleach.api.Tools;
 import littlebreadloaf.bleach.items.BleachItems;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -14,14 +15,15 @@ import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntitySmallHollowLizard extends EntityMob
+public class EntitySmallHollowLizard extends EntityAnimal
 {
 	private static Random rand = new Random();
 
@@ -41,7 +43,7 @@ public class EntitySmallHollowLizard extends EntityMob
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(5, new EntityAILookIdle(this));
 		this.tasks.addTask(7, new EntityAIWander(this, var3));
-		this.setSize(0.9F, 0.5F);
+		this.setSize(0.9F, 0.2F);
 	}
 
 	/**
@@ -70,7 +72,6 @@ public class EntitySmallHollowLizard extends EntityMob
 
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
 
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D);
 
 	}
 
@@ -108,21 +109,21 @@ public class EntitySmallHollowLizard extends EntityMob
 		return null;
 	}
 
-	/**
-	 * Returns the sound this mob makes when it is hurt.
-	 */
-	protected String getHurtSound()
-	{
-		return null;
-	}
+	  /**
+     * Returns the sound this mob makes when it is hurt.
+     */
+    protected String getHurtSound()
+    {
+        return "mob.silverfish.hit";
+    }
 
-	/**
-	 * Returns the sound this mob makes on death.
-	 */
-	protected String getDeathSound()
-	{
-		return null;
-	}
+    /**
+     * Returns the sound this mob makes on death.
+     */
+    protected String getDeathSound()
+    {
+        return "mob.bat.death";
+    }
 
 	/**
 	 * Called when the mob is falling. Calculates and applies fall damage.
@@ -183,4 +184,10 @@ public class EntitySmallHollowLizard extends EntityMob
     {
         return this.posY > 65 && super.getCanSpawnHere();
     }
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable entityageable) 
+	{
+		return null;
+	}
 }

@@ -36,7 +36,7 @@ public class ItemSeeleschneider extends Item
 	public float sandalboost = 0;
 
 	private static final String[] ICON =
-	{ "c", "seele2" };
+	{ "seele", "seele2" };
 
 	public ItemSeeleschneider(int id, EnumToolMaterial material)
 	{
@@ -96,7 +96,7 @@ public class ItemSeeleschneider extends Item
 	{
 
 		ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-		if (item.getItemDamage() == 0 && !player.worldObj.isRemote && props.getCurrentEnergy() >= (float) 70 / (float) props.getCurrentCap())
+		if (item.getItemDamage() == 0 && !player.worldObj.isRemote && props.getCurrentEnergy() >= (float) 70 / (float) props.getCurrentCap() && props.getFaction() == 2)
 		{
 			props.consumeEnergy(70);
 			item.setItemDamage(1);

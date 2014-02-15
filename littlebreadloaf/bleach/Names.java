@@ -53,6 +53,8 @@ public class Names
 	public static String SeeleSchneider_Name = "Seele Schneider";
 
 	
+	public static final String Shinai_UnlocalizedName = "shinai";
+	public static final String Shinai_Name = "Shinai";
 	
 	public static final String Zanpakuto_UnlocalizedName = "zanpakuto";
 	public static final String Zanpakuto_Name = "Zanpakuto";
@@ -185,6 +187,24 @@ public class Names
 	public static final String PlayerMask41_UnlocalizedName = "playermask4";
 	public static final String PlayerMask42_Name = "Hollow Mask";
 	public static final String PlayerMask42_UnlocalizedName = "playermask4";
+	
+	public static final String MaleAcademyTop_Name = "Academy Uniform";
+	public static final String MaleAcademyTop_UnlocalizedName = "macademy_top";
+	public static final String MaleAcademyBottom_Name = "Academy Uniform";
+	public static final String MaleAcademyBottom_UnlocalizedName = "macademy_bottom";
+	public static final String FemaleAcademyTop_Name = "Academy Uniform";
+	public static final String FemaleAcademyTop_UnlocalizedName = "facademy_top";
+	public static final String FemaleAcademyBottom_Name = "Academy Uniform";
+	public static final String FemaleAcademyBottom_UnlocalizedName = "facademy_bottom";
+
+	public static final String MaleSchoolTop_Name = "School Uniform";
+	public static final String MaleSchoolTop_UnlocalizedName = "mschool_top";
+	public static final String MaleSchoolBottom_Name = "School Uniform";
+	public static final String MaleSchoolBottom_UnlocalizedName = "mschool_bottom";
+	public static final String FemaleSchoolTop_Name = "School Uniform";
+	public static final String FemaleSchoolTop_UnlocalizedName = "fschool_top";
+	public static final String FemaleSchoolBottom_Name = "School Uniform";
+	public static final String FemaleSchoolBottom_UnlocalizedName = "fschool_bottom";
 
 	
 	public static final String QuincyBow_UnlocalizedName = "quincy_bow";

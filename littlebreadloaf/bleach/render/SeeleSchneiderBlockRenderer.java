@@ -90,7 +90,7 @@ public class SeeleSchneiderBlockRenderer extends TileEntitySpecialRenderer
 				{
 					if (isEntityInCube(entity))
 					{
-						// FMLLog.info("Entity in cube");
+						 FMLLog.info("Entity in cube");
 						RenderingHelper.renderBeam(0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord - entity.yOffset, entity.posZ - tile.zCoord);
 						RenderingHelper.renderBeam(tile.side + 0.5F, 1.5F, 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord - entity.yOffset, entity.posZ - tile.zCoord);
 						RenderingHelper.renderBeam(0.5F, 1.5F, tile.side + 0.5F, entity.posX - tile.xCoord, entity.posY - tile.yCoord - entity.yOffset, entity.posZ - tile.zCoord);

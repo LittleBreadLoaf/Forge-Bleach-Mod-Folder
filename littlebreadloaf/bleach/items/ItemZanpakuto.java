@@ -266,8 +266,59 @@ public class ItemZanpakuto extends ItemSword
         	if(props.getZName().length() >= 0)
         	{
         		FMLNetworkHandler.openGui(par3EntityPlayer, BleachMod.instance, 0, par2World, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ);
+        		System.out.println(props.getZType());
         	}
         		
+        	if(props.getPoints(9) >= 400)
+    		{
+    			int check = 1;
+    			for(int i = 1; i < 9; i++)
+    			{
+    				if(props.getPoints(i) > props.getPoints(check))
+    				{
+    					check = i;
+    				}	
+    			}
+    			if(props.getPoints(check) >= 100)
+    			{
+    				props.setZType(check);
+    				
+    				int secondType = 23;
+    				for(int j = 1; j< 9; j++)
+    				{
+    					if(props.getPoints(j) >= props.getPoints(secondType) && j != check)
+    					{
+    						secondType = j;
+    					}
+    				}
+    				
+    				if(props.getPoints(secondType) >= 100)
+    				{
+    					if((check == 6 && secondType == 7) || (check == 7 && secondType == 6))
+    					{
+    						props.setZType(10);
+    					}
+    					else if((check == 7 && secondType == 8) || (check == 8 && secondType == 7))
+    					{
+    						props.setZType(9);
+    					}
+    					else if((check == 1 && secondType == 2) || (check == 2 && secondType == 1))
+    					{
+    						props.setZType(12);
+    					}
+    				}
+
+
+        			System.out.println("Type " + check);
+        			System.out.println("SecondType " + secondType);
+        			
+    			}
+    			else
+    			{
+    				props.setZType(11);
+    			}
+
+    		}
         	
         }
     
@@ -495,143 +546,144 @@ public class ItemZanpakuto extends ItemSword
  	            		}
  	            		
  	        		}
-                	 
                 	 else if(props.getZType() == 3)
- 	        		{
-                		 ItemStack shikai = new ItemStack(BleachItems.shikaiheal, 1);
-                 		par1ItemStack.itemID = shikai.itemID;
- 	            		
- 	            		if(props.getZTex() == 0)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Wake up," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 1)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Protect," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 2)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Pierce their heart," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 3)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Restore," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 4)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Heal," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 5)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("All you need is love!");
- 	            		}
- 	        		}
-                	 
-                	 else if(props.getZType() == 4)
-             		{
-                     	ItemStack shikai = new ItemStack(BleachItems.shikaipoison, 1);
-                  		par1ItemStack.itemID = shikai.itemID;
-                 		
-                 		if(props.getZTex() == 0)
-                 		{
-                 			par3EntityPlayer.addChatMessage("Sever," + " " + par1ItemStack.getDisplayName() + "!");
-                 		}
-                 		if(props.getZTex() == 1)
-                 		{
-                 			par3EntityPlayer.addChatMessage("Slither," + " " + par1ItemStack.getDisplayName() + "!");
-                 		}
-                 		if(props.getZTex() == 2)
-                 		{
-                 			par3EntityPlayer.addChatMessage("Dissolve," + " " + par1ItemStack.getDisplayName() + "!");
-                 		}
-                 		if(props.getZTex() == 3)
-                 		{
-                 			par3EntityPlayer.addChatMessage("Contaminate," + " " + par1ItemStack.getDisplayName() + "!");
-                 		}
-                 		if(props.getZTex() == 4)
-                 		{
-                 			par3EntityPlayer.addChatMessage("Spread your toxins," + " " + par1ItemStack.getDisplayName() + "!");
-                 		}
-                 		if(props.getZTex() == 5)
-                 		{
-                 			par3EntityPlayer.addChatMessage("Rip," + " " + par1ItemStack.getDisplayName() + "!");
-                 		}
-             		}
-                	 
-                	 else if(props.getZType() == 5)
- 	        		{
-                		 ItemStack shikai = new ItemStack(BleachItems.shikaiearth, 1);
+              		{
+                      	ItemStack shikai = new ItemStack(BleachItems.shikaipoison, 1);
                    		par1ItemStack.itemID = shikai.itemID;
- 	            		
- 	            		if(props.getZTex() == 0)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Grind to dust," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 1)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Smash," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 2)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Crush your foes," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 3)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Demolish," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 4)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage("Strike down," + " " + par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	            		if(props.getZTex() == 5)
- 	            		{
- 	            			par3EntityPlayer.addChatMessage(par1ItemStack.getDisplayName() + "!");
- 	            		}
- 	        		}
-                	 
-                	 else if(props.getZType() == 6)
+                  		
+                  		if(props.getZTex() == 0)
+                  		{
+                  			par3EntityPlayer.addChatMessage("Sever," + " " + par1ItemStack.getDisplayName() + "!");
+                  		}
+                  		if(props.getZTex() == 1)
+                  		{
+                  			par3EntityPlayer.addChatMessage("Slither," + " " + par1ItemStack.getDisplayName() + "!");
+                  		}
+                  		if(props.getZTex() == 2)
+                  		{
+                  			par3EntityPlayer.addChatMessage("Dissolve," + " " + par1ItemStack.getDisplayName() + "!");
+                  		}
+                  		if(props.getZTex() == 3)
+                  		{
+                  			par3EntityPlayer.addChatMessage("Contaminate," + " " + par1ItemStack.getDisplayName() + "!");
+                  		}
+                  		if(props.getZTex() == 4)
+                  		{
+                  			par3EntityPlayer.addChatMessage("Spread your toxins," + " " + par1ItemStack.getDisplayName() + "!");
+                  		}
+                  		if(props.getZTex() == 5)
+                  		{
+                  			par3EntityPlayer.addChatMessage("Rip," + " " + par1ItemStack.getDisplayName() + "!");
+                  		}
+              		}
+                 	 else if(props.getZType() == 4)
+   	        		{
+                  		 ItemStack shikai = new ItemStack(BleachItems.shikaiheal, 1);
+                   		par1ItemStack.itemID = shikai.itemID;
+   	            		
+   	            		if(props.getZTex() == 0)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Wake up," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 1)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Protect," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 2)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Pierce their heart," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 3)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Restore," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 4)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Heal," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 5)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("All you need is love!");
+   	            		}
+   	        		}
+                  	 
+                 	 
+                	 else if(props.getZType() == 5)
   	        		{
-                 		 ItemStack shikai = new ItemStack(BleachItems.shikaiwind, 1);
+                 		 ItemStack shikai = new ItemStack(BleachItems.shikaiearth, 1);
                     		par1ItemStack.itemID = shikai.itemID;
   	            		
   	            		if(props.getZTex() == 0)
   	            		{
-  	            			par3EntityPlayer.addChatMessage("Gale," + " " + par1ItemStack.getDisplayName() + "!");
+  	            			par3EntityPlayer.addChatMessage("Grind to dust," + " " + par1ItemStack.getDisplayName() + "!");
   	            		}
   	            		if(props.getZTex() == 1)
   	            		{
-  	            			par3EntityPlayer.addChatMessage("Split," + " " + par1ItemStack.getDisplayName() + "!");
+  	            			par3EntityPlayer.addChatMessage("Smash," + " " + par1ItemStack.getDisplayName() + "!");
   	            		}
   	            		if(props.getZTex() == 2)
   	            		{
-  	            			par3EntityPlayer.addChatMessage("Slice," + " " + par1ItemStack.getDisplayName() + "!");
+  	            			par3EntityPlayer.addChatMessage("Crush your foes," + " " + par1ItemStack.getDisplayName() + "!");
   	            		}
   	            		if(props.getZTex() == 3)
   	            		{
-  	            			par3EntityPlayer.addChatMessage("Sharpen your blade," + " " + par1ItemStack.getDisplayName() + "!");
+  	            			par3EntityPlayer.addChatMessage("Demolish," + " " + par1ItemStack.getDisplayName() + "!");
   	            		}
   	            		if(props.getZTex() == 4)
   	            		{
-  	            			par3EntityPlayer.addChatMessage("Reach to the heavens," + " " + par1ItemStack.getDisplayName() + "!");
+  	            			par3EntityPlayer.addChatMessage("Strike down," + " " + par1ItemStack.getDisplayName() + "!");
   	            		}
   	            		if(props.getZTex() == 5)
   	            		{
-  	            			par3EntityPlayer.addChatMessage("These be fightin' words!");
-  	            		}
-  	            		if(props.getZTex() == 6)
-  	            		{
-  	            			par3EntityPlayer.addChatMessage("Undulatis, blow everything away!");
-  	            		}
-  	            		if(props.getZTex() == 7)
-  	            		{
-  	            			par3EntityPlayer.addChatMessage("Split the sky, Halinfeil");
-  	            		}
-  	            		if(props.getZTex() == 8)
-  	            		{
-  	            			par3EntityPlayer.addChatMessage("Kros, Cry Havoc!");
+  	            			par3EntityPlayer.addChatMessage(par1ItemStack.getDisplayName() + "!");
   	            		}
   	        		}
-                	 
+                 	 
+                 	 else if(props.getZType() == 6)
+   	        		{
+                  		 ItemStack shikai = new ItemStack(BleachItems.shikaiwind, 1);
+                     		par1ItemStack.itemID = shikai.itemID;
+   	            		
+   	            		if(props.getZTex() == 0)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Gale," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 1)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Split," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 2)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Slice," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 3)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Sharpen your blade," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 4)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Reach to the heavens," + " " + par1ItemStack.getDisplayName() + "!");
+   	            		}
+   	            		if(props.getZTex() == 5)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("These be fightin' words!");
+   	            		}
+   	            		if(props.getZTex() == 6)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Undulatis, blow everything away!");
+   	            		}
+   	            		if(props.getZTex() == 7)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Split the sky, Halinfeil");
+   	            		}
+   	            		if(props.getZTex() == 8)
+   	            		{
+   	            			par3EntityPlayer.addChatMessage("Kros, Cry Havoc!");
+   	            		}
+   	        		}
+                 	 
+                	
+                	
                 	 else if(props.getZType() == 7)
    	        		{
                   		 ItemStack shikai = new ItemStack(BleachItems.shikailight, 1);
@@ -851,144 +903,144 @@ public class ItemZanpakuto extends ItemSword
     }
     
     
-    public void onUpdate(ItemStack var1, World var2, Entity var3, int var4, boolean var5)
-    {
-    	EntityPlayer player = (EntityPlayer)var3;
-    	ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-    	
-        if(player.username.equalsIgnoreCase("_jad3n"))
-    	{
-        	if( props.getZName().equals("Undulatis") && props.getZTex() != 6)
-        	{
-        		props.setType(3);
-        		props.setTexture(6);
-        	}
-        	else if(!props.getZName().equals("Undulatis") && props.getZTex() == 6)
-        	{
-        		props.setTexture(rand.nextInt(5));
-        	}
-    	}
-    	else if(player.username.equalsIgnoreCase("Poofy96") )
-    		{    		if( props.getZName().equals("Mizore") && props.getZTex() != 6)
-    		{
-        		props.setType(1);
-        		props.setTexture(6);
-    		}
-    		else if(!props.getZName().equals("Mizore") && props.getZTex() == 6)
-        	{
-        		props.setTexture(rand.nextInt(5));
-        	}
-    	}
-    	else if(player.username.equalsIgnoreCase("JoeTheAntiPro"))
-    	{
-    		if( props.getZName().equals("Zenhansha") && props.getZTex() != 7)
-    		{
-        		props.setType(10);
-        		props.setTexture(7);	
-    		}
-    		else if(!props.getZName().equals("Zenhansha") && props.getZTex() == 7)
-        	{
-        		props.setTexture(rand.nextInt(5));
-        	}
-    	}
-    	else if(player.username.equalsIgnoreCase("theagirl") )
-    	{
-    		if( props.getZName().equals("Setsuna") && props.getZTex() != 6)
-    		{
-    		props.setType(10);
-    		props.setTexture(6);
-    		}
-    		else if(!props.getZName().equals("Setsuna") && props.getZTex() == 6)
-        	{
-        		props.setTexture(rand.nextInt(5));
-        	}
-    	}
-    	else if(player.username.equalsIgnoreCase("jrich144"))
-    	{
-    		if( props.getZName().equals("Kage Kishi") && props.getZTex() != 6)
-    		{
-    		props.setType(7);
-    		props.setTexture(6);
-    		}
-    		else if(!props.getZName().equals("Kage Kishi") && props.getZTex() == 6)
-        	{
-        		props.setTexture(rand.nextInt(5));
-        	}
-    	}
-    	else if(player.username.equalsIgnoreCase("blueberry22") )
-    	{
-    		if(props.getZName().equals("Halinfeil") && props.getZTex() != 7)
-    		{
-    		props.setType(3);
-    		props.setTexture(7);
-    		}
-    		else if(!props.getZName().equals("Halinfeil") && props.getZTex() == 7)
-        	{
-        		props.setTexture(rand.nextInt(5));
-        	}
-    	}  
-    	else if(player.username.equalsIgnoreCase("thecodymaverick") )
-    	{
-    		if( props.getZName().equals("Hi-Yari") && props.getZTex() != 6)
-    		{
-        		props.setType(11);
-        		props.setTexture(6);
-    		}
-    		else if(!props.getZName().equals("Hi-Yari") && props.getZTex() == 6)
-        	{
-       		props.setTexture(rand.nextInt(5));
-        	}
-    	
-    	}
-    	else if(player.username.equalsIgnoreCase("ahern14") )
-        {
-        	if( props.getZName().equals("Onmyo") && props.getZTex() != 7)
-        	{
-            	props.setType(7);
-            	props.setTexture(7);
-        	}
-        	else if(!props.getZName().equals("Onmyo") && props.getZTex() == 7)
-            {
-        		props.setTexture(rand.nextInt(5));
-            }
-        }
-    	else if(player.username.equalsIgnoreCase("Skykros") )
-        {
-        	if( props.getZName().equals("Kros") && props.getZTex() != 8)
-        	{
-            	props.setType(3);
-            	props.setTexture(8);
-        	}
-        	else if(!props.getZName().equals("Kros") && props.getZTex() == 8)
-            {
-        		props.setTexture(rand.nextInt(5));
-            }
-        }
-    	else if(player.username.equalsIgnoreCase("ChibiNekoHime") )
-        {
-        	if( props.getZName().equals("Neko Senro") && props.getZTex() != 8)
-        	{
-            	props.setType(7);
-            	props.setTexture(8);
-        	}
-        	else if(!props.getZName().equals("Neko Senro") && props.getZTex() == 8)
-            {
-        		props.setTexture(rand.nextInt(5));
-            }
-        }
-    	else if(player.username.equalsIgnoreCase("ChibiNekoHime") )
-        {
-        	if( props.getZName().equals("Kumori Tora Tsume") && props.getZTex() != 9)
-        	{
-            	props.setType(7);
-            	props.setTexture(9);
-        	}
-        	else if(!props.getZName().equals("Kumori Tora Tsume") && props.getZTex() == 9)
-            {
-        		props.setTexture(rand.nextInt(5));
-            }
-        }
-        
-   
-}
+//    public void onUpdate(ItemStack var1, World var2, Entity var3, int var4, boolean var5)
+//    {
+//    	EntityPlayer player = (EntityPlayer)var3;
+//    	ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+//    	
+//        if(player.username.equalsIgnoreCase("_jad3n"))
+//    	{
+//        	if( props.getZName().equals("Undulatis") && props.getZTex() != 6)
+//        	{
+//        		props.setType(3);
+//        		props.setTexture(6);
+//        	}
+//        	else if(!props.getZName().equals("Undulatis") && props.getZTex() == 6)
+//        	{
+//        		props.setTexture(rand.nextInt(5));
+//        	}
+//    	}
+//    	else if(player.username.equalsIgnoreCase("Poofy96") )
+//    		{    		if( props.getZName().equals("Mizore") && props.getZTex() != 6)
+//    		{
+//        		props.setType(1);
+//        		props.setTexture(6);
+//    		}
+//    		else if(!props.getZName().equals("Mizore") && props.getZTex() == 6)
+//        	{
+//        		props.setTexture(rand.nextInt(5));
+//        	}
+//    	}
+//    	else if(player.username.equalsIgnoreCase("JoeTheAntiPro"))
+//    	{
+//    		if( props.getZName().equals("Zenhansha") && props.getZTex() != 7)
+//    		{
+//        		props.setType(10);
+//        		props.setTexture(7);	
+//    		}
+//    		else if(!props.getZName().equals("Zenhansha") && props.getZTex() == 7)
+//        	{
+//        		props.setTexture(rand.nextInt(5));
+//        	}
+//    	}
+//    	else if(player.username.equalsIgnoreCase("theagirl") )
+//    	{
+//    		if( props.getZName().equals("Setsuna") && props.getZTex() != 6)
+//    		{
+//    		props.setType(10);
+//    		props.setTexture(6);
+//    		}
+//    		else if(!props.getZName().equals("Setsuna") && props.getZTex() == 6)
+//        	{
+//        		props.setTexture(rand.nextInt(5));
+//        	}
+//    	}
+//    	else if(player.username.equalsIgnoreCase("jrich144"))
+//    	{
+//    		if( props.getZName().equals("Kage Kishi") && props.getZTex() != 6)
+//    		{
+//    		props.setType(7);
+//    		props.setTexture(6);
+//    		}
+//    		else if(!props.getZName().equals("Kage Kishi") && props.getZTex() == 6)
+//        	{
+//        		props.setTexture(rand.nextInt(5));
+//        	}
+//    	}
+//    	else if(player.username.equalsIgnoreCase("blueberry22") )
+//    	{
+//    		if(props.getZName().equals("Halinfeil") && props.getZTex() != 7)
+//    		{
+//    		props.setType(3);
+//    		props.setTexture(7);
+//    		}
+//    		else if(!props.getZName().equals("Halinfeil") && props.getZTex() == 7)
+//        	{
+//        		props.setTexture(rand.nextInt(5));
+//        	}
+//    	}  
+//    	else if(player.username.equalsIgnoreCase("thecodymaverick") )
+//    	{
+//    		if( props.getZName().equals("Hi-Yari") && props.getZTex() != 6)
+//    		{
+//        		props.setType(11);
+//        		props.setTexture(6);
+//    		}
+//    		else if(!props.getZName().equals("Hi-Yari") && props.getZTex() == 6)
+//        	{
+//       		props.setTexture(rand.nextInt(5));
+//        	}
+//    	
+//    	}
+//    	else if(player.username.equalsIgnoreCase("ahern14") )
+//        {
+//        	if( props.getZName().equals("Onmyo") && props.getZTex() != 7)
+//        	{
+//            	props.setType(7);
+//            	props.setTexture(7);
+//        	}
+//        	else if(!props.getZName().equals("Onmyo") && props.getZTex() == 7)
+//            {
+//        		props.setTexture(rand.nextInt(5));
+//            }
+//        }
+//    	else if(player.username.equalsIgnoreCase("Skykros") )
+//        {
+//        	if( props.getZName().equals("Kros") && props.getZTex() != 8)
+//        	{
+//            	props.setType(3);
+//            	props.setTexture(8);
+//        	}
+//        	else if(!props.getZName().equals("Kros") && props.getZTex() == 8)
+//            {
+//        		props.setTexture(rand.nextInt(5));
+//            }
+//        }
+//    	else if(player.username.equalsIgnoreCase("ChibiNekoHime") )
+//        {
+//        	if( props.getZName().equals("Neko Senro") && props.getZTex() != 8)
+//        	{
+//            	props.setType(7);
+//            	props.setTexture(8);
+//        	}
+//        	else if(!props.getZName().equals("Neko Senro") && props.getZTex() == 8)
+//            {
+//        		props.setTexture(rand.nextInt(5));
+//            }
+//        }
+//    	else if(player.username.equalsIgnoreCase("ChibiNekoHime") )
+//        {
+//        	if( props.getZName().equals("Kumori Tora Tsume") && props.getZTex() != 9)
+//        	{
+//            	props.setType(7);
+//            	props.setTexture(9);
+//        	}
+//        	else if(!props.getZName().equals("Kumori Tora Tsume") && props.getZTex() == 9)
+//            {
+//        		props.setTexture(rand.nextInt(5));
+//            }
+//        }
+//        
+//   
+//}
 }

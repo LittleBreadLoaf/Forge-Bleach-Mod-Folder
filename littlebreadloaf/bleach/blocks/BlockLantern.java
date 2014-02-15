@@ -23,7 +23,7 @@ public class BlockLantern extends BleachBlockContainer
 		this.setHardness(5F);
 		this.setResistance(15F);
 		this.setStepSound(Block.soundGlassFootstep);
-		this.setLightValue(0.9F);
+		this.setLightValue(1.0F);
 	}
 
 	@Override

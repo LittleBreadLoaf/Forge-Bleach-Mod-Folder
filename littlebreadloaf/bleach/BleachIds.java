@@ -6,8 +6,6 @@ public class BleachIds
 {
 	
 	//BLOCKS
-	public static int reiatsuID;
-	public static final int reiatsuID_Default = 20180;
 	
 	public static int reiatsuBlockID;
 	public static final int reiatsuBlockID_Default = 2181;
@@ -64,9 +62,12 @@ public class BleachIds
 	public static int seeleschneiderBlockID;
 	public static final int seeleschneiderBlockID_Default = 2198;
 
-	//START 20171
+	//START 20170
 	
 	//ITEMS
+	public static int shinaiID;
+	public static final int shinaiID_Default = 20170;
+	
 	public static int zanpakutoID;
 	public static final int zanpakutoID_Default = 20171;
 	
@@ -93,7 +94,10 @@ public class BleachIds
 	
 	public static int factionSelectID;
 	public static final int factionSelectID_Default = 20179;
-	//OPEN 20180-20184
+	
+	public static int reiatsuID;
+	public static final int reiatsuID_Default = 20180;
+	//OPEN 20181-20184
 	
 	//MASKS
 	public static int batHelmetID;
@@ -192,8 +196,27 @@ public class BleachIds
 	public static final int playerMask11ID_Default = 20224;
 	public static int playerMask12ID;
 	public static final int playerMask12ID_Default = 20225;
-
 	
+	public static int maleacademytopID;
+	public static final int maleacademytopID_Default = 20226;
+	public static int maleacademybottomID;
+	public static final int maleacademybottomID_Default = 20227;
+	public static int femaleacademytopID;
+	public static final int femaleacademytopID_Default = 20228;
+	public static int femaleacademybottomID;
+	public static final int femaleacademybottomID_Default = 20229;
+	
+	public static int maleschooltopID;
+	public static final int maleschooltopID_Default = 20230;
+	public static int maleschoolbottomID;
+	public static final int maleschoolbottomID_Default = 20231;
+	public static int femaleschooltopID;
+	public static final int femaleschooltopID_Default = 20232;
+	public static int femaleschoolbottomID;
+	public static final int femaleschoolbottomID_Default = 20233;
+	
+
+	//OPEN 20234-20322//
 	
 	
 	

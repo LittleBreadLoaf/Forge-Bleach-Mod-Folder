@@ -26,7 +26,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityHollowWasp extends EntityMob
@@ -161,6 +163,21 @@ public class EntityHollowWasp extends EntityMob
 	{
 	}
 
+	
+	/**
+	 * Basic mob attack. Default to touch of death in EntityCreature. Overridden
+	 * by each mob to define their attack.
+	 */
+	@Override
+	protected void attackEntity(Entity target, float distace)
+	{
+		if (this.attackTime <= 0 && distace < 2.0F && target.boundingBox.maxY > this.boundingBox.minY && target.boundingBox.minY < this.boundingBox.maxY)
+		{
+			this.attackTime = 20;
+			this.attackEntityAsMob(target);
+		}
+	}
+	
 	public boolean attackEntityAsMob(Entity par1Entity)
 	{
 		if (super.attackEntityAsMob(par1Entity))
@@ -177,7 +194,7 @@ public class EntityHollowWasp extends EntityMob
 						b0 = 30;
 					} else if (this.worldObj.difficultySetting == 3)
 					{
-						b0 = 70;
+						b0 = 50;
 					}
 				}
 				props.consumeEnergy(b0);
@@ -191,6 +208,130 @@ public class EntityHollowWasp extends EntityMob
 		}
 	}
 
+	
+	/**
+	 * randomly selected ChunkCoordinates in a 7x6x7 box around the bat (y
+	 * offset -2 to 4) towards which it will fly. upon getting close a new
+	 * target will be selected
+	 */
+	private ChunkCoordinates currentFlightTarget;
+
+	/**
+	 * Returns true if this entity should push and be pushed by other entities
+	 * when colliding.
+	 */
+	@Override
+	public boolean canBePushed()
+	{
+		return false;
+	}
+
+	@Override
+	protected void collideWithEntity(Entity par1Entity)
+	{
+		this.attackEntityAsMob(par1Entity);
+	}
+
+	@Override
+	protected void collideWithNearbyEntities()
+	{
+	}
+
+	/**
+	 * Called to update the entity's position/logic.
+	 */
+	@Override
+	public void onUpdate()
+	{
+		super.onUpdate();
+		// fall
+		this.motionY *= 0.6000000238418579D;
+
+		if (this.entityToAttack != null && this.entityToAttack != this.attackingPlayer)
+		{
+			this.entityToAttack = this.attackingPlayer;
+		}
+
+		// get target
+		if (this.entityToAttack == null)
+		{
+			this.entityToAttack = this.worldObj.getClosestVulnerablePlayerToEntity(this, 16);
+		}
+
+		if (this.currentFlightTarget != null
+				&& (!this.worldObj.isAirBlock(this.currentFlightTarget.posX, this.currentFlightTarget.posY, this.currentFlightTarget.posZ) || this.currentFlightTarget.posY < 1))
+		{
+			this.currentFlightTarget = null;
+		}
+		if (this.entityToAttack != null)
+		{
+			this.currentFlightTarget = new ChunkCoordinates((int) this.entityToAttack.posX, (int) this.entityToAttack.posY, (int) this.entityToAttack.posZ);
+		} else
+		{
+			if (this.currentFlightTarget == null || this.rand.nextInt(30) == 0
+					|| this.currentFlightTarget.getDistanceSquared((int) this.posX, (int) this.posY, (int) this.posZ) < 4.0F)
+			{
+				this.currentFlightTarget =
+						new ChunkCoordinates((int) this.posX + this.rand.nextInt(10) - this.rand.nextInt(10), (int) this.posY + this.rand.nextInt(9) - 2, (int) this.posZ
+								+ this.rand.nextInt(10) - this.rand.nextInt(10));
+			}
+		}
+
+		// approach target
+		double d0 = (double) this.currentFlightTarget.posX + 0.5D - this.posX;
+		double d1 = (double) this.currentFlightTarget.posY + 0.1D - this.posY;
+		double d2 = (double) this.currentFlightTarget.posZ + 0.5D - this.posZ;
+		this.motionX += (Math.signum(d0) * 0.5D - this.motionX) * 0.10000000149011612D;
+		this.motionY += (Math.signum(d1) * 0.699999988079071D - this.motionY) * 0.10000000149011612D;
+		this.motionZ += (Math.signum(d2) * 0.5D - this.motionZ) * 0.10000000149011612D;
+		float f = (float) (Math.atan2(this.motionZ, this.motionX) * 180.0D / Math.PI) - 90.0F;
+		float f1 = MathHelper.wrapAngleTo180_float(f - this.rotationYaw);
+		this.moveForward = 0.5F;
+		this.rotationYaw += f1;
+
+		// attack target
+		if (this.entityToAttack != null && this.entityToAttack.getDistanceSqToEntity(this) < 3.0F)
+		{
+			this.attackEntity(this.entityToAttack, this.getDistanceToEntity(this.entityToAttack));
+		}
+
+	}
+
+	/**
+	 * returns if this entity triggers Block.onEntityWalking on the blocks they
+	 * walk on. used for spiders and wolves to prevent them from trampling crops
+	 */
+	@Override
+	protected boolean canTriggerWalking()
+	{
+		return false;
+	}
+	
+	
+	
+	/**
+	 * Takes in the distance the entity has fallen this tick and whether its on
+	 * the ground to update the fall distance and deal fall damage if landing on
+	 * the ground. Args: distanceFallenThisTick, onGround
+	 */
+	@Override
+	protected void updateFallState(double par1, boolean par3)
+	{
+	}
+
+	/**
+	 * Return whether this entity should NOT trigger a pressure plate or a
+	 * tripwire.
+	 */
+	@Override
+	public boolean doesEntityNotTriggerPressurePlate()
+	{
+		return true;
+	}
+
+	
+	
+	
 	/**
 	 * Called when the mob's health reaches 0.
 	 */

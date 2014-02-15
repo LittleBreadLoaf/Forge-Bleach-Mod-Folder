@@ -24,9 +24,9 @@ public class BlockSeeleSchneider extends BleachBlockContainer
 		super(id, mat);
 		this.setCreativeTab(null);
 
-		this.setUnlocalizedName("seeles");
-		this.setHardness(5F);
-		this.setResistance(15F);
+		this.setUnlocalizedName("seeleblock");
+		this.setHardness(1F);
+		this.setResistance(1F);
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setLightValue(0.9F);
 
@@ -131,7 +131,7 @@ public class BlockSeeleSchneider extends BleachBlockContainer
 	@Override
 	public int damageDropped(int par1)
 	{
-		return 1;
+		return 0;
 	}
 
 	/**

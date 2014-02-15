@@ -73,10 +73,6 @@ public class BleachBlocks
 		hollowgold = new BlockHollowGold(BleachIds.hollowgoldID);
 		GameRegistry.registerBlock(hollowgold, Names.HollowGold_Name);
 		
-		//paperdoor = new BlockPaperDoor(Ids.paperdoorID);
-		//GameRegistry.registerBlock(paperdoor, Names.PaperDoor_Name);
-		
-
 		sphereLamp = new BlockLampSphere(BleachIds.sphereLampID, Material.glass);
 		GameRegistry.registerBlock(sphereLamp, Names.SphereLamp_Name);
 

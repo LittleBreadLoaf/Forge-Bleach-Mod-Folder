@@ -16,6 +16,7 @@ import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -121,9 +122,10 @@ public class BleachEvents
 			EntityPlayer player = ((EntityPlayer)event.entityLiving);
 			ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 			
-			
-			player.capabilities.setPlayerWalkSpeed(0.1F + (float)((float)props.getCurrentCap() *(0.00007* (float)props.getCurrentEnergy())));
-		
+			if(!event.entityLiving.worldObj.isRemote)
+			{
+				player.capabilities.setPlayerWalkSpeed(0.1F + (float)((float)props.getCurrentCap() *(0.00007* (float)props.getCurrentEnergy())));
+			}
 			//if(props.getStickTimer() > 0)
 			//{
 			//	player.motionY = 0;
@@ -201,7 +203,6 @@ public class BleachEvents
 	      //Poison Shikai
 			if(heldItem != null)
 			{
-	
 				if(heldItem.getItem() == BleachItems.shikaipoison)
 				{
 					if(event.source.getEntity() instanceof EntityLivingBase)
@@ -214,41 +215,15 @@ public class BleachEvents
 	        
 	        
 	      //On Wearing Armor
-			if(var9 != null && var10 != null && var11 != null)
-				{
-				
+			
+			if((var9 != null && var10 != null && var11 != null))
+			{
 				if((var9.getItem() == Armor.Sandals && var10.getItem() == Armor.ShiniPants && var11.getItem() == Armor.ShiniRobe) || 
 						(var9.getItem() == Armor.QuincyShoes && var10.getItem() == Armor.QuincyPants && var11.getItem() == Armor.QuincyRobe)||
 						(var9.getItem() == Armor.ArrancarShoes && var10.getItem() == Armor.ArrancarPants && var11.getItem() == Armor.ArrancarJacket))
 					{
 					
-					
-					
-					
-					
-					//PvP with Zanpakuto
-					if(event.source.getEntity() instanceof EntityPlayer)
-					{
-						ItemStack hittingItem = ((EntityPlayer)event.source.getEntity()).getHeldItem();
-						
-						if(hittingItem.getItem() == BleachItems.zanpakuto || hittingItem.getItem() ==  BleachItems.shikaidark
-								 || hittingItem.getItem() ==  BleachItems.shikailight || hittingItem.getItem() ==  BleachItems.shikaifire
-								 || hittingItem.getItem() ==  BleachItems.shikaiice || hittingItem.getItem() ==  BleachItems.shikaiearth
-								 || hittingItem.getItem() ==  BleachItems.shikaiwind || hittingItem.getItem() ==  BleachItems.shikaipoison
-								 || hittingItem.getItem() ==  BleachItems.shikaiheal || hittingItem.getItem() ==  BleachItems.shikailightning
-								 || hittingItem.getItem() ==  BleachItems.shikaiwater || hittingItem.getItem() ==  BleachItems.shikainormal
-								 || hittingItem.getItem() ==  BleachItems.shikailunar)
-						{
-					
-					
-				
-				
-				
-				
-				
-					
-						//On Blocking with Sword
-						if(heldItem.getItem() != null)
+						if(heldItem != null)
 						{
 							if(heldItem.getItem() == BleachItems.zanpakuto || heldItem.getItem() ==  BleachItems.shikaidark
 								 || heldItem.getItem() ==  BleachItems.shikailight || heldItem.getItem() ==  BleachItems.shikaifire
@@ -262,100 +237,38 @@ public class BleachEvents
 									if(props.getCurrentEnergy() > 0 && player.isBlocking() )
 									{
 
-										props.consumeEnergy((int)(event.ammount * 2));
+										props.consumeEnergy((int)(event.ammount));
+										event.setCanceled(true);
+									}
+									else if(props.getCurrentEnergy() > 0)
+									{
+										props.consumeEnergy((int)(event.ammount * 4));
 										event.setCanceled(true);
 									}
 								}
 							
 							else if(props.getCurrentEnergy() > 0)
 							{
-
-								props.consumeEnergy((int)(event.ammount * 4));
+								props.consumeEnergy((int)(event.ammount * 6));
 								event.setCanceled(true);
 							}
 					
 				
 						}
-						else if(props.getCurrentEnergy() > 0)
+						else 
 						{
-
-							props.consumeEnergy((int)(event.ammount * 4));
-							event.setCanceled(true);
-						}
-
 							
-					
-						
-						
-						//END PVP ZANPAKUTO
-						}
-						
-						//END PVP
-					}
-					
-					
-					
-					
-					//Blocking Arrow
-					else if(event.source.getEntity() instanceof EntityEnergyArrow)
-					{
-						//On Blocking with Sword
-						if(heldItem.getItem() != null)
-						{
-							if(heldItem.getItem() == BleachItems.zanpakuto || heldItem.getItem() ==  BleachItems.shikaidark
-								 || heldItem.getItem() ==  BleachItems.shikailight || heldItem.getItem() ==  BleachItems.shikaifire
-								 || heldItem.getItem() ==  BleachItems.shikaiice || heldItem.getItem() ==  BleachItems.shikaiearth
-								 || heldItem.getItem() ==  BleachItems.shikaiwind || heldItem.getItem() ==  BleachItems.shikaipoison
-								 || heldItem.getItem() ==  BleachItems.shikaiheal || heldItem.getItem() ==  BleachItems.shikailightning
-								 || heldItem.getItem() ==  BleachItems.shikaiwater || heldItem.getItem() ==  BleachItems.shikainormal
-								 || heldItem.getItem() ==  BleachItems.shikailunar)
-								{
-								if(props.getCurrentEnergy() > 0 && player.isBlocking() )
-								{
-									props.consumeEnergy((int)(event.ammount * 3));
-									event.setCanceled(true);
-								}
-								else if(props.getCurrentEnergy() > 0)
-								{
-
-									props.consumeEnergy((int)(event.ammount * 5));
-									event.setCanceled(true);
-								}
-					}
-							else if(props.getCurrentEnergy() > 0)
+							if((props.getCurrentEnergy() > 0))
 							{
-
-								props.consumeEnergy((int)(event.ammount * 5));
+								props.consumeEnergy((int)(event.ammount * 6));
 								event.setCanceled(true);
 							}
-				}
-						else if(props.getCurrentEnergy() > 0)
-						{
-
-							props.consumeEnergy((int)(event.ammount * 5));
-							event.setCanceled(true);
 						}
-						//END BLOCKING ARROW
 					}
-					
-					else if(props.getCurrentEnergy() > 0)
-					{
-
-						props.consumeEnergy((int)(event.ammount * 5));
-						event.setCanceled(true);
-					}
-					
-				
-					
-					//END WEARING FULL ARMOR
 				}
-				
-				
 			}
-			
-			
-			//END PLAYER HIT
-		}
+		
+		
 		
 		
 		

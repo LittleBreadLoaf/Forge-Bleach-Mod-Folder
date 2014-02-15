@@ -51,8 +51,8 @@ public class ConfigHandler
 		
 		
 		
-		
-		BleachIds.reiatsuID = config.get(config.CATEGORY_ITEM, "Reiatsu ID", BleachIds.reiatsuID_Default).getInt();
+
+		BleachIds.shinaiID = config.get(config.CATEGORY_ITEM, "Shinai ID", BleachIds.shinaiID_Default).getInt();
 		
 		BleachIds.zanpakutoID = config.get(config.CATEGORY_ITEM, "Zanpakuto ID", BleachIds.zanpakutoID_Default).getInt();
 
@@ -71,9 +71,10 @@ public class ConfigHandler
 		BleachIds.hollowBookID = config.get(config.CATEGORY_ITEM, "Hollow Tome ID", BleachIds.hollowBookID_Default).getInt();
 		
 		BleachIds.factionSelectID = config.get(config.CATEGORY_ITEM, "Faction Selector ID", BleachIds.factionSelectID_Default).getInt();
-		
-		
 
+		BleachIds.reiatsuID = config.get(config.CATEGORY_ITEM, "Reiatsu ID", BleachIds.reiatsuID_Default).getInt();
+
+		
 		BleachIds.batHelmetID = config.get(config.CATEGORY_ITEM, "Bat Mask ID", BleachIds.batHelmetID_Default).getInt();
 
 		BleachIds.blazeHelmetID = config.get(config.CATEGORY_ITEM, "Blaze Mask ID", BleachIds.blazeHelmetID_Default).getInt();
@@ -123,6 +124,7 @@ public class ConfigHandler
 		BleachIds.arrancarshoesID = config.get(config.CATEGORY_ITEM, "Arrancar Shoes ID", BleachIds.arrancarshoesID_Default).getInt();
 		
 		
+		
 		BleachIds.playerMask10ID = config.get(config.CATEGORY_ITEM, "Player Mask 1-1 ID", BleachIds.playerMask10ID_Default).getInt();
 		BleachIds.playerMask11ID = config.get(config.CATEGORY_ITEM, "Player Mask 1-2 ID", BleachIds.playerMask11ID_Default).getInt();
 		BleachIds.playerMask12ID = config.get(config.CATEGORY_ITEM, "Player Mask 1-3 ID", BleachIds.playerMask12ID_Default).getInt();
@@ -135,6 +137,16 @@ public class ConfigHandler
 		BleachIds.playerMask40ID = config.get(config.CATEGORY_ITEM, "Player Mask 4-1 ID", BleachIds.playerMask40ID_Default).getInt();
 		BleachIds.playerMask41ID = config.get(config.CATEGORY_ITEM, "Player Mask 4-2 ID", BleachIds.playerMask41ID_Default).getInt();
 		BleachIds.playerMask42ID = config.get(config.CATEGORY_ITEM, "Player Mask 4-3 ID", BleachIds.playerMask42ID_Default).getInt();
+		
+		BleachIds.maleacademytopID = config.get(config.CATEGORY_ITEM, "Male Academy Top ID", BleachIds.maleacademytopID_Default).getInt();
+		BleachIds.maleacademybottomID = config.get(config.CATEGORY_ITEM, "Male Academy Bottom ID", BleachIds.maleacademybottomID_Default).getInt();
+		BleachIds.femaleacademytopID = config.get(config.CATEGORY_ITEM, "Female Academy Top ID", BleachIds.femaleacademytopID_Default).getInt();
+		BleachIds.femaleacademybottomID = config.get(config.CATEGORY_ITEM, "Female Academy Bottom ID", BleachIds.femaleacademybottomID_Default).getInt();
+
+		BleachIds.maleschooltopID = config.get(config.CATEGORY_ITEM, "Male School Top ID", BleachIds.maleschooltopID_Default).getInt();
+		BleachIds.maleschoolbottomID = config.get(config.CATEGORY_ITEM, "Male School Bottom ID", BleachIds.maleschoolbottomID_Default).getInt();
+		BleachIds.femaleschooltopID = config.get(config.CATEGORY_ITEM, "Female School Top ID", BleachIds.femaleschooltopID_Default).getInt();
+		BleachIds.femaleschoolbottomID = config.get(config.CATEGORY_ITEM, "Female School Bottom ID", BleachIds.femaleschoolbottomID_Default).getInt();
 		
 
 		BleachIds.quincyBowID = config.get(config.CATEGORY_ITEM, "Quincy Bow ID", BleachIds.quincyBowID_Default).getInt();

@@ -8,6 +8,7 @@ import littlebreadloaf.bleach.commands.CommandSetFaction;
 import littlebreadloaf.bleach.commands.CommandSetSpirit;
 import littlebreadloaf.bleach.commands.CommandSetType;
 import littlebreadloaf.bleach.commands.CommandSpirit;
+import littlebreadloaf.bleach.commands.CommandToggle3D;
 import littlebreadloaf.bleach.entities.Entities;
 import littlebreadloaf.bleach.events.BleachEvents;
 import littlebreadloaf.bleach.events.BleachEvents;
@@ -122,6 +123,7 @@ public class BleachMod
 		serverCommand.registerCommand(new CommandSetType());
 		serverCommand.registerCommand(new CommandSpirit());
 		serverCommand.registerCommand(new CommandSetFaction());
+		serverCommand.registerCommand(new CommandToggle3D());
 	}
 	
 	@EventHandler

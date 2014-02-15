@@ -273,7 +273,7 @@ public class EntityShinigami extends EntityMob
 		  {
 			  	EntityPlayer var7 = (EntityPlayer)par1DamageSource.getEntity(); 
 			  	ItemStack var9 = var7.inventory.armorInventory[3]; 
-			  	if(var9.itemID == Armor.HollowHelmet.itemID && rand.nextInt(20) == 0) 
+			  	if(var9 != null && var9.itemID == Armor.HollowHelmet.itemID && rand.nextInt(20) == 0) 
 			  	{ 
 			  		int var2 = BleachItems.recordEscalon.itemID; 
 			  		this.dropItem(var2, 1); 

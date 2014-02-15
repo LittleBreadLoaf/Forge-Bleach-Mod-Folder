@@ -29,6 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BleachItems 
 {
 	public static Item reiatsu;
+	public static Item shinai;
 	public static Item zanpakuto;
 	public static Item maskshard;
 	public static Item quincybow;
@@ -79,6 +80,7 @@ public class BleachItems
 	
 	public static void init()
 	{
+		shinai = new ItemShinai(BleachIds.shinaiID, Tools.SOUL);
 		reiatsu = new ItemReiatsu(BleachIds.reiatsuID);
 		quincybow = new ItemQuincyBow(BleachIds.quincyBowID);
 		zanpakuto = new ItemZanpakuto(BleachIds.zanpakutoID, Tools.SOUL);
@@ -123,6 +125,7 @@ public class BleachItems
 	
 	public static void addNames()
 	{
+		LanguageRegistry.addName(shinai, Names.Shinai_Name);
 		LanguageRegistry.addName(reiatsu, Names.Reiatsu_Name);
 		LanguageRegistry.addName(quincybow, Names.QuincyBow_Name);
 		LanguageRegistry.addName(zanpakuto, Names.Zanpakuto_Name);

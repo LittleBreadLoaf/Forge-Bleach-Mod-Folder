@@ -55,7 +55,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	private int ZTex = 5;
 	private String ZName = "";
 	
-	private boolean does3D = false;
+	private static boolean does3D = false;
 	
 	private boolean validFlash = true;
 	private int stickTimer = 60;
@@ -188,7 +188,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 			outputStream.writeInt(this.MaskColor);
 			outputStream.writeInt(this.faction);
 			outputStream.writeBoolean(this.validFlash);
-			outputStream.writeBoolean(this.does3D);
+			//outputStream.writeBoolean(this.does3D);
 		} catch(Exception ex){
 			ex.printStackTrace();
 		}
@@ -329,10 +329,10 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.stickTimer = var1;
 		this.syncExtendedProperties();
 	}
-	public void set3D(boolean var1)
+	public static void set3D(boolean var1)
 	{
-		this.does3D = var1;
-		this.syncExtendedProperties();
+		does3D = var1;
+		//this.syncExtendedProperties();
 	}
 	
 	public void setType(int var3)
@@ -363,9 +363,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
    		{
    			this.Flame = 0;
    			this.Ice = 0;
-   			this.Poison = 0;
+   			this.Poison = 400;
    			this.Heal = 0;
-   			this.Earth = 400;
+   			this.Earth = 0;
    			this.Wind = 0;
    			this.Light = 0;
    			this.Dark = 0;
@@ -375,9 +375,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
    			this.Flame = 0;
    			this.Ice = 0;
    			this.Poison = 0;
-   			this.Heal = 0;
+   			this.Heal = 400;
    			this.Earth = 0;
-   			this.Wind = 400;
+   			this.Wind = 0;
    			this.Light = 0;
    			this.Dark = 0;
    		}
@@ -385,9 +385,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
    		{
    			this.Flame = 0;
    			this.Ice = 0;
-   			this.Poison = 400;
+   			this.Poison = 0;
    			this.Heal = 0;
-   			this.Earth = 0;
+   			this.Earth = 400;
    			this.Wind = 0;
    			this.Light = 0;
    			this.Dark = 0;
@@ -397,9 +397,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
    			this.Flame = 0;
    			this.Ice = 0;
    			this.Poison = 0;
-   			this.Heal = 400;
+   			this.Heal = 0;
    			this.Earth = 0;
-   			this.Wind = 0;
+   			this.Wind = 400;
    			this.Light = 0;
    			this.Dark = 0;
    		}
@@ -611,9 +611,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		return this.validFlash;
 	}
-	public boolean getIs3D()
+	public static boolean getIs3D()
 	{
-		return this.does3D;
+		return does3D;
 	}
 	
 	public int getPoints(int var1)
@@ -649,6 +649,10 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		if(var1 == 8)
 		{
 			return Dark;
+		}
+		if(var1 == 23)
+		{
+			return 2;
 		}
 		else
 		{
@@ -830,6 +834,14 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 				this.movePlayer();
 			}
 			else if(this.faction == 1 && var9 != null && var9.itemID == Armor.ArrancarShoes.itemID && var10 != null && var10.itemID == Armor.ArrancarPants.itemID && var11 != null && var11.itemID == Armor.ArrancarJacket.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
+			{ 
+				this.movePlayer();
+			}
+			else if(this.faction == 1 &&  var10 != null && var10.itemID == Armor.MaleAcademyBottom.itemID && var11 != null && var11.itemID == Armor.MaleAcademyTop.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
+			{ 
+				this.movePlayer();
+			}
+			else if(this.faction == 1 &&  var10 != null && var10.itemID == Armor.FemaleAcademyBottom.itemID && var11 != null && var11.itemID == Armor.FemaleAcademyTop.itemID && this.getCurrentEnergy() >= (float)5/(float)this.getCurrentCap())
 			{ 
 				this.movePlayer();
 			}

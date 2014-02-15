@@ -104,7 +104,7 @@ public class CommandSetType extends CommandBase
 		props.setTexture(var5);
 		
 
-		
+		System.out.println(props.getZType());
 		
 	props.syncExtendedProperties();
 	}
@@ -114,7 +114,7 @@ public class CommandSetType extends CommandBase
      */
     protected int getTypeToSet(ICommandSender par1ICommandSender, String par2Str)
     {
-        return !par2Str.equalsIgnoreCase("fire") ? (!par2Str.equalsIgnoreCase("ice") ? (!par2Str.equalsIgnoreCase("earth") ? (!par2Str.equalsIgnoreCase("wind") ? (!par2Str.equalsIgnoreCase("poison") ? (!par2Str.equalsIgnoreCase("heal") ? (!par2Str.equalsIgnoreCase("light") ? (!par2Str.equalsIgnoreCase("dark") ? (!par2Str.equalsIgnoreCase("lunar") ? (!par2Str.equalsIgnoreCase("lightning") ? (!par2Str.equalsIgnoreCase("normal") ? (!par2Str.equalsIgnoreCase("water") ? (!par2Str.equalsIgnoreCase("null") ? parseIntBounded(par1ICommandSender, par2Str, 0, 12) : 12) : 11) : 10) : 9) : 8) : 7) : 6) : 5) : 4) : 3) : 2) : 1) : 0;
+        return !par2Str.equalsIgnoreCase("fire") ? (!par2Str.equalsIgnoreCase("ice") ? (!par2Str.equalsIgnoreCase("poison") ? (!par2Str.equalsIgnoreCase("heal") ? (!par2Str.equalsIgnoreCase("earth") ? (!par2Str.equalsIgnoreCase("wind") ? (!par2Str.equalsIgnoreCase("light") ? (!par2Str.equalsIgnoreCase("dark") ? (!par2Str.equalsIgnoreCase("lunar") ? (!par2Str.equalsIgnoreCase("lightning") ? (!par2Str.equalsIgnoreCase("normal") ? (!par2Str.equalsIgnoreCase("water") ? (!par2Str.equalsIgnoreCase("null") ? parseIntBounded(par1ICommandSender, par2Str, 0, 12) : 12) : 11) : 10) : 9) : 8) : 7) : 6) : 5) : 4) : 3) : 2) : 1) : 0;
     }
 	
 	/**
@@ -122,7 +122,7 @@ public class CommandSetType extends CommandBase
      */
     public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr)
     {
-        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] {"fire", "ice", "earth", "wind", "poison", "heal", "light", "dark", "lunar", "lightning", "normal", "water", "null"}): null;
+        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] {"fire", "ice", "poison", "heal", "earth", "wind", "light", "dark", "lunar", "lightning", "normal", "water", "null"}): null;
     }
 
 	@Override

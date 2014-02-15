@@ -110,7 +110,7 @@ public class ModelSmallHollowLizard  extends ModelBase
       head4.setTextureSize(128, 128);
       head4.mirror = true;
       setRotation(head4, 0.4363323F, 0F, 0F);
-      eyeR = new ModelRenderer(this, 44, 0);
+      eyeR = new ModelRenderer(this, 44, 22);
       eyeR.addBox(-5.6F, -6.5F, -11F, 3, 3, 7);
       eyeR.setRotationPoint(0F, 19F, -8F);
       eyeR.setTextureSize(128, 128);

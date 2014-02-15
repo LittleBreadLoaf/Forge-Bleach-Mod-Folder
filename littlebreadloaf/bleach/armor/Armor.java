@@ -36,6 +36,7 @@ public class Armor
 	public static Item StalkerHelmet;
 	public static Item WolfHelmet;
 	
+	
 	public static Item PlayerMask10;
 	public static Item PlayerMask11;
 	public static Item PlayerMask12;
@@ -60,6 +61,17 @@ public class Armor
 	public static Item ArrancarJacket;
 	public static Item ArrancarPants;
 	public static Item ArrancarShoes;
+	
+	public static Item MaleAcademyTop;
+	public static Item MaleAcademyBottom;
+	public static Item FemaleAcademyTop;
+	public static Item FemaleAcademyBottom;
+	
+	public static Item MaleSchoolTop;
+	public static Item MaleSchoolBottom;
+	public static Item FemaleSchoolTop;
+	public static Item FemaleSchoolBottom;
+	
 
 	public static void init()
 	{
@@ -86,17 +98,28 @@ public class Armor
 		PlayerMask41 = new ItemPlayerMask41(BleachIds.playerMask41ID, Tools.MASK, BleachMod.proxy.addArmor("player_mask41"), 0);
 		PlayerMask42 = new ItemPlayerMask42(BleachIds.playerMask42ID, Tools.MASK, BleachMod.proxy.addArmor("player_mask42"), 0);
 		
-		ShiniRobe = new ItemShiniRobe(BleachIds.shinirobeID, Tools.SOULS, BleachMod.proxy.addArmor("shinigami"), 1);
-		ShiniPants = new ItemShiniPants(BleachIds.shinipantsID, Tools.SOULS, BleachMod.proxy.addArmor("shinigami"), 2);
-		Sandals = new ItemSandals(BleachIds.sandalsID, Tools.SOULS, BleachMod.proxy.addArmor("shinigami"), 3);
+		ShiniRobe = new ItemShinigamiRobes(BleachIds.shinirobeID, Tools.SOULS, BleachMod.proxy.addArmor("shinigami"), 1).setUnlocalizedName(Names.ShinigamiChest_UnlocalizedName);
+		ShiniPants = new ItemShinigamiRobes(BleachIds.shinipantsID, Tools.SOULS, BleachMod.proxy.addArmor("shinigami"), 2).setUnlocalizedName(Names.ShinigamiPants_UnlocalizedName);
+		Sandals = new ItemShinigamiRobes(BleachIds.sandalsID, Tools.SOULS, BleachMod.proxy.addArmor("shinigami"), 3).setUnlocalizedName(Names.Sandals_UnlocalizedName);
 		
-		QuincyRobe = new ItemQuincyRobe(BleachIds.quincyrobeID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 1);
-		QuincyPants = new ItemQuincyPants(BleachIds.quincypantsID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 2);
-		QuincyShoes = new ItemQuincyShoes(BleachIds.quincyshoesID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 3);
+		QuincyRobe = new ItemQuincyRobes(BleachIds.quincyrobeID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 1).setUnlocalizedName(Names.QuincyChest_UnlocalizedName);
+		QuincyPants = new ItemQuincyRobes(BleachIds.quincypantsID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 2).setUnlocalizedName(Names.QuincyPants_UnlocalizedName);
+		QuincyShoes = new ItemQuincyRobes(BleachIds.quincyshoesID, Tools.SOULS, BleachMod.proxy.addArmor("quincy"), 3).setUnlocalizedName(Names.QuincyShoes_UnlocalizedName);
 
-		ArrancarJacket = new ItemArrancarTop(BleachIds.arrancartopID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 1);
-		ArrancarPants = new ItemArrancarPants(BleachIds.arrancarpantsID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 2);
-		ArrancarShoes = new ItemArrancarShoes(BleachIds.arrancarshoesID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 3);
+		ArrancarJacket = new ItemArrancarArmor(BleachIds.arrancartopID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 1).setUnlocalizedName(Names.ArrancarTop_UnlocalizedName);
+		ArrancarPants = new ItemArrancarArmor(BleachIds.arrancarpantsID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 2).setUnlocalizedName(Names.ArrancarPants_UnlocalizedName);
+		ArrancarShoes = new ItemArrancarArmor(BleachIds.arrancarshoesID, Tools.SOULS, BleachMod.proxy.addArmor("arrancar"), 3).setUnlocalizedName(Names.ArrancarShoes_UnlocalizedName);
+	
+		MaleAcademyTop = new ItemAcademyRobes(BleachIds.maleacademytopID, Tools.MASK, BleachMod.proxy.addArmor("academy"), 1).setUnlocalizedName(Names.MaleAcademyTop_UnlocalizedName);
+		MaleAcademyBottom = new ItemAcademyRobes(BleachIds.maleacademybottomID, Tools.MASK, BleachMod.proxy.addArmor("academy"), 2).setUnlocalizedName(Names.MaleAcademyBottom_UnlocalizedName);
+		FemaleAcademyTop = new ItemAcademyRobes(BleachIds.femaleacademytopID, Tools.MASK, BleachMod.proxy.addArmor("academy2"), 1).setUnlocalizedName(Names.FemaleAcademyTop_UnlocalizedName);
+		FemaleAcademyBottom = new ItemAcademyRobes(BleachIds.femaleacademybottomID, Tools.MASK, BleachMod.proxy.addArmor("academy2"), 2).setUnlocalizedName(Names.FemaleAcademyBottom_UnlocalizedName);
+		
+		MaleSchoolTop = new ItemSchoolUniform(BleachIds.maleschooltopID, Tools.MASK, BleachMod.proxy.addArmor("school"), 1).setUnlocalizedName(Names.MaleSchoolTop_UnlocalizedName);
+		MaleSchoolBottom = new ItemSchoolUniform(BleachIds.maleschoolbottomID, Tools.MASK, BleachMod.proxy.addArmor("school"), 2).setUnlocalizedName(Names.MaleSchoolBottom_UnlocalizedName);
+		FemaleSchoolTop = new ItemSchoolUniform(BleachIds.femaleschooltopID, Tools.MASK, BleachMod.proxy.addArmor("school2"), 1).setUnlocalizedName(Names.FemaleSchoolTop_UnlocalizedName);
+		FemaleSchoolBottom = new ItemSchoolUniform(BleachIds.femaleschoolbottomID, Tools.MASK, BleachMod.proxy.addArmor("school2"), 2).setUnlocalizedName(Names.FemaleSchoolBottom_UnlocalizedName);
+		
 	}
 	
 	public static void addNames()
@@ -122,6 +145,15 @@ public class Armor
 		LanguageRegistry.addName(ArrancarJacket, Names.ArrancarTop_Name);
 		LanguageRegistry.addName(ArrancarPants, Names.ArrancarPants_Name);
 		LanguageRegistry.addName(ArrancarShoes, Names.ArrancarShoes_Name);
+		
+		LanguageRegistry.addName(MaleAcademyTop, Names.MaleAcademyTop_Name);
+		LanguageRegistry.addName(MaleAcademyBottom, Names.MaleAcademyBottom_Name);
+		LanguageRegistry.addName(FemaleAcademyTop, Names.FemaleAcademyTop_Name);
+		LanguageRegistry.addName(FemaleAcademyBottom, Names.FemaleAcademyBottom_Name);
+		LanguageRegistry.addName(MaleSchoolTop, Names.MaleSchoolTop_Name);
+		LanguageRegistry.addName(MaleSchoolBottom, Names.MaleSchoolBottom_Name);
+		LanguageRegistry.addName(FemaleSchoolTop, Names.FemaleSchoolTop_Name);
+		LanguageRegistry.addName(FemaleSchoolBottom, Names.FemaleSchoolBottom_Name);
 		
 		
 		LanguageRegistry.addName(PlayerMask10, Names.PlayerMask10_Name);

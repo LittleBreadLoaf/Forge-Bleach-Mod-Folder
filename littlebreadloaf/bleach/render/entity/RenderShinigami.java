@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import littlebreadloaf.bleach.BleachModInfo;
 import littlebreadloaf.bleach.entities.EntityShinigami;
+import littlebreadloaf.bleach.events.ExtendedPlayer;
 import littlebreadloaf.bleach.items.BleachItems;
 import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBiped;
@@ -47,9 +48,11 @@ public class RenderShinigami extends RenderBiped
 	@Override
 	protected void func_130005_c(EntityLiving par1EntityLiving, float par2)
     {
+        ItemStack itemstack = par1EntityLiving.getHeldItem();
+		if(ExtendedPlayer.getIs3D())
+		{
         float f1 = 1.0F;
         GL11.glColor3f(f1, f1, f1);
-        ItemStack itemstack = par1EntityLiving.getHeldItem();
         float f2;
 
         if (itemstack != null)
@@ -88,6 +91,51 @@ public class RenderShinigami extends RenderBiped
 
             GL11.glPopMatrix();
         }
+		}
+		else
+		{
+			float f1 = 1.0F;
+	        GL11.glColor3f(f1, f1, f1);
+	        float f2;
+
+	        if (itemstack != null)
+	        {
+	            GL11.glPushMatrix();
+
+	            if (this.mainModel.isChild)
+	            {
+	                f2 = 1.0F;
+	                GL11.glTranslatef(0.0F, 0.625F, 0.0F);
+	                GL11.glRotatef(-20.0F, -1.0F, 0.0F, 0.0F);
+	                GL11.glScalef(f2, f2, f2);
+	            }
+
+	            this.modelBipedMain.bipedRightArm.postRender(0.0625F);
+//	            GL11.glTranslatef(-0.0625F, 0.4375F, 0.0625F);
+
+	           
+	            if (itemstack.itemID == BleachItems.zanpakuto.itemID)
+	            {
+	                f2 = 0.725F;
+	                GL11.glScalef(f2, f2, f2);
+
+	                //GL11.glTranslatef(0.13F, -0.15F, -0.75F);
+	                GL11.glTranslatef(-0.15F, 0.80F, 0.0F);
+
+	                GL11.glRotatef(-129F, 14.2F, -9.0F, 9.0F);
+	                GL11.glRotatef(-10F, 0.0F, 6.4F, -0.0F);
+	                GL11.glRotated(33F, 0.0F, -178.0F, -9.0F);
+	                GL11.glRotated(175F, 0.0F, -180.0F, -12.0F);
+	                GL11.glRotatef(-26F, 0.0F,0.0F, -0.0F);
+
+	            this.renderManager.itemRenderer.renderItem(par1EntityLiving, itemstack, 0);
+	            }
+
+
+
+	            GL11.glPopMatrix();
+	        }
+		}
     }
 	
 	public void renderShinigami(EntityShinigami par1, double par2, double par3, double par4, float par5, float par6)

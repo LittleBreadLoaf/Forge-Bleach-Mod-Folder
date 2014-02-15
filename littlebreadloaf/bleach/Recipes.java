@@ -27,6 +27,15 @@ public class Recipes
 					'*', BleachBlocks.reiatsuBlock
 				});
 		
+				//Shinai
+				GameRegistry.addRecipe(new ItemStack(BleachItems.shinai, 1), new Object[]{
+					"*",
+					"*",
+					"#",
+					
+					'*', Item.reed, '#', Item.stick
+				});
+				
 		//Hollow Bait
 				GameRegistry.addRecipe(new ItemStack(BleachBlocks.hollowBait, 1), new Object[]{
 					" * ",
@@ -119,7 +128,7 @@ public class Recipes
 				});
 			
 			//Paper Lantern
-			GameRegistry.addRecipe(new ItemStack(BleachBlocks.paperLamp, 4), new Object[]{
+			GameRegistry.addRecipe(new ItemStack(BleachBlocks.paperLamp, 2), new Object[]{
 				"***",
 				"&#&",
 				"***",

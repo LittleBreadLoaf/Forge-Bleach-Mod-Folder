@@ -24,13 +24,13 @@ public class CommandToggle3D extends CommandBase
 	{
 		EntityPlayer var3 = getCommandSenderAsPlayer(par1ICommandSender);
 		ExtendedPlayer props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-		if(props.getIs3D())
+		if(ExtendedPlayer.getIs3D())
 		{
-			props.set3D(false);
+			ExtendedPlayer.set3D(false);
 		}
 		else
 		{
-			props.set3D(true);	
+			ExtendedPlayer.set3D(true);	
 		}
 	}
 

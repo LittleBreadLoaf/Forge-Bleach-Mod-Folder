@@ -59,7 +59,7 @@ public class EntityHollowGolem extends EntityMob
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityShinigami.class, 0, false));
 		this.isImmuneToFire = true;
 		this.experienceValue = 15;
-		this.setSize(1.0F * (1 + scale), 1.8F * (1 + scale));
+		this.setSize(1.3F * (float)(1 + scale), 1.9F * (float)(1 + scale));
 
 	}
 
@@ -82,14 +82,14 @@ public class EntityHollowGolem extends EntityMob
 		super.applyEntityAttributes();
 		if (this.worldObj.difficultySetting >= 1)
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(70.0D + ((float)scale * (float)10));
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(70.0D + ((float)this.getRenderSize() / (float)10));
 
-			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D + ((float)scale * (float)2));
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D + ((float)this.getRenderSize() / (float)50));
 		} else
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D + ((float)scale * (float)10));
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D + ((float)this.getRenderSize() / (float)10));
 
-			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D + ((float)scale * (float)2));
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D + ((float)this.getRenderSize() / (float)50));
 		}
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(50);
 

@@ -110,9 +110,9 @@ public class Entities
 		EntityRegistry.addSpawn(EntityShinigami.class, 1, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.plains, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.desertHills, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.frozenRiver, BiomeGenBase.iceMountains, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.taigaHills, BiomeGenBase.hell});
 		
 		
-		//Shinigami
-		EntityRegistry.registerGlobalEntityID(EntityAshido.class, "Ashido", EntityRegistry.findGlobalUniqueEntityId(), 0x8B4513, 0x000000);
-		EntityRegistry.addSpawn(EntityAshido.class, 0, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.desert});
+		//Ashido
+		//EntityRegistry.registerGlobalEntityID(EntityAshido.class, "Ashido", EntityRegistry.findGlobalUniqueEntityId(), 0x8B4513, 0x000000);
+		//EntityRegistry.addSpawn(EntityAshido.class, 0, 1, 1, EnumCreatureType.monster, new BiomeGenBase[] {BiomeGenBase.desert});
 
 				
 		//Arrows
