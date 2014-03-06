@@ -252,8 +252,7 @@ public class ItemZanpakuto extends ItemSword
         par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		ExtendedPlayer props = (ExtendedPlayer) par3EntityPlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 		
-		
-        if(par3EntityPlayer.isSneaking())
+		if(par3EntityPlayer.isSneaking())
         {    
         	if(props.getZName().length() <= 0 &&par1ItemStack.hasDisplayName())
         	{
@@ -266,7 +265,7 @@ public class ItemZanpakuto extends ItemSword
         	if(props.getZName().length() >= 0)
         	{
         		FMLNetworkHandler.openGui(par3EntityPlayer, BleachMod.instance, 0, par2World, (int)par3EntityPlayer.posX, (int)par3EntityPlayer.posY, (int)par3EntityPlayer.posZ);
-        		System.out.println(props.getZType());
+        	
         	}
         		
         	if(props.getPoints(9) >= 400)
@@ -309,8 +308,6 @@ public class ItemZanpakuto extends ItemSword
     				}
 
 
-        			System.out.println("Type " + check);
-        			System.out.println("SecondType " + secondType);
         			
     			}
     			else

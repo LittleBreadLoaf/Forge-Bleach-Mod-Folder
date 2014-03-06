@@ -55,6 +55,8 @@ public class GuiSoulBar extends Gui
 		this.mc.getTextureManager().bindTexture(texture);
         FontRenderer var8 = this.mc.fontRenderer;
 		
+        if (props.getFaction() == 1 || props.getFaction() == 2)
+        {
 		int var111 = var7;
         short var21 = 91;
         int var22 = (int)(props.getCurrentEnergy() * (float)(var21 + 1));
@@ -71,7 +73,7 @@ public class GuiSoulBar extends Gui
         var8.drawString(var34, var182 - 11, var233 + 42, 0);
         var8.drawString(var34, var182 - 11, var233 + 44, 0);
         var8.drawString(var34, var182 - 11, var233 + 43, var12);
-        
+        }
         //this.mc.mcProfiler.endStartSection("MaskBar");
         //String MaskTime = "" + (int)(props.getMaskTime()) * props.getMaskTimeCap();
         //int var180 = (var6 - var8.getStringWidth(MaskTime)) - 10;

@@ -21,6 +21,10 @@ public class BleachWorldGen implements IWorldGenerator
 		{
 			genHuecoMundo(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
 		}
+		if (world.provider.dimensionId ==  BleachIds.worldSoulSocietyID)
+		{
+			genSoulSociety(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
+		}
 	}
 
 	private void genHuecoMundo(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
@@ -37,6 +41,15 @@ public class BleachWorldGen implements IWorldGenerator
 		z = l + rand.nextInt(16) + 8;
 		
 		new BleachGenMenosTree(10).generate(world, rand, x, 0, z);
+	}
+	
+	private void genSoulSociety(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
+	{
+		int k = chunkX * 16;
+		int l = chunkZ * 16;
+		
+		int x = k + rand.nextInt(16) + 8;
+		int z = l + rand.nextInt(16) + 8;
 	}
 
 }

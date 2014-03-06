@@ -178,27 +178,7 @@ public class BlockHollowBait extends Block
         this.activated = true;
     }
 
-    /**
-     * Heals the player and removes a slice from the cake.
-     */
-    private void eatCakeSlice(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer)
-    {
-        if (par5EntityPlayer.canEat(false))
-        {
-            par5EntityPlayer.getFoodStats().addStats(2, 0.1F);
-            int l = par1World.getBlockMetadata(par2, par3, par4) + 1;
-
-            if (l >= 6)
-            {
-                par1World.setBlockToAir(par2, par3, par4);
-            }
-            else
-            {
-                par1World.setBlockMetadataWithNotify(par2, par3, par4, l, 2);
-            }
-        }
-    }
-
+   
     /**
      * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
      */

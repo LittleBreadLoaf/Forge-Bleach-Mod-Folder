@@ -62,6 +62,9 @@ public class BleachIds
 	public static int seeleschneiderBlockID;
 	public static final int seeleschneiderBlockID_Default = 2198;
 
+	public static int ssportalID;
+	public static final int ssportalID_Default = 2199;
+
 	//START 20170
 	
 	//ITEMS
@@ -281,6 +284,12 @@ public class BleachIds
 	
 	public static int biomeHuecoMundoID;
 	public static final int biomeHuecoMundoID_Default = 220;
+	
+	public static int worldSoulSocietyID;
+	public static final int worldSoulSocietyID_Default = 7;
+	
+	public static int biomeSoulSocietyForestID;
+	public static final int biomeSoulSocietyForestID_Default = 221;
 	
 	public static int debugItemID;
 	public static final int debugItemID_Default = 15000;

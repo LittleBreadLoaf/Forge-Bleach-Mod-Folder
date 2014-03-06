@@ -1,7 +1,7 @@
 package littlebreadloaf.bleach.world;
 
 import littlebreadloaf.bleach.BleachIds;
-import littlebreadloaf.bleach.render.SkyRendererHuecoMundo;
+import littlebreadloaf.bleach.render.SkyRendererSoulSociety;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
@@ -12,16 +12,16 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class HuecoMundoWorldProvider extends WorldProvider
+public class SoulSocietyWorldProvider extends WorldProvider
 {
 	@Override
 	public void registerWorldChunkManager()
 	{
-		this.dimensionId = BleachIds.worldHuecoMundoID;
-		this.worldChunkMgr = new HuecoMundoChunkManager(this.worldObj);
+		this.dimensionId = BleachIds.worldSoulSocietyID;
+		this.worldChunkMgr = new SoulSocietyChunkManager(this.worldObj);
 		if(FMLCommonHandler.instance().getSide() == Side.CLIENT)
 		{
-			this.setSkyRenderer(new SkyRendererHuecoMundo());
+			this.setSkyRenderer(new SkyRendererSoulSociety());
 		}
 	}
 
@@ -122,7 +122,7 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new HuecoMundoChunkProvider(this.worldObj, this.worldObj.getSeed(), true);
+		return new SoulSocietyChunkProvider(this.worldObj, this.worldObj.getSeed(), true);
 	}
 
 	@Override
@@ -163,6 +163,6 @@ public class HuecoMundoWorldProvider extends WorldProvider
 	@Override
 	public String getDimensionName()
 	{
-		return "Hueco Mundo";// TODO: add localization
+		return "Soul Society";// TODO: add localization
 	}
 }

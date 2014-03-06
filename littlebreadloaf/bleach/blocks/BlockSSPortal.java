@@ -3,9 +3,10 @@ package littlebreadloaf.bleach.blocks;
 import java.util.List;
 import java.util.Random;
 
+import littlebreadloaf.bleach.BleachIds;
 import littlebreadloaf.bleach.BleachModInfo;
-import littlebreadloaf.bleach.events.ExtendedPlayer;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.world.SoulSocietyTeleporter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;
 import net.minecraft.block.material.Material;
@@ -13,6 +14,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
@@ -22,7 +24,7 @@ import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPaperWall extends BlockPane
+public class BlockSSPortal extends BlockPane
 {
     /**
      * Holds the texture index of the side of the pane (the thin lateral side)
@@ -38,21 +40,31 @@ public class BlockPaperWall extends BlockPane
     @SideOnly(Side.CLIENT)
     private Icon theIcon;
 
-    protected BlockPaperWall(int par1, String par2Str, String par3Str, Material par4Material, boolean par5)
+    protected BlockSSPortal(int par1, String par2Str, String par3Str, Material par4Material, boolean par5)
     {
         super(par1, par3Str, par3Str, par4Material, par5);
         this.sideTextureIndex = BleachModInfo.ID.toLowerCase() + ":" + par3Str;
         this.canDropItself = par5;
         this.field_94402_c = BleachModInfo.ID.toLowerCase() + ":" + par2Str;
         this.setCreativeTab(BleachItems.tabBleach);
+        this.setLightValue(1.0F);
+        this.setTickRandomly(false);
+        this.timeRemaining = 0;
     }
 
+    
+    
+    public int tickRate(World par1World)
+    {
+        return 10;
+    }
+    
     /**
      * Returns the ID of the items to drop on destruction.
      */
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return !this.canDropItself ? 0 : super.idDropped(par1, par2Random, par3);
+        return 0;
     }
 
     /**
@@ -217,7 +229,7 @@ public class BlockPaperWall extends BlockPane
      */
     public final boolean canThiswallConnectToThisBlockID(int par1)
     {
-        return Block.opaqueCubeLookup[par1] || par1 == this.blockID || par1 == Block.glass.blockID;
+        return par1 == this.blockID || par1 == Block.wood.blockID;
     }
 
     /**
@@ -257,105 +269,43 @@ public class BlockPaperWall extends BlockPane
     
     
     
-    
-    
-    
-    
+
     /**
-     * Called upon block activation (right click on the block.)
+     * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
-    public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer var5, int var6, float var7, float var8, float var9)
+    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
-    	ExtendedPlayer props = (ExtendedPlayer)var5.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-		
-    	if(var5.inventory.getCurrentItem().getItem() == BleachItems.zanpakuto && props.getFaction() == 1 && props.getCurrentEnergy() >= (float)50 / (float)props.getCurrentCap())
+    	if(par5Entity instanceof EntityPlayerMP)
     	{
-
-            this.checkPossiblePortal(var1, var2, var3, var4, var5);
-        
+    		EntityPlayerMP playermp = (EntityPlayerMP) par5Entity;
+			if (playermp.dimension == BleachIds.worldSoulSocietyID)
+			{
+				playermp.mcServer.getConfigurationManager().transferPlayerToDimension(playermp, 0, new SoulSocietyTeleporter(playermp.mcServer.worldServerForDimension(0)));
+			} 
+			else
+			{
+				playermp.mcServer.getConfigurationManager().transferPlayerToDimension(playermp, BleachIds.worldSoulSocietyID,
+					new SoulSocietyTeleporter(playermp.mcServer.worldServerForDimension(BleachIds.worldSoulSocietyID)));
+			}
     	}
-        return true;
     }
+    
+    
+    int timeRemaining = 0;
+    public void updateTick(World var1, int var2, int var3, int var4, Random var5)
+    {
+        ++this.timeRemaining;
 
-	public void checkPossiblePortal(World var1, int var2, int var3, int var4, EntityPlayer var5) 
-	{
-		int requirements = 0;
-		for(int checkX = -1; checkX <= 1; checkX++)
-		{
-			for(int checkY = -1; checkY <= 1; checkY++)
-			{
-				for(int woodY = -1; woodY <= 1; woodY++)
-				{
-					if(var1.getBlockId(var2 + 2, var3 + woodY, var4) == Block.wood.blockID && var1.getBlockId(var2 - 2, var3 + woodY, var4) == Block.wood.blockID)
-					{
-						requirements++;
-					}
-				}
-				
-			}
-		}
-		if(requirements == 27)
-		{
-			this.createPortal(var1, var2, var3, var4, var5, 1);
-		}
-		
-		requirements = 1;
-		
-		for(int checkZ = -1; checkZ <= 1; checkZ++)
-		{
-			for(int checkY = -1; checkY <= 1; checkY++)
-			{
-				if(var1.getBlockId(var2, var3 + checkY, var4 + checkZ) == BleachBlocks.paperwall.blockID)
-				{
-					for(int woodY = -1; woodY <= 1; woodY++)
-					{
-						if(var1.getBlockId(var2, var3 + woodY, var4 + 2) == Block.wood.blockID && var1.getBlockId(var2, var3 + woodY, var4 - 2) == Block.wood.blockID)
-						{
-							requirements++;
-						}
-					}
-				}
-				
-			}
-		}
-		if(requirements == 28)
-		{
-			this.createPortal(var1, var2, var3, var4, var5, 2);
-		}
-	}
-
-	private void createPortal(World var1, int var2, int var3, int var4, EntityPlayer var5, int var6) 
-	{
-		ExtendedPlayer props = (ExtendedPlayer)var5.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-		props.consumeEnergy(50);
-		if(var6 ==1)
-		{
-			for(int checkX = -1; checkX <= 1; checkX++)
-			{
-				for(int checkY = -1; checkY <= 1; checkY++)
-				{
-					var1.setBlock(var2 + checkX, var3 + checkY, var4, BleachBlocks.ssportal.blockID);
-					var1.scheduleBlockUpdate(var2+ checkX, var3+ checkY, var4, BleachBlocks.ssportal.blockID, 10);
-				}
-			}
-		}
-		else if(var6 == 2)
-		{
-			for(int checkZ = -1; checkZ <= 1; checkZ++)
-			{
-				for(int checkY = -1; checkY <= 1; checkY++)
-				{
-					var1.setBlock(var2, var3 + checkY, var4 + checkZ, BleachBlocks.ssportal.blockID);
-					var1.scheduleBlockUpdate(var2, var3+ checkY, var4 + checkZ, BleachBlocks.ssportal.blockID, 10);
-					
-				}
-			}
-		}
-		
-	}
-    
-    
-    
-    
-    
+        
+        if (this.timeRemaining >= 120)
+        {
+        	
+        	var1.setBlock(var2, var3, var4, BleachBlocks.paperwall.blockID);
+        	
+        }
+        else
+        {
+        	var1.scheduleBlockUpdate(var2, var3, var4, this.blockID, this.tickRate(var1));
+        }
+    }
 }

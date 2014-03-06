@@ -64,8 +64,8 @@ public class RenderMenosGrande extends RenderLiving
         // cero
  		int charging = 200 - entity.getChargingProgress();
 
- 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(""));
- 		RenderingHelper.drawCeroSphere(entity.posX, entity.posY + entity.getEyeHeight(), entity.posZ, 1, 20, 20, entity);
+ 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":/models/sphereLamp.png"));
+ 		RenderingHelper.drawCeroSphere(entity.posX, entity.posY + entity.getEyeHeight(), entity.posZ, 12, 20, 20, entity);
 
     }
     

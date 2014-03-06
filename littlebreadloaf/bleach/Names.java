@@ -50,7 +50,10 @@ public class Names
 	public static final String Lantern_UnlocalizedName = "lantern";
 	public static final String Lantern_Name = "Paper Lantern";
 	
-	public static String SeeleSchneider_Name = "Seele Schneider";
+	public static final String SSPortal_UnlocalizedName = "ssportal";
+	public static final String SSPortal_Name = "Soul Society Portal";
+	
+	public static String SeeleSchneider_Name = "Seeleschneider";
 
 	
 	public static final String Shinai_UnlocalizedName = "shinai";

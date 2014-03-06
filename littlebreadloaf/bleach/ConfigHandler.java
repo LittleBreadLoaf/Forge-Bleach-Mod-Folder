@@ -45,8 +45,10 @@ public class ConfigHandler
 		BleachIds.sphereLampID = config.get(config.CATEGORY_BLOCK, "Reiatsu Sphere Lamp ID", BleachIds.sphereLampID_Default).getInt();
 		
 		BleachIds.lanternID = config.get(config.CATEGORY_BLOCK, "Paper Lantern ID", BleachIds.lanternID_Default).getInt();
-//		BleachIds.seeleschneiderID = config.get(config.CATEGORY_BLOCK, "Seele Schneider ID", BleachIds.seeleschneiderID_Default).getInt();
 		
+		BleachIds.seeleschneiderBlockID = config.get(config.CATEGORY_BLOCK, "Seeleschneider Block ID", BleachIds.seeleschneiderBlockID_Default).getInt();
+		
+		BleachIds.ssportalID = config.get(config.CATEGORY_BLOCK, "Soul Society Portal Block ID", BleachIds.ssportalID_Default).getInt();
 		
 		
 		
@@ -187,9 +189,13 @@ public class ConfigHandler
 		
 		
 		//World
-		BleachIds.worldHuecoMundoID = config.get("Dimensions", "HuecoMundo world ID", BleachIds.worldHuecoMundoID_Default).getInt();
+		BleachIds.worldHuecoMundoID = config.get("Dimensions", "Hueco Mundo World ID", BleachIds.worldHuecoMundoID_Default).getInt();
 		
-		BleachIds.biomeHuecoMundoID = config.get("Biomes", "HuecoMundo biome ID", BleachIds.biomeHuecoMundoID_Default).getInt();
+		BleachIds.biomeHuecoMundoID = config.get("Biomes", "Hueco Mundo Biome ID", BleachIds.biomeHuecoMundoID_Default).getInt();
+		
+		BleachIds.worldSoulSocietyID = config.get("Dimensions", "Soul Society World ID", BleachIds.worldSoulSocietyID_Default).getInt();
+		
+		BleachIds.biomeSoulSocietyForestID = config.get("Biomes", "Soul Society Forest Biome ID", BleachIds.biomeSoulSocietyForestID_Default).getInt();
 
 		BleachIds.debugItemID = config.get(config.CATEGORY_ITEM, "Debug item", BleachIds.debugItemID_Default).getInt();
 

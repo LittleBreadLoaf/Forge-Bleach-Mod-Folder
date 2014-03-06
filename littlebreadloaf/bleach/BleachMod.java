@@ -21,6 +21,7 @@ import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
 import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import littlebreadloaf.bleach.world.BleachWorldGen;
 import littlebreadloaf.bleach.world.HuecoMundoWorldProvider;
+import littlebreadloaf.bleach.world.SoulSocietyWorldProvider;
 import littlebreadloaf.bleach.world.biomes.BleachBiomes;
 import me.dawars.CraftingPillars.api.CraftingPillarAPI;
 import net.minecraft.command.ICommandManager;
@@ -65,6 +66,9 @@ public class BleachMod
 
 		DimensionManager.registerProviderType(BleachIds.worldHuecoMundoID, HuecoMundoWorldProvider.class, false);
 		DimensionManager.registerDimension(BleachIds.worldHuecoMundoID, BleachIds.worldHuecoMundoID);
+
+		DimensionManager.registerProviderType(BleachIds.worldSoulSocietyID, SoulSocietyWorldProvider.class, false);
+		DimensionManager.registerDimension(BleachIds.worldSoulSocietyID, BleachIds.worldSoulSocietyID);
 
 	}
 

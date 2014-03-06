@@ -21,6 +21,7 @@ public class BleachBlocks
 	public static Block soulQuartzLamp;
 	public static Block whitesand;
 	public static Block paperwall;
+	public static Block ssportal;
 	public static Block paperdoor;
 	public static Block hollowdiamond;
 	public static Block hollowemerald;
@@ -64,6 +65,9 @@ public class BleachBlocks
 		paperwall = (new BlockPaperWall(BleachIds.paperwallID, Names.PaperWall_UnlocalizedName, Names.PaperWall_UnlocalizedName, Material.wood, true)).setHardness(5.0F).setResistance(10.0F).setUnlocalizedName(Names.PaperWall_UnlocalizedName);
 		GameRegistry.registerBlock(paperwall, Names.PaperWall_Name);
 		
+		ssportal = (new BlockSSPortal(BleachIds.ssportalID, Names.SSPortal_UnlocalizedName, Names.SSPortal_UnlocalizedName, Material.portal, true)).setHardness(-1).setResistance(30.0F).setUnlocalizedName(Names.SSPortal_UnlocalizedName);
+		GameRegistry.registerBlock(ssportal, Names.SSPortal_Name);
+		
 		hollowdiamond = new BlockHollowDiamond(BleachIds.hollowdiamondID);
 		GameRegistry.registerBlock(hollowdiamond, Names.HollowDiamond_Name);
 		
@@ -103,5 +107,6 @@ public class BleachBlocks
 		LanguageRegistry.addName(sphereLamp, Names.SphereLamp_Name);
 		LanguageRegistry.addName(paperLamp, Names.Lantern_Name);
 		LanguageRegistry.addName(seeleSchneiderBlock, Names.SeeleSchneider_Name);
+		LanguageRegistry.addName(ssportal, Names.SSPortal_Name);
 	}
 }

@@ -1,10 +1,13 @@
 package littlebreadloaf.bleach.entities;
 
+import org.lwjgl.util.glu.Sphere;
+
 import littlebreadloaf.bleach.api.Tools;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.blocks.BleachBlocks;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.render.RenderingHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,10 +37,11 @@ public class EntityMenosGrande extends EntityMob
 {
 	public int deathTicks = 0;
 
-	private int ceroCooldown = 60*20;// a minute
-	private int ceroCharging = 10*20;// 10 secs
+	private int ceroCooldown = 20*20;// 20 seconds
+	private int ceroCharging = 3*20;// 3 secs
 
 	private EntityPlayer target = null;
+	private int[] targetCoords = {0,0,0};
 	
 	public EntityMenosGrande(World par1World)
 	{
@@ -89,7 +93,7 @@ public class EntityMenosGrande extends EntityMob
 
 			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
 		}
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(50);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(60);
 		this.getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(10);
 
 	}
@@ -183,27 +187,50 @@ public class EntityMenosGrande extends EntityMob
 	protected void updateAITasks()
 	{
 		super.updateAITasks();
+		if(this.target == null)
+		{
+			this.target = this.worldObj.getClosestPlayerToEntity(this, 30);
+		}
 		
-//		if(this.ceroCooldown > 0)
-//			this.ceroCooldown--;
-//		else
-//		{
-//			if(this.target != null)
-//			{
-				if(this.ceroCharging > 0)
-					this.ceroCharging--;
-				else
+		if(this.targetCoords[0] == 0 && this.targetCoords[1] == 0 && this.targetCoords[2] == 0 && this.ceroCooldown <= 0 && this.target != null)
+		{
+			this.targetCoords[0] = (int)target.posX;
+			this.targetCoords[1] = (int)target.posY;
+			this.targetCoords[2] = (int)target.posZ;
+		}
+		
+		if(this.target != null)
+		{
+			this.ceroCooldown--;
+		}
+		
+		if(this.targetCoords != null && this.ceroCooldown <= 0)
+		{
+			this.ceroCharging--;
+			
+			//RenderBallCero
+			if(this.ceroCharging <= 0)
+			{
+				//RenderBeamCero
+				if(!this.worldObj.isRemote)
 				{
-					//fire
-					
-					
-					
-					
-//					this.ceroCooldown = 60 * 20;
-					this.ceroCharging = 10 * 20;
+					this.worldObj.createExplosion(null, targetCoords[0], targetCoords[1], targetCoords[2], 3, true);
 				}
-//			}
-//		}
+				this.targetCoords[0] = 0;
+				this.targetCoords[1] = 0;
+				this.targetCoords[2] = 0;
+				this.ceroCharging = 3 * 20;
+				this.ceroCooldown = 20 * 20;
+			}
+		}
+
+		
+		
+		System.out.println("Charging " + this.ceroCharging);
+		System.out.println("Cooldown " + this.ceroCooldown);
+		
+		
+		
 		
 		
 		
@@ -388,8 +415,7 @@ public class EntityMenosGrande extends EntityMob
      */
     public boolean getCanSpawnHere()
     {
-        return this.posY < 50 && this.worldObj.difficultySetting > 0 && this.isValidLightLevel() && 
-        		this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox);
+        return this.posY < 50 && this.worldObj.difficultySetting > 0  && !this.worldObj.isAnyLiquid(this.boundingBox);
     }
 
 }
