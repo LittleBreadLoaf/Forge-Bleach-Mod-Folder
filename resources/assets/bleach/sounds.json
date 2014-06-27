@@ -1,0 +1,24 @@
+{
+    "bowcharge": {"category": "master","sounds": [{"name": "bowcharge","stream": false}]},
+    "bowfire": {"category": "master","sounds": [{"name": "bowfire","stream": false}]},
+    "fisherlaugh1": {"category": "master","sounds": [{"name": "fisherlaugh1","stream": false}]},
+    "fisherlaugh2": {"category": "master","sounds": [{"name": "fisherlaugh2","stream": false}]},
+    "fisherlaugh3": {"category": "master","sounds": [{"name": "fisherlaugh3","stream": false}]},
+    "hollowscream": {"category": "master","sounds": [{"name": "hollowscream","stream": false}]},
+    "ore_hollow": {"category": "master","sounds": [{"name": "ore_hollow","stream": false}]},
+    "shunpo": {"category": "master","sounds": [{"name": "shunpo","stream": false}]},
+	"getsugatenshou": {"category": "master","sounds": [{"name": "getsugatenshou","stream": false}]},
+
+
+
+"ardor": {"category": "ambient","music": [{"name": "ardor", "stream": true}]},
+
+"belong": {"category": "ambient","music": [{"name": "belong", "stream": true}]},
+
+"heart": {"category": "ambient","music": [{"name": "heart", "stream": true}]},
+
+"home": {"category": "ambient","music": [{"name": "home", "stream": true}]},
+
+"stay": {"category": "ambient","music": [{"name": "stay", "stream": true}]}    
+
+}
