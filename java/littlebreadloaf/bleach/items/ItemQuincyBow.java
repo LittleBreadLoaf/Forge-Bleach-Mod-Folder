@@ -110,11 +110,18 @@ public class ItemQuincyBow extends ItemBow
 
             EntityEnergyArrow entityEnergyArrow = new EntityEnergyArrow(par2World, par3EntityPlayer, 2.0F);
 
+            if (f == 1.0F)
+            {
+            	
             
             entityEnergyArrow.setIsCritical(true);
               par2World.spawnEntityInWorld(entityEnergyArrow);
+              if(!par2World.isRemote)
+              {
+  				props.consumeEnergy(2);
+              }
             	par2World.playSoundAtEntity(par3EntityPlayer, "bleach:bowfire", 0.4F, 1.0F);
-            
+            }
 
 
             
@@ -288,17 +295,18 @@ public class ItemQuincyBow extends ItemBow
     		{
 
         		heldItem.setItemDamage(props.getZTex());
-    			--shikaiTimer;
-    			if(shikaiTimer <= 0 && !player.worldObj.isRemote)
-    			{
-    				shikaiTimer = 40;
-    				props.consumeEnergy(1);
-    			}
+    			
     			if(props.getCurrentEnergy() <= 0)
     			{
     				props.deactivate(par1ItemStack.getItem());
     			}	
     		}
+    		--shikaiTimer;
+			if(shikaiTimer <= 0 && !player.worldObj.isRemote)
+			{
+				shikaiTimer = 40;
+				props.consumeEnergy(2);
+			}
     	}
     }
 }

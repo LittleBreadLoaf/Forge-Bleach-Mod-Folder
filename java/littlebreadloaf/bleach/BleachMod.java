@@ -11,16 +11,18 @@ import littlebreadloaf.bleach.commands.CommandSpirit;
 import littlebreadloaf.bleach.commands.CommandToggle3D;
 import littlebreadloaf.bleach.entities.Entities;
 import littlebreadloaf.bleach.events.BleachEvents;
-import littlebreadloaf.bleach.events.BleachPipeline;
 import littlebreadloaf.bleach.events.BleachPlayerTickHandler;
-import littlebreadloaf.bleach.events.PacketActivate;
-import littlebreadloaf.bleach.events.PacketDeactivate;
-import littlebreadloaf.bleach.events.PacketFlash;
-import littlebreadloaf.bleach.events.PacketParticle;
-import littlebreadloaf.bleach.events.PacketSync;
 import littlebreadloaf.bleach.extras.OreGenerator;
 import littlebreadloaf.bleach.gui.GuiHandler;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.network.ActivateMessage;
+import littlebreadloaf.bleach.network.ClientSyncMessage;
+import littlebreadloaf.bleach.network.DeactivateMessage;
+import littlebreadloaf.bleach.network.FlashMessage;
+import littlebreadloaf.bleach.network.MoveMessage;
+import littlebreadloaf.bleach.network.ParticleMessage;
+import littlebreadloaf.bleach.network.ServerSyncMessage;
+import littlebreadloaf.bleach.player.HollowRenderer;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileLantern;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
@@ -58,11 +60,23 @@ public class BleachMod
 	public static BleachMod instance;
 
 
+	public static SimpleNetworkWrapper network;
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event)
 	{
 
-			
+		network = NetworkRegistry.INSTANCE.newSimpleChannel("BleachChannel");
+		proxy.loadMessages();
+		BleachMod.network.registerMessage(ServerSyncMessage.Handler.class, ServerSyncMessage.class, 0, Side.SERVER);
+		BleachMod.network.registerMessage(ClientSyncMessage.Handler.class, ClientSyncMessage.class, 1, Side.CLIENT);
+		BleachMod.network.registerMessage(ActivateMessage.Handler.class, ActivateMessage.class, 3, Side.SERVER);
+		BleachMod.network.registerMessage(DeactivateMessage.Handler.class, DeactivateMessage.class, 4, Side.SERVER);
+		BleachMod.network.registerMessage(FlashMessage.Handler.class, FlashMessage.class, 5, Side.SERVER);
+		BleachMod.network.registerMessage(ParticleMessage.Handler.class, ParticleMessage.class, 6, Side.CLIENT);
+		BleachMod.network.registerMessage(MoveMessage.Handler.class, MoveMessage.class, 7, Side.CLIENT);
+		
+		
+		
 		BleachItems.init();
 		BleachItems.registerItems();
 
@@ -83,12 +97,10 @@ public class BleachMod
 
 	}
 
-	public static final BleachPipeline packetPipeline = new BleachPipeline();
 	@EventHandler
 	public static void init(FMLInitializationEvent event)
 	{
 
-		packetPipeline.initialise();
 		
 		
 		Entities.init();
@@ -109,14 +121,12 @@ public class BleachMod
 		GameRegistry.registerTileEntity(TileLantern.class, "TileLantern");
 		GameRegistry.registerTileEntity(TileSeeleSchneider.class, "TileSeeleschneider");
 
-		
 		proxy.initZanpakutoRenderers();
 	}
 
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event)
 	{
-		packetPipeline.postInitialise();
 		proxy.loadGUI();
 	}
 

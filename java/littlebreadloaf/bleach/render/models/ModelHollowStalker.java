@@ -19,7 +19,7 @@ import net.minecraft.util.MathHelper;
 public class ModelHollowStalker extends ModelBase
 {
   //fields
-    ModelRenderer upperarmR;
+    public ModelRenderer upperarmR;
     ModelRenderer lowerarmR;
     ModelRenderer thumb1R;
     ModelRenderer thumb2R;
@@ -68,10 +68,10 @@ public class ModelHollowStalker extends ModelBase
     
       upperarmR = new ModelRenderer(this, 0, 49);
       upperarmR.addBox(-16F, -1F, -1F, 16, 2, 2);
-      upperarmR.setRotationPoint(-4F, -23F, 7F);
+      upperarmR.setRotationPoint(-4F, -13F, 13F);
       upperarmR.setTextureSize(128, 128);
       upperarmR.mirror = true;
-      setRotation(upperarmR, 0F, 0F, -0.7853982F);
+      setRotation(upperarmR, -0.5235988F, 0F, -0.7853982F);
       lowerarmR = new ModelRenderer(this, 3, 29);
       lowerarmR.addBox(-3F, -1.5F, -15F, 4, 3, 16);
       lowerarmR.setRotationPoint(-15F, 0F, 0F);
@@ -161,10 +161,10 @@ public class ModelHollowStalker extends ModelBase
       setRotation(toe2R, 0.5016126F,  -0.396F, -0.07F);
       upperarmL = new ModelRenderer(this, 0, 49);
       upperarmL.addBox(0F, -1F, -1F, 16, 2, 2);
-      upperarmL.setRotationPoint(4F, -23F, 7F);
+      upperarmL.setRotationPoint(4F, -13F, 13F);
       upperarmL.setTextureSize(128, 128);
       upperarmL.mirror = true;
-      setRotation(upperarmL, 0F, 0F, 0.7853982F);
+      setRotation(upperarmL, -0.5235988F, 0F, 0.7853982F);
       lowerarmL = new ModelRenderer(this, 3, 29);
       lowerarmL.addBox(-1F, -1.5F, -15F, 4, 3, 16);
       lowerarmL.setRotationPoint(15F, 0F, 0F);
@@ -224,16 +224,16 @@ public class ModelHollowStalker extends ModelBase
 
       lower_torso = new ModelRenderer(this, 90, 0);
       lower_torso.addBox(-4F, -8F, 8F, 8, 10, 6);
-      lower_torso.setRotationPoint(0F, -5F, 0F);
+      lower_torso.setRotationPoint(0F, 0F, 0F);
       lower_torso.setTextureSize(128, 128);
       lower_torso.mirror = true;
       setRotation(lower_torso, 0.2617994F, 0F, 0F);
       upper_torso = new ModelRenderer(this, 54, 0);
       upper_torso.addBox(-5F, -14F, 9F, 10, 10, 8);
-      upper_torso.setRotationPoint(0F, -5F, 0F);
+      upper_torso.setRotationPoint(0F, 0F, 0F);
       upper_torso.setTextureSize(128, 128);
       upper_torso.mirror = true;
-      setRotation(upper_torso, 0.5235988F, 0F, 0F);
+      setRotation(upper_torso, 0.5235988F - 0.2617994F, 0F, 0F);
       tailbone = new ModelRenderer(this, 90, 18);
       tailbone.addBox(-1.5F, 2F, 9F, 3, 7, 4);
       tailbone.setRotationPoint(0F, -5F, 0F);
@@ -357,13 +357,18 @@ public class ModelHollowStalker extends ModelBase
       this.finger31L.addChild(this.thumb1L);
       //this.finger31L.addChild(this.thumb2L);
       
+      hips.addChild(lower_torso);
+      lower_torso.addChild(upper_torso);
+      upper_torso.addChild(upperarmL);
+      upper_torso.addChild(upperarmR);
+      
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-    upperarmR.render(f5);
+    //upperarmR.render(f5);
     //lowerarmR.render(f5);
     //thumb1R.render(f5);
     //thumb2R.render(f5);
@@ -378,7 +383,7 @@ public class ModelHollowStalker extends ModelBase
     legupperR.render(f5);
     //toe1R.render(f5);
     //toe2R.render(f5);
-    upperarmL.render(f5);
+    //upperarmL.render(f5);
     //lowerarmL.render(f5);
     //thumb1L.render(f5);
     //thumb2L.render(f5);
@@ -388,8 +393,8 @@ public class ModelHollowStalker extends ModelBase
     //finger22L.render(f5);
     //finger12L.render(f5);
     //finger21L.render(f5);
-    lower_torso.render(f5);
-    upper_torso.render(f5);
+    //lower_torso.render(f5);
+    //upper_torso.render(f5);
     tailbone.render(f5);
     hips.render(f5);
     neck.render(f5);
@@ -441,6 +446,9 @@ public class ModelHollowStalker extends ModelBase
     {
     	this.upperarmR.rotateAngleZ = 0.05F*(MathHelper.cos(f2 * 0.06662F) ) - 0.7853982F;
     	this.upperarmL.rotateAngleZ = -0.05F*(MathHelper.cos(f2 * 0.06662F) ) + 0.7853982F;
+    
+    	this.lower_torso.rotateAngleX = -0.02F*(MathHelper.cos(f2 * 0.06662F) ) + 0.2617994F;
+    	this.upper_torso.rotateAngleX = -0.02F*(MathHelper.cos(f2 * 0.06662F) ) + 0.5235988F - 0.2617994F;
     
     
     }

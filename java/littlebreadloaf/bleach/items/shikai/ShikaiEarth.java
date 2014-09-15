@@ -9,9 +9,8 @@ import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.api.Tools;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketParticle;
 import littlebreadloaf.bleach.items.BleachItems;
-import net.minecraft.block.Block;
+import littlebreadloaf.bleach.network.ParticleMessage;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,8 +22,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.Vec3;
@@ -322,10 +319,16 @@ public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, 
     			
     				if(entity1 instanceof EntityLivingBase)
     				{
-    					double xDist = entity1.posX - var3.posX;
-    					double zDist = entity1.posZ - var3.posZ;
+    					double moveX = (entity1.posX - var3.posX);
+    					double moveY = (entity1.posY - var3.posY);
+    					double moveZ = (entity1.posZ - var3.posZ);
+    					double angle = Math.atan2(moveZ, moveX);
     					
-    					entity1.addVelocity(1.5/(Math.signum(xDist)+xDist), 0.4, 1.5/(Math.signum(zDist)+zDist));
+    					moveX = 0.4 * (Math.cos(angle));
+    					moveZ = 0.4 * (Math.sin(angle));
+    					moveY = 0.3F;
+    					entity1.addVelocity(moveX, moveY, moveZ);
+    					
     					((EntityLivingBase) entity1).attackEntityFrom(DamageSource.generic, 6.0F);
     					
     				}
@@ -365,8 +368,7 @@ public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, 
     				{
     					if(Math.ceil(par3Entity.getDistance(par3Entity.posX + i, par3Entity.posY, par3Entity.posZ + k)) == shockwaveRing) 
     					{
-    						if((EntityPlayer)par3Entity instanceof EntityPlayerMP)
-    							BleachMod.packetPipeline.sendTo(new PacketParticle(2, this.Xpos + i, this.Ypos, this.Zpos + k), (EntityPlayerMP)par3Entity);
+    							BleachMod.network.sendToAll(new ParticleMessage(2, this.Xpos + i, this.Ypos, this.Zpos + k));
     					}
     				}
     			}
@@ -388,14 +390,14 @@ public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, 
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}
+			
  
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
         		heldItem.setItemDamage(props.getZTex());
 
     			if(props.getZType() != 5)

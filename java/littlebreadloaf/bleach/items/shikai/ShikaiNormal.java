@@ -297,13 +297,13 @@ public class ShikaiNormal extends ItemSword
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}	
+				
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
         		heldItem.setItemDamage(props.getZTex());
     			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 40, 1));
     			player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 40, 1));

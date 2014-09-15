@@ -1,184 +1,543 @@
 itemGroup.Bleach Mod=Bleach Mod
 
+
+
 tile.reiatsu_block.name=Reiatsu Block
+
 tile.hollow_bait.name=Hollow Bait
+
 tile.mask_ore.name=Mask Ore
+
 tile.purple_goo.name=Precipice Plasma
+
 tile.reiatsu_ore.name=Reiatsu Ore
+
 tile.sekkiseki.name=Sekkiseki
+
 tile.soul_quartz_ore.name=Soul Quartz Ore
+
 tile.soul_quartz_block.name=Soul Quartz Block
+
 tile.soul_quartz_lamp.name=Soul Quartz Lamp
+
 tile.white_sand.name=White Sand
+
 tile.paper_wall.name=Paper Wall
+
 tile.hollow_diamond.name=Diamond Hollow Block
+
 tile.hollow_emerald.name=Emerald Hollow Block
+
 tile.hollow_gold.name=Gold Hollow Block
+
 tile.lantern.name=Paper Lantern
+
 tile.ssportal.name=Soul Society Portal
+
 tile.reiatsu_lamp.name=Reiatsu Lamp
+
 tile.icey.name=Temporary Ice Block
 
+
+
 item.reiatsu.name=Reiatsu
+
 item.shinai.name=Shinai
+
 item.zanpakuto.name=Zanpakuto
+
 item.mask_shard.name=Mask Shard
+
 seele.name=Seeleschneider
+
 seele2.name=Seeleschneider
+
 item.soulcloth.name=Soul Cloth
+
 item.soul_quartz.name=Soul Quartz
+
 item.soul_steel.name=Soul Steel
+
 quincy_pendant.name=Quincy Pendant
+
 quincy_pentacle.name=Quincy Pentacle
+
 item.hollow_book.name=Hollow Tome
+
 item.faction_selector.name=Faction Selector
+
 item.quincy_web.name=Web Quincy Bow
+
 item.quincy_bow.name=Quincy Bow
+
 item.debug.name=Test Garganta
+
 item.heart.name=Heart
 
+
+
 item.batmask.name=Bat Hollow Mask
+
 item.blazemask.name=Blaze Hollow Mask
+
 item.spidermask.name=Spider Hollow Mask
+
 item.golemmask.name=Golem Hollow Mask
+
 item.snakemask.name=Snake Hollow Mask
+
 item.wolfmask.name=Wolf Hollow Mask
+
 item.oremask.name=Ore Hollow Mask
+
 item.stalkermask.name=Stalker Hollow Mask
+
 item.waspmask.name=Wasp Hollow Mask
+
 item.menosmask.name=Menos Grande Mask
+
 item.fishermask.name=Grand Fisher Mask
+
 item.hollowmask.name=Hollow Mask
+
 item.shinirobe.name=Shihakusho Top
+
 item.shinipants.name=Shihakusho Bottom
+
 item.sandals.name=Sandals
+
 item.quincytop.name=Quincy Tunic
+
 item.quincyslacks.name=Quincy Slacks
+
 item.quincyshoes.name=Quincy Shoes
+
 item.arrancar_shoes.name=Arrancar Shoes
+
 item.arrancar_top.name=Arrancar Top
+
 item.arrancar_pants.name=Arrancar Pants
+
 item.macademy_top.name=Male Academy Top
+
 item.macademy_bottom.name=Male Academy Bottom
+
 item.facademy_top.name=Female Academy Top
+
 item.facademy_bottom.name=Female Academy Bottom
+
 item.mschool_top.name=Male School Top
+
 item.mschool_bottom.name=Male School Bottom
+
 item.fschool_top.name=Female School Top
+
 item.fschool_bottom.name=Female School Bottom
 
+item.soul_chain.name=Soul Chain
+
+
+
 item.asterisk.name=Asterisk
+
 item.record.bleach:asterisk.desc=by Orange Rage [WIP]
+
 item.numberone.name=Number One
+
 item.record.bleach:NumberOne.desc=[WIP]
+
 item.escalon.name=Escalon
+
 item.record.bleach:Escalon.desc=[WIP]
 
 
+
+
+
 item.shikai_fire1.name=Fire Shikai1
+
 item.shikai_fire2.name=Fire Shikai2
+
 item.shikai_fire3.name=Fire Shikai3
+
 item.shikai_fire4.name=Fire Shikai4
+
 item.shikai_fire5.name=Fire Shikai5
+
 item.vox_populi.name=Fire Shikai6
 
+
+
 item.shikai_ice1.name=Ice Shikai1
+
 item.shikai_ice2.name=Ice Shikai2
+
 item.shikai_ice3.name=Ice Shikai3
+
 item.shikai_ice4.name=Ice Shikai4
+
 item.shikai_ice5.name=Ice Shikai5
+
 item.ice_cream.name=Ice Shikai6
 
+
+
 item.shikai_heal1.name=Heal Shikai1
+
 item.shikai_heal2.name=Heal Shikai2
+
 item.shikai_heal3.name=Heal Shikai3
+
 item.shikai_heal4.name=Heal Shikai4
+
 item.shikai_heal5.name=Heal Shikai5
+
 item.love.name=Heal Shikai6
 
+
+
 item.shikai_poison1.name=Poison Shikai1
+
 item.shikai_poison2.name=Poison Shikai2
+
 item.shikai_poison3.name=Poison Shikai3
+
 item.shikai_poison4.name=Poison Shikai4
+
 item.shikai_poison5.name=Poison Shikai5
+
 item.ashisogi_jizo.name=Poison Shikai6
 
+
+
 item.shikai_earth1.name=Earth Shikai1
+
 item.shikai_earth2.name=Earth Shikai2
+
 item.shikai_earth3.name=Earth Shikai3
+
 item.shikai_earth4.name=Earth Shikai4
+
 item.shikai_earth5.name=Earth Shikai5
+
 item.piko_piko.name=Earth Shikai6
 
+
+
 item.shikai_wind1.name=Wind Shikai1
+
 item.shikai_wind2.name=Wind Shikai2
+
 item.shikai_wind3.name=Wind Shikai3
+
 item.shikai_wind4.name=Wind Shikai4
+
 item.shikai_wind5.name=Wind Shikai5
+
 item.fightin_words.name=Wind Shikai6
 
+
+
 item.shikai_light1.name=Light Shikai1
+
 item.shikai_light2.name=Light Shikai2
+
 item.shikai_light3.name=Light Shikai3
+
 item.shikai_light4.name=Light Shikai4
+
 item.shikai_light5.name=Light Shikai5
+
 item.master_sword.name=Light Shikai6
 
+
+
 item.shikai_dark1.name=Dark Shikai1
+
 item.shikai_dark2.name=Dark Shikai2
+
 item.shikai_dark3.name=Dark Shikai3
+
 item.shikai_dark4.name=Dark Shikai4
+
 item.shikai_dark5.name=Dark Shikai5
+
 item.souledge.name=Dark Shikai6
 
+
+
 item.shikai_lightning1.name=Lightning Shikai1
+
 item.shikai_lightning2.name=Lightning Shikai2
+
 item.shikai_lightning3.name=Lightning Shikai3
+
 item.shikai_lightning4.name=Lightning Shikai4
+
 item.shikai_lightning5.name=Lightning Shikai5
+
 item.mjolnir.name=Lightning Shikai6
 
+
+
 item.shikai_lunar1.name=Lunar Shikai1
+
 item.shikai_lunar2.name=Lunar Shikai2
+
 item.shikai_lunar3.name=Lunar Shikai3
+
 item.shikai_lunar4.name=Lunar Shikai4
+
 item.shikai_lunar5.name=Lunar Shikai5
+
 item.zangetsu.name=Lunar Shikai6
 
+
+
 item.shikai_water1.name=Water Shikai1
+
 item.shikai_water2.name=Water Shikai2
+
 item.shikai_water3.name=Water Shikai3
+
 item.shikai_water4.name=Water Shikai4
+
 item.shikai_water5.name=Water Shikai5
+
 item.sakana.name=Water Shikai6
 
+
+
 item.shikai_normal1.name=Normal Shikai1
+
 item.shikai_normal2.name=Normal Shikai2
+
 item.shikai_normal3.name=Normal Shikai3
+
 item.shikai_normal4.name=Normal Shikai4
+
 item.shikai_normal5.name=Normal Shikai5
+
 item.ticonderoga.name=Normal Shikai6
 
 
+
+
+
 entity.Fisher.name=Grand Fisher
+
 entity.EnergyArrow.name=Energy Arrow
+
 entity.Getsuga.name=Getsugatenshou
+
 entity.HollowBat.name=Bat Hollow
+
 entity.HollowBlaze.name=Blaze Hollow
+
 entity.HollowGolem.name=Golem Hollow
+
 entity.HollowOre.name=Ore Hollow
+
 entity.HollowSnake.name=Snake Hollow
+
 entity.HollowSpider.name=Spider Hollow
+
 entity.HollowStalker.name=Stalker Hollow
+
 entity.HollowWasp.name=Wasp Hollow
+
 entity.HollowWolf.name=Wolf Hollow
+
 entity.MenosGrande.name=Menos Grande
+
 entity.Shinigami.name=Shinigami
+
 entity.SeeleArrow.name=Seeleschneider
+
 entity.SmallHollowLizard.name=Small Lizard Hollow
+
+entity.Whole.name=Whole
+
+entity.Decoy.name=Decoy Whole
+
+
+
 
 
 key.bleach.category=Bleach Mod Keys
+
 key.flash.desc=Flash Step
+
 key.activate.desc=Activate Shikai
+
 key.deactivate.desc=Deactivate Items
+
+
+
+
+shikai_fire1.phrase=Fire Shikai1
+
+shikai_fire2.phrase=Bear your fangs,
+
+shikai_fire3.phrase=Fire Shikai3
+
+shikai_fire4.phrase=Fire Shikai4
+
+shikai_fire5.phrase=Fire Shikai5
+
+vox_populi.phrase=Fire Shikai6
+
+
+
+shikai_ice1.phrase=Ice Shikai1
+
+shikai_ice2.phrase=Ice Shikai2
+
+shikai_ice3.phrase=Ice Shikai3
+
+shikai_ice4.phrase=Ice Shikai4
+
+shikai_ice5.phrase=Ice Shikai5
+
+ice_cream.phrase=Ice Shikai6
+
+
+
+shikai_heal1.phrase=Heal Shikai1
+
+shikai_heal2.phrase=Heal Shikai2
+
+shikai_heal3.phrase=Heal Shikai3
+
+shikai_heal4.phrase=Heal Shikai4
+
+shikai_heal5.phrase=Heal Shikai5
+
+love.phrase=Heal Shikai6
+
+
+
+shikai_poison1.phrase=Poison Shikai1
+
+shikai_poison2.phrase=Poison Shikai2
+
+shikai_poison3.phrase=Poison Shikai3
+
+shikai_poison4.phrase=Poison Shikai4
+
+shikai_poison5.phrase=Poison Shikai5
+
+ashisogi_jizo.phrase=Poison Shikai6
+
+
+
+shikai_earth1.phrase=Earth Shikai1
+
+shikai_earth2.phrase=Earth Shikai2
+
+shikai_earth3.phrase=Earth Shikai3
+
+shikai_earth4.phrase=Earth Shikai4
+
+shikai_earth5.phrase=Earth Shikai5
+
+piko_piko.phrase=Earth Shikai6
+
+
+
+shikai_wind1.phrase=Wind Shikai1
+
+shikai_wind2.phrase=Wind Shikai2
+
+shikai_wind3.phrase=Wind Shikai3
+
+shikai_wind4.phrase=Wind Shikai4
+
+shikai_wind5.phrase=Wind Shikai5
+
+fightin_words.phrase=Wind Shikai6
+
+
+
+shikai_light1.phrase=Light Shikai1
+
+shikai_light2.phrase=Light Shikai2
+
+shikai_light3.phrase=Light Shikai3
+
+shikai_light4.phrase=Light Shikai4
+
+shikai_light5.phrase=Light Shikai5
+
+master_sword.phrase=Light Shikai6
+
+
+
+shikai_dark1.phrase=Dark Shikai1
+
+shikai_dark2.phrase=Dark Shikai2
+
+shikai_dark3.phrase=Dark Shikai3
+
+shikai_dark4.phrase=Dark Shikai4
+
+shikai_dark5.phrase=Dark Shikai5
+
+souledge.phrase=Dark Shikai6
+
+
+
+shikai_lightning1.phrase=Lightning Shikai1
+
+shikai_lightning2.phrase=Lightning Shikai2
+
+shikai_lightning3.phrase=Lightning Shikai3
+
+shikai_lightning4.phrase=Lightning Shikai4
+
+shikai_lightning5.phrase=Lightning Shikai5
+
+mjolnir.phrase=Lightning Shikai6
+
+
+
+shikai_lunar1.phrase=Lunar Shikai1
+
+shikai_lunar2.phrase=Lunar Shikai2
+
+shikai_lunar3.phrase=Lunar Shikai3
+
+shikai_lunar4.phrase=Lunar Shikai4
+
+shikai_lunar5.phrase=Lunar Shikai5
+
+zangetsu.phrase=Lunar Shikai6
+
+
+
+shikai_water1.phrase=Water Shikai1
+
+shikai_water2.phrase=Water Shikai2
+
+shikai_water3.phrase=Water Shikai3
+
+shikai_water4.phrase=Water Shikai4
+
+shikai_water5.phrase=Water Shikai5
+
+sakana.phrase=Water Shikai6
+
+
+
+shikai_normal1.phrase=Normal Shikai1
+
+shikai_normal2.phrase=Normal Shikai2
+
+shikai_normal3.phrase=Normal Shikai3
+
+shikai_normal4.phrase=Normal Shikai4
+
+shikai_normal5.phrase=Normal Shikai5
+
+ticonderoga.phrase=Normal Shikai6
+

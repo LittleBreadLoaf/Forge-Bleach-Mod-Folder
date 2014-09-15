@@ -2,16 +2,22 @@ package littlebreadloaf.bleach.proxies;
 
 import java.util.HashMap;
 
+import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.events.BleachPlayerTickHandler;
+import littlebreadloaf.bleach.network.ActivateMessage;
+import littlebreadloaf.bleach.network.ClientSyncMessage;
+import littlebreadloaf.bleach.network.DeactivateMessage;
+import littlebreadloaf.bleach.network.FlashMessage;
+import littlebreadloaf.bleach.network.ParticleMessage;
+import littlebreadloaf.bleach.network.ServerSyncMessage;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.server.FMLServerHandler;
 
 public class CommonProxy implements IGuiHandler
 {
@@ -48,9 +54,7 @@ public class CommonProxy implements IGuiHandler
 
 	public static NBTTagCompound getEntityData(String name)
 	{
-		NBTTagCompound entityData = extendedEntityData.get(name);
-		extendedEntityData.remove(name);
-		return entityData;
+		return extendedEntityData.remove(name);
 	}
 
 	public void loadParts()
@@ -72,8 +76,20 @@ public class CommonProxy implements IGuiHandler
 	{
 
 	}
-
-
 	
+	public ModelBiped getArmorModel(int id)
+	{
+		return null;
+	}
+	
+	public void loadMessages()
+	{
+
+	}
+	
+	public EntityPlayer getPlayerFromMessage(MessageContext ctx)
+	{
+		return ctx.getServerHandler().playerEntity;
+	}
 
 }

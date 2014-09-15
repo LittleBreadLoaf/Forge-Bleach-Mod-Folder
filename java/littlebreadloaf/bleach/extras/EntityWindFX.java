@@ -45,6 +45,33 @@ public class EntityWindFX extends EntityFX
         this.particleMaxAge = (int)((float)this.particleMaxAge * var8);
         this.noClip = false;
     }
+    public int getBrightnessForRender(float par1)
+    {
+       
+
+        return  205;
+    }
+
+    /**
+     * Gets how bright this entity is.
+     */
+    public float getBrightness(float par1)
+    {
+        float f1 = ((float)this.particleAge + par1) / (float)this.particleMaxAge;
+
+        if (f1 < 0.0F)
+        {
+            f1 = 0.0F;
+        }
+
+        if (f1 > 1.0F)
+        {
+            f1 = 1.0F;
+        }
+
+        float f2 = super.getBrightness(par1);
+        return f2 * f1 + (1.0F - f1);
+    }
 
     public void renderParticle(Tessellator var1, float var2, float var3, float var4, float var5, float var6, float var7)
     {
@@ -84,6 +111,7 @@ public class EntityWindFX extends EntityFX
         this.motionY *= 0.5599999785423279D;
         this.motionX = Math.sin(this.counter) * this.motionXBegin;
         this.motionZ = Math.cos(this.counter) * this.motionZBegin;
+        if(this != null)
         this.moveEntity(this.motionX, this.motionY, this.motionZ);
 
 

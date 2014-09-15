@@ -9,9 +9,9 @@ import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.api.Tools;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketParticle;
 import littlebreadloaf.bleach.extras.ParticleEffects;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.network.ParticleMessage;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -285,29 +285,26 @@ public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, 
     float var7 = (float)var6 / 20.0F;
     var7 = (var7 * var7 + var7 * 2.0F) / 3.0F;
 
-    var3.swingItem();
     if ((double)var7 < 0.1D)
     {
         return;
     }
 
-    
+    if(var7 > 1.0)
+    {
+
+        var3.swingItem();
         if(var7 > 2.0F)
         {
         	var7 = 2.0F;
         }
-
-    	//var3.motionY += var7;
-        if(!var2.isRemote)
-        {
-        	props.consumeEnergy((int)(5 * var7));
-        	
-        }
-        
+    
+    }
 
     
 }
     
+int windSound = 4;
 @Override
 public void onUsingTick(ItemStack stack, EntityPlayer player, int count)
 {
@@ -319,19 +316,36 @@ public void onUsingTick(ItemStack stack, EntityPlayer player, int count)
 		
 			if(entity1 instanceof EntityLivingBase)
 			{
-				double xDist = entity1.posX - player.posX;
-				double zDist = entity1.posZ - player.posZ;
+				double moveX = (entity1.posX - player.posX);
+				double moveY = (entity1.posY - player.posY);
+				double moveZ = (entity1.posZ - player.posZ);
+				double angle = Math.atan2(moveZ, moveX);
 				
-				if(rand.nextInt(10) == 0)
-				entity1.addVelocity(1.5/(double)(Math.signum(xDist)+xDist), 0.4, 1.5/(double)(Math.signum(zDist)+zDist));
+				moveX = 0.4 * (Math.cos(angle));
+				moveZ = 0.4 * (Math.sin(angle));
+				moveY = 0.3F;
+				if(rand.nextInt(10) == 0 && entity1 != player)
+				entity1.addVelocity(moveX, moveY, moveZ);
+				
+
 				
 			}
 		
 	}
+	windSound-= rand.nextInt(3);
 	if(!player.worldObj.isRemote)
 	{
-        ParticleEffects.spawnParticle("wind", player.posX - 0.9, player.posY + 1, player.posZ + 0.5, 1.0D, 0.0D, 1.0D);
+		if(windSound <= 0)
+		{
+			player.worldObj.playSoundAtEntity(player, "bleach:wind", 0.4F, 1.0F + rand.nextFloat());
+			windSound = 30;
+		}
+		
+		BleachMod.network.sendToAll(new ParticleMessage(3,  player.posX, player.posY + 1, player.posZ));
+			
+		
 	}
+	
 }
 	
 	
@@ -364,13 +378,13 @@ public void onUsingTick(ItemStack stack, EntityPlayer player, int count)
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}
+			
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
         		heldItem.setItemDamage(props.getZTex());
         		player.fallDistance = 0;
 	        	player.addPotionEffect(new PotionEffect(Potion.jump.id, 20, 3));

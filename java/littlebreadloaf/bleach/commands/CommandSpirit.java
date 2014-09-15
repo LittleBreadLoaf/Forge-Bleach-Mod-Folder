@@ -2,7 +2,7 @@ package littlebreadloaf.bleach.commands;
 
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketSync;
+import littlebreadloaf.bleach.network.ClientSyncMessage;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,7 +36,7 @@ public class CommandSpirit extends CommandBase
             props.setCurrentEnergy(1);
             var3.addChatMessage(new ChatComponentText("Full Spiritual Energy"));
             getCommandSenderAsPlayer(par1ICommandSender).addChatMessage(new ChatComponentText("Filling " + par2ArrayOfStr[0] + "'s Spiritual Energy"));
-    		BleachMod.packetPipeline.sendTo(new PacketSync(var3), (EntityPlayerMP) var3);
+    		BleachMod.network.sendTo(new ClientSyncMessage(var3), (EntityPlayerMP) var3);
         }
 		else
 		{
@@ -44,7 +44,7 @@ public class CommandSpirit extends CommandBase
             ExtendedPlayer props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
             props.setCurrentEnergy(1);
             var3.addChatMessage(new ChatComponentText("Full Spiritual Energy"));
-    		BleachMod.packetPipeline.sendTo(new PacketSync(var3), (EntityPlayerMP) var3);
+    		BleachMod.network.sendTo(new ClientSyncMessage(var3), (EntityPlayerMP) var3);
 		}
 
 	}

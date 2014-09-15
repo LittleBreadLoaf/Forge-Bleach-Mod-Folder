@@ -1,16 +1,15 @@
 package littlebreadloaf.bleach.render.entity;
 
 import littlebreadloaf.bleach.BleachModInfo;
-import littlebreadloaf.bleach.entities.EntityDecoy;
 import littlebreadloaf.bleach.entities.EntityWhole;
-import littlebreadloaf.bleach.render.models.ModelWhole;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderWhole extends RenderLiving
+public class RenderWhole extends RenderBiped
 {
 	private static final ResourceLocation texture1 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/whole.png");
 	private static final ResourceLocation texture2 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/whole1.png");
@@ -22,12 +21,12 @@ public class RenderWhole extends RenderLiving
 	private static final ResourceLocation texture8 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/whole7.png");
 	private static final ResourceLocation texture9 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/whole8.png");
 	private static final ResourceLocation texture10 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/whole9.png");
-	protected ModelWhole model;
+	protected ModelBiped model;
 
-	public RenderWhole(ModelBase par1ModelBase, float par2)
+	public RenderWhole(ModelBiped par1ModelBase, float par2)
 	{
 		super(par1ModelBase, par2);
-		model = ((ModelWhole) mainModel);
+		model = ((ModelBiped) mainModel);
 	}
 
 	public void renderWhole(EntityWhole par1, double par2, double par3, double par4, float par5, float par6)

@@ -1,12 +1,17 @@
 package littlebreadloaf.bleach.events;
 
+import java.util.List;
 import java.util.Random;
 
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.blocks.BleachBlocks;
+import littlebreadloaf.bleach.entities.EntityDecoy;
 import littlebreadloaf.bleach.entities.EntityHollowOre;
+import littlebreadloaf.bleach.entities.EntityWhole;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.network.ParticleMessage;
+import littlebreadloaf.bleach.network.ServerSyncMessage;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
 import net.minecraft.entity.Entity;
@@ -14,13 +19,13 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Vec3;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -28,7 +33,6 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -42,7 +46,8 @@ public class BleachEvents
 {
 	
 	public static CommonProxy proxy = new CommonProxy();
-	Random rand = new Random();
+	Random rand = new Random();	
+	EntityPlayer myPlayer = null;
 	
 	@SubscribeEvent
 	public void onEntityConstructing(EntityConstructing event)
@@ -50,7 +55,9 @@ public class BleachEvents
 		if (event.entity instanceof EntityPlayer &&
 				event.entity.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME) == null)
 				{
-					event.entity.registerExtendedProperties(ExtendedPlayer.EXT_PROP_NAME, new ExtendedPlayer((EntityPlayer) event.entity));
+					myPlayer = (EntityPlayer)event.entity;
+					ExtendedPlayer.register(((EntityPlayer) event.entity));
+					
 				}
 	}
 	
@@ -61,18 +68,33 @@ public class BleachEvents
 	@SubscribeEvent
 	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{	
-		if(event.entity instanceof EntityPlayerMP)
-			ExtendedPlayer.loadProxyData((EntityPlayer) event.entity);
-		if(event.entity instanceof EntityPlayerMP)
+		
+		
+		if(event.entity instanceof EntityPlayer)
 		{
+
 			EntityPlayer player = ((EntityPlayer)event.entity);
-			ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+			ExtendedPlayer props = ExtendedPlayer.get(player);
+			if(!event.world.isRemote)
+				ExtendedPlayer.loadProxyData(player);
 			if(props.getFaction() == 0 && !player.inventory.hasItem(BleachItems.factionSelect))
 			{
 				player.inventory.addItemStackToInventory(new ItemStack(BleachItems.factionSelect, 1));
 				if(!player.worldObj.isRemote)
+				{
 					props.replenishEnergy(1);
+					if(props.getZTex() == 5)
+			    	{
+			    		props.randomTexture();
+			    	}
+				}
 			}
+		}
+		
+		if(event.entity instanceof EntityWhole || event.entity instanceof EntityDecoy)
+		{
+			event.entity.setCurrentItemOrArmor(2, new ItemStack(Armor.SoulChain, 1));
+
 		}
 		
 	}
@@ -83,72 +105,26 @@ public class BleachEvents
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDeathEvent event)
 	{
-		if(event.entity instanceof EntityPlayerMP)
+		if(event.entity instanceof EntityPlayer)
 		{
 			EntityPlayer player = ((EntityPlayer)event.entity);
-			ExtendedPlayer.saveProxyData(player);
-			
-			if(player.inventory.hasItem(BleachItems.zanpakuto))
+			if(!event.entity.worldObj.isRemote)
 			{
-				
+			
+				ExtendedPlayer.saveProxyData(player);
 			}
 		}
 	}
 	
 
-	@SubscribeEvent
-	public void onLivingSpawnEvent(LivingSpawnEvent event)
-	{
-		if(event.entityLiving instanceof EntityPlayer)
-		{
-
-			EntityPlayer player = ((EntityPlayer)event.entityLiving);
-			ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-			props.replenishEnergy(1);
-		}
-	}
-	private int replenishTimer = 100;
 	
+
+	private int replenishTimer = 100;
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onLivingUpdateEvent(LivingUpdateEvent event)
 	{
-		if(event.entityLiving instanceof EntityPlayer)
-		{
-			--replenishTimer;
-			
-			EntityPlayer player = ((EntityPlayer)event.entityLiving);
-			ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
-			
-			if(!event.entityLiving.worldObj.isRemote)
-			{
-				player.capabilities.setPlayerWalkSpeed(0.1F + (float)((float)props.getCurrentCap() *(0.00007* (float)props.getCurrentEnergy())));
-				
-			}
-			if(player.isAirBorne && player.isSneaking() && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == BleachItems.shikaiwind)
-			{
-				player.motionY = -0.3 + (float)((props.getCurrentEnergy()*props.getCurrentCap())/(float)10000);
-				player.moveFlying(player.moveStrafing, player.moveForward, 0.1F + (float)((props.getCurrentEnergy()*props.getCurrentCap())/(float)10000));
-        		
-			}
-			
-			//if(props.getStickTimer() > 0)
-			//{
-			//	player.motionY = 0;
-			//	player.motionX = 0;
-			//	player.motionZ = 0;
-			//}
-			if(replenishTimer <= 0)
-			{
-			
-				
-				props.replenishEnergy((int)(3 * (1 + (0.001 * props.getCurrentCap()))));
-				BleachMod.packetPipeline.sendToServer(new PacketSync(player));
-				this.replenishTimer = 100;	
-				
-			}
-			
-		}
+		
 		
 		if (!event.entity.worldObj.isRemote)
 		{
@@ -159,6 +135,57 @@ public class BleachEvents
 				event.entity.motionZ = 0F;
 				if(event.entity.motionY > 0F) event.entity.motionY = 0F;
 			}
+		
+		
+		if(event.entityLiving instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			ExtendedPlayer props = ExtendedPlayer.get(player);
+			
+			--replenishTimer;
+
+			player.capabilities.setPlayerWalkSpeed(0.1F + (float)((float)props.getCurrentCap() *(0.00007* (float)props.getCurrentEnergy())));
+
+				
+			
+			if(replenishTimer <= 0)
+			{
+			
+				props.replenishEnergy((int)(2.5 * (1 + (0.001 * props.getCurrentCap()))));
+				
+				BleachMod.network.sendToAll(new ServerSyncMessage(player));
+				this.replenishTimer = 100;	
+				
+			}
+			
+			if(props.getFaction() == 3 && props.getHead() == 2 && player.isSprinting())
+			{
+				Vec3 normalizer = Vec3.createVectorHelper(0.008, 0.008, 0.008).normalize();
+	    		List list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.boundingBox.copy().expand(Math.abs(normalizer.xCoord * 0.5D), Math.abs(normalizer.yCoord * 0.5D), Math.abs(normalizer.zCoord * 0.5D)));
+	    		for (int l = 0; l < list.size(); ++l)
+	    		{
+	    			Entity entity1 = (Entity) list.get(l);
+	    			
+	    				if(entity1 instanceof EntityLivingBase)
+	    				{
+	    					double moveX = (entity1.posX - player.posX);
+	    					double moveY = (entity1.posY - player.posY);
+	    					double moveZ = (entity1.posZ - player.posZ);
+	    					double angle = Math.atan2(moveZ, moveX);
+	    					
+	    					moveX = 0.8 * (Math.cos(angle));
+	    					moveZ = 0.8 * (Math.sin(angle));
+	    					moveY = 0.5F;
+	    					entity1.addVelocity(moveX, moveY, moveZ);
+	    					
+	    					((EntityLivingBase) entity1).attackEntityFrom(DamageSource.generic, 1.0F);
+	    					
+	    				}
+	    			
+	    		}
+			}
+		}
+		
 		}
 	}
 	
@@ -188,7 +215,10 @@ public class BleachEvents
 			
 			event.distance -= (float)props.getCurrentCap() *(0.02* (float)props.getCurrentEnergy());
 			
-			
+			if(props.getFaction() == 3 && props.getBack() == 3)
+			{
+				event.setCanceled(true);
+			}
 		}
 	}
 	
@@ -205,8 +235,7 @@ public class BleachEvents
                 {
 					
                 
-					if(event.entityPlayer instanceof EntityPlayerMP)
-					BleachMod.packetPipeline.sendTo(new PacketParticle(4, (int)event.entityPlayer.posX, (int)event.entityPlayer.posY, (int)event.entityPlayer.posZ), (EntityPlayerMP)event.entityPlayer);
+					BleachMod.network.sendToAll(new ParticleMessage(4, (int)event.entityPlayer.posX, (int)event.entityPlayer.posY, (int)event.entityPlayer.posZ));
                 	   	
                 }
 				event.item.setDead();
@@ -224,18 +253,17 @@ public class BleachEvents
 	public void onLivingHurtEvent(LivingHurtEvent event)
 	{
 		 
+		
 		if(event.entityLiving instanceof EntityPlayer)
 		{
 			
 			EntityPlayer player = (EntityPlayer)event.entityLiving;
-			ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
+			ExtendedPlayer props = ExtendedPlayer.get(player);
 			ItemStack heldItem = player.getCurrentEquippedItem();
 			
-			ItemStack var9 = player.inventory.armorInventory[0];
-	        ItemStack var10 = player.inventory.armorInventory[1];
-	        ItemStack var11 = player.inventory.armorInventory[2];
-	        ItemStack var7 = player.inventory.armorInventory[3];
-	        
+			ItemStack var9 = player.getEquipmentInSlot(1);
+	        ItemStack var10 = player.getEquipmentInSlot(2);
+	        ItemStack var11 = player.getEquipmentInSlot(3);
 	        
 	      //Poison Shikai
 			if(heldItem != null)
@@ -255,11 +283,14 @@ public class BleachEvents
 			
 			if((var9 != null && var10 != null && var11 != null))
 			{
-				if((var9.getItem() == Armor.Sandals && var10.getItem() == Armor.ShiniPants && var11.getItem() == Armor.ShiniRobe) || 
+				
+				
+
+					if((var9.getItem() == Armor.Sandals && var10.getItem() == Armor.ShiniPants && var11.getItem() == Armor.ShiniRobe) || 
 						(var9.getItem() == Armor.QuincyShoes && var10.getItem() == Armor.QuincyPants && var11.getItem() == Armor.QuincyRobe)||
 						(var9.getItem() == Armor.ArrancarShoes && var10.getItem() == Armor.ArrancarPants && var11.getItem() == Armor.ArrancarJacket))
 					{
-					
+
 						if(heldItem != null)
 						{
 							if(heldItem.getItem() == BleachItems.zanpakuto || heldItem.getItem() ==  BleachItems.shikaidark
@@ -271,20 +302,20 @@ public class BleachEvents
 								 || heldItem.getItem() ==  BleachItems.shikailunar)
 								{
 					
-									if(props.getCurrentEnergy() > 0 && player.isBlocking() )
+									if((props.getCurrentEnergy() * props.getCurrentCap()) > event.ammount && player.isBlocking() )
 									{
 
 										props.consumeEnergy((int)(event.ammount));
 										event.setCanceled(true);
 									}
-									else if(props.getCurrentEnergy() > 0)
+									else if((props.getCurrentEnergy() * props.getCurrentCap()) > event.ammount * 4)
 									{
 										props.consumeEnergy((int)(event.ammount * 4));
 										event.setCanceled(true);
 									}
 								}
 							
-							else if(props.getCurrentEnergy() > 0)
+							else if((props.getCurrentEnergy() * props.getCurrentCap()) > event.ammount * 6)
 							{
 								props.consumeEnergy((int)(event.ammount * 6));
 								event.setCanceled(true);
@@ -294,8 +325,8 @@ public class BleachEvents
 						}
 						else 
 						{
-							
-							if((props.getCurrentEnergy() > 0))
+
+							if(((props.getCurrentEnergy() * props.getCurrentCap()) > event.ammount * 6))
 							{
 								props.consumeEnergy((int)(event.ammount * 6));
 								event.setCanceled(true);
@@ -303,6 +334,7 @@ public class BleachEvents
 						}
 					}
 				}
+				
 			}
 		
 		
@@ -351,8 +383,7 @@ public class BleachEvents
 					for(int i = 0; i< 5; i++)
 	                {
 	                
-						if(event.entityPlayer instanceof EntityPlayerMP)
-							BleachMod.packetPipeline.sendTo(new PacketParticle(4, (int)theTarget.posX, (int)theTarget.posY, (int)theTarget.posZ), (EntityPlayerMP)event.entityPlayer);
+							BleachMod.network.sendToAll(new ParticleMessage(4, (int)theTarget.posX, (int)theTarget.posY, (int)theTarget.posZ));
 		                	   	
 	                }
 					if(!event.entityPlayer.worldObj.isRemote)
@@ -366,6 +397,34 @@ public class BleachEvents
 	@SubscribeEvent
 	public void onPlayerInteractEvent(PlayerInteractEvent event)
 	{
+		ExtendedPlayer props = ExtendedPlayer.get(event.entityPlayer);
+		Vec3 look = event.entityPlayer.getLook(1.0F);
+//		if(event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == Blocks.grass && event.action.equals(Action.RIGHT_CLICK_BLOCK) && !props.getHasBlock())
+//		{
+//			EntityBlock block = new EntityBlock(event.entityPlayer.worldObj, event.entityPlayer, 1.0F, 0);
+//			block.setLocationAndAngles(event.entityPlayer.posX + look.xCoord, event.entityPlayer.posY + look.yCoord, event.entityPlayer.posZ + look.zCoord, 0, 0);
+//				event.entityPlayer.worldObj.spawnEntityInWorld(block);
+//			props.setHasBlock(true);
+//			event.entityPlayer.worldObj.setBlockToAir(event.x, event.y, event.z);
+//		}
+//		if(event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == Blocks.dirt && event.action.equals(Action.RIGHT_CLICK_BLOCK) && !props.getHasBlock())
+//		{
+//			EntityBlock block = new EntityBlock(event.entityPlayer.worldObj, event.entityPlayer, 1.0F, 1);
+//			block.setLocationAndAngles(event.entityPlayer.posX + look.xCoord, event.entityPlayer.posY + look.yCoord, event.entityPlayer.posZ + look.zCoord, 0, 0);
+//			if(!event.entityPlayer.worldObj.isRemote)
+//				event.entityPlayer.worldObj.spawnEntityInWorld(block);
+//			props.setHasBlock(true);
+//			event.entityPlayer.worldObj.setBlockToAir(event.x, event.y, event.z);
+//		}
+//		if(event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == Blocks.stone && event.action.equals(Action.RIGHT_CLICK_BLOCK) && !props.getHasBlock())
+//		{
+//			EntityBlock block = new EntityBlock(event.entityPlayer.worldObj, event.entityPlayer, 1.0F, 2);
+//			block.setLocationAndAngles(event.entityPlayer.posX + look.xCoord, event.entityPlayer.posY + look.yCoord, event.entityPlayer.posZ + look.zCoord, 0, 0);
+//			if(!event.entityPlayer.worldObj.isRemote)
+//				event.entityPlayer.worldObj.spawnEntityInWorld(block);
+//			props.setHasBlock(true);
+//			event.entityPlayer.worldObj.setBlockToAir(event.x, event.y, event.z);
+//		}
 		if(event.entityPlayer.worldObj.getBlock(event.x, event.y, event.z) == BleachBlocks.hollowdiamond)
 		{
 			if(event.action.equals(Action.LEFT_CLICK_BLOCK))
@@ -489,4 +548,7 @@ public class BleachEvents
 		}
 		return false;
 	}
+	
+	
+
 }

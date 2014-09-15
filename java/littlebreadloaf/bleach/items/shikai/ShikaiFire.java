@@ -362,7 +362,7 @@ public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, 
         	Fireball.posX = var3.posX + look.xCoord * 0.8F;
         	Fireball.posY = var3.posY + 0.6F;
         	Fireball.posZ = var3.posZ + look.zCoord * 0.8f;
-        	
+        	var2.playSoundAtEntity(var3, "mob.ghast.fireball", 1.0F, 1.0F);
             var2.spawnEntityInWorld(Fireball);
         	props.consumeEnergy(20);
         	
@@ -399,13 +399,14 @@ public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, 
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}
+			
  
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
         		heldItem.setItemDamage(props.getZTex());
     			player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 40, 0));
     			if(props.getZType() != 1)

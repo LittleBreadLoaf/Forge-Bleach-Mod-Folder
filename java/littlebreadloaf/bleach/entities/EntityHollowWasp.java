@@ -346,7 +346,7 @@ public class EntityHollowWasp extends EntityMob
 					&& this.attackingPlayer.inventory.getCurrentItem().getItem() == BleachItems.zanpakuto && props.getZTotal() < 400)
 			{
 				props.addPoints(6, 2);
-				props.addPoints(3, 2);
+				props.addPoints(4, 2);
 				props.addPoints(1, 1);
 			}
 

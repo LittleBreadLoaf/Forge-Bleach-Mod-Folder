@@ -2,7 +2,7 @@ package littlebreadloaf.bleach.commands;
 
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketSync;
+import littlebreadloaf.bleach.network.ClientSyncMessage;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,7 +32,7 @@ public class CommandResetSpirit extends CommandBase
 		ExtendedPlayer props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 		props.setCapMin(); 
 		var3.addChatMessage(new ChatComponentText("Resetting spiritual energy"));
-		BleachMod.packetPipeline.sendTo(new PacketSync(var3), (EntityPlayerMP) var3);
+		BleachMod.network.sendTo(new ClientSyncMessage(var3), (EntityPlayerMP) var3);
 	}
 
 	@Override

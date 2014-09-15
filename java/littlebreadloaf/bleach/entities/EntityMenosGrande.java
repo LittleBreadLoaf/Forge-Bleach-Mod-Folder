@@ -64,6 +64,7 @@ public class EntityMenosGrande extends EntityMob
 		this.isImmuneToFire = true;
 		this.ignoreFrustumCheck = true;
 		this.setSize(1.9F, 20.9F);
+		this.stepHeight = 3.5F;
 	}
 
 	public float getEyeHeight()

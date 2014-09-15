@@ -1,7 +1,10 @@
 package littlebreadloaf.bleach.items;
 
+import java.util.Random;
+
 import littlebreadloaf.bleach.BleachIds;
 import littlebreadloaf.bleach.BleachModInfo;
+import littlebreadloaf.bleach.events.ExtendedPlayer;
 import littlebreadloaf.bleach.world.HuecoMundoTeleporter;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class DebugItem extends Item
 {
 
+	Random rand = new Random();
 	public DebugItem()
 	{
 		super();
@@ -23,6 +27,7 @@ public class DebugItem extends Item
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
+		ExtendedPlayer props = ExtendedPlayer.get(player);
 		if (player.isSneaking() && (player instanceof EntityPlayerMP))
 		{
 			EntityPlayerMP playermp = (EntityPlayerMP) player;
@@ -33,6 +38,16 @@ public class DebugItem extends Item
 			{
 				playermp.mcServer.getConfigurationManager().transferPlayerToDimension(playermp, BleachIds.worldHuecoMundoID,
 						new HuecoMundoTeleporter(playermp.mcServer.worldServerForDimension(BleachIds.worldHuecoMundoID)));
+			}
+		}
+		else 
+		{
+			if(props.getFaction() == 3 && !world.isRemote)
+			{
+				props.setHead(rand.nextInt(4));
+				props.setBack(rand.nextInt(4));
+				props.setLegs(rand.nextInt(4));
+				props.setTail(rand.nextInt(4));
 			}
 		}
 		return stack;

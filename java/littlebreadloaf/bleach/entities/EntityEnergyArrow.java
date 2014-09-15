@@ -362,8 +362,7 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 									((EntityLivingBase) var4.entityHit).setHealth(((EntityLivingBase) var4.entityHit).getHealth() - (float) ddamage);
 								}
 							}
-						} else
-						{
+						} 
 							if (this.shootingEntity instanceof EntityPlayer)
 							{
 								ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
@@ -378,12 +377,12 @@ public class EntityEnergyArrow extends Entity implements IProjectile
 								{
 									double spirit = (double) (props.getCurrentCap()) * (double) (props.getCurrentEnergy()) / 100;
 									double ddamage = this.damageboost + this.robeboost + this.sandalboost + this.pantboost + spirit;
-									((EntityLivingBase) var4.entityHit).setHealth(((EntityLivingBase) var4.entityHit).getHealth() - (float) ddamage);
+									((EntityLivingBase) var4.entityHit).attackEntityFrom(DamageSource.generic, (float) ddamage);
 								}
 							}
 						}
 
-					}
+					
 
 					this.ticksInAir = 495;
 

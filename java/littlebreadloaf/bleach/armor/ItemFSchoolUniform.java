@@ -1,10 +1,15 @@
 package littlebreadloaf.bleach.armor;
 
+import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.BleachModInfo;
 import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.items.BleachItems;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
@@ -51,11 +56,11 @@ public class ItemFSchoolUniform extends ItemArmor
 			
 			if (stack.getItem() == Armor.FemaleSchoolTop) 
 			{
-				return BleachModInfo.ID.toLowerCase() + ":textures/models/armor/Female_school_1.png";
+				return BleachModInfo.ID.toLowerCase() + ":textures/models/armor/female_school_1.png";
 			}
 			if (stack.getItem() == Armor.FemaleSchoolBottom) 
 			{
-				return BleachModInfo.ID.toLowerCase() + ":textures/models/armor/Female_school_2.png";
+				return BleachModInfo.ID.toLowerCase() + ":textures/models/armor/female_school_2.png";
 			}
 			else 
 			{
@@ -66,7 +71,54 @@ public class ItemFSchoolUniform extends ItemArmor
 	
 	
 	
-	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) 
+	{
+		ModelBiped armorModel = BleachMod.proxy.getArmorModel(0);
+		if(itemStack != null)
+		{
+			int type = ((ItemArmor)itemStack.getItem()).armorType;
+
+			if(type == 1 || type == 3){
+			armorModel = BleachMod.proxy.getArmorModel(0);
+			}else{
+			armorModel = BleachMod.proxy.getArmorModel(5);
+			}
+			
+				if(armorModel != null){
+
+					armorModel.bipedHead.showModel = armorSlot == 0;
+					armorModel.bipedHeadwear.showModel = armorSlot == 0;
+					armorModel.bipedBody.showModel = armorSlot == 1 || armorSlot == 2;
+					armorModel.bipedRightArm.showModel = armorSlot == 1;
+					armorModel.bipedLeftArm.showModel = armorSlot == 1;
+					armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
+					armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
+
+					armorModel.isSneak = entityLiving.isSneaking();
+					armorModel.isRiding = entityLiving.isRiding();
+					armorModel.isChild = entityLiving.isChild();
+					armorModel.heldItemRight = entityLiving.getEquipmentInSlot(0) != null ? 1 :0;
+					if(entityLiving instanceof EntityPlayer && entityLiving.getHeldItem() != null)
+					{
+						
+						if(entityLiving.getHeldItem().getItem() == Items.bow || entityLiving.getHeldItem().getItem() == BleachItems.quincybow || entityLiving.getHeldItem().getItem() == BleachItems.quincyweb)
+						{
+							armorModel.aimedBow =((EntityPlayer)entityLiving).getItemInUseDuration() > 2;	
+						}
+						else
+						{
+							if(((EntityPlayer)entityLiving).getItemInUseDuration() > 0)
+							armorModel.heldItemRight = 3;
+						}
+							
+					}
+					}
+			
+		}
+		return armorModel;
+	}
 	 
 
 	

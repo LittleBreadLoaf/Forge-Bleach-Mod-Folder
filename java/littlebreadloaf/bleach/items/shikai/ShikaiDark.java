@@ -316,13 +316,13 @@ public class ShikaiDark extends ItemSword
 				props.consumeEnergy(3);
 			}
 
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}
+			
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
         		heldItem.setItemDamage(props.getZTex());
     			player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 220, 0));
 

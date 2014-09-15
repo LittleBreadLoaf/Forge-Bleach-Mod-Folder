@@ -356,13 +356,13 @@ public void onPlayerStoppedUsing(ItemStack var1, World var2, EntityPlayer var3, 
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}	
+			
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}	
         		heldItem.setItemDamage(props.getZTex());
     			
     			if(!par2World.isRemote)

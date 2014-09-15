@@ -201,15 +201,7 @@ public class BlockHollowBait extends Block
         this.activated = true;
     }
 
-    
-    @Override
-    /**
-     * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
-     */
-    public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
-    {
-        return !super.canPlaceBlockAt(par1World, par2, par3, par4) ? false : this.canBlockStay(par1World, par2, par3, par4);
-    }
+   
 
     
     
@@ -321,14 +313,7 @@ public class BlockHollowBait extends Block
     }
 
     
-    @Override
-    /**
-     * Can this block stay at this position.  Similar to canPlaceBlockAt except gets checked often with plants.
-     */
-    public boolean canBlockStay(World par1World, int par2, int par3, int par4)
-    {
-        return par1World.getBlock(par2, par3 - 1, par4).isBlockNormalCube();
-    }
+   
 
     
     @Override

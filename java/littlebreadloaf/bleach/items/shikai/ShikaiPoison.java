@@ -10,8 +10,8 @@ import littlebreadloaf.bleach.api.Tools;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.blocks.BleachBlocks;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketParticle;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.network.ParticleMessage;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -330,10 +330,13 @@ public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer,
         if (var11 == Blocks.air)
         {
         	if(var12 == Blocks.dirt || var12 == Blocks.grass)
-            par3World.setBlock(par4, par5, par6, BleachBlocks.poisonShroom);
+        	{
+        		par3World.setBlock(par4, par5, par6, BleachBlocks.poisonShroom);
+        		 if(!par3World.isRemote)
+        	        	ExtendedPlayer.get(par2EntityPlayer).consumeEnergy(15);
+        	}
         }
-        if(!par3World.isRemote)
-        	ExtendedPlayer.get(par2EntityPlayer).consumeEnergy(15);
+       
 
         return true;
     }
@@ -372,15 +375,14 @@ public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer,
             		{
             			if(rand.nextBoolean())
             			{
-            				if(var3 instanceof EntityPlayerMP)
-            				{
-            					EntityPlayerMP PlayerMP = (EntityPlayerMP)var3;
-                				BleachMod.packetPipeline.sendTo(new PacketParticle(1, (int)PlayerMP.posX + i, (int)PlayerMP.posY, (int)PlayerMP.posZ + k), PlayerMP);
+            				
+                				BleachMod.network.sendToAll(new ParticleMessage(1, (int)var3.posX + i, (int)var3.posY, (int)var3.posZ + k));
             					
-            				}
             			}
             		}
             	}
+
+    			var2.playSoundAtEntity(var3, "bleach:poison", 0.4F, 1.0F);
             	props.consumeEnergy(20);
             	
             }
@@ -422,21 +424,21 @@ public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer,
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}
+			
  
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
         		heldItem.setItemDamage(props.getZTex());
     				if(player.getActivePotionEffect(Potion.poison) != null)
     				{
     					player.curePotionEffects(new ItemStack(Items.milk_bucket));
     				}
 
-    			if(props.getZType() != 4)
+    			if(props.getZType() != 3)
     				props.deactivate(par1ItemStack.getItem());
     		}
     	}

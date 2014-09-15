@@ -1,12 +1,15 @@
 package littlebreadloaf.bleach.extras;
 
 import littlebreadloaf.bleach.BleachMod;
-import littlebreadloaf.bleach.events.PacketActivate;
-import littlebreadloaf.bleach.events.PacketDeactivate;
-import littlebreadloaf.bleach.events.PacketFlash;
+import littlebreadloaf.bleach.armor.Armor;
+import littlebreadloaf.bleach.events.ExtendedPlayer;
+import littlebreadloaf.bleach.network.ActivateMessage;
+import littlebreadloaf.bleach.network.DeactivateMessage;
+import littlebreadloaf.bleach.network.FlashMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 
 import org.lwjgl.input.Keyboard;
 
@@ -48,15 +51,15 @@ public class BleachKeyHandler
 		{
 			if (keys[FLASH].isPressed()) 
 			{
-				BleachMod.packetPipeline.sendToServer(new PacketFlash(1));
+				BleachMod.network.sendToServer(new FlashMessage(1)); 	    	
 			}
 			if (keys[ACTIVATE].isPressed()) 
 			{
-				BleachMod.packetPipeline.sendToServer(new PacketActivate());
+				BleachMod.network.sendToServer(new ActivateMessage());
 			}
 			if (keys[DEACTIVATE].isPressed()) 
 			{
-				BleachMod.packetPipeline.sendToServer(new PacketDeactivate());
+				BleachMod.network.sendToServer(new DeactivateMessage());
 			}
 		}
 	}

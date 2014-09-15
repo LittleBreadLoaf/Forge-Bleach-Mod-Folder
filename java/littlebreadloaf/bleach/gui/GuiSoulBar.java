@@ -54,7 +54,7 @@ public class GuiSoulBar extends Gui
 		this.mc.getTextureManager().bindTexture(texture);
         FontRenderer var8 = this.mc.fontRenderer;
 		
-        if (props.getFaction() == 1 || props.getFaction() == 2)
+        if (props.getFaction() != 0)
         {
 		int var111 = var7;
         short var21 = 91;
@@ -96,6 +96,22 @@ public class GuiSoulBar extends Gui
             else if (props.getFaction() == 2)
             {
             	s = "Quincy";
+            }
+            else if (props.getFaction() == 3)
+            {
+            	s = "Hollow";
+            }
+            else if (props.getFaction() == 4)
+            {
+            	s = "Arrancar";
+            }
+            else if (props.getFaction() == 5)
+            {
+            	s = "Vizard";
+            }
+            else if (props.getFaction() == 6)
+            {
+            	s = "Human";
             }
             else
             {

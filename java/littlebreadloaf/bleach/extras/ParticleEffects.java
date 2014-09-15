@@ -82,6 +82,7 @@ public class ParticleEffects
                     mc.effectRenderer.addEffect(var31);
                     return var31;
                 }
+              
                 else
                 {
                 	return null;

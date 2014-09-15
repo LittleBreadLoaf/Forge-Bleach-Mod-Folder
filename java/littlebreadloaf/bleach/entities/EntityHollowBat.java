@@ -87,14 +87,14 @@ public class EntityHollowBat extends EntityMob
 		super.applyEntityAttributes();
 		if (this.worldObj.difficultySetting == EnumDifficulty.NORMAL || this.worldObj.difficultySetting == EnumDifficulty.HARD)
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(70.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(60.0D);
 
-			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(6.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
 		} else
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
 
-			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(2.0D);
 		}
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50);
 
@@ -197,7 +197,7 @@ public class EntityHollowBat extends EntityMob
 					if (this.worldObj.difficultySetting == EnumDifficulty.NORMAL)
 					{
 						b0 = 7;
-					} else if (this.worldObj.difficultySetting == EnumDifficulty.NORMAL)
+					} else if (this.worldObj.difficultySetting == EnumDifficulty.HARD)
 					{
 						b0 = 15;
 					}

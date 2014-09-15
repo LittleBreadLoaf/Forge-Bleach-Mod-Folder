@@ -187,7 +187,7 @@ public class ShikaiLightning extends ItemSword
         	damageBoost = 0;
         }
 
-        if(rand.nextInt(50) == 1)
+        if(player.fallDistance > 0)
         {
             EntityLightningBolt var100 = new EntityLightningBolt(player.worldObj, par2EntityLivingBase.posX, par2EntityLivingBase.posY, par2EntityLivingBase.posZ);
             player.worldObj.addWeatherEffect(var100);	
@@ -343,13 +343,13 @@ public class ShikaiLightning extends ItemSword
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}
+			
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
         		heldItem.setItemDamage(props.getZTex());
     				
 

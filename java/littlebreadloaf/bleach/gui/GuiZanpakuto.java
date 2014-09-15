@@ -69,7 +69,7 @@ public class GuiZanpakuto extends GuiScreen
             
             this.mc.mcProfiler.endStartSection("Poison");
             var12 = var11 ? 16777215 : 946176;
-            var34 = "" + (int)(props.getPoints(4));
+            var34 = "" + (int)(props.getPoints(3));
             var182 = 33;
             var8.drawString(var34, var182 - 4, var233 + 54, 0);
             var8.drawString(var34, var182 - 2, var233 + 54, 0);
@@ -80,7 +80,7 @@ public class GuiZanpakuto extends GuiScreen
             
             this.mc.mcProfiler.endStartSection("Heal");
             var12 = var11 ? 16777215 : 12320839;
-            var34 = "" + (int)(props.getPoints(3));
+            var34 = "" + (int)(props.getPoints(4));
             var182 = 33;
             var8.drawString(var34, var182 - 4, var233 + 68, 0);
             var8.drawString(var34, var182 - 2, var233 + 68, 0);

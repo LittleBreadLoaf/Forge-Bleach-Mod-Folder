@@ -313,12 +313,13 @@ public class ShikaiWater extends ItemSword
 				shikaiTimer = 40;
 				props.consumeEnergy(3);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}
+			
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
     			if(player.isInWater())
         		{
         			player.moveFlying(player.moveStrafing, player.moveForward, 0.05F + (float)((props.getCurrentEnergy()*props.getCurrentCap())/(float)10000));

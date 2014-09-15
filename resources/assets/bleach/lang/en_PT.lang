@@ -1,0 +1,373 @@
+itemGroup.Bleach Mod=Bleach Mod
+
+
+
+tile.reiatsu_block.name=Block o' Soul Stuff
+
+tile.hollow_bait.name=Monster Bait
+
+tile.mask_ore.name=Mask Ore
+
+tile.purple_goo.name=Purple Goop
+
+tile.reiatsu_ore.name=Soul Stuff Ore
+
+tile.sekkiseki.name=Sekkiseki
+
+tile.soul_quartz_ore.name=Soul Quartz Ore
+
+tile.soul_quartz_block.name=Soul Quartz Block
+
+tile.soul_quartz_lamp.name=Soul Quartz Lamp
+
+tile.white_sand.name=White Sand
+
+tile.paper_wall.name=Flimsy Walls
+
+tile.hollow_diamond.name=Block o' Diamond Monsters
+
+tile.hollow_emerald.name=Block o' Emerald Monsters
+
+tile.hollow_gold.name=Block o' Golden Monsters
+
+tile.lantern.name=Ghost Lantern
+
+tile.ssportal.name=Soul Society Portal
+
+tile.reiatsu_lamp.name=Reiatsu Lamp
+
+tile.icey.name=Meltin' Ice
+
+
+
+item.reiatsu.name=Bits o' Soul
+
+item.shinai.name=Whackin' Stick
+
+item.zanpakuto.name=Soul Cutlass
+
+item.mask_shard.name=Piece o' Mask
+
+seele.name=Light Cutlass
+
+seele2.name=Light Cutlass
+
+item.soulcloth.name=Cloth o' Ghosts
+
+item.soul_quartz.name=Spirit Rock
+
+item.soul_steel.name=Shiny Metal
+
+quincy_pendant.name=Quincy Bangles
+
+quincy_pentacle.name=Quincy Jewelry
+
+item.hollow_book.name=Book o' Monsters
+
+item.faction_selector.name=Loyalty Decider
+
+item.quincy_web.name=Spider Bow
+
+item.quincy_bow.name=Light Bow
+
+item.debug.name=Test Portal
+
+item.heart.name=Heart
+
+
+
+item.batmask.name=Bat Monster Mask
+
+item.blazemask.name=Blaze Monster Mask
+
+item.spidermask.name=Spider Monster Mask
+
+item.golemmask.name=Golem Monster Mask
+
+item.snakemask.name=Serpent Monster Mask
+
+item.wolfmask.name=Wolf Monster Mask
+
+item.oremask.name=Sneaky Monster Mask
+
+item.stalkermask.name=Creepin' Monster Mask
+
+item.waspmask.name=Wasp Monster Mask
+
+item.menosmask.name=Flippin' Large Monster Mask
+
+item.fishermask.name=Grand Fisher Mask
+
+item.hollowmask.name=Monster Mask
+
+item.shinirobe.name=Ghost Shirt
+
+item.shinipants.name=Ghost Pants
+
+item.sandals.name=Ghost Shoes
+
+item.quincytop.name=Shirt
+
+item.quincyslacks.name=Pants
+
+item.quincyshoes.name=Loafers
+
+item.arrancar_shoes.name=Shoes
+
+item.arrancar_top.name=Jacket
+
+item.arrancar_pants.name=Slacks
+
+item.macademy_top.name=Manly Shirt
+
+item.macademy_bottom.name=Manly Pants
+
+item.facademy_top.name=Lady Shirt
+
+item.facademy_bottom.name=Lady Pants
+
+item.mschool_top.name=Boy's Shirt
+
+item.mschool_bottom.name=Boy's Pants
+
+item.fschool_top.name=Girl's Shirt
+
+item.fschool_bottom.name=Girl's Skirt
+
+item.soul_chain.name=Chain o' Demons
+
+
+
+item.asterisk.name=Asterisk
+
+item.record.bleach:asterisk.desc=by Orange Rage [WIP]
+
+item.numberone.name=Number One
+
+item.record.bleach:NumberOne.desc=[WIP]
+
+item.escalon.name=Escalon
+
+item.record.bleach:Escalon.desc=[WIP]
+
+
+
+
+
+item.shikai_fire1.name=Fire Shikai1
+
+item.shikai_fire2.name=Fire Shikai2
+
+item.shikai_fire3.name=Fire Shikai3
+
+item.shikai_fire4.name=Fire Shikai4
+
+item.shikai_fire5.name=Fire Shikai5
+
+item.vox_populi.name=Fire Shikai6
+
+
+
+item.shikai_ice1.name=Ice Shikai1
+
+item.shikai_ice2.name=Ice Shikai2
+
+item.shikai_ice3.name=Ice Shikai3
+
+item.shikai_ice4.name=Ice Shikai4
+
+item.shikai_ice5.name=Ice Shikai5
+
+item.ice_cream.name=Ice Shikai6
+
+
+
+item.shikai_heal1.name=Heal Shikai1
+
+item.shikai_heal2.name=Heal Shikai2
+
+item.shikai_heal3.name=Heal Shikai3
+
+item.shikai_heal4.name=Heal Shikai4
+
+item.shikai_heal5.name=Heal Shikai5
+
+item.love.name=Heal Shikai6
+
+
+
+item.shikai_poison1.name=Poison Shikai1
+
+item.shikai_poison2.name=Poison Shikai2
+
+item.shikai_poison3.name=Poison Shikai3
+
+item.shikai_poison4.name=Poison Shikai4
+
+item.shikai_poison5.name=Poison Shikai5
+
+item.ashisogi_jizo.name=Poison Shikai6
+
+
+
+item.shikai_earth1.name=Earth Shikai1
+
+item.shikai_earth2.name=Earth Shikai2
+
+item.shikai_earth3.name=Earth Shikai3
+
+item.shikai_earth4.name=Earth Shikai4
+
+item.shikai_earth5.name=Earth Shikai5
+
+item.piko_piko.name=Earth Shikai6
+
+
+
+item.shikai_wind1.name=Wind Shikai1
+
+item.shikai_wind2.name=Wind Shikai2
+
+item.shikai_wind3.name=Wind Shikai3
+
+item.shikai_wind4.name=Wind Shikai4
+
+item.shikai_wind5.name=Wind Shikai5
+
+item.fightin_words.name=Wind Shikai6
+
+
+
+item.shikai_light1.name=Light Shikai1
+
+item.shikai_light2.name=Light Shikai2
+
+item.shikai_light3.name=Light Shikai3
+
+item.shikai_light4.name=Light Shikai4
+
+item.shikai_light5.name=Light Shikai5
+
+item.master_sword.name=Light Shikai6
+
+
+
+item.shikai_dark1.name=Dark Shikai1
+
+item.shikai_dark2.name=Dark Shikai2
+
+item.shikai_dark3.name=Dark Shikai3
+
+item.shikai_dark4.name=Dark Shikai4
+
+item.shikai_dark5.name=Dark Shikai5
+
+item.souledge.name=Dark Shikai6
+
+
+
+item.shikai_lightning1.name=Lightning Shikai1
+
+item.shikai_lightning2.name=Lightning Shikai2
+
+item.shikai_lightning3.name=Lightning Shikai3
+
+item.shikai_lightning4.name=Lightning Shikai4
+
+item.shikai_lightning5.name=Lightning Shikai5
+
+item.mjolnir.name=Lightning Shikai6
+
+
+
+item.shikai_lunar1.name=Lunar Shikai1
+
+item.shikai_lunar2.name=Lunar Shikai2
+
+item.shikai_lunar3.name=Lunar Shikai3
+
+item.shikai_lunar4.name=Lunar Shikai4
+
+item.shikai_lunar5.name=Lunar Shikai5
+
+item.zangetsu.name=Lunar Shikai6
+
+
+
+item.shikai_water1.name=Water Shikai1
+
+item.shikai_water2.name=Water Shikai2
+
+item.shikai_water3.name=Water Shikai3
+
+item.shikai_water4.name=Water Shikai4
+
+item.shikai_water5.name=Water Shikai5
+
+item.sakana.name=Water Shikai6
+
+
+
+item.shikai_normal1.name=Normal Shikai1
+
+item.shikai_normal2.name=Normal Shikai2
+
+item.shikai_normal3.name=Normal Shikai3
+
+item.shikai_normal4.name=Normal Shikai4
+
+item.shikai_normal5.name=Normal Shikai5
+
+item.ticonderoga.name=Normal Shikai6
+
+
+
+
+
+entity.Fisher.name=Grand Fisher
+
+entity.EnergyArrow.name=Energy Arrow
+
+entity.Getsuga.name=Getsugatenshou
+
+entity.HollowBat.name=Bat Monster
+
+entity.HollowBlaze.name=Blaze Monster
+
+entity.HollowGolem.name=Golem Monster
+
+entity.HollowOre.name=Sneaky Monster
+
+entity.HollowSnake.name=Serpent Monster
+
+entity.HollowSpider.name=Spider Monster
+
+entity.HollowStalker.name=Creepin' Monster
+
+entity.HollowWasp.name=Wasp Monster
+
+entity.HollowWolf.name=Wolf Monster
+
+entity.MenosGrande.name=Flippin' Large Monster
+
+entity.Shinigami.name=Ghost Slayer
+
+entity.SeeleArrow.name=Seeleschneider
+
+entity.SmallHollowLizard.name=Wee Lizard Monster
+
+entity.Whole.name=Ghost
+
+entity.Decoy.name=Pretend Ghost
+
+
+
+
+
+key.bleach.category=Bleach Mod Keys
+
+key.flash.desc=Quick Jump
+
+key.activate.desc=Arm Cutlass
+
+key.deactivate.desc=Disarm Weapons

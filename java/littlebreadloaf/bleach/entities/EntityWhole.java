@@ -3,6 +3,7 @@ package littlebreadloaf.bleach.entities;
 import java.util.Random;
 
 import littlebreadloaf.bleach.api.Tools;
+import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.items.BleachItems;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -68,10 +69,14 @@ public class EntityWhole extends EntityMob
 	 * required. For example, zombies and skeletons use this to react to
 	 * sunlight and start to burn.
 	 */
+
+	@Override
 	public void onLivingUpdate()
 	{
 		super.onLivingUpdate();
-
+		
+		
+		
 	}
 
 	@Override
@@ -94,14 +99,8 @@ public class EntityWhole extends EntityMob
 
 	}
 
-	/**
-	 * Returns the item ID for the item the mob drops on death.
-	 */
-	protected int getDropItemId()
-	{
-		return 0;
-	}
 
+	
 	/**
 	 * Get this Entity's EnumCreatureAttribute
 	 */

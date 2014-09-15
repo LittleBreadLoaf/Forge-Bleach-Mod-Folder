@@ -334,13 +334,13 @@ public class ShikaiHeal extends ItemSword
 				shikaiTimer = 40;
 				props.consumeEnergy(5);
 			}
-			if(props.getCurrentEnergy() <= 0)
-			{
-				props.deactivate(par1ItemStack.getItem());
-			}	
+				
     		if(heldItem != null && heldItem == par1ItemStack)
     		{
-
+    			if(props.getCurrentEnergy() <= 0)
+    			{
+    				props.deactivate(par1ItemStack.getItem());
+    			}
 				player.curePotionEffects(new ItemStack(Items.milk_bucket));
 
             	player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 20, 0));
@@ -355,7 +355,7 @@ public class ShikaiHeal extends ItemSword
     			}
     		
 
-    			if(props.getZType() != 3)
+    			if(props.getZType() != 4)
     				props.deactivate(par1ItemStack.getItem());
     		}
     	}

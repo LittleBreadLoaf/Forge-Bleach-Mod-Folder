@@ -45,6 +45,8 @@ public class Armor
 	public static Item FemaleSchoolTop;
 	public static Item FemaleSchoolBottom;
 	
+	public static Item SoulChain;
+	
 
 	public static void init()
 	{
@@ -80,6 +82,7 @@ public class Armor
 		FemaleSchoolTop = new ItemFSchoolUniform(Tools.MASK, BleachMod.proxy.addArmor("school2"), 1).setUnlocalizedName(Names.FemaleSchoolTop_UnlocalizedName);
 		FemaleSchoolBottom = new ItemFSchoolUniform(Tools.MASK, BleachMod.proxy.addArmor("school2"), 2).setUnlocalizedName(Names.FemaleSchoolBottom_UnlocalizedName);
 		
+		SoulChain = new ItemSoulChain(Tools.MASK, BleachMod.proxy.addArmor("chain"), 1).setUnlocalizedName("soul_chain");
 	}
 	
 	public static void registerItems()
@@ -115,7 +118,7 @@ public class Armor
 		GameRegistry.registerItem(FemaleSchoolTop, Names.FemaleSchoolTop_Name);
 		GameRegistry.registerItem(FemaleSchoolBottom, Names.FemaleSchoolBottom_Name);
 		
-		
+		GameRegistry.registerItem(SoulChain, "Soul Chain");
 		
 		
 	}

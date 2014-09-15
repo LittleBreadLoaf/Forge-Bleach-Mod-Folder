@@ -1,14 +1,10 @@
 package littlebreadloaf.bleach.events;
 
-import littlebreadloaf.bleach.BleachMod;
-import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.items.BleachItems;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
@@ -19,6 +15,9 @@ public class BleachPlayerTickHandler
 	
 	private boolean countPoints = true;
 	
+	private int flapCountdown = 23;
+
+
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event)
 	{
@@ -37,14 +36,46 @@ public class BleachPlayerTickHandler
 					if(player.worldObj.getBlock((int)(player.posX), (int)(player.posY + j), (int)(player.posZ + k)) != Blocks.air && !props.getValidFlash())
 					{
 						props.setValidFlash(true);
-						props.setStickTimer(60);
 						
 					}
 				}	
 			}
 		
+			if(player.isAirBorne && player.isSneaking() && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == BleachItems.shikaiwind)
+			{
+				player.motionY = -0.3 + (float)((props.getCurrentEnergy()*props.getCurrentCap())/(float)10000);
+				player.moveFlying(player.moveStrafing, player.moveForward, 0.12F + (float)((props.getCurrentEnergy()*props.getCurrentCap())/(float)10000));
+        		
+			}
+			
+			
+			//props.setBack(3);
+			
+//			if(player instanceof EntityPlayerSP)
+//			{
+//				EntityPlayerSP SPPlayer = (EntityPlayerSP)player;
+//				--flapCountdown;
+//				
+//				if(player.isAirBorne  && props.getFaction() == 3 && props.getBack() == 3)
+//				{
+//					if(SPPlayer.movementInput.jump && flapCountdown <=0)
+//					{
+//						flapCountdown = 23;
+//						player.motionY = 0.8F;
+//					}
+//					if(player.motionY <= -0.6 && !player.isSneaking())
+//					player.motionY = -0.6F;
+//					
+//						player.moveFlying(player.moveStrafing, player.moveForward, 0.02F);
+//					
+//					
+//				}
+//			}
 		
-		
+			
+				
+			
+			
 		
 		
 		//Armor Sets

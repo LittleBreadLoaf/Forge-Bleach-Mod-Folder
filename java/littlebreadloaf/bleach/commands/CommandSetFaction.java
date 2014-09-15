@@ -4,7 +4,7 @@ import java.util.List;
 
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketSync;
+import littlebreadloaf.bleach.network.ClientSyncMessage;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -51,7 +51,7 @@ public class CommandSetFaction extends CommandBase
 	        }
 		 props.setFaction(faction + 1);
 
-		BleachMod.packetPipeline.sendTo(new PacketSync(var3), (EntityPlayerMP) var3);
+		BleachMod.network.sendTo(new ClientSyncMessage(var3), (EntityPlayerMP) var3);
 		
 		
 		
@@ -67,7 +67,7 @@ public class CommandSetFaction extends CommandBase
      */
     protected int getTypeToSet(ICommandSender par1ICommandSender, String par2Str)
     {
-        return !par2Str.equalsIgnoreCase("shinigami") ? (!par2Str.equalsIgnoreCase("quincy") ? (!par2Str.equalsIgnoreCase("human") ? parseIntBounded(par1ICommandSender, par2Str, 0, 1) : 2) : 1) : 0;
+        return !par2Str.equalsIgnoreCase("shinigami") ? (!par2Str.equalsIgnoreCase("quincy") ? (!par2Str.equalsIgnoreCase("hollow") ? (!par2Str.equalsIgnoreCase("arrancar") ? (!par2Str.equalsIgnoreCase("vizard") ? (!par2Str.equalsIgnoreCase("human") ? parseIntBounded(par1ICommandSender, par2Str, 0, 5) : 5) : 4) : 3) : 2) : 1) : 0;
     }
 
 	@Override
@@ -76,7 +76,7 @@ public class CommandSetFaction extends CommandBase
      */
     public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr)
     {
-        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] {"shinigami", "quincy", "human"}): null;
+        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[] {"shinigami", "quincy",  "hollow", "arrancar", "vizard", "human"}): null;
     }
 
 	@Override

@@ -49,7 +49,7 @@ public class ItemBlazeHelmet extends ItemArmor
 		ExtendedPlayer props = (ExtendedPlayer) player.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 		if(props.getCurrentEnergy() > 0)
 		{
-			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 40, 2));
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 40, 1));
 			if(depleteTimer <= 0)
 			{
 				depleteTimer = 40;

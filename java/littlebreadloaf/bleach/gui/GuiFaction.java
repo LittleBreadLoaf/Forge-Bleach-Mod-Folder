@@ -3,7 +3,7 @@ package littlebreadloaf.bleach.gui;
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.BleachModInfo;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketFlash;
+import littlebreadloaf.bleach.network.FlashMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.GuiButton;
@@ -66,22 +66,25 @@ public class GuiFaction extends GuiScreen {
 		{
 		
 		case 0:
-				BleachMod.packetPipeline.sendToServer(new PacketFlash(11)); 
+				BleachMod.network.sendToServer(new FlashMessage(11)); 
 				((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setFaction(1);
+				if(thePlayer.inventory.getCurrentItem() != null)
 				thePlayer.inventory.getCurrentItem().stackSize--;
 				this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		
 		case 1: 
-			BleachMod.packetPipeline.sendToServer(new PacketFlash(12));
+			BleachMod.network.sendToServer(new FlashMessage(12));
 				((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setFaction(2);
+				if(thePlayer.inventory.getCurrentItem() != null)
 				thePlayer.inventory.getCurrentItem().stackSize--;
 				this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		
 		case 3:
-				BleachMod.packetPipeline.sendToServer(new PacketFlash(11));
+				BleachMod.network.sendToServer(new FlashMessage(14));
 				((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setFaction(3);
+				if(thePlayer.inventory.getCurrentItem() != null)
 				thePlayer.inventory.getCurrentItem().stackSize--;
 				this.mc.displayGuiScreen((GuiScreen)null);
 		break;

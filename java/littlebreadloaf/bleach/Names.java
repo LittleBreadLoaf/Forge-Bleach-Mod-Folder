@@ -138,8 +138,6 @@ public class Names
 	
 	
 	
-	
-	
 	public static final String ShinigamiChest_UnlocalizedName = "shinirobe";
 	public static final String ShinigamiChest_Name = "Shihakusho Top";
 	
@@ -217,6 +215,9 @@ public class Names
 	public static final String FemaleSchoolTop_UnlocalizedName = "fschool_top";
 	public static final String FemaleSchoolBottom_Name = "Female School Bottom";
 	public static final String FemaleSchoolBottom_UnlocalizedName = "fschool_bottom";
+
+	public static final String SoulChain_UnlocalizedName = "soulchain";
+	public static final String SoulChain_Name = "Soul Chain";
 
 	
 	public static final String QuincyBow_UnlocalizedName = "quincy_bow";

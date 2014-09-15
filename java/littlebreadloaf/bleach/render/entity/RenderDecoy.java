@@ -2,14 +2,13 @@ package littlebreadloaf.bleach.render.entity;
 
 import littlebreadloaf.bleach.BleachModInfo;
 import littlebreadloaf.bleach.entities.EntityDecoy;
-import littlebreadloaf.bleach.render.models.ModelDecoy;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderDecoy extends RenderLiving
+public class RenderDecoy extends RenderBiped
 {
 	private static final ResourceLocation texture1 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/decoy.png");
 	private static final ResourceLocation texture2 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/decoy1.png");
@@ -21,12 +20,12 @@ public class RenderDecoy extends RenderLiving
 	private static final ResourceLocation texture8 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/decoy7.png");
 	private static final ResourceLocation texture9 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/decoy8.png");
 	private static final ResourceLocation texture10 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/decoy9.png");
-	protected ModelDecoy model;
+	protected ModelBiped model;
 
-	public RenderDecoy(ModelBase par1ModelBase, float par2)
+	public RenderDecoy(ModelBiped par1ModelBase, float par2)
 	{
 		super(par1ModelBase, par2);
-		model = ((ModelDecoy) mainModel);
+		model = ((ModelBiped) mainModel);
 	}
 
 	public void renderDecoy(EntityDecoy par1, double par2, double par3, double par4, float par5, float par6)

@@ -8,7 +8,8 @@
     "ore_hollow": {"category": "master","sounds": [{"name": "ore_hollow","stream": false}]},
     "shunpo": {"category": "master","sounds": [{"name": "shunpo","stream": false}]},
 	"getsugatenshou": {"category": "master","sounds": [{"name": "getsugatenshou","stream": false}]},
-
+"wind": {"category": "master","sounds": [{"name": "wind","stream": false}]},
+"poison": {"category": "master","sounds": [{"name": "poison","stream": false}]},
 
 
 "ardor": {"category": "ambient","music": [{"name": "ardor", "stream": true}]},

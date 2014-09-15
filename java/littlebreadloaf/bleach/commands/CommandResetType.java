@@ -2,12 +2,11 @@ package littlebreadloaf.bleach.commands;
 
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketSync;
+import littlebreadloaf.bleach.network.ClientSyncMessage;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 
 public class CommandResetType extends CommandBase
@@ -33,7 +32,7 @@ public class CommandResetType extends CommandBase
 		ExtendedPlayer props = (ExtendedPlayer) var3.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME);
 		props.resetType();
 		var3.addChatMessage(new ChatComponentText("Resetting zanpakuto type"));
-		BleachMod.packetPipeline.sendTo(new PacketSync(var3), (EntityPlayerMP) var3);
+		BleachMod.network.sendTo(new ClientSyncMessage(var3), (EntityPlayerMP) var3);
 		
 	}
 

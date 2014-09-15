@@ -47,7 +47,7 @@ public class EntityFisher extends EntityMob
 		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityWhole.class, 0, false));
-		this.setSize(2F, 4.3F);
+		this.setSize(1.2F, 3.4F);
 		this.experienceValue = 15;
 
 	}
@@ -139,8 +139,12 @@ public class EntityFisher extends EntityMob
 	 */
 	protected String getLivingSound()
 	{
-
-		return "bleach:fisherlaugh";
+		if(rand.nextInt(10) < 4)
+			return "bleach:fisherlaugh1";
+		else if(rand.nextInt(10) < 4)
+			return "bleach:fisherlaugh2";
+		else
+			return "bleach:fisherlaugh3";
 
 	}
 
@@ -179,37 +183,7 @@ public class EntityFisher extends EntityMob
 	{
 	}
 
-	@Override
-	public boolean attackEntityAsMob(Entity par1Entity)
-	{
-		if (super.attackEntityAsMob(par1Entity))
-		{
-			if (par1Entity instanceof EntityLivingBase)
-			{
-				byte b0 = 0;
 
-				
-					if (this.worldObj.difficultySetting == EnumDifficulty.NORMAL)
-					{
-						b0 = 7;
-					} else if (this.worldObj.difficultySetting == EnumDifficulty.HARD)
-					{
-						b0 = 15;
-					}
-				
-
-				if (b0 > 0)
-				{
-					((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.blindness.id, b0 * 20, 0));
-				}
-			}
-
-			return true;
-		} else
-		{
-			return false;
-		}
-	}
 
 	/**
 	 * Called when the mob's health reaches 0.

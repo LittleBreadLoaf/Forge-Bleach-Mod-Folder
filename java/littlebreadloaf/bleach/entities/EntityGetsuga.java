@@ -2,24 +2,19 @@ package littlebreadloaf.bleach.entities;
 
 import java.util.List;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.api.Tools;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.blocks.BleachBlocks;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
-import littlebreadloaf.bleach.events.PacketParticle;
-import littlebreadloaf.bleach.extras.ParticleEffects;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.network.ParticleMessage;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
@@ -272,11 +267,8 @@ public class EntityGetsuga extends Entity implements IProjectile
 						int ar12;
 						if(rand.nextBoolean() && !this.worldObj.isRemote && this.shootingEntity instanceof EntityPlayer)
 						{
-							if((EntityPlayer)this.shootingEntity instanceof EntityPlayerMP)
-							{
-								EntityPlayerMP thePlayer = (EntityPlayerMP)this.shootingEntity;
-								BleachMod.packetPipeline.sendTo(new PacketParticle(0, ar8, ar9, ar10), thePlayer);
-							}
+								BleachMod.network.sendToAll(new ParticleMessage(0, ar8, ar9, ar10));
+							
 							
 						}
 						if (!this.worldObj.isRemote)
