@@ -1,16 +1,18 @@
 package littlebreadloaf.bleach.events;
 
+import java.util.List;
 import java.util.Random;
 
 import littlebreadloaf.bleach.BleachMod;
+import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.items.shikai.ItemShikai;
 import littlebreadloaf.bleach.network.ClientSyncMessage;
+import littlebreadloaf.bleach.network.FlashMessage;
+import littlebreadloaf.bleach.network.GuiMessage;
 import littlebreadloaf.bleach.network.MoveMessage;
-import littlebreadloaf.bleach.network.ServerSyncMessage;
 import littlebreadloaf.bleach.proxies.CommonProxy;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -18,10 +20,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ExtendedPlayer implements IExtendedEntityProperties
 {
@@ -47,6 +48,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	private int ZTex = 5;
 	private String ZName = "";
 	
+	private int CurrentHPoints;
+	private int TotalHPoints;
+	
 	private static boolean does3D = false;
 	
 	private boolean validFlash = true;
@@ -55,11 +59,11 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	
 	//Hollow Stuff
 	private int HTex;
-	private int Head = 2;
-	private int Back = 1;
+	private int Head;
+	private int Back;
 	private int Arms;
-	private int Legs = 2;
-	private int Tail = 3;
+	private int Legs;
+	private int Tail;
 	
 	private boolean hasBlock = false;
 	
@@ -122,6 +126,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
     	properties.setInteger("Arms", Arms);
     	properties.setInteger("Legs", Legs);
     	properties.setInteger("Tail", Tail);
+    	
+    	properties.setInteger("HpointsC", CurrentHPoints);
+    	properties.setInteger("HpointsT", TotalHPoints);
         //nbt.setBoolean("HasBlock", this.hasBlock);
         
         nbt.setTag(EXT_PROP_NAME, properties);
@@ -158,6 +165,9 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.Arms = properties.getInteger("Arms");
 		this.Legs = properties.getInteger("Legs");
 		this.Tail = properties.getInteger("Tail");
+		
+		this.CurrentHPoints = properties.getInteger("HpointsC");
+		this.TotalHPoints = properties.getInteger("HpointsT");
 		//this.hasBlock = properties.getBoolean("HasBlock");
 	}
 
@@ -295,6 +305,14 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		this.Tail = var1;
 		
+	}
+	public void setCurrentHPoints(int var1)
+	{
+		this.CurrentHPoints = var1;
+	}
+	public void setTotalHPoints(int var1)
+	{
+		this.TotalHPoints = var1;
 	}
 	public void setValidFlash(boolean var1)
 	{
@@ -589,6 +607,14 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		return this.Tail;
 		
 	}
+	public int getCurrentHPoints()
+	{
+		return this.CurrentHPoints;
+	}
+	public int getTotalHPoints()
+	{
+		return this.TotalHPoints;
+	}
 	public boolean getValidFlash()
 	{
 		return this.validFlash;
@@ -663,7 +689,17 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	public void addCap()
 	{
 		this.SoulCap += 5;
-		this.SoulXP = 0;	
+		this.SoulXP = 0;
+		
+		if(this.getFaction() == 3 && this.SoulCap/(this.TotalHPoints + 2) == 50)
+		{
+			if(this.TotalHPoints < 6)
+			{
+				this.TotalHPoints +=1;
+				this.CurrentHPoints+=1;
+			}
+			
+		}
 		if(player instanceof EntityPlayerMP)
 			BleachMod.network.sendTo(new ClientSyncMessage(player), (EntityPlayerMP) player);
 		
@@ -849,44 +885,22 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 			}
 			}
 		}
-		else if(readInt == 0)
+		else if(readInt == 4)
 		{
-			//this.Hollowfy();
+			ExtendedPlayer props = ExtendedPlayer.get(player);
+			if(props.getFaction() == 3)
+				if(player instanceof EntityPlayerMP)
+					BleachMod.network.sendTo(new GuiMessage(3), (EntityPlayerMP)player);
 		}
 		
 		else if(readInt == 11)
-		{
 			this.setFaction(1);
-			if(this.player.inventory.hasItem(BleachItems.factionSelect))
-			{
-				this.player.inventory.consumeInventoryItem(BleachItems.factionSelect);
-			}
-
-		}
 		else if(readInt == 12)
-		{
 			this.setFaction(2);
-			if(this.player.inventory.hasItem(BleachItems.factionSelect))
-			{
-				this.player.inventory.consumeInventoryItem(BleachItems.factionSelect);
-			}
-		}
 		else if(readInt == 13)
-		{
 			this.setFaction(3);
-			if(this.player.inventory.hasItem(BleachItems.factionSelect))
-			{
-				this.player.inventory.consumeInventoryItem(BleachItems.factionSelect);
-			}
-		}
 		else if(readInt == 14)
-		{
 			this.setFaction(6);
-			if(this.player.inventory.hasItem(BleachItems.factionSelect))
-			{
-				this.player.inventory.consumeInventoryItem(BleachItems.factionSelect);
-			}
-		}
 		
 		
 	}
@@ -963,437 +977,24 @@ public class ExtendedPlayer implements IExtendedEntityProperties
                 		this.setTexture(5);
                 	}
                 	
-//                	ItemStack shikai = Shikai[this.getZType() - 1];
-//                	shikai.setStackDisplayName(stack.getDisplayName());
-//                	this.player.setCurrentItemOrArmor(0, shikai);
-//                	this.player.addChatMessage(new ChatComponentText("shikai" + (this.getZType() - 1) + ".phrase" + " " + stack.getDisplayName() + "!"));
-                	 if(this.getZType() == 1)
-  	        		{
-                 		ItemStack shikai = new ItemStack(BleachItems.shikaifire, 1);
-               		 shikai.setStackDisplayName(stack.getDisplayName());
-                 		this.player.setCurrentItemOrArmor(0, shikai);
-  	            		
-  	            		if(this.getZTex() == 0)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Bear your fangs," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 1)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Sear," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 2)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Incinerate," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 3)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Ignite," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 4)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Blaze," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 5)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Subscribe," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	        		}
-                 	 
-                 	 else if(this.getZType() == 2)
-  	        		{
-
-                  		ItemStack shikai = new ItemStack(BleachItems.shikaiice, 1);
-               		 shikai.setStackDisplayName(stack.getDisplayName());
-                 		this.player.setCurrentItemOrArmor(0, shikai);
-  	            		
-  	            		if(this.getZTex()== 0)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Shiver," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 1)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Chill," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 2)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Cut to the bone," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 3)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Freeze," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 4)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Snow eternally," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 5)
-  	            		{
-  	            			this.player.addChatMessage(new ChatComponentText("Scream," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 6)
-  	            		{
-  	 	            		this.player.addChatMessage(new ChatComponentText("Even the odds and conquer," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		if(this.getZTex() == 7)
-  	            		{
-  	 	            		this.player.addChatMessage(new ChatComponentText("Sleet," + " " + stack.getDisplayName() + "!"));
-  	            		}
-  	            		
-  	        		}
-                  	else if(this.getZType() == 3)
-               		{
-                       	ItemStack shikai = new ItemStack(BleachItems.shikaipoison, 1);
-               		 shikai.setStackDisplayName(stack.getDisplayName());
-                    		this.player.setCurrentItemOrArmor(0, shikai);
-                   		
-                   		if(this.getZTex() == 0)
-                   		{
-                   			this.player.addChatMessage(new ChatComponentText("Sever," + " " + stack.getDisplayName() + "!"));
-                   		}
-                   		if(this.getZTex() == 1)
-                   		{
-                   			this.player.addChatMessage(new ChatComponentText("Slither," + " " + stack.getDisplayName() + "!"));
-                   		}
-                   		if(this.getZTex() == 2)
-                   		{
-                   			this.player.addChatMessage(new ChatComponentText("Dissolve," + " " + stack.getDisplayName() + "!"));
-                   		}
-                   		if(this.getZTex() == 3)
-                   		{
-                   			this.player.addChatMessage(new ChatComponentText("Contaminate," + " " + stack.getDisplayName() + "!"));
-                   		}
-                   		if(this.getZTex() == 4)
-                   		{
-                   			this.player.addChatMessage(new ChatComponentText("Spread your toxins," + " " + stack.getDisplayName() + "!"));
-                   		}
-                   		if(this.getZTex() == 5)
-                   		{
-                   			this.player.addChatMessage(new ChatComponentText("Rip," + " " + stack.getDisplayName() + "!"));
-                   		}
-               		}
-                  	 else if(this.getZType() == 4)
-    	        		{
-                   		 ItemStack shikai = new ItemStack(BleachItems.shikaiheal, 1);
-                		 shikai.setStackDisplayName(stack.getDisplayName());
-                    		this.player.setCurrentItemOrArmor(0, shikai);
-    	            		
-    	            		if(this.getZTex() == 0)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Wake up," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 1)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Protect," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 2)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Pierce their heart," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 3)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Restore," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 4)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Heal," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 5)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("All you need is love!"));
-    	            		}
-    	        		}
-                   	 
-                 	 else if(this.getZType() == 5)
-   	        		{
-                  		 ItemStack shikai = new ItemStack(BleachItems.shikaiearth, 1);
-                		 shikai.setStackDisplayName(stack.getDisplayName());
-                     		this.player.setCurrentItemOrArmor(0, shikai);
-   	            		
-   	            		if(this.getZTex() == 0)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Grind to dust," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 1)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Smash," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 2)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Crush your foes," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 3)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Demolish," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 4)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Strike down," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 5)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText(stack.getDisplayName() + "!"));
-   	            		}
-   	        		}
-                  	 
-                  	 else if(this.getZType() == 6)
-    	        		{
-                   		 ItemStack shikai = new ItemStack(BleachItems.shikaiwind, 1);
-                		 shikai.setStackDisplayName(stack.getDisplayName());
-                      		this.player.setCurrentItemOrArmor(0, shikai);
-    	            		
-    	            		if(this.getZTex() == 0)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Gale," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 1)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Split," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 2)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Slice," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 3)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Sharpen your blade," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 4)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Reach to the heavens," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 5)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("These be fightin' words!"));
-    	            		}
-    	            		if(this.getZTex() == 6)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Undulatis, blow everything away!"));
-    	            		}
-    	            		if(this.getZTex() == 7)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Split the sky, Halinfeil"));
-    	            		}
-    	            		if(this.getZTex() == 8)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Kros, Cry Havoc!"));
-    	            		}
-    	        		}
-                  	 
-                 	
-                 	
-                 	 else if(this.getZType() == 7)
-    	        		{
-                   		 ItemStack shikai = new ItemStack(BleachItems.shikailight, 1);
-                		 shikai.setStackDisplayName(stack.getDisplayName());
-                      		this.player.setCurrentItemOrArmor(0, shikai);
-    	            		
-    	            		if(this.getZTex() == 0)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Alight," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 1)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Shine," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 2)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Pierce the dark," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 3)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Intensify," + " " + stack.getDisplayName() + "!"));
-    	            		}
-    	            		if(this.getZTex() == 4)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Divine," + " " + stack.getDisplayName() + "!"));
-   	            		}
-    	            		if(this.getZTex() == 5)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Hey, listen!"));
-    	            		}
-    	        		}
-                 	 
-                 	 else if(this.getZType() == 8)
-     	        		{
-                    		 ItemStack shikai = new ItemStack(BleachItems.shikaidark, 1);
-                    		 shikai.setStackDisplayName(stack.getDisplayName());
-                       		this.player.setCurrentItemOrArmor(0, shikai);
-     	            		
-     	            		if(this.getZTex() == 0)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Darken the sky," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 1)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Scythe," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 2)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Cut to shreds," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 3)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Ensnare," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 4)
-       	            		{
-       	            			this.player.addChatMessage(new ChatComponentText("Veil in darkness," + " " + stack.getDisplayName() + "!"));
-       	            		}
-     	            		if(this.getZTex() == 5)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("I will show you the greatest nightmare!"));
-     	            		}
-     	            		if(this.getZTex() == 6)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Lurk in the shadows, Kage Kishi!"));
-     	            		}
-     	            		if(this.getZTex() == 7)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Bring Balance, Onmyo!"));
-     	            		}
-     	            		if(this.getZTex() == 8)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Scratch, Neko Senro!"));
-     	            		}
-     	            		if(this.getZTex() == 9)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Shred our enemies, Kumori Tora Tsume!"));
-     	            		}
-     	        		}
-                 	 else if(this.getZType() == 9)
-   	        		{
-                  		 ItemStack shikai = new ItemStack(BleachItems.shikailunar, 1);
-                		 shikai.setStackDisplayName(stack.getDisplayName());
-                     		this.player.setCurrentItemOrArmor(0, shikai);
-   	            		
-   	            		if(this.getZTex() == 0)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Cut deeply," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 1)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Awaken," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 2)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Disperse the clouds," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 3)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Embrace the twilight," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 4)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Shimmer," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 5)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText(stack.getDisplayName()));
-   	            		}
-   	        		}
-                 	 else if(this.getZType() == 10)
-   	        		{
-                  		 ItemStack shikai = new ItemStack(BleachItems.shikailightning, 1);
-                		 shikai.setStackDisplayName(stack.getDisplayName());
-                     		this.player.setCurrentItemOrArmor(0, shikai);
-   	            		
-   	            		if(this.getZTex() == 0)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Gather a storm," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 1)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Electrocute," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 2)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Crackle," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 3)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Flash," + " " + stack.getDisplayName() + "!"));
-   	            		}
-   	            		if(this.getZTex() == 4)
-    	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Flash across the sky," + " " + stack.getDisplayName() + "!"));
-    	            		}
-   	            		if(this.getZTex() == 5)
-   	            		{
-   	            			this.player.addChatMessage(new ChatComponentText("Mjolnir!"));
-   	            		}
-   	        		}
-                 	 else if(this.getZType() == 11)
-     	        		{
-                    		 ItemStack shikai = new ItemStack(BleachItems.shikainormal, 1);
-                    		 shikai.setStackDisplayName(stack.getDisplayName());
-                       		this.player.setCurrentItemOrArmor(0, shikai);
-     	            		
-     	            		if(this.getZTex() == 0)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Strike true," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 1)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Rip apart," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 2)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Go forth," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 3)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Devastate," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 4)
-       	            		{
-       	            			this.player.addChatMessage(new ChatComponentText("Shake the Earth," + " " + stack.getDisplayName() + "!"));
-       	            		}
-     	            		if(this.getZTex() == 5)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Draw," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 6)
-        	            		{
-        	            			this.player.addChatMessage(new ChatComponentText("Setsuna!"));
-        	            		}
-     	        		}
-                 	 else if(this.getZType() == 12)
-     	        		{
-                    		 ItemStack shikai = new ItemStack(BleachItems.shikaiwater, 1);
-                    		 shikai.setStackDisplayName(stack.getDisplayName());
-                       		this.player.setCurrentItemOrArmor(0, shikai);
-     	            		
-     	            		if(this.getZTex() == 0)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Impale," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 1)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Rage the seas," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 2)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Rain," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 3)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Anchor's away," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 4)
-     	            		{
-    	            			this.player.addChatMessage(new ChatComponentText("Swash and buckle," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 5)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Swim," + " " + stack.getDisplayName() + "!"));
-     	            		}
-     	            		if(this.getZTex() == 6)
-     	            		{
-     	            			this.player.addChatMessage(new ChatComponentText("Hi-Yari!"));
-     	            		}
-     	        		}
-                	
-                }
+                	ItemStack shikai = Shikai[this.getZType() - 1];
+                	shikai.setStackDisplayName(stack.getDisplayName());
+                	this.player.setCurrentItemOrArmor(0, shikai);
+                	Vec3 normalizer = Vec3.createVectorHelper(0.008, 0.008, 0.008).normalize();
+                	List list = this.player.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.player.boundingBox.copy().expand(Math.abs(normalizer.xCoord * 15.0D), Math.abs(normalizer.yCoord * 15.0D), Math.abs(normalizer.zCoord * 15.0D)));
+            		for (int l = 0; l < list.size(); ++l)
+            		{
+            			Entity entity1 = (Entity) list.get(l);
+            			
+            				if(entity1 instanceof EntityPlayer)
+            				{
+            					EntityPlayer surroundingPlayers = (EntityPlayer)entity1;
+            					
+            					surroundingPlayers.addChatMessage(new ChatComponentText(Names.ShikaiPhrases[6*(this.getZType()-1) + this.getZTex()] + " " + stack.getDisplayName() + "!"));
+            				}
+            			
+            		}
+                }   	
 			}
 			this.consumeEnergy(10);
 		}
@@ -1403,12 +1004,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 
 	public void deactivate(Item theItem) 
 	{
-		if(theItem == BleachItems.shikaidark || theItem == BleachItems.shikaiearth
-				|| theItem == BleachItems.shikaifire|| theItem == BleachItems.shikaiheal
-				|| theItem == BleachItems.shikaiice|| theItem == BleachItems.shikailight
-				|| theItem == BleachItems.shikailightning|| theItem == BleachItems.shikailunar
-				|| theItem == BleachItems.shikainormal|| theItem == BleachItems.shikaipoison
-				|| theItem == BleachItems.shikaiwater|| theItem == BleachItems.shikaiwind)
+		if(theItem instanceof ItemShikai)
 		{
 			ItemStack Sword = new ItemStack(BleachItems.zanpakuto, 1);
 			if(player.getHeldItem().getDisplayName() != null)

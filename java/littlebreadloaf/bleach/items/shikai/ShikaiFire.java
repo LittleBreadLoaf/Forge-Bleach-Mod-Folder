@@ -34,7 +34,7 @@ import com.google.common.collect.Multimap;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ShikaiFire extends ItemSword
+public class ShikaiFire extends ItemShikai
 {
 	public static IIcon[] icons;
 	private static final String[] ICON = Names.ShikaiFire_UnlocalizedName;

@@ -10,8 +10,11 @@ import littlebreadloaf.bleach.entities.EntityDecoy;
 import littlebreadloaf.bleach.entities.EntityHollowOre;
 import littlebreadloaf.bleach.entities.EntityWhole;
 import littlebreadloaf.bleach.items.BleachItems;
+import littlebreadloaf.bleach.items.shikai.ItemShikai;
+import littlebreadloaf.bleach.network.GuiMessage;
 import littlebreadloaf.bleach.network.ParticleMessage;
 import littlebreadloaf.bleach.network.ServerSyncMessage;
+import littlebreadloaf.bleach.player.HollowRenderer;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
 import net.minecraft.entity.Entity;
@@ -19,6 +22,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -62,12 +66,11 @@ public class BleachEvents
 	}
 	
 	
-	
-	
-	
+
 	@SubscribeEvent
 	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{	
+		
 		
 		
 		if(event.entity instanceof EntityPlayer)
@@ -77,9 +80,8 @@ public class BleachEvents
 			ExtendedPlayer props = ExtendedPlayer.get(player);
 			if(!event.world.isRemote)
 				ExtendedPlayer.loadProxyData(player);
-			if(props.getFaction() == 0 && !player.inventory.hasItem(BleachItems.factionSelect))
+			if(props.getFaction() == 0)
 			{
-				player.inventory.addItemStackToInventory(new ItemStack(BleachItems.factionSelect, 1));
 				if(!player.worldObj.isRemote)
 				{
 					props.replenishEnergy(1);
@@ -89,6 +91,15 @@ public class BleachEvents
 			    	}
 				}
 			}
+			
+		}
+		
+		if(event.entity instanceof EntityPlayerMP)
+		{
+			EntityPlayerMP playah = (EntityPlayerMP)event.entity;
+			ExtendedPlayer info = ExtendedPlayer.get(playah);
+			if(info.getFaction() == 0)
+			BleachMod.network.sendTo(new GuiMessage(2), playah);
 		}
 		
 		if(event.entity instanceof EntityWhole || event.entity instanceof EntityDecoy)
@@ -146,7 +157,7 @@ public class BleachEvents
 
 			player.capabilities.setPlayerWalkSpeed(0.1F + (float)((float)props.getCurrentCap() *(0.00007* (float)props.getCurrentEnergy())));
 
-				
+			
 			
 			if(replenishTimer <= 0)
 			{
@@ -219,6 +230,10 @@ public class BleachEvents
 			{
 				event.setCanceled(true);
 			}
+			if(props.getFaction() == 3 && props.getLegs() == 3 && player.isCollidedHorizontally)
+			{
+				event.setCanceled(true);
+			}
 		}
 	}
 	
@@ -273,11 +288,27 @@ public class BleachEvents
 					if(event.source.getEntity() instanceof EntityLivingBase)
 					{
 						EntityLivingBase var5 = (EntityLivingBase) event.source.getEntity();
-						var5.addPotionEffect(new PotionEffect(Potion.poison.id, 80, 1));
+						var5.addPotionEffect(new PotionEffect(Potion.poison.id, 80, 0));
 					}
 				}
 			}
 	        
+			if(props.getFaction() == 3)
+			{
+				if(event.source.getEntity() instanceof EntityLivingBase)
+				{
+					EntityLivingBase hurter = (EntityLivingBase)event.source.getEntity();
+					if(props.getBack() == 2)
+					{
+					
+						hurter.attackEntityFrom(DamageSource.generic, 0.5F);
+					}
+				
+					
+				}
+			}
+			
+			
 	        
 	      //On Wearing Armor
 			
@@ -293,13 +324,7 @@ public class BleachEvents
 
 						if(heldItem != null)
 						{
-							if(heldItem.getItem() == BleachItems.zanpakuto || heldItem.getItem() ==  BleachItems.shikaidark
-								 || heldItem.getItem() ==  BleachItems.shikailight || heldItem.getItem() ==  BleachItems.shikaifire
-								 || heldItem.getItem() ==  BleachItems.shikaiice || heldItem.getItem() ==  BleachItems.shikaiearth
-								 || heldItem.getItem() ==  BleachItems.shikaiwind || heldItem.getItem() ==  BleachItems.shikaipoison
-								 || heldItem.getItem() ==  BleachItems.shikaiheal || heldItem.getItem() ==  BleachItems.shikailightning
-								 || heldItem.getItem() ==  BleachItems.shikaiwater || heldItem.getItem() ==  BleachItems.shikainormal
-								 || heldItem.getItem() ==  BleachItems.shikailunar)
+							if(heldItem.getItem() instanceof ItemShikai)
 								{
 					
 									if((props.getCurrentEnergy() * props.getCurrentCap()) > event.ammount && player.isBlocking() )
@@ -353,9 +378,43 @@ public class BleachEvents
 				event.setCanceled(true);
 			}
 		}
-	}
 		
+		if(event.entityLiving instanceof EntityLivingBase && event.source.getEntity() instanceof EntityPlayer)
+		{
+			ExtendedPlayer props = ExtendedPlayer.get((EntityPlayer)event.source.getEntity());
+			if(props.getFaction() == 3)
+			{
+				props.addSXP(50);
+			}
+			
+		}
+	}
 	
+	HollowRenderer renderHollow = new HollowRenderer();
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void onRenderPlayer(RenderPlayerEvent.Pre event)
+	{
+		EntityPlayer player = event.entityPlayer;
+		ExtendedPlayer props = ExtendedPlayer.get(player);
+		
+		if(props.getFaction() == 3 && !(event.renderer instanceof HollowRenderer))
+		{
+
+			event.setCanceled(true);
+			if(event.entityPlayer instanceof EntityLivingBase)
+			 renderHollow.doRender((EntityLivingBase)event.entityPlayer, 0D, 0D, 0D, 0F, 0F);
+			
+	
+		}
+		else
+		{
+			
+		}
+		
+	}
+	
+
 	
 	
 

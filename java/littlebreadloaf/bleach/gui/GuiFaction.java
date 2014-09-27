@@ -55,7 +55,7 @@ public class GuiFaction extends GuiScreen {
 		
 			this.buttonList.add(new GuiButton(0, posX + 130, posY + 100, 100, 20, "Shinigami"));
 			this.buttonList.add(new GuiButton(1, posX + 10, posY + 100, 100, 20, "Quincy"));
-			//this.buttonList.add(new GuiButton(2, posX + 130, posY + 180, 100, 20, "Hollow"));
+			this.buttonList.add(new GuiButton(2, posX + 130, posY + 180, 100, 20, "Hollow"));
 			this.buttonList.add(new GuiButton(3, posX + 10, posY + 180, 100, 20, "Human"));
 		
 	}
@@ -68,24 +68,22 @@ public class GuiFaction extends GuiScreen {
 		case 0:
 				BleachMod.network.sendToServer(new FlashMessage(11)); 
 				((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setFaction(1);
-				if(thePlayer.inventory.getCurrentItem() != null)
-				thePlayer.inventory.getCurrentItem().stackSize--;
 				this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		
 		case 1: 
 			BleachMod.network.sendToServer(new FlashMessage(12));
 				((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setFaction(2);
-				if(thePlayer.inventory.getCurrentItem() != null)
-				thePlayer.inventory.getCurrentItem().stackSize--;
 				this.mc.displayGuiScreen((GuiScreen)null);
 		break;
-		
+		case 2: 
+			BleachMod.network.sendToServer(new FlashMessage(13));
+				((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setFaction(3);
+				this.mc.displayGuiScreen((GuiScreen)null);
+		break;
 		case 3:
 				BleachMod.network.sendToServer(new FlashMessage(14));
 				((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setFaction(3);
-				if(thePlayer.inventory.getCurrentItem() != null)
-				thePlayer.inventory.getCurrentItem().stackSize--;
 				this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		default:

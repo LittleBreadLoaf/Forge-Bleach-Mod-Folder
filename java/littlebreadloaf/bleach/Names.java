@@ -268,5 +268,19 @@ public class Names
 	public static final String[] ShikaiNormal_UnlocalizedName = {"shikai_normal1", "shikai_normal2", "shikai_normal3", "shikai_normal4", "shikai_normal5", "ticonderoga", "setsuna", "zenhansha"};
 	public static final String[] ShikaiNormal_Name = {"Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Normal Shikai", "Setsuna", "Zenhansha"};
 	
+	
+	public static final String[] ShikaiPhrases = 
+		{"Bear your fangs,", "Sear,", "Incinerate,", "Ignite,", "Blaze,", "Subscribe,",
+		"Shiver,", "Chill,", "Cut to the bone,", "Freeze,", "Snow eternally,", "Scream,",
+		"Sever,", "Slither,", "Dissolve,", "Contaminate,", "Spread your toxins,", "Rip,",
+		"Wake up,", "Protect,", "Pierce their heart,", "Restore,", "Heal,", "All you need is",
+		"Grind to dust,", "Smash,", "Crush your foes,", "Demolish,", "Strike down,", "Now you're gonna get it!",
+		"Gale,", "Split,", "Slice,", "Sharpen your blade,", "Reach to the heavens,", "These be",
+		"Alight,", "Shine,", "Pierce the dark,", "Intensify,", "Divine,", "Hey, listen!",
+		"Darken the sky,", "Scythe,", "Cut to shreds,", "Ensnare,", "Veil in darkness,", "I will show you the greatest nightmare!",
+		"Cut deeply,", "Awaken,", "Disperse the clouds,", "Embrace the twilight,", "Shimmer,", " ",
+		"Gather a storm,", "Electrocute,", "Crackle,", "Flash,", "Streak across the sky,", " ",
+		"Strike true,", "Rip apart,", "Go forth,", "Devastate,", "Shake the Earth,", "Draw,",
+		"Impale,", "Rage the seas,", "Rain,", "Anchor's away,", "Swash and buckle,", "Swim,"};
 
 }

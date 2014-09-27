@@ -1,6 +1,11 @@
 package littlebreadloaf.bleach.gui;
 
 import littlebreadloaf.bleach.BleachMod;
+import littlebreadloaf.bleach.gui.hollow.GuiBackOptions;
+import littlebreadloaf.bleach.gui.hollow.GuiHeadOptions;
+import littlebreadloaf.bleach.gui.hollow.GuiHollowSelect;
+import littlebreadloaf.bleach.gui.hollow.GuiLegsOptions;
+import littlebreadloaf.bleach.gui.hollow.GuiTailOptions;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -29,6 +34,11 @@ public class GuiHandler implements IGuiHandler
 			case 0: return new GuiZanpakuto();
 			case 1: return new GuiHollowBook(player);
 			case 2: return new GuiFaction(player);
+			case 3: return new GuiHollowSelect(player);
+			case 4: return new GuiHeadOptions(player);
+			case 5: return new GuiBackOptions(player);
+			case 7: return new GuiTailOptions(player);
+			case 8: return new GuiLegsOptions(player);
 		}
 	}
 }

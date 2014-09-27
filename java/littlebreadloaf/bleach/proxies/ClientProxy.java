@@ -54,7 +54,7 @@ public class ClientProxy extends CommonProxy
 		BleachIds.lanternRenderingID = RenderingRegistry.getNextAvailableRenderId();
 		BleachIds.seeleSchneiderRenderingID = RenderingRegistry.getNextAvailableRenderId();
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new HollowRenderer());
+		//RenderingRegistry.registerEntityRenderingHandler(EntityPlayer.class, new HollowRenderer());
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnergyArrow.class, new RenderEnergyArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySeeleArrow.class, new RenderSeeleArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityGetsuga.class, new RenderGetsuga());

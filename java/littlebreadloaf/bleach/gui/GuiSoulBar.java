@@ -28,9 +28,12 @@ public class GuiSoulBar extends Gui
 		this.mc = mc;
 	}
 	
+	int flux = 0;
+	boolean neg = false;
 	@SubscribeEvent
 	public void onRenderExperienceBar(RenderGameOverlayEvent event)
 	{
+		
 		ScaledResolution var5 = new ScaledResolution(this.mc.gameSettings, this.mc.displayWidth, this.mc.displayHeight);
         int var6 = var5.getScaledWidth();
         int var7 = var5.getScaledHeight();
@@ -83,7 +86,7 @@ public class GuiSoulBar extends Gui
         //var8.drawString(MaskTime, var180 - 11, var233 + 44, 0);
         //var8.drawString(MaskTime, var180 - 11, var233 + 43, Color);
         //this.mc.mcProfiler.endSection();
-
+        
        
             this.mc.mcProfiler.startSection("isShinigami");
             boolean flag1 = false;
@@ -99,6 +102,20 @@ public class GuiSoulBar extends Gui
             }
             else if (props.getFaction() == 3)
             {
+            	
+            	if(props.getCurrentHPoints() > 0)
+            	{
+            		if(neg)
+            			flux+=256;
+            		else
+            			flux -=256;
+            		
+            		if(flux < -2560)
+            			neg = true;
+            		if(flux > 25600)
+            			neg = false;
+            		i2 =  15019520 + flux;
+            	}
             	s = "Hollow";
             }
             else if (props.getFaction() == 4)

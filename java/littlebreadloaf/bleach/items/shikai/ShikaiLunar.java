@@ -30,7 +30,7 @@ import com.google.common.collect.Multimap;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ShikaiLunar extends ItemSword
+public class ShikaiLunar extends ItemShikai
 {
 	public static IIcon[] icons;
 	private static final String[] ICON = Names.ShikaiLunar_UnlocalizedName;

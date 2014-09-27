@@ -40,16 +40,7 @@ public class DebugItem extends Item
 						new HuecoMundoTeleporter(playermp.mcServer.worldServerForDimension(BleachIds.worldHuecoMundoID)));
 			}
 		}
-		else 
-		{
-			if(props.getFaction() == 3 && !world.isRemote)
-			{
-				props.setHead(rand.nextInt(4));
-				props.setBack(rand.nextInt(4));
-				props.setLegs(rand.nextInt(4));
-				props.setTail(rand.nextInt(4));
-			}
-		}
+		
 		return stack;
 	}
 	

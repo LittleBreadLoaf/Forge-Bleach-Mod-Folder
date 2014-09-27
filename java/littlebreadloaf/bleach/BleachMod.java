@@ -19,6 +19,8 @@ import littlebreadloaf.bleach.network.ActivateMessage;
 import littlebreadloaf.bleach.network.ClientSyncMessage;
 import littlebreadloaf.bleach.network.DeactivateMessage;
 import littlebreadloaf.bleach.network.FlashMessage;
+import littlebreadloaf.bleach.network.GuiMessage;
+import littlebreadloaf.bleach.network.HollowPieceMessage;
 import littlebreadloaf.bleach.network.MoveMessage;
 import littlebreadloaf.bleach.network.ParticleMessage;
 import littlebreadloaf.bleach.network.ServerSyncMessage;
@@ -74,6 +76,8 @@ public class BleachMod
 		BleachMod.network.registerMessage(FlashMessage.Handler.class, FlashMessage.class, 5, Side.SERVER);
 		BleachMod.network.registerMessage(ParticleMessage.Handler.class, ParticleMessage.class, 6, Side.CLIENT);
 		BleachMod.network.registerMessage(MoveMessage.Handler.class, MoveMessage.class, 7, Side.CLIENT);
+		BleachMod.network.registerMessage(GuiMessage.Handler.class, GuiMessage.class, 8, Side.CLIENT);
+		BleachMod.network.registerMessage(HollowPieceMessage.Handler.class, HollowPieceMessage.class, 9, Side.SERVER);
 		
 		
 		

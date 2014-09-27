@@ -1,10 +1,13 @@
 package littlebreadloaf.bleach.events;
 
 import littlebreadloaf.bleach.items.BleachItems;
-import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
@@ -16,6 +19,7 @@ public class BleachPlayerTickHandler
 	private boolean countPoints = true;
 	
 	private int flapCountdown = 23;
+	private int flapsLeft = 4;
 
 
 	@SubscribeEvent
@@ -28,7 +32,13 @@ public class BleachPlayerTickHandler
 		ItemStack legs = player.getCurrentArmor(2);
 		ItemStack shoes = player.getCurrentArmor(1);
 		
-		
+		if (!player.worldObj.isRemote)
+        {
+            
+        }
+		if(props.getFaction() == 3 && props.getLegs() == 1)
+			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 1, 0));
+			
 			for(int j = -1; j<=1; ++j)
 			{
 				for(int k = -1; k <= 1; ++k)
@@ -41,7 +51,7 @@ public class BleachPlayerTickHandler
 				}	
 			}
 		
-			if(player.isAirBorne && player.isSneaking() && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == BleachItems.shikaiwind)
+			if(!player.onGround && player.isSneaking() && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == BleachItems.shikaiwind)
 			{
 				player.motionY = -0.3 + (float)((props.getCurrentEnergy()*props.getCurrentCap())/(float)10000);
 				player.moveFlying(player.moveStrafing, player.moveForward, 0.12F + (float)((props.getCurrentEnergy()*props.getCurrentCap())/(float)10000));
@@ -51,26 +61,48 @@ public class BleachPlayerTickHandler
 			
 			//props.setBack(3);
 			
-//			if(player instanceof EntityPlayerSP)
-//			{
-//				EntityPlayerSP SPPlayer = (EntityPlayerSP)player;
-//				--flapCountdown;
-//				
-//				if(player.isAirBorne  && props.getFaction() == 3 && props.getBack() == 3)
-//				{
-//					if(SPPlayer.movementInput.jump && flapCountdown <=0)
-//					{
-//						flapCountdown = 23;
-//						player.motionY = 0.8F;
-//					}
-//					if(player.motionY <= -0.6 && !player.isSneaking())
-//					player.motionY = -0.6F;
-//					
-//						player.moveFlying(player.moveStrafing, player.moveForward, 0.02F);
-//					
-//					
-//				}
-//			}
+			if(player instanceof EntityClientPlayerMP)
+			{
+				
+				EntityClientPlayerMP SPPlayer = (EntityClientPlayerMP)player;
+				if(flapCountdown > 0)
+				--flapCountdown;
+				
+				if(!player.onGround  && props.getFaction() == 3 && props.getBack() == 3)
+				{
+					if(SPPlayer.movementInput.jump && flapCountdown <=0 && flapsLeft > 0)
+					{
+						flapCountdown = 23;
+						player.motionY = 0.8F;
+						flapsLeft--;
+					}
+					if(player.motionY <= -0.6 && !player.isSneaking())
+					player.motionY = -0.6F;
+					
+						player.moveFlying(player.moveStrafing, player.moveForward, 0.02F);
+					
+					
+				}
+				if(player.isCollidedHorizontally && props.getFaction() == 3 && props.getLegs() == 3)
+				{
+					if(SPPlayer.movementInput.moveForward > 0)
+					{
+						player.motionY = 0.2F;
+					}
+				}
+				if(props.getFaction() == 3)
+				{
+					if(props.getLegs() == 2)
+					{
+						
+					}
+				}
+			}
+			
+			if(player.onGround)
+			{
+				flapsLeft = 4;
+			}
 		
 			
 				
