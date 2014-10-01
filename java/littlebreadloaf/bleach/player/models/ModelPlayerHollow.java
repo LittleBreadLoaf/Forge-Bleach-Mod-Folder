@@ -1,5 +1,7 @@
 package littlebreadloaf.bleach.player.models;
 
+import org.lwjgl.opengl.GL11;
+
 import littlebreadloaf.bleach.events.ExtendedPlayer;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
@@ -1071,7 +1073,6 @@ public class ModelPlayerHollow extends ModelBiped
   @Override
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
-    super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     
     
@@ -1080,7 +1081,8 @@ public class ModelPlayerHollow extends ModelBiped
     	EntityPlayer player = (EntityPlayer)entity;
     	ExtendedPlayer props = ExtendedPlayer.get(player);
 		default_torso.render(f5);
-    	
+    	if(props.getFaction() == 3)
+    	{
     	if(props.getHead() == 0)
     	{
     		default_head.render(f5);
@@ -1180,7 +1182,12 @@ public class ModelPlayerHollow extends ModelBiped
     	    scorpion_tail6.render(f5);
     	    scorpion_tail7.render(f5);
     	    scorpion_tail8.render(f5);
-    	    scorpion_tail9.render(f5);    	}
+    	    scorpion_tail9.render(f5);    	
+    	 }
+    	}
+    	
+    	
+
     	
     }
   }
@@ -1194,6 +1201,7 @@ public class ModelPlayerHollow extends ModelBiped
   @Override
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   {
+	super.render(entity, f, f1, f2, f3, f4, f5);
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     
     if(entity instanceof EntityPlayer)

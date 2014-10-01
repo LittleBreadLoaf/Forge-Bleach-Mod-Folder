@@ -50,17 +50,28 @@ public class HollowPieceMessage implements IMessage
 		{
 			System.out.println(message.part);
 			ExtendedPlayer props = ExtendedPlayer.get(ctx.getServerHandler().playerEntity);
-			 if(message.part == 0)
+			switch(message.part)
+			{
+			case 0:
 			 	props.setHead(message.choice);
-			 if(message.part == 1)
+			 	break;
+			case 1:
 				 	props.setBack(message.choice);
-			 if(message.part == 2)
+				 	break;
+			case 2:
 				 	props.setArms(message.choice);
-			 if(message.part == 3)
+				 	break;
+			case 3:
 				 	props.setTail(message.choice);
-			 if(message.part == 4)
+				 	break;
+			case 4:
 				 	props.setLegs(message.choice);
+				 	break;
+			case 5:
+				 	props.setHColor(message.choice);
+				 	break;
 			 
+			}
 			
 			 
 			return null;

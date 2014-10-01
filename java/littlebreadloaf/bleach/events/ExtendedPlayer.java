@@ -64,6 +64,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	private int Arms;
 	private int Legs;
 	private int Tail;
+	private int HColor = rand.nextInt(16);
 	
 	private boolean hasBlock = false;
 	
@@ -126,6 +127,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
     	properties.setInteger("Arms", Arms);
     	properties.setInteger("Legs", Legs);
     	properties.setInteger("Tail", Tail);
+    	properties.setInteger("HColor", HColor);
     	
     	properties.setInteger("HpointsC", CurrentHPoints);
     	properties.setInteger("HpointsT", TotalHPoints);
@@ -165,6 +167,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.Arms = properties.getInteger("Arms");
 		this.Legs = properties.getInteger("Legs");
 		this.Tail = properties.getInteger("Tail");
+		this.HColor = properties.getInteger("HColor");
 		
 		this.CurrentHPoints = properties.getInteger("HpointsC");
 		this.TotalHPoints = properties.getInteger("HpointsT");
@@ -305,6 +308,10 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		this.Tail = var1;
 		
+	}
+	public void setHColor(int var1)
+	{
+		this.HColor = var1;
 	}
 	public void setCurrentHPoints(int var1)
 	{
@@ -606,6 +613,10 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		return this.Tail;
 		
+	}
+	public int getHColor()
+	{
+		return this.HColor;
 	}
 	public int getCurrentHPoints()
 	{

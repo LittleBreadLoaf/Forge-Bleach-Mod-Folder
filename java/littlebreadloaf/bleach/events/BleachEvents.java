@@ -15,8 +15,10 @@ import littlebreadloaf.bleach.network.GuiMessage;
 import littlebreadloaf.bleach.network.ParticleMessage;
 import littlebreadloaf.bleach.network.ServerSyncMessage;
 import littlebreadloaf.bleach.player.HollowRenderer;
+import littlebreadloaf.bleach.player.models.ModelPlayerHollow;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -61,8 +63,13 @@ public class BleachEvents
 				{
 					myPlayer = (EntityPlayer)event.entity;
 					ExtendedPlayer.register(((EntityPlayer) event.entity));
+				
+					
 					
 				}
+		
+		
+		
 	}
 	
 	
@@ -93,7 +100,6 @@ public class BleachEvents
 			}
 			
 		}
-		
 		if(event.entity instanceof EntityPlayerMP)
 		{
 			EntityPlayerMP playah = (EntityPlayerMP)event.entity;
@@ -101,6 +107,7 @@ public class BleachEvents
 			if(info.getFaction() == 0)
 			BleachMod.network.sendTo(new GuiMessage(2), playah);
 		}
+		
 		
 		if(event.entity instanceof EntityWhole || event.entity instanceof EntityDecoy)
 		{
@@ -390,29 +397,7 @@ public class BleachEvents
 		}
 	}
 	
-	HollowRenderer renderHollow = new HollowRenderer();
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public void onRenderPlayer(RenderPlayerEvent.Pre event)
-	{
-		EntityPlayer player = event.entityPlayer;
-		ExtendedPlayer props = ExtendedPlayer.get(player);
-		
-		if(props.getFaction() == 3 && !(event.renderer instanceof HollowRenderer))
-		{
 
-			event.setCanceled(true);
-			if(event.entityPlayer instanceof EntityLivingBase)
-			 renderHollow.doRender((EntityLivingBase)event.entityPlayer, 0D, 0D, 0D, 0F, 0F);
-			
-	
-		}
-		else
-		{
-			
-		}
-		
-	}
 	
 
 	
