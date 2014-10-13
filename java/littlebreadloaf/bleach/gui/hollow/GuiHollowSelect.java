@@ -95,6 +95,11 @@ public class GuiHollowSelect extends GuiScreen {
     		FMLNetworkHandler.openGui(player, BleachMod.instance, 5, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
 		break;
 		
+		case 2: 
+			this.mc.displayGuiScreen((GuiScreen)null);
+    		FMLNetworkHandler.openGui(player, BleachMod.instance, 10, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+		break;
+		
 		case 3:
 			this.mc.displayGuiScreen((GuiScreen)null);
     		FMLNetworkHandler.openGui(player, BleachMod.instance, 7, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);

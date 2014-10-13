@@ -31,8 +31,8 @@ import org.lwjgl.opengl.GL11;
 
 public class HollowRenderer extends RenderPlayer
 {
-	private static final ResourceLocation texture1 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/player_hollow_1.png");
 	private static final ResourceLocation texture1_overlay = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/player_hollow_1_overlay.png");
+	private static final ResourceLocation texture1 = new ResourceLocation(BleachModInfo.ID.toLowerCase() + ":textures/models/mobs/player_hollow_1.png");
 	
 	protected ModelPlayerHollow model;
 
@@ -59,12 +59,13 @@ public class HollowRenderer extends RenderPlayer
 			AbstractClientPlayer player = (AbstractClientPlayer)entity;
 			ExtendedPlayer props = ExtendedPlayer.get(player);
 		if(props.getFaction() == 3)
-			return texture1_overlay;
+			return texture1;
 		else
 			return player.getLocationSkin();
 		}
 		
 		return null;
+		
 		
 	}
 	
@@ -89,9 +90,9 @@ public class HollowRenderer extends RenderPlayer
 			        else
 			        {
 			        	int blug = props.getHColor();
-			            this.bindTexture(texture1);
+			            this.bindTexture(texture1_overlay);
 			            GL11.glColor3f(colorTable[blug][0], colorTable[blug][1], colorTable[blug][2]);
-
+			            
 
 			            return 1;
 			        }
@@ -127,8 +128,17 @@ public class HollowRenderer extends RenderPlayer
 	    public void doRender(AbstractClientPlayer par1AbstractClientPlayer, double par2, double par4, double par6, float par8, float par9)
 	    {
 	    	ExtendedPlayer props = ExtendedPlayer.get(par1AbstractClientPlayer);
-//	    	if(props.getFaction() == 3)
+	    	System.out.println(props.getFaction());
+	    	if(props.getFaction() == 3)
+	    	{
 	    		mainModel = new ModelPlayerHollow();
+	    		modelBipedMain = new ModelPlayerHollow();
+	    	}
+	    	else
+	    	{
+	    		modelBipedMain = new ModelBiped();
+	    		mainModel = new ModelBiped();
+	    	}
 	    	
 			super.doRender(par1AbstractClientPlayer, par2, par4, par6, par8, par9);
 

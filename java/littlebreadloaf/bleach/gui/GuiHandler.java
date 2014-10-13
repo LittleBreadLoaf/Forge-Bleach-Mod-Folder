@@ -1,6 +1,7 @@
 package littlebreadloaf.bleach.gui;
 
 import littlebreadloaf.bleach.BleachMod;
+import littlebreadloaf.bleach.gui.hollow.GuiArmOptions;
 import littlebreadloaf.bleach.gui.hollow.GuiBackOptions;
 import littlebreadloaf.bleach.gui.hollow.GuiColorSelect;
 import littlebreadloaf.bleach.gui.hollow.GuiHeadOptions;
@@ -41,6 +42,7 @@ public class GuiHandler implements IGuiHandler
 			case 7: return new GuiTailOptions(player);
 			case 8: return new GuiLegsOptions(player);
 			case 9: return new GuiColorSelect(player);
+			case 10: return new GuiArmOptions(player);
 		}
 	}
 }

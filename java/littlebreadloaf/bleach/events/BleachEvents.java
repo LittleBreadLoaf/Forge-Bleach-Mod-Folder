@@ -15,10 +15,9 @@ import littlebreadloaf.bleach.network.GuiMessage;
 import littlebreadloaf.bleach.network.ParticleMessage;
 import littlebreadloaf.bleach.network.ServerSyncMessage;
 import littlebreadloaf.bleach.player.HollowRenderer;
-import littlebreadloaf.bleach.player.models.ModelPlayerHollow;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
-import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -398,7 +397,30 @@ public class BleachEvents
 	}
 	
 
-	
+//	@SideOnly(Side.CLIENT)
+//	HollowRenderer HRenderer = new HollowRenderer();
+//	@SideOnly(Side.CLIENT)
+//	@SubscribeEvent
+//	public void onRenderTick(RenderPlayerEvent.Specials.Pre event)
+//	{
+//		
+//		ExtendedPlayer props = ExtendedPlayer.get(event.entityPlayer);
+//		if(props.getFaction() == 3 )
+//		{
+//			if(!(event.renderer instanceof HollowRenderer))
+//			{
+//				event.setCanceled(true);
+//				HRenderer.doRender((AbstractClientPlayer)event.entity, event.entity.posX, event.entity.posY, event.entity.posZ, 0, 0);
+//				
+//			}
+//		}
+//		else
+//		{
+//			event.setCanceled(false);
+//		}
+//		
+//	}
+//	
 
 	
 	

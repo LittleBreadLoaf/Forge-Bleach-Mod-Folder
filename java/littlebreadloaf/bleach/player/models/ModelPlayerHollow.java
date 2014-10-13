@@ -125,8 +125,38 @@ public class ModelPlayerHollow extends ModelBiped
     public ModelRenderer default_armR2;
     public ModelRenderer default_armR3;
     
+    ModelRenderer golem_armor_sholderL;
+    ModelRenderer golem_sholderL;
+    ModelRenderer golem_upper_armL;
+    ModelRenderer golem_lower_armL;
+    ModelRenderer golem_armor_lower_armL;
+    ModelRenderer golem_armor_sholderR;
+    ModelRenderer golem_sholderR;
+    ModelRenderer golem_upper_armR;
+    ModelRenderer golem_lower_armR;
+    ModelRenderer golem_armor_lower_armR;
     
+    ModelRenderer upper_claw_armL;
+    ModelRenderer lower_claw_armL;
+    ModelRenderer clawarmclaw1L;
+    ModelRenderer clawarmclaw2L;
+    ModelRenderer upper_claw_armR;
+    ModelRenderer lower_claw_armR;
+    ModelRenderer clawarmclaw1R;
+    ModelRenderer clawarmclaw2R;
     
+    ModelRenderer bug_lower_arm1L;
+    ModelRenderer bug_lower_arm2L;
+    ModelRenderer bug_upper_arm1L;
+    ModelRenderer bug_upper_arm2L;
+    ModelRenderer bug_lower_handL;
+    ModelRenderer bug_upper_handL;
+    ModelRenderer bug_lower_arm1R;
+    ModelRenderer bug_lower_arm2R;
+    ModelRenderer bug_upper_arm1R;
+    ModelRenderer bug_upper_arm2R;
+    ModelRenderer bug_lower_handR;
+    ModelRenderer bug_upper_handR;
     
     
     ModelRenderer default_tail1;
@@ -777,6 +807,220 @@ public class ModelPlayerHollow extends ModelBiped
       setRotation(default_armR3, -0.2617994F, 0F, 0F - 0.0872665F);
       default_armR3.mirror = false;
       
+      golem_armor_sholderL = new ModelRenderer(this, 52, 51);
+      golem_armor_sholderL.addBox(-3F, -4F, -3F, 9, 7, 9);
+      golem_armor_sholderL.setRotationPoint(7F, -3F, 1F);
+      golem_armor_sholderL.setTextureSize(512, 512);
+      golem_armor_sholderL.mirror = true;
+      setRotation(golem_armor_sholderL, 0F, 0F, 0F);
+      golem_sholderL = new ModelRenderer(this, 52, 1);
+      golem_sholderL.addBox(-2F, -3F, -2F, 7, 7, 7);
+      golem_sholderL.setRotationPoint(7F, -3F, 1F);
+      golem_sholderL.setTextureSize(512, 512);
+      golem_sholderL.mirror = true;
+      setRotation(golem_sholderL, 0F, 0F, 0F);
+      golem_upper_armL = new ModelRenderer(this, 54, 17);
+      golem_upper_armL.addBox(0F, 4F, 0F, 3, 9, 3);
+      golem_upper_armL.setRotationPoint(7F, -3F, 1F);
+      golem_upper_armL.setTextureSize(512, 512);
+      golem_upper_armL.mirror = true;
+      setRotation(golem_upper_armL, 0F, 0F, -0.2617994F);
+      golem_lower_armL = new ModelRenderer(this, 52, 31);
+      golem_lower_armL.addBox(-1F, 9F, -16F, 6, 7, 13);
+      golem_lower_armL.setRotationPoint(7F, -3F, 1F);
+      golem_lower_armL.setTextureSize(512, 512);
+      golem_lower_armL.mirror = true;
+      setRotation(golem_lower_armL, 0.5235988F, 0F, -0.2617994F);
+      golem_armor_lower_armL = new ModelRenderer(this, 64, 75);
+      golem_armor_lower_armL.addBox(-1.5F, 8.5F, -16.5F, 7, 8, 14);
+      golem_armor_lower_armL.setRotationPoint(7F, -3F, 1F);
+      golem_armor_lower_armL.setTextureSize(512, 512);
+      golem_armor_lower_armL.mirror = true;
+      setRotation(golem_armor_lower_armL, 0.5235988F, 0F, -0.2617994F);
+      golem_armor_sholderR = new ModelRenderer(this, 52, 51);
+      golem_armor_sholderR.mirror = true;
+      golem_armor_sholderR.addBox(-6F, -4F, -3F, 9, 7, 9);
+      golem_armor_sholderR.setRotationPoint(-7F, -3F, 1F);
+      golem_armor_sholderR.setTextureSize(512, 512);
+      golem_armor_sholderR.mirror = true;
+      setRotation(golem_armor_sholderR, 0F, 0F, 0F);
+      golem_armor_sholderR.mirror = false;
+      golem_sholderR = new ModelRenderer(this, 52, 1);
+      golem_sholderR.mirror = true;
+      golem_sholderR.addBox(-5F, -3F, -2F, 7, 7, 7);
+      golem_sholderR.setRotationPoint(-7F, -3F, 1F);
+      golem_sholderR.setTextureSize(512, 512);
+      golem_sholderR.mirror = true;
+      setRotation(golem_sholderR, 0F, 0F, 0F);
+      golem_sholderR.mirror = false;
+      golem_upper_armR = new ModelRenderer(this, 54, 17);
+      golem_upper_armR.mirror = true;
+      golem_upper_armR.addBox(-3F, 4F, 0F, 3, 9, 3);
+      golem_upper_armR.setRotationPoint(-7F, -3F, 1F);
+      golem_upper_armR.setTextureSize(512, 512);
+      golem_upper_armR.mirror = true;
+      setRotation(golem_upper_armR, 0F, 0F, 0.2617994F);
+      golem_upper_armR.mirror = false;
+      golem_lower_armR = new ModelRenderer(this, 52, 31);
+      golem_lower_armR.mirror = true;
+      golem_lower_armR.addBox(-5F, 9F, -16F, 6, 7, 13);
+      golem_lower_armR.setRotationPoint(-7F, -3F, 1F);
+      golem_lower_armR.setTextureSize(512, 512);
+      golem_lower_armR.mirror = true;
+      setRotation(golem_lower_armR, 0.5235988F, 0F, 0.2617994F);
+      golem_lower_armR.mirror = false;
+      golem_armor_lower_armR = new ModelRenderer(this, 64, 75);
+      golem_armor_lower_armR.mirror = true;
+      golem_armor_lower_armR.addBox(-5.5F, 8.5F, -16.5F, 7, 8, 14);
+      golem_armor_lower_armR.setRotationPoint(-7F, -3F, 1F);
+      golem_armor_lower_armR.setTextureSize(512, 512);
+      golem_armor_lower_armR.mirror = true;
+      setRotation(golem_armor_lower_armR, 0.5235988F, 0F, 0.2617994F);
+      golem_armor_lower_armR.mirror = false;
+
+      upper_claw_armL = new ModelRenderer(this, 132, 0);
+      upper_claw_armL.addBox(-1F, -2F, -1F, 9, 3, 3);
+      upper_claw_armL.setRotationPoint(6F, -3F, 1F);
+      upper_claw_armL.setTextureSize(512, 512);
+      upper_claw_armL.mirror = true;
+      setRotation(upper_claw_armL, 0F, 0.2617994F, 0.5235988F);
+      lower_claw_armL = new ModelRenderer(this, 132, 6);
+      lower_claw_armL.addBox(6F, 0F, -13F, 4, 4, 11);
+      lower_claw_armL.setRotationPoint(6F, -3F, 1F);
+      lower_claw_armL.setTextureSize(512, 512);
+      lower_claw_armL.mirror = true;
+      setRotation(lower_claw_armL, 0.5235988F, 0F, 0F);
+      clawarmclaw1L = new ModelRenderer(this, 132, 21);
+      clawarmclaw1L.addBox(7F, 0.5F, -21F, 5, 3, 12);
+      clawarmclaw1L.setRotationPoint(6F, -3F, 1F);
+      clawarmclaw1L.setTextureSize(512, 512);
+      clawarmclaw1L.mirror = true;
+      setRotation(clawarmclaw1L, 0.5235988F, 0F, 0F);
+      clawarmclaw2L = new ModelRenderer(this, 132, 36);
+      clawarmclaw2L.addBox(11.1F, 0F, -14F, 3, 2, 7);
+      clawarmclaw2L.setRotationPoint(6F, -3F, 1F);
+      clawarmclaw2L.setTextureSize(512, 512);
+      clawarmclaw2L.mirror = true;
+      setRotation(clawarmclaw2L, 0.5235988F, 0.418879F, 0.2792527F);
+      upper_claw_armR = new ModelRenderer(this, 132, 0);
+      upper_claw_armR.mirror = true;
+      upper_claw_armR.addBox(-8F, -2F, -1F, 9, 3, 3);
+      upper_claw_armR.setRotationPoint(-6F, -3F, 1F);
+      upper_claw_armR.setTextureSize(512, 512);
+      upper_claw_armR.mirror = true;
+      setRotation(upper_claw_armR, 0F, -0.2617994F, -0.5235988F);
+      upper_claw_armR.mirror = false;
+      lower_claw_armR = new ModelRenderer(this, 132, 6);
+      lower_claw_armR.mirror = true;
+      lower_claw_armR.addBox(-10F, 0F, -13F, 4, 4, 11);
+      lower_claw_armR.setRotationPoint(-6F, -3F, 1F);
+      lower_claw_armR.setTextureSize(512, 512);
+      lower_claw_armR.mirror = true;
+      setRotation(lower_claw_armR, 0.5235988F, 0F, 0F);
+      lower_claw_armR.mirror = false;
+      clawarmclaw1R = new ModelRenderer(this, 132, 21);
+      clawarmclaw1R.mirror = true;
+      clawarmclaw1R.addBox(-12F, 0.5F, -21F, 5, 3, 12);
+      clawarmclaw1R.setRotationPoint(-6F, -3F, 1F);
+      clawarmclaw1R.setTextureSize(512, 512);
+      clawarmclaw1R.mirror = true;
+      setRotation(clawarmclaw1R, 0.5235988F, 0F, 0F);
+      clawarmclaw1R.mirror = false;
+      clawarmclaw2R = new ModelRenderer(this, 132, 36);
+      clawarmclaw2R.mirror = true;
+      clawarmclaw2R.addBox(-14.1F, 0F, -14F, 3, 2, 7);
+      clawarmclaw2R.setRotationPoint(-6F, -3F, 1F);
+      clawarmclaw2R.setTextureSize(512, 512);
+      clawarmclaw2R.mirror = true;
+      setRotation(clawarmclaw2R, 0.5235988F, -0.418879F, -0.2792527F);
+      clawarmclaw2R.mirror = false;
+
+      bug_lower_arm1L = new ModelRenderer(this, 167, 0);
+      bug_lower_arm1L.addBox(-1.5F, -2F, -1.5F, 3, 7, 3);
+      bug_lower_arm1L.setRotationPoint(7F, 2F, 1F);
+      bug_lower_arm1L.setTextureSize(512, 512);
+      bug_lower_arm1L.mirror = true;
+      setRotation(bug_lower_arm1L, -0.2617994F, 0F, -0.7853982F);
+      bug_lower_arm2L = new ModelRenderer(this, 167, 15);
+      bug_lower_arm2L.addBox(2F, 3F, -1.5F, 2, 8, 2);
+      bug_lower_arm2L.setRotationPoint(7F, 2F, 1F);
+      bug_lower_arm2L.setTextureSize(512, 512);
+      bug_lower_arm2L.mirror = true;
+      setRotation(bug_lower_arm2L, -0.2617994F, 0F, 0F);
+      bug_upper_arm1L = new ModelRenderer(this, 167, 0);
+      bug_upper_arm1L.addBox(-1.5F, -2F, -1.5F, 3, 7, 3);
+      bug_upper_arm1L.setRotationPoint(7F, -3F, 1F);
+      bug_upper_arm1L.setTextureSize(512, 512);
+      bug_upper_arm1L.mirror = true;
+      setRotation(bug_upper_arm1L, -0.5235988F, 0F, -0.7853982F);
+      bug_upper_arm2L = new ModelRenderer(this, 167, 15);
+      bug_upper_arm2L.addBox(2F, 3F, -2F, 2, 8, 2);
+      bug_upper_arm2L.setRotationPoint(7F, -3F, 1F);
+      bug_upper_arm2L.setTextureSize(512, 512);
+      bug_upper_arm2L.mirror = true;
+      setRotation(bug_upper_arm2L, -0.5235988F, 0F, 0F);
+      bug_lower_handL = new ModelRenderer(this, 167, 29);
+      bug_lower_handL.addBox(1.5F, 11F, -2.5F, 3, 4, 3);
+      bug_lower_handL.setRotationPoint(7F, 2F, 1F);
+      bug_lower_handL.setTextureSize(512, 512);
+      bug_lower_handL.mirror = true;
+      setRotation(bug_lower_handL, -0.2617994F, 0F, 0F);
+      bug_upper_handL = new ModelRenderer(this, 167, 29);
+      bug_upper_handL.addBox(1.5F, 11F, -2.5F, 3, 4, 3);
+      bug_upper_handL.setRotationPoint(7F, -3F, 1F);
+      bug_upper_handL.setTextureSize(512, 512);
+      bug_upper_handL.mirror = true;
+      setRotation(bug_upper_handL, -0.5235988F, 0F, 0F);
+      bug_lower_arm1R = new ModelRenderer(this, 167, 0);
+      bug_lower_arm1R.mirror = true;
+      bug_lower_arm1R.addBox(-1.5F, -2F, -1.5F, 3, 7, 3);
+      bug_lower_arm1R.setRotationPoint(-7F, 2F, 1F);
+      bug_lower_arm1R.setTextureSize(512, 512);
+      bug_lower_arm1R.mirror = true;
+      setRotation(bug_lower_arm1R, -0.2617994F, 0F, 0.7853982F);
+      bug_lower_arm1R.mirror = false;
+      bug_lower_arm2R = new ModelRenderer(this, 167, 15);
+      bug_lower_arm2R.mirror = true;
+      bug_lower_arm2R.addBox(-4F, 3F, -1.5F, 2, 8, 2);
+      bug_lower_arm2R.setRotationPoint(-7F, 2F, 1F);
+      bug_lower_arm2R.setTextureSize(512, 512);
+      bug_lower_arm2R.mirror = true;
+      setRotation(bug_lower_arm2R, -0.2617994F, 0F, 0F);
+      bug_lower_arm2R.mirror = false;
+      bug_upper_arm1R = new ModelRenderer(this, 167, 0);
+      bug_upper_arm1R.mirror = true;
+      bug_upper_arm1R.addBox(-1.5F, -2F, -1.5F, 3, 7, 3);
+      bug_upper_arm1R.setRotationPoint(-7F, -3F, 1F);
+      bug_upper_arm1R.setTextureSize(512, 512);
+      bug_upper_arm1R.mirror = true;
+      setRotation(bug_upper_arm1R, -0.5235988F, 0F, 0.7853982F);
+      bug_upper_arm1R.mirror = false;
+      bug_upper_arm2R = new ModelRenderer(this, 167, 15);
+      bug_upper_arm2R.mirror = true;
+      bug_upper_arm2R.addBox(-4F, 3F, -2F, 2, 8, 2);
+      bug_upper_arm2R.setRotationPoint(-7F, -3F, 1F);
+      bug_upper_arm2R.setTextureSize(512, 512);
+      bug_upper_arm2R.mirror = true;
+      setRotation(bug_upper_arm2R, -0.5235988F, 0F, 0F);
+      bug_upper_arm2R.mirror = false;
+      bug_lower_handR = new ModelRenderer(this, 167, 29);
+      bug_lower_handR.mirror = true;
+      bug_lower_handR.addBox(-4.5F, 11F, -2.5F, 3, 4, 3);
+      bug_lower_handR.setRotationPoint(-7F, 2F, 1F);
+      bug_lower_handR.setTextureSize(512, 512);
+      bug_lower_handR.mirror = true;
+      setRotation(bug_lower_handR, -0.2617994F, 0F, 0F);
+      bug_lower_handR.mirror = false;
+      bug_upper_handR = new ModelRenderer(this, 167, 29);
+      bug_upper_handR.mirror = true;
+      bug_upper_handR.addBox(-4.5F, 11F, -2.5F, 3, 4, 3);
+      bug_upper_handR.setRotationPoint(-7F, -3F, 1F);
+      bug_upper_handR.setTextureSize(512, 512);
+      bug_upper_handR.mirror = true;
+      setRotation(bug_upper_handR, -0.5235988F, 0F, 0F);
+      bug_upper_handR.mirror = false;
+
+      
       
       
       
@@ -1073,6 +1317,7 @@ public class ModelPlayerHollow extends ModelBiped
   @Override
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
+		super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     
     
@@ -1092,7 +1337,7 @@ public class ModelPlayerHollow extends ModelBiped
     	{
     		spitter_head.render(f5);
     	}
-    	if(props.getHead() == 2)
+     	if(props.getHead() == 2)
     	{
     		hornhead_1.render(f5);
     	}
@@ -1157,6 +1402,45 @@ public class ModelPlayerHollow extends ModelBiped
     		default_armL1.render(f5);
     		default_armR1.render(f5);
     	}
+    	if(props.getArms() == 1)
+    	{
+    		golem_armor_sholderL.render(f5);
+    	    golem_sholderL.render(f5);
+    	    golem_upper_armL.render(f5);
+    	    golem_lower_armL.render(f5);
+    	    golem_armor_lower_armL.render(f5);
+    	    golem_armor_sholderR.render(f5);
+    	    golem_sholderR.render(f5);
+    	    golem_upper_armR.render(f5);
+    	    golem_lower_armR.render(f5);
+    	    golem_armor_lower_armR.render(f5);
+    	}
+    	if(props.getArms() == 2)
+    	{
+    		 upper_claw_armL.render(f5);
+    		    lower_claw_armL.render(f5);
+    		    clawarmclaw1L.render(f5);
+    		    clawarmclaw2L.render(f5);
+    		    upper_claw_armR.render(f5);
+    		    lower_claw_armR.render(f5);
+    		    clawarmclaw1R.render(f5);
+    		    clawarmclaw2R.render(f5);
+    	}
+    	if(props.getArms() == 3)
+    	{
+    		 bug_lower_arm1L.render(f5);
+    		    bug_lower_arm2L.render(f5);
+    		    bug_upper_arm1L.render(f5);
+    		    bug_upper_arm2L.render(f5);
+    		    bug_lower_handL.render(f5);
+    		    bug_upper_handL.render(f5);
+    		    bug_lower_arm1R.render(f5);
+    		    bug_lower_arm2R.render(f5);
+    		    bug_upper_arm1R.render(f5);
+    		    bug_upper_arm2R.render(f5);
+    		    bug_lower_handR.render(f5);
+    		    bug_upper_handR.render(f5);
+    	}
     	if(props.getTail() == 0 && props.getLegs() != 3)
     	{
         	default_tail1.render(f5);
@@ -1186,6 +1470,19 @@ public class ModelPlayerHollow extends ModelBiped
     	 }
     	}
     	
+    	else
+    	{
+    		this.bipedBody.render(f5);
+    		this.bipedEars.render(f5);
+    		this.bipedCloak.render(f5);
+    		this.bipedHead.render(f5);
+    		this.bipedHeadwear.render(f5);
+    		this.bipedLeftArm.render(f5);
+    		this.bipedLeftLeg.render(f5);
+    		this.bipedRightArm.render(f5);
+    		this.bipedRightLeg.render(f5);
+    	}
+    	
     	
 
     	
@@ -1201,7 +1498,7 @@ public class ModelPlayerHollow extends ModelBiped
   @Override
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   {
-	super.render(entity, f, f1, f2, f3, f4, f5);
+
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     
     if(entity instanceof EntityPlayer)
