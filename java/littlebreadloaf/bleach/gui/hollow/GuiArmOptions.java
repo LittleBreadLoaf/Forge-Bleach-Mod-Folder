@@ -42,6 +42,7 @@ public class GuiArmOptions extends GuiScreen {
 		props = ExtendedPlayer.get(player);
 	}
 	
+	int points = 0;
 	@Override
 	public void drawScreen(int x, int y, float f) {
 		drawDefaultBackground();
@@ -57,24 +58,28 @@ public class GuiArmOptions extends GuiScreen {
 		int posY = (this.height - ySizeOfTexture) / 2;
 		drawTexturedModalRect(posX, posY, 0, 0, xSizeOfTexture, ySizeOfTexture);
 		drawTexturedModalRect(posX + 140, posY + 10, 86*(choice - 1) + 1, 172, 83, 83);
+		String var35 = "Costs 1 Point";
 		
 		if(choice == 1)
 		{
-			line1 = "Here is where some info";
-			line2 = "about each piece goes, so";
-			line3 = "they know what they're getting";
+			line1 = "Gives the player some";
+			line2 = "buff arms. Increases";
+			line3 = "knockback with empty hand.";
+			points = 1;
 		}
 		if(choice == 2)
 		{
-			line1 = "Sprint at enemies with";
-			line2 = "this head to hurt them";
-			line3 = "and send them flying.";
+			line1 = "Gives the player claw";
+			line2 = "hands. Increases attack";
+			line3 = "damage with empty hand.";
+			points = 1;
 		}
 		if(choice == 3)
 		{
-			line1 = "Notice how each tag is";
-			line2 = "different. Not sure what";
-			line3 = "this mask does yet...";
+			line1 = "Gives the player 4";
+			line2 = "arms, and a haste buff.";
+			line3 = "Not fully implemented yet...";
+			points = 1;
 		}
 		 String var34 = "Free Points: " + props.getCurrentHPoints();
 	     var8.drawString(var34, (var6) / 2 - 117,  var7 / 2 + 70, 0);
@@ -82,6 +87,7 @@ public class GuiArmOptions extends GuiScreen {
 		var8.drawString(line1, (var6) / 2 - 30,  var7 / 2 + 15, 0);
 		var8.drawString(line2, (var6) / 2 - 30,  var7 / 2 + 25, 0);
 		var8.drawString(line3, (var6) / 2 - 30,  var7 / 2 + 35, 0);
+		var8.drawString(var35, (this.width - xSizeOfTexture) / 2 + 107,  (this.height - ySizeOfTexture) / 2 + 135, 0);
 
 		
 		super.drawScreen(x, y, f);
@@ -120,8 +126,11 @@ public class GuiArmOptions extends GuiScreen {
 			this.choice = 3;
 		break;
 		case 3:
-			BleachMod.network.sendToServer(new HollowPieceMessage(2, choice));
+//			if(((ExtendedPlayer)(ExtendedPlayer.get(player))).getCurrentHPoints() >= points)
+//			{
+			BleachMod.network.sendToServer(new HollowPieceMessage(2, choice, 1));
 			((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setArms(choice);
+//			}
 			this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		case 4:

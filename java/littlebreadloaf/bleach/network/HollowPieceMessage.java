@@ -13,14 +13,16 @@ public class HollowPieceMessage implements IMessage
 {
 	private int part;
 	private int choice;
+	private int points;
 
 	public HollowPieceMessage(){}
 	
 	
-	public HollowPieceMessage(int part, int choice)
+	public HollowPieceMessage(int part, int choice, int points)
 	{
 		this.part = part;
 		this.choice = choice;
+		this.points = points;
 		
 	}
 	
@@ -30,6 +32,7 @@ public class HollowPieceMessage implements IMessage
 
 		part = buf.readInt();
 		choice = buf.readInt();
+		points = buf.readInt();
 		
 	}
 
@@ -40,6 +43,7 @@ public class HollowPieceMessage implements IMessage
 
 		buf.writeInt(part);
 		buf.writeInt(choice);
+		buf.writeInt(points);
 		
 	}
 	public static class Handler implements IMessageHandler<HollowPieceMessage, IMessage>
@@ -48,8 +52,9 @@ public class HollowPieceMessage implements IMessage
 		@Override 
 		public IMessage onMessage(HollowPieceMessage message, MessageContext ctx)
 		{
-			System.out.println(message.part);
 			ExtendedPlayer props = ExtendedPlayer.get(ctx.getServerHandler().playerEntity);
+
+		 	props.subtractCurrentHPoints(message.points);
 			switch(message.part)
 			{
 			case 0:

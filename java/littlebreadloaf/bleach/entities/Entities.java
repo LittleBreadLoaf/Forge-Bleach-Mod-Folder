@@ -99,6 +99,9 @@ public class Entities
 		EntityRegistry.registerGlobalEntityID(EntityBlock.class, "EntityBlock", EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.registerModEntity(EntityBlock.class, "EntityBlock", 4, BleachMod.instance, 128, 1, true);
 		
+		EntityRegistry.registerGlobalEntityID(EntityCero.class, "EntityCero", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityCero.class, "EntityCero", 5, BleachMod.instance, 128, 1, true);
+		
 	}
 	
 	

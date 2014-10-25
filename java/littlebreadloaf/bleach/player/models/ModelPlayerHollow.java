@@ -1127,24 +1127,7 @@ public class ModelPlayerHollow extends ModelBiped
       shark_finsideL.mirror = true;
       setRotation(shark_finsideL, -0.6283186F, 0F, -0.5235988F);
       
-      scorpion_stinger1 = new ModelRenderer(this, 400, 300);
-      scorpion_stinger1.addBox(-2.5F, -7F, -2F, 5, 7, 5);
-      scorpion_stinger1.setRotationPoint(0F, -20F, 17F);
-      scorpion_stinger1.setTextureSize(512, 512);
-      scorpion_stinger1.mirror = true;
-      setRotation(scorpion_stinger1, 2.059489F, 0F, 0F);
-      scorpion_stinger2 = new ModelRenderer(this, 400, 312);
-      scorpion_stinger2.addBox(-1.5F, -11F, -1F, 3, 4, 3);
-      scorpion_stinger2.setRotationPoint(0F, -20F, 17F);
-      scorpion_stinger2.setTextureSize(512, 512);
-      scorpion_stinger2.mirror = true;
-      setRotation(scorpion_stinger2, 2.059489F, 0F, 0F);
-      scorpion_stinger3 = new ModelRenderer(this, 399, 312);
-      scorpion_stinger3.addBox(-0.5F, -13F, 0F, 1, 2, 1);
-      scorpion_stinger3.setRotationPoint(0F, -20F, 17F);
-      scorpion_stinger3.setTextureSize(512, 512);
-      scorpion_stinger3.mirror = true;
-      setRotation(scorpion_stinger3, 2.059489F, 0F, 0F);
+      
       scorpion_tail1 = new ModelRenderer(this, 400, 292);
       scorpion_tail1.addBox(-2F, -2F, 0F, 4, 4, 4);
       scorpion_tail1.setRotationPoint(0F, 8F, 5F);
@@ -1153,53 +1136,70 @@ public class ModelPlayerHollow extends ModelBiped
       setRotation(scorpion_tail1, 0F, 0F, 0F);
       scorpion_tail2 = new ModelRenderer(this, 400, 292);
       scorpion_tail2.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail2.setRotationPoint(0F, 7F, 9F);
+      scorpion_tail2.setRotationPoint(0F, -1F, 4F);
       scorpion_tail2.setTextureSize(512, 512);
       scorpion_tail2.mirror = true;
-      setRotation(scorpion_tail2, 0.2792527F, 0F, 0F);
+      setRotation(scorpion_tail2, 0F, 0F, 0F);
       scorpion_tail3 = new ModelRenderer(this, 400, 292);
       scorpion_tail3.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail3.setRotationPoint(0F, 5F, 12.5F);
+      scorpion_tail3.setRotationPoint(0F, -2F, 3.5F);
       scorpion_tail3.setTextureSize(512, 512);
       scorpion_tail3.mirror = true;
-      setRotation(scorpion_tail3, 0.5934119F, 0F, 0F);
+      setRotation(scorpion_tail3, 0F, 0F, 0F);
       scorpion_tail4 = new ModelRenderer(this, 400, 292);
       scorpion_tail4.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail4.setRotationPoint(0F, 2F, 15F);
+      scorpion_tail4.setRotationPoint(0F, -3F, 2.5F);
       scorpion_tail4.setTextureSize(512, 512);
       scorpion_tail4.mirror = true;
-      setRotation(scorpion_tail4, 0.7853982F, 0F, 0F);
+      setRotation(scorpion_tail4, 0F, 0F, 0F);
       scorpion_tail5 = new ModelRenderer(this, 400, 292);
       scorpion_tail5.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail5.setRotationPoint(0F, -1F, 17F);
+      scorpion_tail5.setRotationPoint(0F, -3F, 2F);
       scorpion_tail5.setTextureSize(512, 512);
       scorpion_tail5.mirror = true;
-      setRotation(scorpion_tail5, 0.9424778F, 0F, 0F);
+      setRotation(scorpion_tail5, 0F, 0F, 0F);
       scorpion_tail6 = new ModelRenderer(this, 400, 292);
       scorpion_tail6.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail6.setRotationPoint(0F, -5F, 18F);
+      scorpion_tail6.setRotationPoint(0F, -4F, 1F);
       scorpion_tail6.setTextureSize(512, 512);
       scorpion_tail6.mirror = true;
-      setRotation(scorpion_tail6, 1.047198F, 0F, 0F);
+      setRotation(scorpion_tail6, 0F, 0F, 0F);
       scorpion_tail7 = new ModelRenderer(this, 400, 292);
       scorpion_tail7.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail7.setRotationPoint(0F, -9F, 19F);
+      scorpion_tail7.setRotationPoint(0F, -4F, 1F);
       scorpion_tail7.setTextureSize(512, 512);
       scorpion_tail7.mirror = true;
-      setRotation(scorpion_tail7, 1.169371F, 0F, 0F);
+      setRotation(scorpion_tail7, 0F, 0F, 0F);
       scorpion_tail8 = new ModelRenderer(this, 400, 292);
       scorpion_tail8.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail8.setRotationPoint(0F, -13F, 19F);
+      scorpion_tail8.setRotationPoint(0F, -4F, -1F);
       scorpion_tail8.setTextureSize(512, 512);
       scorpion_tail8.mirror = true;
-      setRotation(scorpion_tail8, 1.27409F, 0F, 0F);
+      setRotation(scorpion_tail8, 0F, 0F, 0F);
       scorpion_tail9 = new ModelRenderer(this, 400, 292);
       scorpion_tail9.addBox(-2F, -2F, 0F, 4, 4, 4);
-      scorpion_tail9.setRotationPoint(0F, -17F, 18F);
+      scorpion_tail9.setRotationPoint(0F, -4F, -2F);
       scorpion_tail9.setTextureSize(512, 512);
       scorpion_tail9.mirror = true;
-      setRotation(scorpion_tail9, 1.361357F, 0F, 0F);
-
+      setRotation(scorpion_tail9, 0F, 0F, 0F);
+      scorpion_stinger1 = new ModelRenderer(this, 400, 300);
+      scorpion_stinger1.addBox(-2.5F, -7F, -2F, 5, 7, 5);
+      scorpion_stinger1.setRotationPoint(0F, -3F, 1F);
+      scorpion_stinger1.setTextureSize(512, 512);
+      scorpion_stinger1.mirror = true;
+      setRotation(scorpion_stinger1, 2.059489F, 0F, 0F);
+      scorpion_stinger2 = new ModelRenderer(this, 400, 312);
+      scorpion_stinger2.addBox(-1.5F, -11F, -1F, 3, 4, 3);
+      scorpion_stinger2.setRotationPoint(0F, 0F, 0F);
+      scorpion_stinger2.setTextureSize(512, 512);
+      scorpion_stinger2.mirror = true;
+      setRotation(scorpion_stinger2, 0F, 0F, 0F);
+      scorpion_stinger3 = new ModelRenderer(this, 399, 312);
+      scorpion_stinger3.addBox(-0.5F, -13F, 0F, 1, 2, 1);
+      scorpion_stinger3.setRotationPoint(0F, 0F, 0F);
+      scorpion_stinger3.setTextureSize(512, 512);
+      scorpion_stinger3.mirror = true;
+      setRotation(scorpion_stinger3, 0F, 0F, 0F);
 
 
       
@@ -1308,7 +1308,17 @@ public class ModelPlayerHollow extends ModelBiped
       hard_head.addChild(hard_head_side_R);
       hard_head.addChild(hard_head_top);
       
-      
+      scorpion_tail1.addChild(scorpion_tail2);
+      scorpion_tail2.addChild(scorpion_tail3);
+      scorpion_tail3.addChild(scorpion_tail4);
+      scorpion_tail4.addChild(scorpion_tail5);
+      scorpion_tail5.addChild(scorpion_tail6);
+      scorpion_tail6.addChild(scorpion_tail7);
+      scorpion_tail7.addChild(scorpion_tail8);
+      scorpion_tail8.addChild(scorpion_tail9);
+      scorpion_tail9.addChild(scorpion_stinger1);
+      scorpion_stinger1.addChild(scorpion_stinger2);
+      scorpion_stinger2.addChild(scorpion_stinger3);
       
       
       
@@ -1455,18 +1465,7 @@ public class ModelPlayerHollow extends ModelBiped
     	}
     	if(props.getTail() == 3 && props.getLegs() != 3)
     	{
-    		scorpion_stinger1.render(f5);
-    	    scorpion_stinger2.render(f5);
-    	    scorpion_stinger3.render(f5);
     	    scorpion_tail1.render(f5);
-    	    scorpion_tail2.render(f5);
-    	    scorpion_tail3.render(f5);
-    	    scorpion_tail4.render(f5);
-    	    scorpion_tail5.render(f5);
-    	    scorpion_tail6.render(f5);
-    	    scorpion_tail7.render(f5);
-    	    scorpion_tail8.render(f5);
-    	    scorpion_tail9.render(f5);    	
     	 }
     	}
     	
@@ -1674,7 +1673,19 @@ public class ModelPlayerHollow extends ModelBiped
         	this.shark_tail_1.rotateAngleY = 0.1F*(MathHelper.cos(f2 * 0.06662F));
 			this.shark_tail_2.rotateAngleY = 0.1F*(MathHelper.cos(f2 * 0.06662F - (float)(Math.PI/6)));
 			this.shark_tail_3.rotateAngleY = 0.1F*(MathHelper.cos(f2 * 0.06662F - (float)(Math.PI/3)));
-		
+			
+
+			this.scorpion_tail1.rotationPointY = 8F;
+			
+			this.scorpion_tail1.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F));
+			this.scorpion_tail2.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(Math.PI/12)));
+			this.scorpion_tail3.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(Math.PI/6)));
+			this.scorpion_tail4.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(Math.PI/4)));
+			this.scorpion_tail5.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(Math.PI/3)));
+			this.scorpion_tail6.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(5*Math.PI/12)));
+			this.scorpion_tail7.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(Math.PI/2)));
+			this.scorpion_tail8.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(7*Math.PI/12)));
+			this.scorpion_tail9.rotateAngleX = 0.01F*(MathHelper.cos(f2 * 0.03662F - (float)(2*Math.PI/3)));
 			
     	}
     	else
@@ -1792,7 +1803,18 @@ public class ModelPlayerHollow extends ModelBiped
 			this.shark_tail_2.rotateAngleY = 0.15F*(MathHelper.cos(f2 * 0.16662F - (float)(Math.PI/6)));
 			this.shark_tail_3.rotateAngleY = 0.15F*(MathHelper.cos(f2 * 0.16662F - (float)(Math.PI/3)));
 		
-    		
+			this.scorpion_tail1.rotationPointY = 9F;
+			
+			this.scorpion_tail1.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F));
+			this.scorpion_tail2.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(Math.PI/12)));
+			this.scorpion_tail3.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(Math.PI/6)));
+			this.scorpion_tail4.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(Math.PI/4)));
+			this.scorpion_tail5.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(Math.PI/3)));
+			this.scorpion_tail6.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(5*Math.PI/12)));
+			this.scorpion_tail7.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(Math.PI/2)));
+			this.scorpion_tail8.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(7*Math.PI/12)));
+			this.scorpion_tail9.rotateAngleX = 0.02F*(MathHelper.cos(f2 * 0.06662F - (float)(2*Math.PI/3)));
+		
     	}
     	
     	if (player.getHeldItem() != null)

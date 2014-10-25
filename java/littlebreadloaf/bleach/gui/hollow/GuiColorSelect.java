@@ -1,5 +1,6 @@
 package littlebreadloaf.bleach.gui.hollow;
 
+import java.awt.Color;
 import java.util.Random;
 
 import littlebreadloaf.bleach.BleachMod;
@@ -34,6 +35,7 @@ public class GuiColorSelect extends GuiScreen {
 	
 	private int id = -1;
 	private int choice = rand.nextInt(16);
+	private int choice2 = rand.nextInt(16);
 	
 	String line1;
 	String line2;
@@ -45,6 +47,7 @@ public class GuiColorSelect extends GuiScreen {
 		props = ExtendedPlayer.get(player);
 	}
 	 public static final float[][] colorTable = new float[][] {{1.0F, 1.0F, 1.0F}, {0.85F, 0.5F, 0.2F}, {0.7F, 0.3F, 0.85F}, {0.4F, 0.6F, 0.85F}, {0.9F, 0.9F, 0.2F}, {0.5F, 0.8F, 0.1F}, {0.95F, 0.5F, 0.65F}, {0.3F, 0.3F, 0.3F}, {0.6F, 0.6F, 0.6F}, {0.3F, 0.5F, 0.6F}, {0.5F, 0.25F, 0.7F}, {0.2F, 0.3F, 0.7F}, {0.4F, 0.3F, 0.2F}, {0.4F, 0.5F, 0.2F}, {0.6F, 0.2F, 0.2F}, {0.1F, 0.1F, 0.1F}};
+	 
 		
 	@Override
 	public void drawScreen(int x, int y, float f) {
@@ -64,7 +67,21 @@ public class GuiColorSelect extends GuiScreen {
 		drawTexturedModalRect(posX, posY, 0, 0, xSizeOfTexture, ySizeOfTexture);
 		drawTexturedModalRect(posX + 140, posY + 10, 86*(choice - 1) + 1, 172, 83, 83);
 		
+		String var35 = "";
+	
+			line1 = "Background color is your";
+			line2 = "Hollow's base color, and";
+			line3 = "this is your mask design";
+			var35 = "Costs 1 Point";
 		
+		 String var34 = "Free Points: " + props.getCurrentHPoints();
+	     var8.drawString(var34, (var6) / 2 - 117,  var7 / 2 + 70, 0);
+
+		var8.drawString(line1, (var6) / 2 - 70,  var7 / 2 - 25, 0);
+		var8.drawString(line2, (var6) / 2 - 70,  var7 / 2 - 15, 0);
+		var8.drawString(line3, (var6) / 2 - 70,  var7 / 2 - 5, 0);
+		var8.drawString(var35, (this.width - xSizeOfTexture) / 2 + 107,  (this.height - ySizeOfTexture) / 2 + 135, 0);
+
 		
 		super.drawScreen(x, y, f);
 	}
@@ -84,6 +101,8 @@ public class GuiColorSelect extends GuiScreen {
 		
 	}
 
+	
+	
 	EntityClientPlayerMP player = FMLClientHandler.instance().getClient().thePlayer;
 	public void actionPerformed(GuiButton button) {
 		switch(button.id) 
@@ -94,8 +113,11 @@ public class GuiColorSelect extends GuiScreen {
 				
 		break;
 		case 1:
-			BleachMod.network.sendToServer(new HollowPieceMessage(5, choice));
-			((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setBack(choice);
+			if(((ExtendedPlayer)ExtendedPlayer.get(player)).getCurrentHPoints() >= 1)
+			{
+			BleachMod.network.sendToServer(new HollowPieceMessage(5, choice, 1));
+			((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setHColor(choice);
+			}
 			this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		case 2:

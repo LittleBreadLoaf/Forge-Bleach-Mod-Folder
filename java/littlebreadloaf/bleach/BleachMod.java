@@ -16,6 +16,7 @@ import littlebreadloaf.bleach.extras.OreGenerator;
 import littlebreadloaf.bleach.gui.GuiHandler;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.network.ActivateMessage;
+import littlebreadloaf.bleach.network.CeroMessage;
 import littlebreadloaf.bleach.network.ClientSyncMessage;
 import littlebreadloaf.bleach.network.DeactivateMessage;
 import littlebreadloaf.bleach.network.FlashMessage;
@@ -24,7 +25,6 @@ import littlebreadloaf.bleach.network.HollowPieceMessage;
 import littlebreadloaf.bleach.network.MoveMessage;
 import littlebreadloaf.bleach.network.ParticleMessage;
 import littlebreadloaf.bleach.network.ServerSyncMessage;
-import littlebreadloaf.bleach.player.HollowRenderer;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileLantern;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
@@ -78,8 +78,7 @@ public class BleachMod
 		BleachMod.network.registerMessage(MoveMessage.Handler.class, MoveMessage.class, 7, Side.CLIENT);
 		BleachMod.network.registerMessage(GuiMessage.Handler.class, GuiMessage.class, 8, Side.CLIENT);
 		BleachMod.network.registerMessage(HollowPieceMessage.Handler.class, HollowPieceMessage.class, 9, Side.SERVER);
-		
-		
+		BleachMod.network.registerMessage(CeroMessage.Handler.class, CeroMessage.class, 10, Side.SERVER);
 		
 		BleachItems.init();
 		BleachItems.registerItems();

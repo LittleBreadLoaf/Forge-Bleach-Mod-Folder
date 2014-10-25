@@ -6,18 +6,18 @@ import java.util.Random;
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.armor.Armor;
 import littlebreadloaf.bleach.blocks.BleachBlocks;
+import littlebreadloaf.bleach.entities.EntityCero;
 import littlebreadloaf.bleach.entities.EntityDecoy;
 import littlebreadloaf.bleach.entities.EntityHollowOre;
 import littlebreadloaf.bleach.entities.EntityWhole;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.items.shikai.ItemShikai;
+import littlebreadloaf.bleach.network.CeroMessage;
 import littlebreadloaf.bleach.network.GuiMessage;
 import littlebreadloaf.bleach.network.ParticleMessage;
 import littlebreadloaf.bleach.network.ServerSyncMessage;
-import littlebreadloaf.bleach.player.HollowRenderer;
 import littlebreadloaf.bleach.proxies.CommonProxy;
 import littlebreadloaf.bleach.tiles.TileSeeleSchneider;
-import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -30,7 +30,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -72,7 +71,7 @@ public class BleachEvents
 	}
 	
 	
-
+	
 	@SubscribeEvent
 	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{	
@@ -135,7 +134,7 @@ public class BleachEvents
 	
 
 	
-
+	
 	private int replenishTimer = 100;
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
@@ -161,6 +160,25 @@ public class BleachEvents
 			
 			--replenishTimer;
 
+			if(props.getCeroCharge() > 0)
+			{
+				props.addCeroCharge(1);
+				if(props.getCeroCharge() >= 40)
+				{
+					props.setCeroCharge(0);
+					EntityCero entityCero = new EntityCero(player.worldObj, player, 2.0F);
+					if(!player.worldObj.isRemote)
+					{
+					 player.worldObj.spawnEntityInWorld(entityCero);
+						BleachMod.network.sendToServer(new CeroMessage(2));
+
+					}
+				}
+				
+				BleachMod.network.sendToAll(new ParticleMessage(5, (int)player.posX, (int)player.posY, (int)player.posZ));
+            	
+				
+			}
 			player.capabilities.setPlayerWalkSpeed(0.1F + (float)((float)props.getCurrentCap() *(0.00007* (float)props.getCurrentEnergy())));
 
 			
@@ -312,6 +330,7 @@ public class BleachEvents
 				
 					
 				}
+				
 			}
 			
 			
@@ -388,9 +407,26 @@ public class BleachEvents
 		if(event.entityLiving instanceof EntityLivingBase && event.source.getEntity() instanceof EntityPlayer)
 		{
 			ExtendedPlayer props = ExtendedPlayer.get((EntityPlayer)event.source.getEntity());
-			if(props.getFaction() == 3)
+			if(props.getFaction() == 3 && ((EntityPlayer)event.source.getEntity()).getHeldItem() == null)
 			{
-				props.addSXP(50);
+				EntityLivingBase var5 = (EntityLivingBase) event.entityLiving;
+				props.addSXP(2);
+				
+				
+				int extraAmount = (int)((props.getCurrentEnergy() * props.getCurrentCap()) / (float)100);
+				if(props.getArms() == 1)
+					extraAmount += 2;
+				var5.attackEntityFrom(DamageSource.generic, event.ammount + extraAmount/(float)2);
+				event.setCanceled(true);
+				
+				if(props.getTail() == 3)
+				{
+					var5.addPotionEffect(new PotionEffect(Potion.poison.id, 80, 0));
+				}
+				if(props.getTail() == 3)
+				{
+					
+				}
 			}
 			
 		}

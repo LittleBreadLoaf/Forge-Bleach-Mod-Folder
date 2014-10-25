@@ -105,6 +105,12 @@ public class ParticleMessage implements IMessage
 				player.worldObj.spawnParticle("heart", message.posx + (double)(this.rand.nextFloat()  * 2.0F), message.posy + 0.5D + (double)(this.rand.nextFloat()), message.posz + (double)(this.rand.nextFloat() * 2.0F), d0, d1, d2);	
 				
 			}
+			if(message.id == 5)
+			{
+				ParticleEffects.spawnParticle("spirit",  message.posx + rand.nextDouble(), message.posy + rand.nextDouble(), message.posz + rand.nextDouble(), 0.0, 0.0, 0.0);
+				ParticleEffects.spawnParticle("spirit",  message.posx + rand.nextDouble(), message.posy + rand.nextDouble(), message.posz + rand.nextDouble(), 0.0, 0.0, 0.0);
+				ParticleEffects.spawnParticle("spirit",  message.posx + rand.nextDouble(), message.posy + rand.nextDouble(), message.posz + rand.nextDouble(), 0.0, 0.0, 0.0);
+			}
 		
 				return null;
 		}

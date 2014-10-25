@@ -6,10 +6,11 @@ import java.util.Random;
 import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.Names;
 import littlebreadloaf.bleach.armor.Armor;
+import littlebreadloaf.bleach.entities.EntityCero;
 import littlebreadloaf.bleach.items.BleachItems;
 import littlebreadloaf.bleach.items.shikai.ItemShikai;
+import littlebreadloaf.bleach.network.CeroMessage;
 import littlebreadloaf.bleach.network.ClientSyncMessage;
-import littlebreadloaf.bleach.network.FlashMessage;
 import littlebreadloaf.bleach.network.GuiMessage;
 import littlebreadloaf.bleach.network.MoveMessage;
 import littlebreadloaf.bleach.proxies.CommonProxy;
@@ -65,9 +66,16 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	private int Legs;
 	private int Tail;
 	private int HColor = rand.nextInt(16);
+	private int MColor = rand.nextInt(16);
 	
 	private boolean hasBlock = false;
 	
+	
+	
+	
+	
+	//Not saved
+	int ceroCharge = 0;
 	
 	public ExtendedPlayer(EntityPlayer player)
 	{
@@ -128,6 +136,8 @@ public class ExtendedPlayer implements IExtendedEntityProperties
     	properties.setInteger("Legs", Legs);
     	properties.setInteger("Tail", Tail);
     	properties.setInteger("HColor", HColor);
+    	properties.setInteger("MColor", MColor);
+    	
     	
     	properties.setInteger("HpointsC", CurrentHPoints);
     	properties.setInteger("HpointsT", TotalHPoints);
@@ -168,6 +178,7 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 		this.Legs = properties.getInteger("Legs");
 		this.Tail = properties.getInteger("Tail");
 		this.HColor = properties.getInteger("HColor");
+		this.MColor = properties.getInteger("MColor");
 		
 		this.CurrentHPoints = properties.getInteger("HpointsC");
 		this.TotalHPoints = properties.getInteger("HpointsT");
@@ -313,9 +324,13 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		this.HColor = var1;
 	}
-	public void setCurrentHPoints(int var1)
+	public void setMColor(int var1)
 	{
-		this.CurrentHPoints = var1;
+		this.MColor = var1;
+	}
+	public void subtractCurrentHPoints(int var1)
+	{
+		this.CurrentHPoints -= var1;
 	}
 	public void setTotalHPoints(int var1)
 	{
@@ -334,6 +349,17 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	public void setHasBlock(boolean var1)
 	{
 		hasBlock = var1;
+	}
+	
+	
+	//Not Saved
+	public void addCeroCharge(int var2)
+	{
+		ceroCharge += var2;
+	}
+	public void setCeroCharge(int var2)
+	{
+		ceroCharge = var2;
 	}
 	
 	
@@ -618,6 +644,10 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		return this.HColor;
 	}
+	public int getMColor()
+	{
+		return this.MColor;
+	}
 	public int getCurrentHPoints()
 	{
 		return this.CurrentHPoints;
@@ -638,6 +668,16 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 	{
 		return hasBlock;
 	}
+	
+	
+	
+	//Not Saved
+	public int getCeroCharge()
+	{
+		return ceroCharge;
+	}
+	
+	
 	
 	public int getPoints(int var1)
 	{
@@ -894,6 +934,22 @@ public class ExtendedPlayer implements IExtendedEntityProperties
 				this.consumeEnergy(5);
 				this.setValidFlash(false);
 			}
+			}
+		}
+		else if(readInt == 2)
+		{
+			if(this.getFaction() == 4)
+			{
+			 
+			 if( (this.getCurrentEnergy() * this.getCurrentCap()) > 50 && this.ceroCharge == 0)
+			 {
+				 this.ceroCharge = 1;
+				 
+					if(!player.worldObj.isRemote)
+					{
+						this.consumeEnergy(50);
+					}
+			 }
 			}
 		}
 		else if(readInt == 4)

@@ -42,6 +42,7 @@ public class GuiHeadOptions extends GuiScreen {
 		props = ExtendedPlayer.get(player);
 	}
 	
+	int points = 0;
 	@Override
 	public void drawScreen(int x, int y, float f) {
 		drawDefaultBackground();
@@ -52,36 +53,42 @@ public class GuiHeadOptions extends GuiScreen {
         int var7 = var5.getScaledHeight();
         FontRenderer var8 = this.mc.fontRenderer;
 		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
-
+	
 		int posX = (this.width - xSizeOfTexture) / 2;
 		int posY = (this.height - ySizeOfTexture) / 2;
 		drawTexturedModalRect(posX, posY, 0, 0, xSizeOfTexture, ySizeOfTexture);
 		drawTexturedModalRect(posX + 140, posY + 10, 86*(choice - 1) + 1, 172, 83, 83);
-		
+
+		String var35 = "";
 		if(choice == 1)
 		{
-			line1 = "Here is where some info";
-			line2 = "about each piece goes, so";
-			line3 = "they know what they're getting";
+			line1 = "Lets the player shoot";
+			line2 = "a poison ball by right";
+			line3 = "clicking with empty hand.";
+			points = 1;
 		}
 		if(choice == 2)
 		{
 			line1 = "Sprint at enemies to";
 			line2 = "do a little damage";
 			line3 = "and send them flying.";
+			points  = 1;
 		}
 		if(choice == 3)
 		{
-			line1 = "Notice how each tag is";
-			line2 = "different. Not sure what";
-			line3 = "this mask does yet...";
+			line1 = "Gives the player some";
+			line2 = "extra hearts. And an";
+			line3 = "awesomely hard head.";
+			points = 2;
 		}
+		var35 = "Costs " + points + " Point" + (points > 1 ? "s" : "");
 		 String var34 = "Free Points: " + props.getCurrentHPoints();
 	     var8.drawString(var34, (var6) / 2 - 117,  var7 / 2 + 70, 0);
 
 		var8.drawString(line1, (var6) / 2 - 30,  var7 / 2 + 15, 0);
 		var8.drawString(line2, (var6) / 2 - 30,  var7 / 2 + 25, 0);
 		var8.drawString(line3, (var6) / 2 - 30,  var7 / 2 + 35, 0);
+		var8.drawString(var35, (this.width - xSizeOfTexture) / 2 + 107,  (this.height - ySizeOfTexture) / 2 + 135, 0);
 
 		
 		super.drawScreen(x, y, f);
@@ -120,8 +127,11 @@ public class GuiHeadOptions extends GuiScreen {
 			this.choice = 3;
 		break;
 		case 3:
-			BleachMod.network.sendToServer(new HollowPieceMessage(0, choice));
-			((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setHead(choice);
+			if(((ExtendedPlayer)(ExtendedPlayer.get(player))).getCurrentHPoints() >= points)
+			{
+			BleachMod.network.sendToServer(new HollowPieceMessage(0, choice, points));
+			((ExtendedPlayer)(ExtendedPlayer.get(player))).setHead(choice);
+			}
 			this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		case 4:

@@ -38,6 +38,10 @@ public class BleachPlayerTickHandler
         }
 		if(props.getFaction() == 3 && props.getLegs() == 1)
 			player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 1, 0));
+		if(props.getFaction() == 3 && props.getArms() == 3)
+			player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 1, 0));
+		if(props.getFaction() == 3 && props.getBack() == 1)
+			player.addPotionEffect(new PotionEffect(Potion.resistance.id, 1, 0));
 			
 			for(int j = -1; j<=1; ++j)
 			{

@@ -16,5 +16,8 @@ public class Tools
 	public static ArmorMaterial QUINCY = EnumHelper.addArmorMaterial("Quincy", -1, new int[] {0, 3, 1, 1}, 0);
 	
 	public static EnumCreatureAttribute SPIRIT = EnumHelper.addCreatureAttribute("Spirit");
+	
+	
+	
 
 }

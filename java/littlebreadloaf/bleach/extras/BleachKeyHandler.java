@@ -1,16 +1,13 @@
 package littlebreadloaf.bleach.extras;
 
 import littlebreadloaf.bleach.BleachMod;
-import littlebreadloaf.bleach.armor.Armor;
-import littlebreadloaf.bleach.events.ExtendedPlayer;
 import littlebreadloaf.bleach.network.ActivateMessage;
+import littlebreadloaf.bleach.network.CeroMessage;
 import littlebreadloaf.bleach.network.DeactivateMessage;
 import littlebreadloaf.bleach.network.FlashMessage;
-import littlebreadloaf.bleach.network.GuiMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 
 import org.lwjgl.input.Keyboard;
 
@@ -18,7 +15,6 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 public class BleachKeyHandler
 {
 	/** Key index for easy handling */
@@ -26,15 +22,16 @@ public class BleachKeyHandler
 	public static final int ACTIVATE = 1;
 	public static final int DEACTIVATE = 2;
 	public static final int HOLLOW = 3;
+	public static final int CERO = 4;
 	Minecraft mc = Minecraft.getMinecraft();
 	EntityPlayer Player = mc.thePlayer;
 
 	
 	/** Key descriptions; use a language file to localize the description later */
-	private static final String[] desc = {"key.flash.desc", "key.activate.desc", "key.deactivate.desc", "key.hollow.desc"};
+	private static final String[] desc = {"key.flash.desc", "key.activate.desc", "key.deactivate.desc", "key.hollow.desc", "key.cero.desc"};
 	
 	/** Default key values */
-	private static final int[] keyValues = {Keyboard.KEY_C, Keyboard.KEY_X, Keyboard.KEY_Z, Keyboard.KEY_V};
+	private static final int[] keyValues = {Keyboard.KEY_C, Keyboard.KEY_X, Keyboard.KEY_Z, Keyboard.KEY_V, Keyboard.KEY_B};
 	private final KeyBinding[] keys;
 	
 	public BleachKeyHandler() {
@@ -67,6 +64,10 @@ public class BleachKeyHandler
 			if(keys[HOLLOW].isPressed())
 			{
 				BleachMod.network.sendToServer(new FlashMessage(4)); 
+			}
+			if(keys[CERO].isPressed())
+			{
+				BleachMod.network.sendToServer(new FlashMessage(2));
 			}
 			
 		}

@@ -1,8 +1,8 @@
 package littlebreadloaf.bleach.proxies;
 
 import littlebreadloaf.bleach.BleachIds;
-import littlebreadloaf.bleach.BleachMod;
 import littlebreadloaf.bleach.entities.EntityBlock;
+import littlebreadloaf.bleach.entities.EntityCero;
 import littlebreadloaf.bleach.entities.EntityEnergyArrow;
 import littlebreadloaf.bleach.entities.EntityGetsuga;
 import littlebreadloaf.bleach.entities.EntitySeeleArrow;
@@ -11,8 +11,6 @@ import littlebreadloaf.bleach.events.BleachSounds;
 import littlebreadloaf.bleach.extras.BleachKeyHandler;
 import littlebreadloaf.bleach.gui.GuiSoulBar;
 import littlebreadloaf.bleach.items.BleachItems;
-import littlebreadloaf.bleach.network.ClientSyncMessage;
-import littlebreadloaf.bleach.network.ParticleMessage;
 import littlebreadloaf.bleach.player.HollowRenderer;
 import littlebreadloaf.bleach.render.RenderLantern;
 import littlebreadloaf.bleach.render.RenderSphereLamp;
@@ -20,6 +18,7 @@ import littlebreadloaf.bleach.render.SeeleSchneiderBlockRenderer;
 import littlebreadloaf.bleach.render.SeeleSchneiderRenderer;
 import littlebreadloaf.bleach.render.ZanpakutoRenderer;
 import littlebreadloaf.bleach.render.entity.RenderBlock;
+import littlebreadloaf.bleach.render.entity.RenderCero;
 import littlebreadloaf.bleach.render.entity.RenderEnergyArrow;
 import littlebreadloaf.bleach.render.entity.RenderGetsuga;
 import littlebreadloaf.bleach.render.entity.RenderSeeleArrow;
@@ -36,14 +35,12 @@ import littlebreadloaf.bleach.tiles.TileSphereLamp;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import cpw.mods.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy
 {
@@ -59,6 +56,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntitySeeleArrow.class, new RenderSeeleArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityGetsuga.class, new RenderGetsuga());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlock.class, new RenderBlock());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCero.class, new RenderCero());
 		Renders.renderEntities();
 
 		MinecraftForge.EVENT_BUS.register(new BleachSounds());

@@ -1,36 +1,23 @@
 package littlebreadloaf.bleach.entities;
 
-import org.lwjgl.util.glu.Sphere;
-
 import littlebreadloaf.bleach.api.Tools;
-import littlebreadloaf.bleach.armor.Armor;
-import littlebreadloaf.bleach.blocks.BleachBlocks;
 import littlebreadloaf.bleach.events.ExtendedPlayer;
 import littlebreadloaf.bleach.items.BleachItems;
-import littlebreadloaf.bleach.render.RenderingHelper;
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumDifficulty;
@@ -40,11 +27,10 @@ public class EntityMenosGrande extends EntityMob
 {
 	public int deathTicks = 0;
 
-	private int ceroCooldown = 20*20;// 20 seconds
+	private int ceroCooldown = 5*20;// 20 seconds
 	private int ceroCharging = 3*20;// 3 secs
 
 	private EntityPlayer target = null;
-	private int[] targetCoords = {0,0,0};
 	
 	public EntityMenosGrande(World par1World)
 	{
@@ -190,43 +176,52 @@ public class EntityMenosGrande extends EntityMob
 	{
 	}
 
-	protected void updateAITasks()
+	
+	public void updateAITasks()
 	{
 		super.updateAITasks();
+		if(this.target != null)
+		System.out.println(this.target.posX);
+		if(this.target != null && this.ceroCooldown <= 0 &&this.ceroCharging <= 0)
+			{
+			double hyp1 = Math.sqrt((this.posX - target.posX)*(this.posX - target.posX) + (this.posZ - target.posZ)*(this.posZ - target.posZ));
+			
+				EntityCero cero = new EntityCero(this.worldObj, this, this.target, 2.0F);
+				cero.setLocationAndAngles(this.posX, this.posY + (double) this.getEyeHeight(), this.posZ, (float)Math.atan((this.posX - target.posX)/(this.posZ - target.posZ)), (float)Math.atan(this.height/hyp1));
+
+					this.worldObj.spawnEntityInWorld(cero);
+				
+			
+			}
+	}
+	
+	public void onUpdate()
+	{
+		super.onUpdate();
 		if(this.target == null)
 		{
 			this.target = this.worldObj.getClosestPlayerToEntity(this, 30);
 		}
-		
-		if(this.targetCoords[0] == 0 && this.targetCoords[1] == 0 && this.targetCoords[2] == 0 && this.ceroCooldown <= 0 && this.target != null)
-		{
-			this.targetCoords[0] = (int)target.posX;
-			this.targetCoords[1] = (int)target.posY;
-			this.targetCoords[2] = (int)target.posZ;
-		}
-		
+
 		if(this.target != null)
 		{
 			this.ceroCooldown--;
 		}
 		
-		if(this.targetCoords != null && this.ceroCooldown <= 0)
+		if(this.target != null && this.ceroCooldown <= 0)
 		{
 			this.ceroCharging--;
-			
 			//RenderBallCero
 			if(this.ceroCharging <= 0)
 			{
-				//RenderBeamCero
-				if(!this.worldObj.isRemote)
-				{
-					//this.worldObj.createExplosion(null, targetCoords[0], targetCoords[1], targetCoords[2], 3, true);
-				}
-				this.targetCoords[0] = 0;
-				this.targetCoords[1] = 0;
-				this.targetCoords[2] = 0;
+			
+				double hyp1 = Math.sqrt((this.posX - target.posX)*(this.posX - target.posX) + (this.posZ - target.posZ)*(this.posZ - target.posZ));
+				
+				EntityCero cero = new EntityCero(this.worldObj, this, this.target, 2.0F);
+				cero.setLocationAndAngles(this.posX, this.posY + (double) this.getEyeHeight(), this.posZ, (float)Math.atan((this.posX - target.posX)/(this.posZ - target.posZ)), (float)Math.atan(this.height/hyp1));
+
 				this.ceroCharging = 3 * 20;
-				this.ceroCooldown = 20 * 20;
+				this.ceroCooldown = 5 * 20;
 			}
 		}
 

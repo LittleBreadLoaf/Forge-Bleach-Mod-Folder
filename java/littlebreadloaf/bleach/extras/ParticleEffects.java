@@ -2,8 +2,6 @@ package littlebreadloaf.bleach.extras;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ParticleEffects
 {
@@ -82,6 +80,8 @@ public class ParticleEffects
                     mc.effectRenderer.addEffect(var31);
                     return var31;
                 }
+                
+             
               
                 else
                 {

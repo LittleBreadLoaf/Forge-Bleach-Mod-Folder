@@ -42,6 +42,7 @@ public class GuiTailOptions extends GuiScreen {
 		props = ExtendedPlayer.get(player);
 	}
 	
+	int points = 0;
 	@Override
 	public void drawScreen(int x, int y, float f) {
 		drawDefaultBackground();
@@ -58,30 +59,37 @@ public class GuiTailOptions extends GuiScreen {
 		drawTexturedModalRect(posX, posY, 0, 0, xSizeOfTexture, ySizeOfTexture);
 		drawTexturedModalRect(posX + 140, posY + 10, 86*(choice - 1) + 1, 172, 83, 83);
 		
+		String var34 = "Free Points: " + props.getCurrentHPoints();
+		String var35 = "";
 		if(choice == 1)
 		{
-			line1 = "Here is where some info";
-			line2 = "about each piece goes, so";
-			line3 = "they know what they're getting";
+			line1 = "Gives the player 'pack'";
+			line2 = "boosts based on how";
+			line3 = "many hollows are around.";
+			points = 1;
 		}
 		if(choice == 2)
 		{
-			line1 = "Sprint at enemies with";
-			line2 = "this head to hurt them";
-			line3 = "and send them flying.";
+			line1 = "Gives a swimming speed";
+			line2 = "boost. Does not affect";
+			line3 = "land speed.";
+			points = 1;
 		}
 		if(choice == 3)
 		{
-			line1 = "Notice how each tag is";
-			line2 = "different. Not sure what";
-			line3 = "this mask does yet...";
+			line1 = "Gives the player a poison";
+			line2 = "aspect to all their";
+			line3 = "empty-handed attacks.";
+			points = 2;
 		}
-		 String var34 = "Free Points: " + props.getCurrentHPoints();
+
+		var35 = "Costs " + points + " Point" + (points > 1 ? "s" : "");
 	     var8.drawString(var34, (var6) / 2 - 117,  var7 / 2 + 70, 0);
 
 		var8.drawString(line1, (var6) / 2 - 30,  var7 / 2 + 15, 0);
 		var8.drawString(line2, (var6) / 2 - 30,  var7 / 2 + 25, 0);
 		var8.drawString(line3, (var6) / 2 - 30,  var7 / 2 + 35, 0);
+		var8.drawString(var35, (this.width - xSizeOfTexture) / 2 + 107,  (this.height - ySizeOfTexture) / 2 + 135, 0);
 
 		
 		super.drawScreen(x, y, f);
@@ -120,8 +128,11 @@ public class GuiTailOptions extends GuiScreen {
 			this.choice = 3;
 		break;
 		case 3:
-			BleachMod.network.sendToServer(new HollowPieceMessage(3, choice));
+//			if(((ExtendedPlayer)(ExtendedPlayer.get(player))).getCurrentHPoints() >= points)
+//			{
+			BleachMod.network.sendToServer(new HollowPieceMessage(3, choice, points));
 			((ExtendedPlayer)(thePlayer.getExtendedProperties(ExtendedPlayer.EXT_PROP_NAME))).setTail(choice);
+//			}
 			this.mc.displayGuiScreen((GuiScreen)null);
 		break;
 		case 4:
